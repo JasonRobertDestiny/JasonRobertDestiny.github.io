@@ -727,6 +727,7 @@ img.shadow {
 }
 select {
   -webkit-appearance: none;
+  appearance: none;
   margin-top: 15px;
   color: #337ab7;
   border-color: #337ab7;
