@@ -2,9 +2,9 @@
 title: Jason's Blog
 SEOTitle: Jason的博客 | Jason's Blog
 header-img: img/home-bg.jpg
-email: your-email@example.com
-description: "这里是 @Jason 的个人博客，记录技术成长与生活感悟"
-keyword: "Jason, JasonRobertDestiny, 博客, 个人网站, 技术, 编程, 前端, 后端, 全栈"
+email: johnrobertdestiny@gmail.com
+description: "这里是 @Jason 的个人博客，记录AI开发、Agent应用与技术成长"
+keyword: "Jason, JasonRobertDestiny, 博客, 个人网站, 技术, 编程, AI, Agent, 全栈开发"
 url: "https://jasonrobertdestiny.github.io" # your host, for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
 
@@ -17,6 +17,9 @@ weibo_username:
 zhihu_username: 
 github_username: JasonRobertDestiny
 twitter_username: 
+csdn_username: Soulrobert520
+juejin_username: 2637056597039172
+bilibili_username: 648236073
 #facebook_username:  
 #linkedin_username:  firstname-lastname-idxxxx
 
@@ -74,7 +77,7 @@ ga_domain: jasonrobertdestiny.github.io
 
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
-sidebar-about-description: "热爱技术的程序员 <br> 持续学习中..."
+sidebar-about-description: "AI技术研发 · Agent应用开发 <br> 北京信息科技大学 | 通信工程"
 sidebar-avatar: https://github.com/JasonRobertDestiny.png # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags
@@ -91,6 +94,10 @@ page-mathjax: false
 # Friends
 friends:
   [
-    # { title: "朋友名称", href: "https://friend-blog.com/" },
-    # 在这里添加你的朋友链接
+    { title: "GitHub", href: "https://github.com/JasonRobertDestiny" },
+    { title: "CSDN博客", href: "https://blog.csdn.net/Soulrobert520" },
+    { title: "掘金", href: "https://juejin.cn/user/2637056597039172" },
+    { title: "B站", href: "https://space.bilibili.com/648236073" },
+    { title: "支付宝百宝箱", href: "https://tbox.alipay.com/pro/share/202412APTgpY00193418?platform=WebService" },
+    { title: "MeetSpot项目", href: "https://github.com/JasonRobertDestiny/MeetSpot" },
   ]
