@@ -1,7 +1,7 @@
 /* ===========================================================
  * sw-registration.js
  * ===========================================================
- * Copyright 2016 @huxpro
+ * Copyright 2016 @JasonRobertDestiny
  * Licensed under Apache 2.0
  * Register service worker.
  * ========================================================== */

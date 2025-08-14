@@ -18,7 +18,7 @@ tags:
 
 ### 关于这个博客
 
-这个博客是基于 Jekyll 搭建的，使用了优秀的 [Hux Blog](https://github.com/Huxpro/huxpro.github.io) 模板。感谢 Hux 提供这么棒的模板！
+这个博客是基于 Jekyll 搭建的，使用了优秀的开源博客模板。
 
 ### 我的计划
 

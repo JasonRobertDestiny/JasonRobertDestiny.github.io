@@ -11,7 +11,7 @@
 body {
   .sans-serif;
   font-size: 16px;
-  // Hux mpdify to 16px (Mobile First), and increase to 20px while 768+ width
+  // Modified to 16px (Mobile First), and increase to 20px while 768+ width
   color: @gray-dark;
   //-webkit-user-select:text; //对于 Blog 还是先不开启这句。
   overflow-x: hidden;
@@ -90,6 +90,7 @@ img.shadow {
 // Select
 select {
   -webkit-appearance: none;
+  appearance: none;
   margin-top: 15px;
   color: #337ab7;
   border-color: #337ab7;
@@ -124,7 +125,7 @@ hr.small {
   border-width: 4px;
   border-color: white;
 }
-// add by Hux
+// add by Jason
 pre,
 .table-responsive {
   // sometimes you should use vendor-feature.
@@ -250,7 +251,7 @@ samp {
       margin-top: 20px;
     }
   }
-  // V1.6 Hux display title by default.
+  // Display title by default.
   .pager li {
     width: 48%;
     &.next {
@@ -297,9 +298,9 @@ samp {
   }
   /**
    * Animation
-   * HuxBlog-Navbar using genuine Material Design Animation
-   */
-  #huxblog_navbar {
+   * Jason's Blog Navbar using genuine Material Design Animation
+ */
+#jasonblog_navbar {
     /**
      * Sharable code and 'out' function
      */
@@ -532,7 +533,7 @@ samp {
   background-attachment: scroll;
   .background-cover;
   // NOTE: Background images are set within the HTML using inline CSS!
-  margin-bottom: 0px; /* 0 on mobile, modify by Hux */
+  margin-bottom: 0px; /* 0 on mobile */
   @media only screen and (min-width: 768px) {
     margin-bottom: 20px; /* response on desktop */
   }
@@ -545,7 +546,7 @@ samp {
       padding: 150px 0;
     }
   }
-  // masterialize
+  // materialize
   .site-heading {
     padding: 95px 0 70px;
     @media only screen and (min-width: 768px) {
@@ -690,7 +691,7 @@ samp {
   }
 }
 
-// Hux add home-page post-content-preview
+// Add home-page post-content-preview
 .post-content-preview {
   font-size: 13px;
   font-style: italic;
@@ -844,7 +845,7 @@ img::-moz-selection {
   background: transparent;
 }
 
-/* Hux add tags support */
+/* Add tags support */
 .d-none {
   display: none !important;
 }
@@ -943,7 +944,7 @@ img::-moz-selection {
     margin-top: 0px;
   }
   hr:last-of-type {
-    //display: none;
+    display: none;
   }
 }
 .listing-seperator {
@@ -1005,7 +1006,7 @@ img::-moz-selection {
 
 /* Tags support End*/
 
-/* Hux make all img responsible in post-container */
+/* Make all img responsible in post-container */
 .post-container img {
   display: block;
   max-width: 100%;
@@ -1013,7 +1014,7 @@ img::-moz-selection {
   margin: 1.5em auto 1.6em auto;
 }
 
-/* Hux Optimize UserExperience */
+/* Optimize UserExperience */
 .navbar-default .navbar-toggle {
   &:focus,
   &:hover {
@@ -1024,7 +1025,7 @@ img::-moz-selection {
   }
 }
 
-/* Hux customize Style for navBar button */
+/* Customize Style for navBar button */
 
 .navbar-default .navbar-toggle {
   border-color: transparent;
@@ -1044,7 +1045,7 @@ img::-moz-selection {
   }
 }
 
-// Hux fullscreen mode in 404.html
+// Fullscreen mode in 404.html
 
 .page-fullscreen .intro-header {
   position: fixed;

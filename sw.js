@@ -1,7 +1,7 @@
 /* ===========================================================
  * sw.js
  * ===========================================================
- * Copyright 2016 @huxpro
+ * Copyright 2016 @JasonRobertDestiny
  * Licensed under Apache 2.0
  * service worker scripting
  * ========================================================== */
@@ -17,13 +17,13 @@ const PRECACHE_LIST = [
   "./offline.html",
   "./js/jquery.min.js",
   "./js/bootstrap.min.js",
-  "./js/hux-blog.min.js",
+  "./js/jason-blog.min.js",
   "./js/snackbar.js",
   "./img/icon_wechat.png",
-  "./img/avatar-hux.jpg",
+  "./img/avatar-jason.jpg",
   "./img/home-bg.jpg",
   "./img/404-bg.jpg",
-  "./css/hux-blog.min.css",
+  "./css/jason-blog.min.css",
   "./css/bootstrap.min.css"
   // "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css",
   // "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts/fontawesome-webfont.woff2?v=4.6.3",
@@ -31,8 +31,7 @@ const PRECACHE_LIST = [
 ]
 const HOSTNAME_WHITELIST = [
   self.location.hostname,
-  "huangxuan.me",
-  "yanshuo.io",
+  "jasonrobertdestiny.github.io",
   "cdnjs.cloudflare.com"
 ]
 const DEPRECATED_CACHES = ['precache-v1', 'runtime', 'main-precache-v1', 'main-runtime']
@@ -65,20 +64,20 @@ const getCacheBustingUrl = (req) => {
 const isNavigationReq = (req) => (req.mode === 'navigate' || (req.method === 'GET' && req.headers.get('accept').includes('text/html')))
 
 // The Util Function to detect if a req is end with extension
-// Accordin to Fetch API spec <https://fetch.spec.whatwg.org/#concept-request-destination>
+// According to Fetch API spec <https://fetch.spec.whatwg.org/#concept-request-destination>
 // Any HTML's navigation has consistently mode="navigate" type="" and destination="document"
 // including requesting an img (or any static resources) from URL Bar directly.
 // So It ends up with that regExp is still the king of URL routing ;)
 // P.S. An url.pathname has no '.' can not indicate it ends with extension (e.g. /api/version/1.2/)
 const endWithExtension = (req) => Boolean(new URL(req.url).pathname.match(/\.\w+$/))
 
-// Redirect in SW manually fixed github pages arbitray 404s on things?blah
+// Redirect in SW manually fixed github pages arbitrary 404s on things?blah
 // what we want:
 //    repo?blah -> !(gh 404) -> sw 302 -> repo/?blah
 //    .ext?blah -> !(sw 302 -> .ext/?blah -> gh 404) -> .ext?blah
 // If It's a navigation req and it's url.pathname isn't end with '/' or '.ext'
 // it should be a dir/repo request and need to be fixed (a.k.a be redirected)
-// Tracking https://twitter.com/Huxpro/status/798816417097224193
+// Tracking performance improvements
 const shouldRedirect = (req) => (isNavigationReq(req) && new URL(req.url).pathname.substr(-1) !== "/" && !endWithExtension(req))
 
 // The Util Function to get redirect URL
@@ -112,7 +111,7 @@ self.addEventListener('install', e => {
 
 /**
  *  @Lifecycle Activate
- *  New one activated when old isnt being used.
+ *  New one activated when old isn't being used.
  *
  *  waitUntil(): activating ====> activated
  */
@@ -138,7 +137,7 @@ var fetchHelper = {
     const fetched = fetch(request, init)
     const fetchedCopy = fetched.then(resp => resp.clone());
 
-    // NOTE: Opaque Responses have no hedaders so [[ok]] make no sense to them
+    // NOTE: Opaque Responses have no headers so [[ok]] make no sense to them
     //       so Opaque Resp will not be cached in this case.
     Promise.all([fetchedCopy, caches.open(CACHE)])
       .then(([response, cache]) => response.ok && cache.put(request, response))
@@ -176,13 +175,13 @@ self.addEventListener('fetch', event => {
       return;
     }
 
-    // Cache-only Startgies for ys.static resources
+    // Cache-only Strategies for ys.static resources
     if (event.request.url.indexOf('ys.static') > -1){
       event.respondWith(fetchHelper.cacheFirst(event.request.url))
       return;
     }
 
-    // Stale-while-revalidate for possiblily dynamic content
+    // Stale-while-revalidate for possibly dynamic content
     // similar to HTTP's stale-while-revalidate: https://www.mnot.net/blog/2007/12/12/stale
     // Upgrade from Jake's to Surma's: https://gist.github.com/surma/eb441223daaedf880801ad80006389f1
     const cached = caches.match(event.request);
@@ -207,7 +206,7 @@ self.addEventListener('fetch', event => {
         .catch(_ => {/* eat any errors */ })
     );
 
-    // If one request is a HTML naviagtion, checking update!
+    // If one request is a HTML navigation, checking update!
     if (isNavigationReq(event.request)) {
       // you need "preserve logs" to see this log
       // cuz it happened before navigating
@@ -235,7 +234,7 @@ function sendMessageToAllClients(msg) {
  */
 function sendMessageToClientsAsync(msg) {
   // waiting for new client alive with "async" setTimeout hacking
-  // https://twitter.com/Huxpro/status/799265578443751424
+  // Performance optimization
   // https://jakearchibald.com/2016/service-worker-meeting-notes/#fetch-event-clients
   setTimeout(() => {
     sendMessageToAllClients(msg)

@@ -1,10 +1,10 @@
 # Site settings
 title: Jason's Blog
-SEOTitle: Jason的博客 | Jason's Blog
+SEOTitle: Jason的博客 | Jason's Blog - AI技术研发者
 header-img: img/home-bg.jpg
 email: johnrobertdestiny@gmail.com
-description: "这里是 @Jason 的个人博客，记录AI开发、Agent应用与技术成长"
-keyword: "Jason, JasonRobertDestiny, 博客, 个人网站, 技术, 编程, AI, Agent, 全栈开发"
+description: "这里是 @Jason 的个人博客，记录AI开发、Agent应用与技术成长 | 多项黑客松获奖者 | 北京信息科技大学"
+keyword: "Jason, JasonRobertDestiny, 博客, 个人网站, 技术, 编程, AI, Agent, 全栈开发, MeetSpot, 黑客松, 获奖项目"
 url: "https://jasonrobertdestiny.github.io" # your host, for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
 
@@ -77,7 +77,7 @@ ga_domain: jasonrobertdestiny.github.io
 
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
-sidebar-about-description: "AI技术研发 · Agent应用开发 <br> 北京信息科技大学 | 通信工程"
+sidebar-about-description: "AI技术研发 · Agent应用开发 · 多项黑客松获奖者 <br> 北京信息科技大学 | 通信工程 <br> 🏆 MeetSpot · L'Oréal数据洞察助手 · 邻里帮"
 sidebar-avatar: https://github.com/JasonRobertDestiny.png # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags
@@ -98,6 +98,8 @@ friends:
     { title: "CSDN博客", href: "https://blog.csdn.net/Soulrobert520" },
     { title: "掘金", href: "https://juejin.cn/user/2637056597039172" },
     { title: "B站", href: "https://space.bilibili.com/648236073" },
-    { title: "支付宝百宝箱", href: "https://tbox.alipay.com/pro/share/202412APTgpY00193418?platform=WebService" },
+    { title: "魔塔空间", href: "https://www.modelscope.cn/profile/JasonRobert" },
     { title: "MeetSpot项目", href: "https://github.com/JasonRobertDestiny/MeetSpot" },
+    { title: "L'Oréal数据洞察助手", href: "https://www.modelscope.cn/studios/JasonRobert/loreal-insight-agent" },
+    { title: "邻里帮", href: "https://tbox.alipay.com/pro/share/202412APTgpY00193418?platform=WebService" },
   ]
