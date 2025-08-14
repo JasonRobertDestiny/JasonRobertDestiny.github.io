@@ -5,6 +5,7 @@
 @import "snackbar.less";
 @import "highlight.less";
 @import "search.less";
+@import "tech-enhancements.less";
 
 // Global Components
 
@@ -47,9 +48,11 @@ h4 {
 }
 a {
   color: @gray-dark;
+  transition: color 0.3s ease;
   &:hover,
   &:focus {
     color: @brand-primary;
+    text-decoration: none;
   }
 }
 
