@@ -38,7 +38,7 @@
 }
 .sidebar-container .tags a:hover,
 .sidebar-container .tags a:active {
-  border-color: #1e3a8a;
+  border-color: #5b21b6;
 }
 .sidebar-container .short-about img {
   width: 80%;
@@ -776,7 +776,7 @@ pre.highlight {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 .sidebar-container.tech-enhanced h5 {
-  color: #1e3a8a;
+  color: #5b21b6;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -798,7 +798,7 @@ pre.highlight {
   box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
 }
 .post-container.tech-enhanced .post-title {
-  color: #1e3a8a;
+  color: #5b21b6;
   position: relative;
 }
 .post-container.tech-enhanced .post-title::after {
@@ -825,7 +825,7 @@ pre.highlight {
   top: -10px;
   left: 20px;
   font-size: 60px;
-  color: #1e3a8a;
+  color: #5b21b6;
   opacity: 0.3;
   font-family: serif;
 }
@@ -847,7 +847,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   line-height: 1.7;
   font-size: 16px;
-  color: #1f2937;
+  color: #111827;
   overflow-x: hidden;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
@@ -880,12 +880,12 @@ h4 {
   font-size: 21px;
 }
 a {
-  color: #1f2937;
+  color: #5b21b6;
   transition: color 0.3s ease;
 }
 a:hover,
 a:focus {
-  color: #1e3a8a;
+  color: #7c3aed;
   text-decoration: none;
 }
 a img:hover,
@@ -972,7 +972,7 @@ samp {
 }
 .post-container a:hover,
 .post-container a:focus {
-  color: #1e3a8a;
+  color: #5b21b6;
 }
 .post-container h1,
 .post-container h2,
@@ -1236,14 +1236,14 @@ samp {
 }
 .navbar-custom.invert .navbar-brand:hover,
 .navbar-custom.invert .navbar-brand:focus {
-  color: #1e3a8a;
+  color: #5b21b6;
 }
 .navbar-custom.invert .nav li a {
   color: #1f2937;
 }
 .navbar-custom.invert .nav li a:hover,
 .navbar-custom.invert .nav li a:focus {
-  color: #1e3a8a;
+  color: #5b21b6;
 }
 @media only screen and (min-width: 1170px) {
   .navbar-custom {
@@ -1274,14 +1274,14 @@ samp {
   }
   .navbar-custom.is-fixed .navbar-brand:hover,
   .navbar-custom.is-fixed .navbar-brand:focus {
-    color: #1e3a8a;
+    color: #5b21b6;
   }
   .navbar-custom.is-fixed .nav li a {
     color: #1f2937;
   }
   .navbar-custom.is-fixed .nav li a:hover,
   .navbar-custom.is-fixed .nav li a:focus {
-    color: #1e3a8a;
+    color: #5b21b6;
   }
   .navbar-custom.is-visible {
     /* if the user changes the scrolling direction, we show the header */
@@ -1451,7 +1451,7 @@ samp {
 .post-preview > a:hover,
 .post-preview > a:focus {
   text-decoration: none;
-  color: #1e3a8a;
+  color: #5b21b6;
 }
 .post-preview > a > .post-title {
   font-size: 21px;
@@ -1479,7 +1479,7 @@ samp {
 }
 .post-preview > .post-meta > a:hover,
 .post-preview > .post-meta > a:focus {
-  color: #1e3a8a;
+  color: #5b21b6;
   text-decoration: underline;
 }
 @media only screen and (min-width: 768px) {
@@ -1501,7 +1501,7 @@ samp {
   color: #6b7280;
 }
 .post-content-preview:hover {
-  color: #1e3a8a;
+  color: #5b21b6;
 }
 @media only screen and (min-width: 768px) {
   .post-content-preview {
@@ -1541,7 +1541,7 @@ footer .copyright a {
 }
 footer .copyright a:hover,
 footer .copyright a:focus {
-  color: #1e3a8a;
+  color: #5b21b6;
 }
 .btn {
   /* Learn from
@@ -1563,7 +1563,7 @@ footer .copyright a:focus {
 }
 .btn-default:hover,
 .btn-default:focus {
-  background-color: #1e3a8a;
+  background-color: #5b21b6;
   border: 1px solid #1e3a8a;
   color: white;
 }
@@ -1600,7 +1600,7 @@ footer .copyright a:focus {
 .pager li > a:hover,
 .pager li > a:focus {
   color: white;
-  background-color: #1e3a8a;
+  background-color: #5b21b6;
   border: 1px solid #1e3a8a;
 }
 .pager li > a:hover > span,
@@ -1699,7 +1699,10 @@ img::-moz-selection {
   line-height: 28px;
   margin: 0 2px;
   margin-bottom: 8px;
-  background: #f3f5f5;
+  background: #f9fafb;
+  color: #111827;
+  padding: 5px 15px;
+  border-radius: 20px;
 }
 #tag_cloud a:hover,
 #tag_cloud .tag:hover,
@@ -1707,16 +1710,20 @@ img::-moz-selection {
 #tag_cloud .tag:active,
 #tag_cloud a.focus,
 #tag_cloud .tag.focus {
-  background-color: #0085a1 !important;
+  background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 100%) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 #tag_cloud a.focus,
 #tag_cloud .tag.focus {
-  box-shadow: rgba(0, 0, 0, 0.117647) 0 1px 6px, rgba(0, 0, 0, 0.239216) 0 1px 4px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 #tag_cloud a.tag-button--all,
 #tag_cloud .tag.tag-button--all {
   font-weight: 700;
-  color: #0085a1 !important;
+  color: #5b21b6 !important;
+  background: #f3f4f6;
 }
 #tag_cloud a.tag-button--all:hover,
 #tag_cloud .tag.tag-button--all:hover,
@@ -1724,7 +1731,8 @@ img::-moz-selection {
 #tag_cloud .tag.tag-button--all:active,
 #tag_cloud a.tag-button--all.focus,
 #tag_cloud .tag.tag-button--all.focus {
-  background-color: #e4e4e4 !important;
+  background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 100%) !important;
+  color: #ffffff !important;
 }
 @media only screen and (min-width: 768px) {
   #tag_cloud {

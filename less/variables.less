@@ -1,20 +1,41 @@
-// Variables - 科技感配色方案
+// Variables - 现代科技感配色方案 v2.0
 
-// 深蓝色作为主色调
-@brand-primary: #1e3a8a;  // 深蓝色
-@brand-secondary: #3b82f6; // 亮蓝色（用于悬停效果）
-@brand-gray: #6b7280;     // 中性灰色
-@brand-light-gray: #9ca3af; // 浅灰色
+// 主色调 - 现代蓝紫色系
+@brand-primary: #5b21b6;     // 深紫色 - 更现代的主色调
+@brand-secondary: #7c3aed;    // 中紫色 - 悬停和强调
+@brand-accent: #a78bfa;      // 浅紫色 - 装饰元素
+@brand-highlight: #fbbf24;    // 琥珀色 - 高亮和强调
 
-// 文字颜色
-@gray-dark: #1f2937;      // 深灰色文字
-@gray-light: #f3f4f6;     // 浅灰色背景
-@gray-medium: #4b5563;    // 中等灰色文字
+// 渐变色组合
+@gradient-primary: linear-gradient(135deg, @brand-primary 0%, @brand-secondary 100%);
+@gradient-accent: linear-gradient(135deg, @brand-secondary 0%, @brand-accent 100%);
+@gradient-warm: linear-gradient(135deg, #f59e0b 0%, @brand-highlight 100%);
 
-// 白色相关
-@white-faded: fade(white, 85%);
-@white-pure: #ffffff;
+// 文字颜色系统 - 提高对比度
+@text-primary: #111827;       // 主要文字 - 更深
+@text-secondary: #374151;     // 次要文字
+@text-muted: #6b7280;        // 辅助文字
+@text-inverse: #ffffff;       // 反白文字
 
-// 科技感渐变色
-@tech-gradient-start: #1e3a8a;
-@tech-gradient-end: #3730a3;
+// 背景色系统
+@bg-primary: #ffffff;        // 主背景
+@bg-secondary: #f9fafb;       // 次要背景
+@bg-tertiary: #f3f4f6;       // 三级背景
+@bg-dark: #1f2937;           // 深色背景
+
+// 功能色
+@success: #10b981;           // 成功绿
+@warning: #f59e0b;           // 警告黄
+@danger: #ef4444;            // 危险红
+@info: #3b82f6;              // 信息蓝
+
+// 阴影系统
+@shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+@shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+@shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+@shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+// 透明度
+@opacity-light: 0.1;
+@opacity-medium: 0.5;
+@opacity-heavy: 0.9;

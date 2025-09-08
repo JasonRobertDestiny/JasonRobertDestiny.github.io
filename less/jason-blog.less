@@ -13,7 +13,7 @@ body {
   .sans-serif;
   font-size: 16px;
   // Modified to 16px (Mobile First), and increase to 20px while 768+ width
-  color: @gray-dark;
+  color: @text-primary;
   //-webkit-user-select:text; //对于 Blog 还是先不开启这句。
   overflow-x: hidden;
 
@@ -33,7 +33,7 @@ body {
 p {
   margin: 30px 0;
   line-height: 1.8;
-  color: @gray-dark;
+  color: @text-primary;
   font-size: 17px;
   
   @media screen and (max-width: 768px) {
@@ -59,11 +59,11 @@ h4 {
   font-size: 21px;
 }
 a {
-  color: @gray-dark;
+  color: @brand-primary;
   transition: color 0.3s ease;
   &:hover,
   &:focus {
-    color: @brand-primary;
+    color: @brand-secondary;
     text-decoration: none;
   }
 }
@@ -79,7 +79,7 @@ article {
   overflow: hidden;
 }
 blockquote {
-  color: gray;
+  color: @text-secondary;
   font-style: italic;
   font-size: 0.95em;
   margin: 20px 0 20px;
@@ -169,11 +169,11 @@ samp {
   a {
     // display: inline-block;
     // safari has bugs on word-break on inline elements.
-    color: #337ab7;
+    color: @brand-primary;
     // different to @brand-primary
     &:hover,
     &:focus {
-      color: @brand-primary;
+      color: @brand-secondary;
     }
   }
   h1,
@@ -198,7 +198,7 @@ samp {
   h4 {
     font-size: 22px;
     font-weight: 600;
-    color: gray;
+    color: @text-secondary;
     & + p {
       margin-top: 10px;
     }
@@ -207,7 +207,7 @@ samp {
   h6 {
     font-size: 20px;
     font-weight: 600;
-    color: gray;
+    color: @text-secondary;
     & + p {
       margin-top: 10px;
     }
@@ -278,7 +278,7 @@ samp {
     > a {
       width: 100%;
       > span {
-        color: @brand-gray;
+        color: @text-secondary;
         font-weight: normal;
         letter-spacing: 0.5px;
       }
@@ -385,11 +385,11 @@ samp {
   .navbar-brand {
     font-weight: 800;
     // materialize
-    color: white;
+    color: @text-inverse;
     height: 56px;
     line-height: 25px;
     &:hover {
-      color: rgba(255, 255, 255, 0.8);
+      color: @bg-secondary;
     }
   }
   .nav {
@@ -441,14 +441,14 @@ samp {
   &.invert {
     .navbar-toggle {
       &:active {
-        background-color: rgba(0, 0, 0, 0.05);
+        background-color: @opacity-light;
       }
       .icon-bar {
-        background-color: @gray-dark;
+        background-color: @text-primary;
       }
     }
     .navbar-brand {
-      color: @gray-dark;
+      color: @text-primary;
       &:hover,
       &:focus {
         color: @brand-primary;
@@ -457,7 +457,7 @@ samp {
     .nav {
       li {
         a {
-          color: @gray-dark;
+          color: @text-primary;
           &:hover,
           &:focus {
             color: @brand-primary;
@@ -482,13 +482,13 @@ samp {
       /* when the user scrolls down, we hide the header right above the viewport */
       position: fixed;
       top: -61px;
-      background-color: fade(white, 90%);
-      border-bottom: 1px solid darken(white, 5%);
+      background-color: fade(@bg-primary, 95%);
+      border-bottom: 1px solid @bg-tertiary;
       -webkit-transition: -webkit-transform 0.3s;
       -moz-transition: -moz-transform 0.3s;
       transition: transform 0.3s;
       .navbar-brand {
-        color: @gray-dark;
+        color: @text-primary;
         &:hover,
         &:focus {
           color: @brand-primary;
@@ -497,7 +497,7 @@ samp {
       .nav {
         li {
           a {
-            color: @gray-dark;
+            color: @text-primary;
             &:hover,
             &:focus {
               color: @brand-primary;
@@ -653,7 +653,7 @@ samp {
 
 .post-preview {
   > a {
-    color: @gray-dark;
+    color: @text-primary;
     &:hover,
     &:focus {
       text-decoration: none;
@@ -675,13 +675,13 @@ samp {
   }
   > .post-meta {
     .serif;
-    color: @brand-gray;
+    color: @text-secondary;
     font-size: 16px;
     font-style: italic;
     margin-top: 0;
     > a {
       text-decoration: none;
-      color: @gray-dark;
+      color: @text-secondary;
       &:hover,
       &:focus {
         color: @brand-primary;
@@ -710,7 +710,7 @@ samp {
 .post-content-preview {
   font-size: 13px;
   font-style: italic;
-  color: @brand-gray;
+  color: @text-secondary;
   &:hover {
     color: @brand-primary;
   }
@@ -750,11 +750,11 @@ footer {
     text-align: center;
     margin-bottom: 0;
     a {
-      color: #337ab7;
+      color: @brand-primary;
       // different to @brand-primary
       &:hover,
       &:focus {
-        color: @brand-primary;
+        color: @brand-secondary;
       }
     }
   }
@@ -809,7 +809,7 @@ footer {
     }
 
     > a {
-      color: @gray-dark;
+      color: @text-primary;
     }
     > a:hover,
     > a:focus {
@@ -829,8 +829,8 @@ footer {
     > a:hover,
     > a:focus,
     > span {
-      color: @brand-gray;
-      background-color: @gray-dark;
+      color: @text-muted;
+      background-color: @bg-tertiary;
       cursor: not-allowed;
     }
   }
@@ -921,23 +921,30 @@ img::-moz-selection {
     line-height: 28px;
     margin: 0 2px;
     margin-bottom: 8px;
-    background: #f3f5f5;
+    background: @bg-secondary;
+    color: @text-primary;
+    padding: 5px 15px;
+    border-radius: 20px;
     &:hover,
     &:active,
     &.focus {
-      background-color: #0085a1 !important;
+      background: @gradient-primary !important;
+      color: @text-inverse !important;
+      transform: translateY(-2px);
+      box-shadow: @shadow-md;
     }
     &.focus {
-      box-shadow: rgba(0, 0, 0, 0.117647) 0 1px 6px,
-        rgba(0, 0, 0, 0.239216) 0 1px 4px;
+      box-shadow: @shadow-lg;
     }
     &.tag-button--all {
       font-weight: 700;
-      color: #0085a1 !important;
+      color: @brand-primary !important;
+      background: @bg-tertiary;
       &:hover,
       &:active,
       &.focus {
-        background-color: #e4e4e4 !important;
+        background: @gradient-primary !important;
+        color: @text-inverse !important;
       }
     }
   }
@@ -963,7 +970,7 @@ img::-moz-selection {
   }
 }
 .listing-seperator {
-  color: #0085a1;
+  color: @brand-primary;
   font-size: 21px !important;
   &::before {
     margin-right: 5px;
