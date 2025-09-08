@@ -1964,3 +1964,165 @@ img::-moz-selection {
 .no-scroll {
   overflow-y: hidden;
 }
+
+/* 移动端优化 */
+@media only screen and (max-width: 767px) {
+  /* 基础布局优化 */
+  body {
+    font-size: 15px;
+  }
+  
+  .intro-header {
+    margin-bottom: 10px;
+  }
+  
+  .intro-header .post-heading h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+  
+  .intro-header .post-heading .subheading {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .post-container {
+    padding: 0 15px;
+  }
+  
+  .post-container h1,
+  .post-container h2,
+  .post-container h3,
+  .post-container h4,
+  .post-container h5,
+  .post-container h6 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+  
+  .post-container img {
+    border-radius: 6px;
+    margin: 1em auto;
+  }
+  
+  .sidebar-container {
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  /* 优化移动端标签显示 */
+  .tags a,
+  .tags .tag {
+    margin: 0 5px 8px 0;
+    padding: 4px 12px;
+    font-size: 12px;
+  }
+  
+  #tag_cloud a,
+  #tag_cloud .tag {
+    padding: 4px 12px;
+    font-size: 12px;
+    margin: 0 2px 6px;
+  }
+  
+  /* 优化移动端表格 */
+  .table-responsive {
+    border: none;
+    margin: 15px -15px;
+    border-radius: 0;
+  }
+  
+  table {
+    font-size: 14px;
+  }
+  
+  table.table > thead th,
+  table.table > tbody td,
+  table.table > tbody th {
+    padding: 8px 12px;
+  }
+  
+  /* 优化移动端代码块 */
+  pre {
+    margin: 15px -15px;
+    border-radius: 0;
+    padding: 15px;
+    font-size: 13px;
+  }
+  
+  pre code {
+    font-size: 13px;
+  }
+  
+  /* 优化移动端引用块 */
+  blockquote {
+    margin: 20px 0;
+    padding: 15px 20px;
+    font-size: 14px;
+  }
+  
+  blockquote::before {
+    font-size: 40px;
+    top: 5px;
+    left: 10px;
+  }
+  
+  /* 移动端导航优化 */
+  .navbar-custom .navbar-brand {
+    font-size: 18px;
+  }
+  
+  .navbar-custom .nav li a {
+    font-size: 11px;
+    padding: 8px 15px;
+  }
+  
+  /* 移动端页脚优化 */
+  footer {
+    padding: 30px 0;
+    font-size: 16px;
+  }
+  
+  footer .copyright {
+    font-size: 12px;
+  }
+  
+  /* 移动端触摸优化 */
+  a, button, .tags a, #tag_cloud a {
+    -webkit-tap-highlight-color: rgba(91, 33, 182, 0.2);
+  }
+  
+  /* 移动端动画性能优化 */
+  .transition-all {
+    transition: none !important;
+  }
+}
+
+/* 超小屏幕进一步优化 */
+@media only screen and (max-width: 480px) {
+  .intro-header .post-heading h1 {
+    font-size: 24px;
+  }
+  
+  .intro-header .post-heading .subheading {
+    font-size: 16px;
+  }
+  
+  .post-container {
+    padding: 0 10px;
+  }
+  
+  .sidebar-container {
+    padding: 15px;
+  }
+  
+  pre {
+    margin: 15px -10px;
+    padding: 10px;
+  }
+  
+  code {
+    font-size: 13px;
+  }
+}
