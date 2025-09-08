@@ -20,15 +20,27 @@ body {
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  // 全局可读性增强
+  line-height: 1.6;
+  
+  // 为所有内容添加平滑滚动
+  scroll-behavior: smooth;
 }
 
 // -- Typography
 
 p {
   margin: 30px 0;
+  line-height: 1.8;
+  color: @gray-dark;
+  font-size: 17px;
+  
   @media screen and (max-width: 768px) {
     & {
       margin: 25px 0;
+      font-size: 16px;
+      line-height: 1.7;
     }
   }
 }

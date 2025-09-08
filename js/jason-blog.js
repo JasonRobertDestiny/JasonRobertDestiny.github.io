@@ -45,6 +45,82 @@ $(document).ready(function() {
 jQuery(document).ready(function($) {
     var MQL = 1170;
 
+    // 光标跟随效果
+    if ($(window).width() > 768) {
+        var $cursorGlow = $('<div class="cursor-glow"></div>').appendTo('body');
+        
+        $(document).on('mousemove', function(e) {
+            $cursorGlow.css({
+                left: e.clientX,
+                top: e.clientY
+            });
+        });
+        
+        $('a, button, .navbar-toggle, .search-toggle').on('mouseenter', function() {
+            $cursorGlow.css('opacity', '1');
+        }).on('mouseleave', function() {
+            $cursorGlow.css('opacity', '0');
+        });
+    }
+
+    // 滚动显示动画
+    function revealOnScroll() {
+        var scrolled = $(window).scrollTop();
+        var win_height_padded = $(window).height() * 0.9;
+        
+        $('.scroll-reveal').each(function() {
+            var $this = $(this);
+            var offsetTop = $this.offset().top;
+            
+            if (scrolled + win_height_padded > offsetTop) {
+                $this.addClass('revealed');
+            }
+        });
+    }
+    
+    $(window).on('scroll', revealOnScroll);
+    revealOnScroll();
+
+    // 目录切换功能
+    $('.catalog-toggle').on('click', function(e) {
+        e.preventDefault();
+        var $catalog = $(this).closest('.side-catalog');
+        var $catalogBody = $catalog.find('.catalog-body');
+        
+        $(this).toggleClass('active');
+        $catalogBody.slideToggle(300);
+    });
+
+    // 搜索功能增强
+    $('.search-toggle').on('click', function() {
+        var $search = $('.search-form');
+        if ($search.length === 0) {
+            $search = $('<div class="search-form"><input type="text" placeholder="搜索文章..." autocomplete="off"></div>');
+            $('body').append($search);
+            
+            $search.find('input').on('input', function() {
+                var searchTerm = $(this).val().toLowerCase();
+                // 这里可以添加实际的搜索逻辑
+            });
+        }
+        
+        $search.fadeToggle(200);
+        if ($search.is(':visible')) {
+            $search.find('input').focus();
+        }
+    });
+
+    // 图片懒加载和悬停效果
+    $('img').each(function() {
+        var $img = $(this);
+        if (!$img.parent().hasClass('img-hover-zoom')) {
+            $img.wrap('<div class="img-hover-zoom"></div>');
+        }
+    });
+
+    // 标签点击波纹效果
+    $('.tags a, .nav-link, .tech-button').addClass('ripple');
+
     //primary navigation slide-in effect
     if ($(window).width() > MQL) {
         var headerHeight = $('.navbar-custom').height(),
@@ -81,4 +157,20 @@ jQuery(document).ready(function($) {
                 }
             });
     }
+
+    // 平滑滚动
+    $('a[href^="#"]').on('click', function(e) {
+        var target = $(this.getAttribute('href'));
+        if (target.length) {
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop: target.offset().top - 70
+            }, 800);
+        }
+    });
+
+    // 添加淡入动画
+    setTimeout(function() {
+        $('.fade-in').addClass('visible');
+    }, 100);
 });

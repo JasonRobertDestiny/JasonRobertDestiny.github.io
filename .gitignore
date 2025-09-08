@@ -9,5 +9,13 @@ node_modules
 *.sh
 .DS_Store
 .jekyll-cache
-*/.DS_Store
-*/*/.DS_Store
+.jekyll-metadata
+.sass-cache
+*.tmp
+*.temp
+Thumbs.db
+*.bak
+*.swp
+*~
+preview.html
+start.sh

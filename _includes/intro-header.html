@@ -40,16 +40,40 @@
                 <div class="post-heading">
                     <div class="tags">
                         {% for tag in page.tags %}
-                        <a class="tag" href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}" title="{{ tag }}">{{ tag }}</a>
+                        <a class="tag" href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}" title="{{ tag }}">
+                            <i class="fa fa-tag"></i> {{ tag }}
+                        </a>
                         {% endfor %}
                     </div>
-                    <h1>{{ page.title }}</h1>
+                    <h1 class="animate-fade-in-up">{{ page.title }}</h1>
                     {% comment %} always create a h2 for keeping the margin {% endcomment %}
-                    <h2 class="subheading">{{ page.subtitle }}</h2>
-                    <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }}</span>
+                    {% if page.subtitle %}
+                    <h2 class="subheading animate-fade-in-up delay-1">{{ page.subtitle }}</h2>
+                    {% endif %}
+                    <div class="post-meta animate-fade-in-up delay-2">
+                        <span class="author">
+                            <i class="fa fa-user"></i>
+                            {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %}
+                        </span>
+                        <span class="date">
+                            <i class="fa fa-calendar"></i>
+                            {{ page.date | date: "%B %-d, %Y" }}
+                        </span>
+                        {% if page.reading_time %}
+                        <span class="reading-time">
+                            <i class="fa fa-clock-o"></i>
+                            {{ page.reading_time }} min read
+                        </span>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+    
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-indicator-bar"></div>
     </div>
 </header>
 {% endif %}

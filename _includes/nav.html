@@ -7,13 +7,16 @@
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle">
+                <button type="button" class="navbar-toggle" aria-label="Toggle navigation">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ site.baseurl }}/">{{ site.title }}</a>
+                <a class="navbar-brand" href="{{ site.baseurl }}/">
+                    <span class="brand-icon">🚀</span>
+                    <span class="brand-text">{{ site.title }}</span>
+                </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -21,17 +24,29 @@
                 <div class="navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="{{ site.baseurl }}/">Home</a>
+                            <a href="{{ site.baseurl }}/" class="nav-link">
+                                <i class="fa fa-home"></i>
+                                <span class="nav-text">Home</span>
+                            </a>
                         </li>
                         {% for page in site.pages %}
                         {% if page.title and page.hide-in-nav != true %}
                         <li>
-                            <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+                            <a href="{{ page.url | prepend: site.baseurl }}" class="nav-link">
+                                {% if page.title == 'About' %}
+                                    <i class="fa fa-user"></i>
+                                {% elsif page.title == 'Archive' %}
+                                    <i class="fa fa-archive"></i>
+                                {% elsif page.title == 'Portfolio' %}
+                                    <i class="fa fa-briefcase"></i>
+                                {% endif %}
+                                <span class="nav-text">{{ page.title }}</span>
+                            </a>
                         </li>
                         {% endif %}
                         {% endfor %}
                         <li class="search-icon">
-                            <a href="javascript:void(0)">
+                            <a href="javascript:void(0)" class="search-toggle" aria-label="Search">
                                 <i class="fa fa-search"></i>
                             </a>
                         </li>
