@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bundle:*)",
+      "Bash(sudo apt:*)",
+      "Bash(docker run:*)",
+      "Bash(python3:*)",
+      "Bash(npx:*)",
+      "Bash(chmod:*)",
+      "Bash(./start.sh:*)",
+      "Bash(bash:*)",
+      "Bash(ruby:*)",
+      "Bash(gem install:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git config:*)",
+      "Bash(npm run build:*)",
+      "Bash(./build.sh:*)",
+      "Bash(npm install:*)",
+      "Bash(lessc:*)",
+      "Bash(git rm:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

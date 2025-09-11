@@ -3,6 +3,13 @@
  * Copyright 2025 Jason <johnrobertdestiny@gmail.com>
  */
 
+body {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  min-height: 100vh;
+}
+.container {
+  background: transparent;
+}
 @media (min-width: 1200px) {
   .post-container,
   .sidebar-container {
@@ -13,32 +20,57 @@
   .post-container {
     padding-right: 5%;
   }
+  .sidebar-container {
+    margin-top: 20px;
+  }
 }
 .sidebar-container {
-  color: #f3f4f6;
+  color: #1f2937;
   font-size: 14px;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 .sidebar-container h5 {
-  color: #6b7280;
+  color: #374151;
   padding-bottom: 1em;
+  font-weight: 600;
+  font-size: 16px;
+  border-bottom: 2px solid #e5e7eb;
+  margin-bottom: 15px;
 }
 .sidebar-container h5 a {
-  color: #6b7280 !important;
+  color: #374151 !important;
   text-decoration: none;
+  font-weight: 600;
+}
+.sidebar-container h5 a:hover {
+  color: #5b21b6 !important;
 }
 .sidebar-container a {
-  color: #f3f4f6 !important;
+  color: #4b5563 !important;
+  transition: all 0.3s ease;
 }
 .sidebar-container a:hover,
 .sidebar-container a:active {
-  color: #1e3a8a !important;
+  color: #5b21b6 !important;
+  transform: translateX(2px);
 }
 .sidebar-container .tags a {
-  border-color: #f3f4f6;
+  border-color: #d1d5db;
+  background: #ffffff;
+  color: #374151 !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 .sidebar-container .tags a:hover,
 .sidebar-container .tags a:active {
   border-color: #5b21b6;
+  background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 100%);
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(91, 33, 182, 0.3);
 }
 .sidebar-container .short-about img {
   width: 80%;
@@ -1018,21 +1050,56 @@ samp {
 }
 
 code {
-  background: rgba(91, 33, 182, 0.1);
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
   color: #5b21b6;
-  padding: 2px 6px;
-  border-radius: 4px;
+  padding: 4px 8px;
+  border-radius: 6px;
   font-size: 0.9em;
+  border: 1px solid #d1d5db;
+  font-weight: 500;
+}
+pre {
+  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 1px solid #374151;
+}
+blockquote {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-left: 4px solid #5b21b6;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: #4b5563;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 .postlist-container {
   margin-bottom: 15px;
 }
+.post-container {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  margin-bottom: 20px;
+  line-height: 1.7;
+  font-size: 16px;
+  color: #374151;
+}
 .post-container a {
-  color: #337ab7;
+  color: #5b21b6;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
 }
 .post-container a:hover,
 .post-container a:focus {
-  color: #5b21b6;
+  color: #7c3aed;
+  border-bottom-color: #7c3aed;
+  text-decoration: none;
 }
 .post-container h1,
 .post-container h2,
@@ -1040,8 +1107,28 @@ code {
 .post-container h4,
 .post-container h5,
 .post-container h6 {
-  margin: 50px 0 20px;
+  margin: 40px 0 20px;
   line-height: 1.4;
+  color: #1f2937;
+  font-weight: 600;
+}
+.post-container h1 {
+  color: #111827;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+.post-container h2 {
+  color: #1f2937;
+  font-size: 2rem;
+  margin-top: 50px;
+}
+.post-container h3 {
+  color: #374151;
+  font-size: 1.5rem;
+}
+.post-container p {
+  margin-bottom: 20px;
+  text-align: justify;
 }
 .post-container h1 + p,
 .post-container h2 + p,
@@ -1097,6 +1184,22 @@ code {
 .post-container ul,
 .post-container ol {
   margin-bottom: 40px;
+  padding-left: 25px;
+}
+.post-container li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+.post-container ul li {
+  position: relative;
+}
+.post-container ul li::before {
+  content: "•";
+  color: #5b21b6;
+  font-weight: bold;
+  position: absolute;
+  left: -20px;
+  font-size: 1.2em;
 }
 @media screen and (max-width: 768px) {
   .post-container ul,
@@ -1323,8 +1426,10 @@ code {
     /* when the user scrolls down, we hide the header right above the viewport */
     position: fixed;
     top: -61px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-bottom: 1px solid #f2f2f2;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     -webkit-transition: -webkit-transform 0.3s;
     -moz-transition: -moz-transform 0.3s;
     transition: transform 0.3s;
@@ -1755,14 +1860,16 @@ img::-moz-selection {
   transition-duration: 0.4s;
   transition-timing-function: ease;
   font-size: 14px;
-  border: none;
+  border: 1px solid #e5e7eb;
   line-height: 28px;
-  margin: 0 2px;
-  margin-bottom: 8px;
-  background: #f9fafb;
-  color: #111827;
-  padding: 5px 15px;
-  border-radius: 20px;
+  margin: 0 4px;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  color: #374151;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-weight: 500;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 #tag_cloud a:hover,
 #tag_cloud .tag:hover,
@@ -2339,4 +2446,94 @@ body.dark-mode .intro-header {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/* 现代化的滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 100%);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%);
+}
+
+/* 页面加载动画 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.post-container,
+.sidebar-container {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* 悬停效果优化 */
+.post-container {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.post-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-container {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-container:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* 改进的按钮样式 */
+.btn {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* 改进的表格样式 */
+.post-container table {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  margin: 20px 0;
+}
+
+.post-container table th {
+  background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 100%);
+  color: white;
+  font-weight: 600;
+  padding: 12px;
+}
+
+.post-container table td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.post-container table tr:hover {
+  background: #f8fafc;
+  transition: background 0.2s ease;
 }
