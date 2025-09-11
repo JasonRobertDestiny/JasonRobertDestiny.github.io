@@ -1,11 +1,22 @@
 ---
+layout: post
 title: "The AI Agent Revolution: How Autonomous Workflows Are Transforming Business Operations in 2025"
 subtitle: "From simple automation to sophisticated autonomous systems reshaping enterprise workflows"
 date: 2025-09-11 10:00:00
-author: Jason
-header-img: "img/ai-agent-revolution.jpg"
-tags: [AI, Agents, Automation, Business, Technology]
+author: "Jason Robert"
+header-img: "img/post-bg-web.jpg"
 catalog: true
+tags:
+    - AI
+    - Agents
+    - Automation
+    - Business
+    - Technology
+    - 人工智能
+    - 自动化
+    - 企业应用
+    - 技术趋势
+    - 工作流程
 ---
 
 ## Introduction
