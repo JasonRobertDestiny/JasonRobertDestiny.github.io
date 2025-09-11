@@ -12,11 +12,11 @@ tags:
     - Automation
     - Business
     - Technology
-    - 人工智能
-    - 自动化
-    - 企业应用
-    - 技术趋势
-    - 工作流程
+    - Machine Learning
+    - Workflow
+    - Enterprise
+    - Innovation
+    - Future Tech
 ---
 
 ## Introduction
