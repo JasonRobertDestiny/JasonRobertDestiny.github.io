@@ -2,6 +2,7 @@
 layout: post
 title: "企业AI Agent实施指南：从概念验证到规模化部署的完整路径"
 subtitle: "基于真实案例的AI Agent企业级应用实践，助力组织数字化转型"
+description: "完整的企业AI Agent实施指南，涵盖从概念验证到规模化部署的全流程。基于真实案例分享实施经验、常见问题解决方案和最佳实践，助力企业数字化转型成功。"
 date: 2025-09-11 12:00:00
 author: "Jason Robert"
 header-img: "img/post-bg-enterprise.jpg"

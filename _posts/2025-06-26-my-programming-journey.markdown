@@ -2,6 +2,7 @@
 layout: post
 title: "我的编程学习之路：从零基础到获奖项目的蜕变历程"
 subtitle: "分享真实的学习经历、踩过的坑和成长心得"
+description: "从零基础到获奖项目开发者的真实编程学习历程。分享学习方法、踩坑经验和成长心得，为编程初学者提供实用的学习路径和职业规划建议。"
 date: 2025-06-26 10:30:00
 author: "Jason"
 header-img: "img/post-bg-2015.jpg"

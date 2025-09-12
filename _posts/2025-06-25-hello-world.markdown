@@ -2,6 +2,7 @@
 layout: post
 title: "Hello World - 开启我的技术博客之旅"
 subtitle: "从零开始，记录成长的每一步足迹"
+description: "欢迎来到Jason的技术博客！这里记录AI开发、全栈技术学习和个人成长的点点滴滴。从Hello World开始，一起探索技术世界的无限可能。"
 date: 2025-06-25 12:00:00
 author: "Jason"
 header-img: "img/post-bg-2015.jpg"

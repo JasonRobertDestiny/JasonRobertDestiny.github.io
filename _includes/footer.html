@@ -17,18 +17,176 @@
     </div>
 </footer>
 
-<!-- jQuery -->
+<!-- Critical JavaScript - Load Immediately -->
 <script src="{{ "/js/jquery.min.js " | prepend: site.baseurl }}"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
-<script src="{{ "/js/bootstrap.min.js " | prepend: site.baseurl }}"></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="{{ "/js/jason-blog.min.js " | prepend: site.baseurl }}"></script>
-
-<!-- Simple Jekyll Search -->
-<script src="{{ "/js/simple-jekyll-search.min.js" | prepend: site.baseurl }}"></script>
+<!-- Non-Critical JavaScript - Load Asynchronously -->
+<script>
+    // Async load non-critical scripts
+    function loadScript(src, callback) {
+        var script = document.createElement('script');
+        script.src = src;
+        script.async = true;
+        if (callback) script.onload = callback;
+        document.head.appendChild(script);
+    }
+    
+    // Load scripts after page load
+     window.addEventListener('load', function() {
+         loadScript('{{ "/js/bootstrap.min.js " | prepend: site.baseurl }}');
+         loadScript('{{ "/js/jason-blog.min.js " | prepend: site.baseurl }}');
+         loadScript('{{ "/js/simple-jekyll-search.min.js" | prepend: site.baseurl }}');
+         
+         // Initialize all features when page loads
+         initLazyLoading();
+         initReadingProgress();
+         initBackToTop();
+         initSocialShare();
+     });
+     
+     // Reading Progress Bar
+     function initReadingProgress() {
+         const progressBar = document.getElementById('reading-progress');
+         if (!progressBar) return;
+         
+         function updateProgress() {
+             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+             const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+             const progress = (scrollTop / scrollHeight) * 100;
+             progressBar.style.width = Math.min(progress, 100) + '%';
+         }
+         
+         window.addEventListener('scroll', updateProgress);
+         window.addEventListener('resize', updateProgress);
+         updateProgress(); // Initial call
+     }
+     
+     // Back to Top functionality
+     function initBackToTop() {
+         const backToTopBtn = document.getElementById('back-to-top');
+         if (!backToTopBtn) return;
+         
+         window.addEventListener('scroll', function() {
+             if (window.pageYOffset > 300) {
+                 backToTopBtn.classList.add('show');
+             } else {
+                 backToTopBtn.classList.remove('show');
+             }
+         });
+     }
+     
+     function scrollToTop() {
+         window.scrollTo({
+             top: 0,
+             behavior: 'smooth'
+         });
+     }
+     
+     // Floating Menu functionality
+     function toggleFloatingMenu() {
+         const menu = document.getElementById('floating-menu');
+         menu.classList.toggle('active');
+     }
+     
+     function openSearch() {
+         const searchPage = document.querySelector('.search-page');
+         if (searchPage) {
+             searchPage.classList.add('show');
+             const searchInput = document.getElementById('search-input');
+             if (searchInput) {
+                 setTimeout(() => searchInput.focus(), 300);
+             }
+         }
+         toggleFloatingMenu();
+     }
+     
+     function toggleDarkMode() {
+         document.body.classList.toggle('dark-mode');
+         localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+         toggleFloatingMenu();
+     }
+     
+     function printPage() {
+         window.print();
+         toggleFloatingMenu();
+     }
+     
+     // Social Share functionality
+     function initSocialShare() {
+         // Close search when clicking outside
+         document.addEventListener('click', function(e) {
+             const searchPage = document.querySelector('.search-page');
+             const floatingMenu = document.getElementById('floating-menu');
+             
+             if (searchPage && searchPage.classList.contains('show') && 
+                 !e.target.closest('.search-main') && !e.target.closest('.search-icon-close')) {
+                 searchPage.classList.remove('show');
+             }
+             
+             if (floatingMenu && floatingMenu.classList.contains('active') && 
+                 !e.target.closest('.floating-menu')) {
+                 floatingMenu.classList.remove('active');
+             }
+         });
+         
+         // Close search with close button
+         const closeBtn = document.querySelector('.search-icon-close');
+         if (closeBtn) {
+             closeBtn.addEventListener('click', function() {
+                 document.querySelector('.search-page').classList.remove('show');
+             });
+         }
+     }
+     
+     function shareToTwitter() {
+         const url = encodeURIComponent(window.location.href);
+         const text = encodeURIComponent(document.title);
+         window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank', 'width=600,height=400');
+     }
+     
+     function shareToFacebook() {
+         const url = encodeURIComponent(window.location.href);
+         window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'width=600,height=400');
+     }
+     
+     function shareToLinkedIn() {
+         const url = encodeURIComponent(window.location.href);
+         const title = encodeURIComponent(document.title);
+         window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${title}`, '_blank', 'width=600,height=400');
+     }
+     
+     function shareToWechat() {
+         // Copy URL to clipboard for WeChat sharing
+         navigator.clipboard.writeText(window.location.href).then(function() {
+             alert('链接已复制到剪贴板，请在微信中粘贴分享！');
+         }).catch(function() {
+             prompt('请复制以下链接在微信中分享：', window.location.href);
+         });
+     }
+     
+     function shareToWeibo() {
+         const url = encodeURIComponent(window.location.href);
+         const title = encodeURIComponent(document.title);
+         window.open(`https://service.weibo.com/share/share.php?url=${url}&title=${title}`, '_blank', 'width=600,height=400');
+     }
+     
+     // Lazy loading implementation
+     function initLazyLoading() {
+         const images = document.querySelectorAll('img[data-src]');
+         const imageObserver = new IntersectionObserver((entries, observer) => {
+             entries.forEach(entry => {
+                 if (entry.isIntersecting) {
+                     const img = entry.target;
+                     img.src = img.dataset.src;
+                     img.classList.remove('lazy');
+                     imageObserver.unobserve(img);
+                 }
+             });
+         });
+         
+         images.forEach(img => imageObserver.observe(img));
+     }
+</script>
 
 <!-- Service Worker -->
 {% if site.service-worker %}
@@ -112,23 +270,19 @@
 </script>
 
 
-<!-- Google Analytics -->
+<!-- Google Analytics (GA4) -->
 {% if site.ga_track_id %}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_track_id }}"></script>
 <script>
-    // dynamic User by Jason
-    var _gaId = '{{ site.ga_track_id }}';
-    var _gaDomain = '{{ site.ga_domain }}';
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    // Originial
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', _gaId, _gaDomain);
-    ga('send', 'pageview');
+  gtag('config', '{{ site.ga_track_id }}', {
+    'page_title': '{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}',
+    'page_location': '{{ site.url }}{{ page.url }}'
+  });
 </script>
 {% endif %}
 

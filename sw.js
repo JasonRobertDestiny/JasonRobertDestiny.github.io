@@ -11,7 +11,7 @@
 // A namespace can prevent potential name conflicts and mis-deletion.
 const CACHE_NAMESPACE = 'main-'
 
-const CACHE = CACHE_NAMESPACE + 'precache-then-runtime';
+const CACHE = CACHE_NAMESPACE + 'precache-then-runtime-v1.2';
 const PRECACHE_LIST = [
   "./",
   "./offline.html",
@@ -19,12 +19,15 @@ const PRECACHE_LIST = [
   "./js/bootstrap.min.js",
   "./js/jason-blog.min.js",
   "./js/snackbar.js",
+  "./js/simple-jekyll-search.min.js",
   "./img/icon_wechat.png",
   "./img/avatar-jason.jpg",
   "./img/home-bg.jpg",
   "./img/404-bg.jpg",
+  "./img/favicon.ico",
   "./css/jason-blog.min.css",
-  "./css/bootstrap.min.css"
+  "./css/bootstrap.min.css",
+  "./pwa/manifest.json"
   // "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css",
   // "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts/fontawesome-webfont.woff2?v=4.6.3",
   // "//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"

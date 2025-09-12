@@ -2,6 +2,9 @@
 layout: default
 ---
 
+<!-- Reading Progress Bar -->
+<div class="reading-progress" id="reading-progress"></div>
+
 <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
 <!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
@@ -26,6 +29,28 @@ layout: default
                 {% endif %}
 
 				{{ content }}
+
+                <!-- Social Share Section -->
+                <div class="social-share">
+                    <h4>分享这篇文章</h4>
+                    <div class="share-buttons">
+                        <a href="#" class="share-btn twitter" onclick="shareToTwitter()" title="分享到Twitter">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a href="#" class="share-btn facebook" onclick="shareToFacebook()" title="分享到Facebook">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a href="#" class="share-btn linkedin" onclick="shareToLinkedIn()" title="分享到LinkedIn">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="share-btn wechat" onclick="shareToWechat()" title="分享到微信">
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                        <a href="#" class="share-btn weibo" onclick="shareToWeibo()" title="分享到微博">
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                    </div>
+                </div>
 
                 <hr style="visibility: hidden;">
                 <ul class="pager">

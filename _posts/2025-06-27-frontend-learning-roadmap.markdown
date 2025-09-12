@@ -2,6 +2,7 @@
 layout: post
 title: "2025前端开发完整学习路线：从入门到架构师的进阶指南"
 subtitle: "基于最新技术栈的系统化前端学习方案，涵盖React 18、Vue 3、Next.js等前沿技术与实战项目"
+description: "2025年最新前端开发学习路线图，涵盖React 18、Vue 3、TypeScript、Next.js等前沿技术。从入门到架构师的系统化学习方案，包含实战项目和职业规划建议。"
 date: 2025-06-27 10:00:00
 author: "Jason Robert"
 header-img: "img/post-bg-js-version.jpg"

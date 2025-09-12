@@ -2,6 +2,7 @@
 layout: post
 title: "AI Agent实战指南：2025年企业级应用案例与ROI分析"
 subtitle: "从试点到规模化部署，构建可测量的AI Agent商业价值体系"
+description: "深度解析2025年AI Agent企业级应用案例，提供详细的ROI分析方法和商业价值评估体系。从试点到规模化部署的完整实战指南，助力企业AI转型决策。"
 date: 2025-09-11 12:00:00
 author: "Jason Robert"
 header-img: "img/post-bg-business.jpg"

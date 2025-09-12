@@ -3,9 +3,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="iog9xrtHaMQ4pyqmT3spIMoVP37df47GEKtiIclzqL8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="description" content="{{ site.description }}">
-    <meta name="keywords" content="{{ site.keyword }}">
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta name="keywords" content="{% if page.tags %}{% for tag in page.tags %}{{ tag }}{% unless forloop.last %}, {% endunless %}{% endfor %}{% else %}{{ site.keyword }}{% endif %}">
+    <meta name="author" content="{% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %}">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="zh-CN">
     <meta name="theme-color" content="{{ site.chrome-tab-theme-color }}">
+    
+    <!-- Performance Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
 
     <!-- Open Graph -->
     <meta property="og:title"
@@ -26,9 +35,16 @@
     {% else %}
     <meta property="og:type" content="website">
     <meta property="og:description"
-        content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+        content="{% if page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | truncate:160 }}{% else %}{{ site.description }}{% endif %}">
     {% endcase %}
     <meta property="og:image" content="{{ site.url }}{{ site.sidebar-avatar }}">
+    <meta property="og:site_name" content="{{ site.title }}">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}">
+    <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | truncate:160 }}{% else %}{{ site.description }}{% endif %}">
+    <meta name="twitter:image" content="{{ site.url }}{{ site.sidebar-avatar }}">
     <meta property="og:url" content="{{ site.url }}{{ page.url }}">
     <meta property="og:site_name" content="{{ site.SEOTitle }}">
 
@@ -43,11 +59,20 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="{{ " /css/bootstrap.min.css" | prepend: site.baseurl }}">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ "/css/jason-blog.min.css" | prepend: site.baseurl }}">
+    <!-- Critical CSS Inline -->
+    <style>
+        body{background:linear-gradient(135deg,#f8fafc 0%,#e2e8f0 100%);min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+        .navbar-custom{background:#fff;border:none;box-shadow:0 2px 4px rgba(0,0,0,.1)}
+        .intro-header{background-attachment:scroll;background-position:center center;background-repeat:no-repeat;background-size:cover}
+        .post-preview{margin-bottom:30px;padding:20px;background:#fff;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,.1)}
+    </style>
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}"></noscript>
+    
+    <link rel="preload" href="{{ "/css/jason-blog.min.css" | prepend: site.baseurl }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ "/css/jason-blog.min.css" | prepend: site.baseurl }}"></noscript>
 
     <!-- Custom Fonts -->
     <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
