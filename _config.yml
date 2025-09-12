@@ -62,7 +62,7 @@ kramdown:
       start_line: 1
 
 # Disqus settings
-disqus_username: # 如果需要评论功能，请在这里填入你的Disqus用户名
+disqus_username: johnrobertdestiny # 如果需要评论功能，请在这里填入你的Disqus用户名
 
 # Netease settings
 netease_comment: false
