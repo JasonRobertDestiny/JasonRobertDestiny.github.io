@@ -809,7 +809,7 @@ body {
 }
 
 .sidebar-container {
-  color: #1f2937;
+  color: #1e40af;
   font-size: 14px;
   background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   border-radius: 12px;
@@ -817,7 +817,7 @@ body {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 .sidebar-container h5 {
-  color: #374151;
+  color: #1e40af;
   padding-bottom: 1em;
   font-weight: 600;
   font-size: 16px;
@@ -825,36 +825,36 @@ body {
   margin-bottom: 15px;
 }
 .sidebar-container h5 a {
-  color: #374151 !important;
+  color: #1e40af !important;
   text-decoration: none;
   font-weight: 600;
 }
 .sidebar-container h5 a:hover {
-  color: #5b21b6 !important;
+  color: #1d4ed8 !important;
 }
 .sidebar-container a {
-  color: #4b5563 !important;
+  color: #1e40af !important;
   transition: all 0.3s ease;
 }
 .sidebar-container a:hover,
 .sidebar-container a:active {
-  color: #5b21b6 !important;
+  color: #1d4ed8 !important;
   transform: translateX(2px);
 }
 .sidebar-container .tags a {
   border-color: #d1d5db;
   background: #ffffff;
-  color: #374151 !important;
+  color: #1e40af !important;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 .sidebar-container .tags a:hover,
 .sidebar-container .tags a:active {
-  border-color: #5b21b6;
-  background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 100%);
+  border-color: #1e40af;
+  background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%);
   color: #ffffff !important;
   transform: translateY(-2px);
-  box-shadow: 0 4px 6px -1px rgba(91, 33, 182, 0.3);
+  box-shadow: 0 4px 6px -1px rgba(30, 64, 175, 0.3);
 }
 .sidebar-container .short-about img {
   width: 80%;
@@ -865,6 +865,8 @@ body {
 .sidebar-container .short-about p {
   margin-top: 0px;
   margin-bottom: 20px;
+  color: #1e40af !important;
+  font-weight: 500;
 }
 .sidebar-container .short-about .list-inline > li {
   padding-left: 0px;
@@ -3157,7 +3159,50 @@ body.dark-mode table.table > tbody tr:nth-child(even) {
 
 body.dark-mode .sidebar-container {
   background: #2a2a2a;
-  color: #e0e0e0;
+  color: #60a5fa;
+}
+
+body.dark-mode .sidebar-container h5,
+body.dark-mode .sidebar-container h5 a {
+  color: #60a5fa !important;
+}
+
+body.dark-mode .sidebar-container h5 a:hover {
+  color: #93c5fd !important;
+}
+
+body.dark-mode .sidebar-container a {
+  color: #60a5fa !important;
+}
+
+body.dark-mode .sidebar-container a:hover,
+body.dark-mode .sidebar-container a:active {
+  color: #93c5fd !important;
+}
+
+body.dark-mode .sidebar-container .short-about p {
+  color: #60a5fa !important;
+}
+
+body.dark-mode .sidebar-container .friends a {
+  color: #60a5fa !important;
+}
+
+body.dark-mode .sidebar-container .friends a:hover {
+  color: #93c5fd !important;
+}
+
+body.dark-mode .sidebar-container .tags a {
+  color: #60a5fa !important;
+  background: #374151;
+  border-color: #4b5563;
+}
+
+body.dark-mode .sidebar-container .tags a:hover,
+body.dark-mode .sidebar-container .tags a:active {
+  background: linear-gradient(135deg, #60a5fa 0%, #93c5fd 100%);
+  color: #1f2937 !important;
+  border-color: #60a5fa;
 }
 
 body.dark-mode .intro-header {
@@ -3320,4 +3365,24 @@ body.dark-mode .intro-header {
 .post-container table tr:hover {
   background: #f8fafc;
   transition: background 0.2s ease;
+}
+
+/* Friends 部分样式优化 */
+.sidebar-container .friends a {
+  color: #1e40af !important;
+  font-weight: 500;
+  display: block;
+  padding: 8px 0;
+  border-bottom: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.sidebar-container .friends a:hover {
+  color: #1d4ed8 !important;
+  transform: translateX(4px);
+  border-bottom-color: #1e40af;
+}
+
+.sidebar-container .friends a:last-child {
+  border-bottom: none;
 }
