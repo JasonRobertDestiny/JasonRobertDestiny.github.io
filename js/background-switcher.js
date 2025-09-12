@@ -48,6 +48,11 @@ class BackgroundSwitcher {
     }
     
     createSwitcher() {
+        // 检查是否已经存在背景切换器，避免重复创建
+        if (document.querySelector('.bg-switcher')) {
+            return;
+        }
+        
         // 创建背景切换器容器
         const switcher = document.createElement('div');
         switcher.className = 'bg-switcher';
@@ -77,6 +82,12 @@ class BackgroundSwitcher {
         const toggle = document.querySelector('.bg-switcher-toggle');
         const panel = document.querySelector('.bg-switcher-panel');
         const options = document.querySelectorAll('.bg-theme-option');
+        
+        // 确保元素存在后再绑定事件
+        if (!toggle || !panel || options.length === 0) {
+            console.warn('Background switcher elements not found');
+            return;
+        }
         
         // 切换面板显示/隐藏
         toggle.addEventListener('click', () => {

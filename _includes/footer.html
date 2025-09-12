@@ -18,7 +18,7 @@
 </footer>
 
 <!-- Critical JavaScript - Load Immediately -->
-<script src="{{ "/js/jquery.min.js " | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/jquery.min.js" | prepend: site.baseurl }}"></script>
 
 <!-- Non-Critical JavaScript - Load Asynchronously -->
 <script>
@@ -33,9 +33,12 @@
     
     // Load scripts after page load
      window.addEventListener('load', function() {
-         loadScript('{{ "/js/bootstrap.min.js " | prepend: site.baseurl }}');
-         loadScript('{{ "/js/jason-blog.min.js " | prepend: site.baseurl }}');
-         loadScript('{{ "/js/simple-jekyll-search.min.js" | prepend: site.baseurl }}');
+         loadScript('{{ "/js/bootstrap.min.js" | prepend: site.baseurl }}');
+         loadScript('{{ "/js/jason-blog.min.js" | prepend: site.baseurl }}');
+         loadScript('{{ "/js/simple-jekyll-search.min.js" | prepend: site.baseurl }}', function() {
+             // Initialize SimpleJekyllSearch after script loads
+             initSimpleJekyllSearch();
+         });
          
          // Initialize all features when page loads
          initLazyLoading();
@@ -258,7 +261,7 @@
         $('#tag_cloud a').tagcloud();
     })
 </script>
-<script src='{{ "/js/archive.js " | prepend: site.baseurl }}'></script>
+<script src='{{ "/js/archive.js" | prepend: site.baseurl }}'></script>
 {% endif %}
 
 <!--fastClick.js -->
@@ -432,26 +435,30 @@
         return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
     }
 
-    SimpleJekyllSearch({
-        searchInput: document.getElementById('search-input'),
-        resultsContainer: document.getElementById('search-results'),
-        json: '/search.json',
-        searchResultTemplate: '<div class="post-preview item"><a href="{url}"><h2 class="post-title">{title}</h2><h3 class="post-subtitle">{subtitle}</h3><hr></a></div>',
-        noResultsText: 'No results',
-        limit: 50,
-        fuzzy: false,
-        // a hack to get escaped subtitle unescaped. for some reason, 
-        // post.subtitle w/o escape filter nuke entire search.
-        templateMiddleware: function (prop, value, template) {
-            if (prop === 'subtitle' || prop === 'title') {
-                if (value.indexOf("code")) {
-                    return htmlDecode(value);
-                } else {
-                    return value;
+    function initSimpleJekyllSearch() {
+        if (typeof SimpleJekyllSearch !== 'undefined') {
+            SimpleJekyllSearch({
+                searchInput: document.getElementById('search-input'),
+                resultsContainer: document.getElementById('search-results'),
+                json: '/search.json',
+                searchResultTemplate: '<div class="post-preview item"><a href="{url}"><h2 class="post-title">{title}</h2><h3 class="post-subtitle">{subtitle}</h3><hr></a></div>',
+                noResultsText: 'No results',
+                limit: 50,
+                fuzzy: false,
+                // a hack to get escaped subtitle unescaped. for some reason, 
+                // post.subtitle w/o escape filter nuke entire search.
+                templateMiddleware: function (prop, value, template) {
+                    if (prop === 'subtitle' || prop === 'title') {
+                        if (value.indexOf("code")) {
+                            return htmlDecode(value);
+                        } else {
+                            return value;
+                        }
+                    }
                 }
-            }
+            });
         }
-    });
+    }
 
     $(document).ready(function () {
         var $searchPage = $('.search-page');
