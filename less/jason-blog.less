@@ -6,57 +6,132 @@
 @import "highlight.less";
 @import "search.less";
 @import "tech-enhancements.less";
+@import "dark-mode.less";
+@import "accessibility.less";
 
 // Global Components
 
 body {
   .sans-serif;
-  font-size: 16px;
-  // Modified to 16px (Mobile First), and increase to 20px while 768+ width
+  font-size: @font-size-base;
   color: @text-primary;
-  //-webkit-user-select:text; //对于 Blog 还是先不开启这句。
   overflow-x: hidden;
-
-  text-rendering: auto;
+  line-height: @line-height-relaxed;
+  
+  // Enhanced text rendering
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   
-  // 全局可读性增强
-  line-height: 1.6;
-  
-  // 为所有内容添加平滑滚动
+  // Improved readability
   scroll-behavior: smooth;
-}
-
-// -- Typography
-
-p {
-  margin: 30px 0;
-  line-height: 1.8;
-  color: @text-primary;
-  font-size: 17px;
   
-  @media screen and (max-width: 768px) {
-    & {
-      margin: 25px 0;
-      font-size: 16px;
-      line-height: 1.7;
-    }
+  // Responsive font scaling
+  @media screen and (min-width: @screen-sm) {
+    font-size: @font-size-lg;
+    line-height: @line-height-relaxed;
+  }
+  
+  @media screen and (min-width: @screen-lg) {
+    font-size: @font-size-xl;
   }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  .sans-serif;
-  line-height: 1.1;
-  font-weight: bold;
+// -- Enhanced Typography System
+
+p {
+  margin: @spacing-lg 0;
+  line-height: @line-height-loose;
+  color: @text-primary;
+  font-size: @font-size-base;
+  font-weight: @font-weight-normal;
+  
+  // Enhanced paragraph spacing and readability
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  
+  // Responsive typography
+  @media screen and (max-width: @screen-sm) {
+    margin: @spacing-md 0;
+    font-size: @font-size-sm;
+    line-height: @line-height-relaxed;
+    text-align: left; // Remove justify on mobile for better readability
+  }
+  
+  // Improved widow/orphan control
+  orphans: 3;
+  widows: 3;
 }
+
+// Enhanced heading hierarchy
+h1, h2, h3, h4, h5, h6 {
+  .sans-serif;
+  font-weight: @font-weight-bold;
+  line-height: @line-height-tight;
+  color: @text-primary;
+  margin-top: @spacing-2xl;
+  margin-bottom: @spacing-lg;
+  
+  // Better spacing after headings
+  & + p {
+    margin-top: @spacing-md;
+  }
+  
+  // Add subtle text shadows for better contrast
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: @font-size-4xl;
+  font-weight: @font-weight-black;
+  letter-spacing: -0.025em;
+  
+  @media screen and (max-width: @screen-sm) {
+    font-size: @font-size-3xl;
+  }
+}
+
+h2 {
+  font-size: @font-size-3xl;
+  font-weight: @font-weight-extrabold;
+  letter-spacing: -0.025em;
+  
+  @media screen and (max-width: @screen-sm) {
+    font-size: @font-size-2xl;
+  }
+}
+
+h3 {
+  font-size: @font-size-2xl;
+  font-weight: @font-weight-bold;
+  
+  @media screen and (max-width: @screen-sm) {
+    font-size: @font-size-xl;
+  }
+}
+
 h4 {
-  font-size: 21px;
+  font-size: @font-size-xl;
+  font-weight: @font-weight-semibold;
+  color: @text-secondary;
+  
+  @media screen and (max-width: @screen-sm) {
+    font-size: @font-size-lg;
+  }
+}
+
+h5, h6 {
+  font-size: @font-size-lg;
+  font-weight: @font-weight-medium;
+  color: @text-secondary;
+  
+  @media screen and (max-width: @screen-sm) {
+    font-size: @font-size-base;
+  }
 }
 a {
   color: @brand-primary;

@@ -13,7 +13,7 @@ layout: default
 {% include intro-header.html type='post' %}
 
 <!-- Post Content -->
-<article>
+<article itemscope itemtype="http://schema.org/Article">
     <div class="container">
         <div class="row">
 
@@ -23,55 +23,112 @@ layout: default
                 col-md-10 col-md-offset-1
                 post-container tech-enhanced">
 
+                <!-- Article Metadata -->
+                <div class="article-meta scroll-reveal">
+                    <!-- Reading Time Estimation -->
+                    <div class="reading-time">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                        <span id="reading-time">{{ content | strip_html | number_of_words | divided_by: 200 | plus: 1 }} 分钟阅读</span>
+                    </div>
+                    
+                    <!-- Word Count -->
+                    <div class="word-count">
+                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                        <span>{{ content | strip_html | number_of_words }} 字</span>
+                    </div>
+                    
+                    <!-- Last Updated -->
+                    {% if page.updated %}
+                    <div class="last-updated">
+                        <i class="fa fa-refresh" aria-hidden="true"></i>
+                        <time datetime="{{ page.updated | date_to_xmlschema }}">
+                            更新于 {{ page.updated | date: "%Y年%m月%d日" }}
+                        </time>
+                    </div>
+                    {% endif %}
+                </div>
+
                 <!-- Multi-Lingual -->
                 {% if page.multilingual %}
                     {% include multilingual-sel.html %}
                 {% endif %}
 
-				{{ content }}
+                <!-- Article Content with structured markup -->
+                <div class="article-content" itemprop="articleBody">
+                    {{ content }}
+                </div>
+
+                <!-- Article Tags -->
+                {% if page.tags.size > 0 %}
+                <div class="article-tags scroll-reveal">
+                    <h4><i class="fa fa-tags"></i> 标签</h4>
+                    <div class="tags">
+                        {% for tag in page.tags %}
+                        <a href="{{ site.baseurl }}/tags/#{{ tag }}" class="tag" itemprop="keywords">
+                            <i class="fa fa-tag"></i>{{ tag }}
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
 
                 <!-- Social Share Section -->
-                <div class="social-share">
-                    <h4>分享这篇文章</h4>
+                <div class="social-share scroll-reveal">
+                    <h4><i class="fa fa-share-alt"></i> 分享这篇文章</h4>
                     <div class="share-buttons">
-                        <a href="#" class="share-btn twitter" onclick="shareToTwitter()" title="分享到Twitter">
-                            <i class="fa fa-twitter"></i>
+                        <a href="#" class="share-btn twitter ripple" onclick="shareToTwitter()" title="分享到Twitter" aria-label="分享到Twitter">
+                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                            <span class="sr-only">Twitter</span>
                         </a>
-                        <a href="#" class="share-btn facebook" onclick="shareToFacebook()" title="分享到Facebook">
-                            <i class="fa fa-facebook"></i>
+                        <a href="#" class="share-btn facebook ripple" onclick="shareToFacebook()" title="分享到Facebook" aria-label="分享到Facebook">
+                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                            <span class="sr-only">Facebook</span>
                         </a>
-                        <a href="#" class="share-btn linkedin" onclick="shareToLinkedIn()" title="分享到LinkedIn">
-                            <i class="fa fa-linkedin"></i>
+                        <a href="#" class="share-btn linkedin ripple" onclick="shareToLinkedIn()" title="分享到LinkedIn" aria-label="分享到LinkedIn">
+                            <i class="fa fa-linkedin" aria-hidden="true"></i>
+                            <span class="sr-only">LinkedIn</span>
                         </a>
-                        <a href="#" class="share-btn wechat" onclick="shareToWechat()" title="分享到微信">
-                            <i class="fa fa-wechat"></i>
+                        <a href="#" class="share-btn wechat ripple" onclick="shareToWechat()" title="分享到微信" aria-label="分享到微信">
+                            <i class="fa fa-wechat" aria-hidden="true"></i>
+                            <span class="sr-only">微信</span>
                         </a>
-                        <a href="#" class="share-btn weibo" onclick="shareToWeibo()" title="分享到微博">
-                            <i class="fa fa-weibo"></i>
+                        <a href="#" class="share-btn weibo ripple" onclick="shareToWeibo()" title="分享到微博" aria-label="分享到微博">
+                            <i class="fa fa-weibo" aria-hidden="true"></i>
+                            <span class="sr-only">微博</span>
+                        </a>
+                        <a href="#" class="share-btn copy-link ripple" onclick="copyToClipboard()" title="复制链接" aria-label="复制链接">
+                            <i class="fa fa-link" aria-hidden="true"></i>
+                            <span class="sr-only">复制链接</span>
                         </a>
                     </div>
                 </div>
 
-                <hr style="visibility: hidden;">
-                <ul class="pager">
-                    {% if page.previous.url %}
-                    <li class="previous">
-                        <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
-                        &larr; NEWER POSTS<br>
-                        <span>{{page.previous.title}}</span>
-                        </a>
-                    </li>
-                    {% endif %}
-                    {% if page.next.url %}
-                    <li class="next">
-                        <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">
-                        OLDER POSTS &rarr;<br>
-                        <span>{{page.next.title}}</span>
-                        </a>
-                    </li>
-                    {% endif %}
-                </ul>
-                <hr style="visibility: hidden;">
+                <!-- Article Navigation -->
+                <nav class="article-navigation scroll-reveal" aria-label="文章导航">
+                    <hr class="separator">
+                    <ul class="pager">
+                        {% if page.previous.url %}
+                        <li class="previous">
+                            <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" 
+                               rel="prev" 
+                               aria-label="上一篇文章：{{page.previous.title}}">
+                                <span class="nav-direction">&larr; 上一篇</span><br>
+                                <span class="nav-title">{{page.previous.title | truncate: 40}}</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% if page.next.url %}
+                        <li class="next">
+                            <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" 
+                               rel="next" 
+                               aria-label="下一篇文章：{{page.next.title}}">
+                                <span class="nav-direction">下一篇 &rarr;</span><br>
+                                <span class="nav-title">{{page.next.title | truncate: 40}}</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
 
                 {% if site.disqus_username %}
                 <!-- disqus 评论框 start -->
@@ -197,6 +254,9 @@ layout: default
     }
 </style>
 {% endif %}
+
+<!-- Enhanced Social Sharing Script -->
+<script src="{{ "/js/social-share.js" | prepend: site.baseurl }}"></script>
 
 <!-- Mermaid Support -->
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>

@@ -40,61 +40,322 @@
     <meta property="og:image" content="{{ site.url }}{{ site.sidebar-avatar }}">
     <meta property="og:site_name" content="{{ site.title }}">
     
-    <!-- Twitter Card -->
+    <!-- Enhanced Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@JasonRobertBlog">
+    <meta name="twitter:creator" content="@JasonRobertBlog">
     <meta name="twitter:title" content="{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}">
     <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | truncate:160 }}{% else %}{{ site.description }}{% endif %}">
-    <meta name="twitter:image" content="{{ site.url }}{{ site.sidebar-avatar }}">
-    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-    <meta property="og:site_name" content="{{ site.SEOTitle }}">
+    <meta name="twitter:image" content="{% if page.image %}{{ site.url }}{{ page.image }}{% elsif page.header-img %}{{ site.url }}/img/{{ page.header-img }}{% else %}{{ site.url }}{{ site.sidebar-avatar }}{% endif %}">
+    <meta name="twitter:image:alt" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+    
+    <!-- Enhanced Open Graph -->
+    <meta property="og:title" content="{% if page.title %}{{ page.title }} - {{ site.SEOTitle }}{% else %}{{ site.SEOTitle }}{% endif %}">
+    <meta property="og:site_name" content="{{ site.title }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url | default: '/' }}">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:locale:alternate" content="en_US">
+    
+    {% case page.layout %}
+    {% when 'post' %}
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ page.excerpt | strip_html | truncate:200 }}{% endif %}">
+    <meta property="og:image" content="{% if page.image %}{{ site.url }}{{ page.image }}{% elsif page.header-img %}{{ site.url }}/img/{{ page.header-img }}{% else %}{{ site.url }}{{ site.sidebar-avatar }}{% endif %}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="{{ page.title }}">
+    {% if page.date %}
+    <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+    <meta property="article:modified_time" content="{{ page.date | date_to_xmlschema }}">
+    {% endif %}
+    {% if page.author %}
+    <meta property="article:author" content="{{ page.author }}">
+    {% endif %}
+    {% for tag in page.tags limit:6 %}
+    <meta property="article:tag" content="{{ tag }}">
+    {% endfor %}
+    {% if page.categories %}
+    <meta property="article:section" content="{{ page.categories | first }}">
+    {% endif %}
+    {% else %}
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | truncate:160 }}{% else %}{{ site.description }}{% endif %}">
+    <meta property="og:image" content="{{ site.url }}{{ site.sidebar-avatar }}">
+    <meta property="og:image:width" content="400">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="{{ site.title }}">
+    {% endcase %}
 
     <title>{% if page.title %}{{ page.title }} - {{ site.SEOTitle }}{% else %}{{ site.SEOTitle }}{% endif %}</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="{{ site.baseurl }}/pwa/manifest.json">
 
-    <!-- Favicon -->
+    <!-- Enhanced Favicon Package -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ site.baseurl }}/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ site.baseurl }}/img/favicon-16x16.png">
     <link rel="shortcut icon" href="{{ site.baseurl }}/img/favicon.ico">
+    <meta name="msapplication-TileColor" content="{{ site.chrome-tab-theme-color }}">
+    <meta name="theme-color" content="{{ site.chrome-tab-theme-color }}">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="canonical" href="{% if page.canonical %}{{ page.canonical }}{% else %}{{ page.url | replace:'index.html','' | absolute_url }}{% endif %}">
+    
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
 
-    <!-- Critical CSS Inline -->
+    <!-- Critical CSS Inline - Enhanced for Core Web Vitals -->
     <style>
-        body{background:linear-gradient(135deg,#f8fafc 0%,#e2e8f0 100%);min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
-        .navbar-custom{background:#fff;border:none;box-shadow:0 2px 4px rgba(0,0,0,.1)}
-        .intro-header{background-attachment:scroll;background-position:center center;background-repeat:no-repeat;background-size:cover}
-        .post-preview{margin-bottom:30px;padding:20px;background:#fff;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,.1)}
+        /* Critical above-the-fold styles */
+        body{
+            background:linear-gradient(135deg,#f8fafc 0%,#e2e8f0 100%);
+            min-height:100vh;
+            font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+            line-height:1.6;
+            color:#374151;
+            margin:0;
+            padding:0;
+            font-display:swap;
+        }
+        .navbar-custom{
+            background:rgba(255,255,255,0.95);
+            backdrop-filter:blur(10px);
+            border:none;
+            box-shadow:0 2px 10px rgba(0,0,0,0.1);
+            transition:all 0.3s ease;
+        }
+        .intro-header{
+            background-attachment:scroll;
+            background-position:center center;
+            background-repeat:no-repeat;
+            background-size:cover;
+            min-height:400px;
+            display:flex;
+            align-items:center;
+        }
+        .post-preview{
+            margin-bottom:30px;
+            padding:25px;
+            background:rgba(255,255,255,0.9);
+            border-radius:12px;
+            box-shadow:0 4px 20px rgba(0,0,0,0.08);
+            border:1px solid rgba(0,0,0,0.05);
+            transition:transform 0.3s ease,box-shadow 0.3s ease;
+            backdrop-filter:blur(5px);
+        }
+        .post-preview:hover{
+            transform:translateY(-2px);
+            box-shadow:0 8px 30px rgba(0,0,0,0.12);
+        }
+        .post-title{
+            color:#1f2937;
+            font-weight:700;
+            margin-bottom:10px;
+        }
+        .post-subtitle{
+            color:#6b7280;
+            margin-bottom:15px;
+        }
+        .post-meta{
+            color:#9ca3af;
+            font-size:14px;
+        }
+        /* Loading state */
+        .loading{
+            opacity:0;
+            transform:translateY(20px);
+        }
+        .loaded{
+            opacity:1;
+            transform:translateY(0);
+            transition:opacity 0.6s ease,transform 0.6s ease;
+        }
+        /* Prevent layout shift */
+        img{
+            max-width:100%;
+            height:auto;
+            display:block;
+        }
     </style>
     
     <!-- Preload Critical Resources -->
     <link rel="preload" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}"></noscript>
     
-    <link rel="preload" href="{{ "/css/jason-blog.min.css" | prepend: site.baseurl }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ "/css/jason-blog.min.css" | prepend: site.baseurl }}"></noscript>
+    <!-- Custom Fonts with font-display swap -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <!-- Custom Fonts -->
-    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
-    <!-- Changed font-awesome CDN to qiniu -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
-        type="text/css">
-
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!-- HTML5 Shim and Respond.js IE8 support -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <!-- ga & ba script hoook -->
-    <script></script>
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "{{ site.url }}/#website",
+          "url": "{{ site.url }}",
+          "name": "{{ site.title }}",
+          "description": "{{ site.description }}",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "{{ site.url }}/?s={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          },
+          "inLanguage": "zh-CN"
+        }{% if page.layout == 'post' %},
+        {
+          "@type": "Article",
+          "@id": "{{ site.url }}{{ page.url }}#article",
+          "isPartOf": {
+            "@id": "{{ site.url }}/#website"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "{{ page.author | default: site.title }}",
+            "url": "{{ site.url }}/about/",
+            "sameAs": [
+              "https://github.com/{{ site.github_username }}",
+              "https://blog.csdn.net/{{ site.csdn_username }}",
+              "https://juejin.cn/user/{{ site.juejin_username }}"
+            ]
+          },
+          "headline": "{{ page.title }}",
+          "datePublished": "{{ page.date | date_to_xmlschema }}",
+          "dateModified": "{% if page.updated %}{{ page.updated | date_to_xmlschema }}{% else %}{{ page.date | date_to_xmlschema }}{% endif %}",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "{{ site.url }}{{ page.url }}"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "{{ site.title }}",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "{{ site.url }}{{ site.sidebar-avatar }}"
+            }
+          },
+          "image": {
+            "@type": "ImageObject",
+            "url": "{% if page.image %}{{ site.url }}{{ page.image }}{% elsif page.header-img %}{{ site.url }}/img/{{ page.header-img }}{% else %}{{ site.url }}{{ site.sidebar-avatar }}{% endif %}",
+            "width": 1200,
+            "height": 630
+          },
+          "articleSection": "{% if page.categories %}{{ page.categories | first }}{% else %}Technology{% endif %}",
+          "keywords": "{% if page.tags %}{% for tag in page.tags %}{{ tag }}{% unless forloop.last %}, {% endunless %}{% endfor %}{% else %}{{ site.keyword }}{% endif %}",
+          "wordcount": "{{ content | strip_html | number_of_words }}",
+          "description": "{% if page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | truncate:160 }}{% else %}{{ site.description }}{% endif %}"
+        }{% endif %},
+        {
+          "@type": "Organization",
+          "@id": "{{ site.url }}/#organization",
+          "name": "{{ site.title }}",
+          "url": "{{ site.url }}",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "{{ site.url }}{{ site.sidebar-avatar }}",
+            "width": 400,
+            "height": 400
+          },
+          "sameAs": [
+            "https://github.com/{{ site.github_username }}",
+            "https://blog.csdn.net/{{ site.csdn_username }}",
+            "https://juejin.cn/user/{{ site.juejin_username }}",
+            "https://space.bilibili.com/{{ site.bilibili_username }}"
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "{{ site.url }}/about/#person",
+          "name": "Jason",
+          "url": "{{ site.url }}/about/",
+          "image": {
+            "@type": "ImageObject",
+            "url": "{{ site.url }}{{ site.sidebar-avatar }}",
+            "width": 400,
+            "height": 400
+          },
+          "sameAs": [
+            "https://github.com/{{ site.github_username }}",
+            "https://blog.csdn.net/{{ site.csdn_username }}",
+            "https://juejin.cn/user/{{ site.juejin_username }}",
+            "https://space.bilibili.com/{{ site.bilibili_username }}"
+          ],
+          "jobTitle": "AI技术研发者",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "北京信息科技大学"
+          },
+          "knowsAbout": ["人工智能", "Agent开发", "全栈开发", "机器学习"],
+          "description": "{{ site.sidebar-about-description | strip_html }}"
+        }
+      ]
+    }
+    </script>
 
+    <!-- Performance Optimization - Resource Hints -->
+    <link rel="preload" href="{{ "/css/jason-blog.min.css" | prepend: site.baseurl }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ "/css/jason-blog.min.css" | prepend: site.baseurl }}"></noscript>
+    
+    <!-- Critical Font Preload -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts/fontawesome-webfont.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- Google Analytics 4 -->
+    {% if jekyll.environment == 'production' %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_track_id }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ site.ga_track_id }}', {
+        cookie_flags: 'SameSite=Strict;Secure',
+        anonymize_ip: true
+      });
+    </script>
+    {% endif %}
+
+    <!-- Security Headers via Meta -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    
     <!-- Google AdSense -->
     <script data-ad-client="ca-pub-6487568398225121" async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     
     <!-- Background Switcher -->
     <script src="{{ "/js/background-switcher.js" | prepend: site.baseurl }}"></script>
+    
+    <!-- Dark Mode Toggle -->
+    <script src="{{ "/js/dark-mode.js" | prepend: site.baseurl }}"></script>
+    
+    <!-- Accessibility Enhancements -->
+    <script src="{{ "/js/accessibility.js" | prepend: site.baseurl }}"></script>
+    
+    <!-- Image Optimization and Lazy Loading -->
+    <script src="{{ "/js/image-optimization.js" | prepend: site.baseurl }}"></script>
+    
+    <!-- Service Worker Registration -->
+    {% if jekyll.environment == 'production' %}
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js').then(function(registration) {
+            console.log('SW registered: ', registration);
+          }).catch(function(registrationError) {
+            console.log('SW registration failed: ', registrationError);
+          });
+        });
+      }
+    </script>
+    {% endif %}
 </head>

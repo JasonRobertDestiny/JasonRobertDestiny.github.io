@@ -1,6 +1,361 @@
-// 科技感增强样式
+// Enhanced Article Metadata Styles
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: @spacing-lg;
+  margin-bottom: @spacing-2xl;
+  padding: @spacing-lg;
+  background: rgba(79, 70, 229, 0.03);
+  border-radius: @border-radius-lg;
+  border-left: 4px solid @brand-primary;
+  font-size: @font-size-sm;
+  color: @text-muted;
+  
+  @media (max-width: @screen-sm) {
+    flex-direction: column;
+    gap: @spacing-sm;
+    padding: @spacing-md;
+  }
+  
+  > div {
+    display: flex;
+    align-items: center;
+    gap: @spacing-xs;
+    
+    i {
+      color: @brand-primary;
+      font-size: 16px;
+    }
+    
+    time {
+      font-style: italic;
+    }
+  }
+}
 
-// 科技感渐变背景
+// Enhanced Article Tags Section
+.article-tags {
+  margin: @spacing-2xl 0;
+  padding: @spacing-xl;
+  background: @gradient-subtle;
+  border-radius: @border-radius-lg;
+  border: 1px solid @border-light;
+  
+  h4 {
+    margin-bottom: @spacing-lg;
+    color: @text-primary;
+    font-size: @font-size-lg;
+    font-weight: @font-weight-semibold;
+    
+    i {
+      color: @brand-primary;
+      margin-right: @spacing-xs;
+    }
+  }
+  
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: @spacing-sm;
+    
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: @spacing-xs;
+      padding: @spacing-xs @spacing-md;
+      background: @gradient-primary;
+      color: @text-inverse;
+      border-radius: @border-radius-full;
+      font-size: @font-size-sm;
+      font-weight: @font-weight-medium;
+      text-decoration: none;
+      transition: all @duration-base @ease-out;
+      box-shadow: @shadow-sm;
+      
+      i {
+        font-size: 12px;
+      }
+      
+      &:hover {
+        background: @gradient-accent;
+        transform: translateY(-2px);
+        box-shadow: @shadow-md;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+// Enhanced Social Share Section
+.social-share {
+  margin: @spacing-3xl 0 @spacing-2xl;
+  padding: @spacing-xl;
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.05) 0%, rgba(124, 58, 237, 0.05) 100%);
+  border-radius: @border-radius-lg;
+  text-align: center;
+  border: 1px solid rgba(79, 70, 229, 0.1);
+  
+  h4 {
+    margin-bottom: @spacing-lg;
+    color: @text-primary;
+    font-size: @font-size-lg;
+    font-weight: @font-weight-semibold;
+    
+    i {
+      color: @brand-primary;
+      margin-right: @spacing-xs;
+    }
+  }
+  
+  .share-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: @spacing-md;
+    
+    @media (max-width: @screen-sm) {
+      gap: @spacing-sm;
+    }
+    
+    .share-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: @border-radius-full;
+      color: @text-inverse;
+      text-decoration: none;
+      font-size: 18px;
+      transition: all @duration-base @ease-out;
+      position: relative;
+      overflow: hidden;
+      box-shadow: @shadow-md;
+      
+      @media (max-width: @screen-sm) {
+        width: 45px;
+        height: 45px;
+        font-size: 16px;
+      }
+      
+      &:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: @shadow-lg;
+        text-decoration: none;
+      }
+      
+      &.twitter {
+        background: linear-gradient(135deg, #1da1f2 0%, #0d8bd9 100%);
+        
+        &:hover {
+          background: linear-gradient(135deg, #0d8bd9 0%, #1da1f2 100%);
+        }
+      }
+      
+      &.facebook {
+        background: linear-gradient(135deg, #4267b2 0%, #365899 100%);
+        
+        &:hover {
+          background: linear-gradient(135deg, #365899 0%, #4267b2 100%);
+        }
+      }
+      
+      &.linkedin {
+        background: linear-gradient(135deg, #0077b5 0%, #005582 100%);
+        
+        &:hover {
+          background: linear-gradient(135deg, #005582 0%, #0077b5 100%);
+        }
+      }
+      
+      &.wechat {
+        background: linear-gradient(135deg, #7bb32e 0%, #5a8a1f 100%);
+        
+        &:hover {
+          background: linear-gradient(135deg, #5a8a1f 0%, #7bb32e 100%);
+        }
+      }
+      
+      &.weibo {
+        background: linear-gradient(135deg, #e6162d 0%, #c9102a 100%);
+        
+        &:hover {
+          background: linear-gradient(135deg, #c9102a 0%, #e6162d 100%);
+        }
+      }
+      
+      &.copy-link {
+        background: linear-gradient(135deg, @brand-primary 0%, @brand-secondary 100%);
+        
+        &:hover {
+          background: linear-gradient(135deg, @brand-secondary 0%, @brand-accent 100%);
+        }
+      }
+      
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    }
+  }
+}
+
+// Enhanced Article Navigation
+.article-navigation {
+  margin: @spacing-3xl 0;
+  
+  .separator {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, @border-light 50%, transparent 100%);
+    margin: @spacing-2xl 0;
+  }
+  
+  .pager {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      flex: 1;
+      max-width: 48%;
+      
+      a {
+        display: block;
+        padding: @spacing-lg;
+        background: @bg-card;
+        border: 1px solid @border-light;
+        border-radius: @border-radius-lg;
+        color: @text-primary;
+        text-decoration: none;
+        transition: all @duration-base @ease-out;
+        box-shadow: @shadow-sm;
+        
+        .nav-direction {
+          font-size: @font-size-sm;
+          font-weight: @font-weight-medium;
+          color: @text-muted;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+        
+        .nav-title {
+          font-size: @font-size-base;
+          font-weight: @font-weight-semibold;
+          line-height: @line-height-snug;
+          margin-top: @spacing-xs;
+          display: block;
+        }
+        
+        &:hover {
+          background: rgba(79, 70, 229, 0.05);
+          border-color: @brand-primary;
+          transform: translateY(-2px);
+          box-shadow: @shadow-md;
+          text-decoration: none;
+          
+          .nav-direction {
+            color: @brand-primary;
+          }
+        }
+      }
+      
+      &.previous a {
+        text-align: left;
+      }
+      
+      &.next a {
+        text-align: right;
+      }
+    }
+    
+    @media (max-width: @screen-sm) {
+      flex-direction: column;
+      gap: @spacing-md;
+      
+      li {
+        max-width: 100%;
+        
+        a {
+          padding: @spacing-md;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+// Reading Progress Bar Enhancement
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 4px;
+  background: @gradient-primary;
+  z-index: @z-fixed;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px rgba(79, 70, 229, 0.3);
+}
+
+// Enhanced Back to Top Button
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: @gradient-primary;
+  color: @text-inverse;
+  border: none;
+  border-radius: @border-radius-full;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all @duration-base @ease-out;
+  z-index: @z-fixed;
+  box-shadow: @shadow-lg;
+  
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  &:hover {
+    background: @gradient-accent;
+    transform: translateY(-3px);
+    box-shadow: @shadow-xl;
+  }
+  
+  i {
+    font-size: 18px;
+  }
+  
+  @media (max-width: @screen-sm) {
+    width: 45px;
+    height: 45px;
+    bottom: 20px;
+    right: 20px;
+    
+    i {
+      font-size: 16px;
+    }
+  }
+}
+
+// Tech gradient background
 .tech-gradient-bg {
   background: linear-gradient(135deg, @tech-gradient-start 0%, @tech-gradient-end 100%);
   position: relative;
@@ -12,347 +367,9 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-    animation: tech-shine 3s ease-in-out infinite;
-  }
-}
-
-// 科技感光效动画
-@keyframes tech-shine {
-  0% { transform: translateX(-100%); }
-  50% { transform: translateX(100%); }
-  100% { transform: translateX(100%); }
-}
-
-// 现代化卡片样式
-.tech-card {
-  background: @white-pure;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(30, 58, 138, 0.1);
-  border: 1px solid rgba(30, 58, 138, 0.1);
-  transition: all 0.3s ease;
-  
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(30, 58, 138, 0.15);
-  }
-}
-
-// 科技感按钮
-.tech-button {
-  background: linear-gradient(135deg, @brand-primary 0%, @brand-secondary 100%);
-  border: none;
-  border-radius: 8px;
-  color: @white-pure;
-  padding: 12px 24px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
-  }
-  
-  &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(30, 58, 138, 0.3);
-    
-    &::before {
-      left: 100%;
-    }
-  }
-}
-
-// 科技感导航栏增强
-.navbar-custom {
-  &.tech-enhanced {
-    background: linear-gradient(135deg, rgba(91, 33, 182, 0.95) 0%, rgba(124, 58, 237, 0.95) 100%);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-    
-    .navbar-brand {
-      font-weight: 700;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      
-      .brand-icon {
-        font-size: 24px;
-        animation: float 3s ease-in-out infinite;
-      }
-      
-      .brand-text {
-        background: linear-gradient(45deg, #fff, #e0e7ff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-      
-      &:hover .brand-icon {
-        animation: none;
-        transform: scale(1.2) rotate(10deg);
-        transition: all 0.3s ease;
-      }
-    }
-    
-    .nav li a {
-      position: relative;
-      padding: 15px 15px;
-      margin: 0 5px;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      
-      i {
-        margin-right: 5px;
-        opacity: 0.8;
-      }
-      
-      .nav-text {
-        position: relative;
-        z-index: 1;
-      }
-      
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 8px;
-        opacity: 0;
-        transition: all 0.3s ease;
-      }
-      
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: 5px;
-        left: 50%;
-        width: 0;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, #fff, transparent);
-        transition: all 0.3s ease;
-        transform: translateX(-50%);
-      }
-      
-      &:hover {
-        color: #fff;
-        
-        &::before {
-          opacity: 1;
-        }
-        
-        &::after {
-          width: 80%;
-        }
-        
-        i {
-          opacity: 1;
-          transform: translateY(-2px);
-        }
-      }
-    }
-    
-    .search-icon {
-      a {
-        padding: 15px;
-        border-radius: 50%;
-        transition: all 0.3s ease;
-        
-        &:hover {
-          background: rgba(255, 255, 255, 0.1);
-          transform: scale(1.1);
-        }
-      }
-    }
-    
-    &.is-fixed {
-      background: linear-gradient(135deg, rgba(91, 33, 182, 0.98) 0%, rgba(124, 58, 237, 0.98) 100%);
-      box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
-    }
-    
-    &.is-visible {
-      animation: slideDown 0.3s ease;
-    }
-  }
-}
-
-// 浮动动画
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-
-// 下滑动画
-@keyframes slideDown {
-  from {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-// 移动端优化
-@media (max-width: 768px) {
-  .navbar-custom.tech-enhanced {
-    .navbar-brand {
-      .brand-text {
-        font-size: 18px;
-      }
-      
-      .brand-icon {
-        font-size: 20px;
-      }
-    }
-    
-    .nav li a {
-      .nav-text {
-        margin-left: 5px;
-      }
-    }
-  }
-}
-
-// 科技感头部背景
-.intro-header {
-  &.tech-style {
-    background: linear-gradient(135deg, @tech-gradient-start 0%, @tech-gradient-end 100%);
-    position: relative;
-    min-height: 500px;
-    display: flex;
-    align-items: center;
-    
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image: 
-        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.2) 0%, transparent 50%);
-      animation: backgroundPulse 15s ease-in-out infinite;
-    }
-    
-    .header-mask {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(180deg, 
-        rgba(0, 0, 0, 0.1) 0%, 
-        rgba(0, 0, 0, 0.3) 100%);
-      z-index: 1;
-    }
-    
-    .post-heading {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      
-      .tags {
-        margin-bottom: 30px;
-        
-        .tag {
-          background: @gradient-primary;
-          color: @text-inverse;
-          padding: 8px 18px;
-          border-radius: 25px;
-          margin: 0 8px 12px 0;
-          display: inline-block;
-          font-size: 14px;
-          font-weight: 600;
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.3);
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          box-shadow: @shadow-md;
-          
-          i {
-            margin-right: 6px;
-            font-size: 12px;
-          }
-          
-          &:hover {
-            background: @gradient-accent;
-            transform: translateY(-3px);
-            box-shadow: @shadow-lg;
-            border-color: rgba(255, 255, 255, 0.5);
-          }
-        }
-      }
-      
-      h1 {
-        color: @white-pure;
-        font-size: 48px;
-        font-weight: 800;
-        margin-bottom: 20px;
-        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        line-height: 1.2;
-        
-        @media (max-width: 768px) {
-          font-size: 32px;
-        }
-      }
-      
-      .subheading {
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 24px;
-        font-weight: 300;
-        margin-bottom: 30px;
-        
-        @media (max-width: 768px) {
-          font-size: 18px;
-        }
-      }
-      
-      .post-meta {
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 16px;
-        
-        span {
-          margin: 0 15px;
-          display: inline-block;
-          
-          i {
-            margin-right: 8px;
-          }
-          
-          &:first-child {
-            margin-left: 0;
-          }
-        }
-      }
-    }
-  }
-}
-
-// 背景动画
-@keyframes backgroundPulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.8;
+    background: inherit;
+    opacity: 0.1;
+    z-index: -1;
   }
 }
 

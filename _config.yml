@@ -1,9 +1,9 @@
 # Site settings
 title: Jason's Blog
-SEOTitle: Jason的博客 | Jason's Blog - AI技术研发者
+SEOTitle: Jason的技术博客 | AI开发者分享人工智能与Agent应用开发心得
 header-img: img/home-bg.jpg
 email: johnrobertdestiny@gmail.com
-description: "这里是 @Jason 的个人博客，记录AI开发、Agent应用与技术成长 | 多项黑客松获奖者 | 北京信息科技大学"
+description: "欢迎来到Jason的技术博客！AI技术研发者分享人工智能开发、Agent应用构建、全栈技术探索与成长心得。记录从深度学习到智能应用开发，从黑客松获奖项目MeetSpot、L'Oréal数据洞察助手到日常编程实践的技术成长之路。"
 keyword: "Jason, JasonRobertDestiny, 博客, 个人网站, 技术, 编程, AI, Agent, 全栈开发, MeetSpot, 黑客松, 获奖项目"
 url: "https://jasonrobertdestiny.github.io" # your host, for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
@@ -24,7 +24,7 @@ bilibili_username: 648236073
 #linkedin_username:  firstname-lastname-idxxxx
 
 # Build settings
-# from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
+# from 2016, 'pygments' is unsupported on Jason's Blog. Use 'rouge' for highlighting instead.
 highlighter: rouge
 permalink: pretty
 paginate: 10
@@ -42,7 +42,7 @@ anchorjs: true # if you want to customize anchor. check out line:181 of `post.ht
 #timezone: CN
 
 # Gems
-# from PR#40, to support local preview for Jekyll 3.0
+# from PR#40, to support local preview for Jason's Blog 3.0
 # make sure you have this gem installed
 # `$ gem install jekyll-paginate`
 plugins: [jekyll-paginate]
@@ -50,7 +50,7 @@ plugins: [jekyll-paginate]
 # Markdown settings
 # replace redcarpet to kramdown,
 # although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
-# document: http://jekyllrb.com/docs/configuration/#kramdown
+# document: http://jasonrobertdestiny.github.io/docs/configuration/#kramdown
 markdown: kramdown
 kramdown:
   input: GFM # use Github Flavored Markdown !important

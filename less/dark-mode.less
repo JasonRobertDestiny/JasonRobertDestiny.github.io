@@ -1,0 +1,450 @@
+// Dark Mode Styles - 深色主题优化
+
+// Dark mode root variables
+[data-theme="dark"] {
+  // Override color variables for dark mode
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --bg-quaternary: #475569;
+  --bg-card: rgba(30, 41, 59, 0.9);
+  --bg-overlay: rgba(248, 250, 252, 0.1);
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-light: #64748b;
+  --text-inverse: #0f172a;
+  
+  --border-light: #334155;
+  --border-medium: #475569;
+  --border-dark: #64748b;
+}
+
+// System preference detection
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
+    --bg-quaternary: #475569;
+    --bg-card: rgba(30, 41, 59, 0.9);
+    --bg-overlay: rgba(248, 250, 252, 0.1);
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --text-light: #64748b;
+    --text-inverse: #0f172a;
+    
+    --border-light: #334155;
+    --border-medium: #475569;
+    --border-dark: #64748b;
+  }
+}
+
+// Dark mode specific styles
+.dark-mode {
+  body {
+    background: @dark-bg-primary;
+    color: @dark-text-primary;
+    background-image: linear-gradient(135deg, @dark-bg-primary 0%, @dark-bg-secondary 100%);
+  }
+  
+  // Navigation
+  .navbar-custom {
+    background: rgba(30, 41, 59, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid @dark-bg-tertiary;
+    
+    .navbar-brand {
+      color: @dark-text-primary;
+      
+      &:hover, &:focus {
+        color: @brand-accent;
+      }
+    }
+    
+    .nav li a {
+      color: @dark-text-secondary;
+      
+      &:hover, &:focus {
+        color: @dark-text-primary;
+      }
+    }
+  }
+  
+  // Cards and containers
+  .post-preview {
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid @dark-bg-tertiary;
+    color: @dark-text-primary;
+    
+    .post-title {
+      color: @dark-text-primary;
+    }
+    
+    .post-subtitle {
+      color: @dark-text-secondary;
+    }
+    
+    .post-meta {
+      color: @dark-text-muted;
+    }
+    
+    &:hover {
+      background: rgba(30, 41, 59, 0.9);
+      border-color: @brand-primary;
+    }
+  }
+  
+  // Content areas
+  .post-container {
+    background: rgba(30, 41, 59, 0.5);
+    color: @dark-text-primary;
+    
+    h1, h2, h3, h4, h5, h6 {
+      color: @dark-text-primary;
+      
+      &::before {
+        background: linear-gradient(180deg, @brand-primary 0%, @brand-accent 100%);
+      }
+    }
+    
+    p {
+      color: @dark-text-secondary;
+    }
+    
+    a {
+      color: @brand-accent;
+      
+      &:hover {
+        color: lighten(@brand-accent, 10%);
+      }
+    }
+    
+    blockquote {
+      background: rgba(79, 70, 229, 0.1);
+      border-left-color: @brand-primary;
+      color: @dark-text-secondary;
+      
+      &::before {
+        color: @brand-primary;
+      }
+    }
+    
+    code {
+      background: rgba(79, 70, 229, 0.2);
+      color: @brand-accent;
+    }
+    
+    pre {
+      background: @dark-bg-tertiary;
+      
+      &::before {
+        background: linear-gradient(180deg, rgba(248, 250, 252, 0.1) 0%, transparent 100%);
+      }
+      
+      code {
+        color: @dark-text-primary;
+        background: transparent;
+      }
+    }
+  }
+  
+  // Sidebar
+  .sidebar-container {
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid @dark-bg-tertiary;
+    
+    h5 {
+      color: @brand-accent;
+      border-bottom-color: @brand-primary;
+    }
+    
+    .tags a {
+      background: @gradient-primary;
+      color: @text-inverse;
+      
+      &:hover {
+        background: @gradient-accent;
+        transform: translateY(-3px) scale(1.05);
+      }
+    }
+    
+    .friends a {
+      background: rgba(79, 70, 229, 0.1);
+      border-color: @dark-bg-tertiary;
+      color: @dark-text-secondary;
+      
+      &:hover {
+        background: rgba(79, 70, 229, 0.2);
+        border-color: @brand-primary;
+        color: @dark-text-primary;
+      }
+    }
+  }
+  
+  // Footer
+  footer {
+    background: @dark-bg-secondary;
+    color: @dark-text-secondary;
+    
+    .copyright a {
+      color: @brand-accent;
+      
+      &:hover {
+        color: lighten(@brand-accent, 10%);
+      }
+    }
+  }
+  
+  // Forms and inputs
+  input, textarea, select {
+    background: @dark-bg-tertiary;
+    border-color: @dark-bg-quaternary;
+    color: @dark-text-primary;
+    
+    &:focus {
+      border-color: @brand-primary;
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    }
+    
+    &::placeholder {
+      color: @dark-text-muted;
+    }
+  }
+  
+  // Tables
+  table {
+    background: @dark-bg-secondary;
+    
+    th {
+      background: @gradient-primary;
+      color: @text-inverse;
+    }
+    
+    td {
+      border-color: @dark-bg-tertiary;
+      color: @dark-text-secondary;
+    }
+    
+    tr {
+      background: @dark-bg-secondary;
+      
+      &:nth-child(even) {
+        background: rgba(79, 70, 229, 0.05);
+      }
+      
+      &:hover {
+        background: rgba(79, 70, 229, 0.1);
+      }
+    }
+  }
+  
+  // Buttons
+  .btn {
+    &.btn-default {
+      background: @dark-bg-tertiary;
+      border-color: @dark-bg-quaternary;
+      color: @dark-text-primary;
+      
+      &:hover {
+        background: @brand-primary;
+        border-color: @brand-primary;
+        color: @text-inverse;
+      }
+    }
+  }
+  
+  // Navigation specific dark mode
+  .pager li {
+    > a, > span {
+      background: @dark-bg-tertiary;
+      border-color: @dark-bg-quaternary;
+      color: @dark-text-primary;
+    }
+    
+    > a:hover, > a:focus {
+      background: @brand-primary;
+      border-color: @brand-primary;
+      color: @text-inverse;
+    }
+  }
+  
+  // Tags cloud
+  #tag_cloud {
+    a, .tag {
+      background: @dark-bg-tertiary;
+      color: @dark-text-primary;
+      border-color: @dark-bg-quaternary;
+      
+      &:hover, &:active, &.focus {
+        background: @gradient-primary;
+        color: @text-inverse;
+      }
+    }
+  }
+  
+  // Search form
+  .search-form {
+    background: rgba(30, 41, 59, 0.95);
+    border-color: @dark-bg-tertiary;
+    
+    input {
+      color: @dark-text-primary;
+      
+      &::placeholder {
+        color: @dark-text-muted;
+      }
+    }
+  }
+  
+  // Scroll indicators and interactive elements
+  .back-to-top {
+    background: rgba(30, 41, 59, 0.9);
+    color: @dark-text-primary;
+    border-color: @dark-bg-tertiary;
+    
+    &:hover {
+      background: @brand-primary;
+      color: @text-inverse;
+    }
+  }
+  
+  .reading-progress {
+    background: @gradient-primary;
+  }
+  
+  // Code syntax highlighting adjustments
+  .highlight {
+    background: @dark-bg-tertiary;
+    
+    .c { color: @dark-text-muted; }        // Comments
+    .k { color: @brand-accent; }           // Keywords  
+    .s { color: #a7f3d0; }                 // Strings
+    .n { color: @dark-text-primary; }       // Names
+    .o { color: @dark-text-secondary; }     // Operators
+    .nb { color: #fbbf24; }                // Built-ins
+    .nf { color: #60a5fa; }                // Functions
+  }
+}
+
+// Dark mode toggle button
+.dark-mode-toggle {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  z-index: @z-fixed;
+  
+  width: 50px;
+  height: 50px;
+  border-radius: @border-radius-full;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid @border-light;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all @duration-base @ease-in-out;
+  backdrop-filter: blur(10px);
+  box-shadow: @shadow-lg;
+  
+  &:hover {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: @shadow-xl;
+  }
+  
+  .icon {
+    font-size: 20px;
+    color: @brand-primary;
+    transition: all @duration-base @ease-in-out;
+  }
+  
+  .dark-mode & {
+    background: rgba(30, 41, 59, 0.9);
+    border-color: @dark-bg-tertiary;
+    
+    .icon {
+      color: @brand-accent;
+    }
+  }
+  
+  @media (max-width: @screen-sm) {
+    width: 40px;
+    height: 40px;
+    right: 15px;
+    
+    .icon {
+      font-size: 16px;
+    }
+  }
+}
+
+// Smooth transitions for dark mode toggle
+* {
+  transition: background-color @duration-base @ease-in-out, 
+              border-color @duration-base @ease-in-out,
+              color @duration-base @ease-in-out;
+}
+
+// Prevent transition on page load
+.no-transition * {
+  transition: none !important;
+}
+
+// Dark mode specific animations
+.dark-mode {
+  .fade-in {
+    &.visible {
+      animation: fadeInDark 0.6s ease forwards;
+    }
+  }
+  
+  .scroll-reveal {
+    &.revealed {
+      animation: slideInUpDark 0.8s @ease-out forwards;
+    }
+  }
+}
+
+@keyframes fadeInDark {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUpDark {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Dark mode image adjustments
+.dark-mode img {
+  filter: brightness(0.9) contrast(1.1);
+  
+  &:hover {
+    filter: brightness(1) contrast(1.2);
+  }
+}
+
+// Print styles - ensure dark mode doesn't affect printing
+@media print {
+  .dark-mode * {
+    background: white !important;
+    color: black !important;
+    border-color: black !important;
+  }
+}

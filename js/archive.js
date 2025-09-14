@@ -1,6 +1,7 @@
 /*
-Credits: this script is shamelessly borrowed from
+Credits: this script is adapted from
 https://github.com/kitian616/jekyll-TeXt-theme
+for Jason's Blog
 */
 (function() {
   function queryString() {

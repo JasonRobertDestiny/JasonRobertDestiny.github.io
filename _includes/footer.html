@@ -9,7 +9,7 @@
                 <p class="copyright text-muted">
                     Copyright &copy; {{ site.title }} {{ site.time | date: '%Y' }}
                     <br>
-                    Powered by <a href="https://jekyll.rb/">Jekyll</a> |
+                    Powered by Jason's Tech Stack |
                     <a href="{{ "/feed.xml" | prepend: site.baseurl }}">RSS</a>
                 </p>
             </div>
@@ -35,9 +35,9 @@
      window.addEventListener('load', function() {
          loadScript('{{ "/js/bootstrap.min.js" | prepend: site.baseurl }}');
          loadScript('{{ "/js/jason-blog.min.js" | prepend: site.baseurl }}');
-         loadScript('{{ "/js/simple-jekyll-search.min.js" | prepend: site.baseurl }}', function() {
-             // Initialize SimpleJekyllSearch after script loads
-             initSimpleJekyllSearch();
+         loadScript('{{ "/js/simple-jason-search.min.js" | prepend: site.baseurl }}', function() {
+             // Initialize SimpleJasonSearch after script loads
+             initSimpleJasonSearch();
          });
          
          // Initialize all features when page loads
@@ -435,7 +435,7 @@
         return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
     }
 
-    function initSimpleJekyllSearch() {
+    function initSimpleJasonSearch() {
         if (typeof SimpleJekyllSearch !== 'undefined') {
             SimpleJekyllSearch({
                 searchInput: document.getElementById('search-input'),

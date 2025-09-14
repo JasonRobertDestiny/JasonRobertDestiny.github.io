@@ -10,6 +10,7 @@ Disallow: /.sass-cache/
 Disallow: /.jekyll-cache/
 Disallow: /.bundle/
 Disallow: /vendor/
+Disallow: /reference_image/
 
 # Allow crawling of important files
 Allow: /css/
@@ -20,7 +21,7 @@ Allow: /feed.xml
 Allow: /sitemap.xml
 
 # Sitemap location
-Sitemap: https://jasonrobert.me/sitemap.xml
+Sitemap: https://jasonrobertdestiny.github.io/sitemap.xml
 
 # Crawl delay (optional - be respectful to search engines)
 Crawl-delay: 1
