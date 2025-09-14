@@ -18,6 +18,15 @@
         position: absolute;
         background: rgba(0,0,0, {{ page.header-mask }});
     }
+    {% else %}
+    /* Default enhanced overlay for better text readability */
+    header.intro-header .header-mask{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.6) 100%);
+        backdrop-filter: blur(1px);
+    }
     {% endif %}
 </style>
 {% endif %}
@@ -45,22 +54,22 @@
                         </a>
                         {% endfor %}
                     </div>
-                    <h1 class="animate-fade-in-up">{{ page.title }}</h1>
+                    <h1 class="animate-fade-in-up enhanced-text-shadow">{{ page.title }}</h1>
                     {% comment %} always create a h2 for keeping the margin {% endcomment %}
                     {% if page.subtitle %}
-                    <h2 class="subheading animate-fade-in-up delay-1">{{ page.subtitle }}</h2>
+                    <h2 class="subheading animate-fade-in-up delay-1 enhanced-text-shadow">{{ page.subtitle }}</h2>
                     {% endif %}
                     <div class="post-meta animate-fade-in-up delay-2">
-                        <span class="author">
+                        <span class="author enhanced-text-shadow">
                             <i class="fa fa-user"></i>
                             {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %}
                         </span>
-                        <span class="date">
+                        <span class="date enhanced-text-shadow">
                             <i class="fa fa-calendar"></i>
                             {{ page.date | date: "%B %-d, %Y" }}
                         </span>
                         {% if page.reading_time %}
-                        <span class="reading-time">
+                        <span class="reading-time enhanced-text-shadow">
                             <i class="fa fa-clock-o"></i>
                             {{ page.reading_time }} min read
                         </span>
@@ -119,17 +128,17 @@
 
 {% if include.type == 'page' %}
 <header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
-  <div class="header-mask"></div>
+  <div class="header-mask enhanced-header-mask"></div>
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         {% if include.short %}
         <div class="site-heading" id="tag-heading">
         {% else %}
-        <div class="site-heading">
+        <div class="site-heading enhanced-contrast">
         {% endif %}
-          <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
-          <span class="subheading">{{ page.description }}</span>
+          <h1 class="enhanced-text-shadow">{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+          <span class="subheading enhanced-text-shadow">{{ page.description }}</span>
         </div>
       </div>
     </div>

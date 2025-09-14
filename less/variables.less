@@ -1,5 +1,92 @@
 // Variables - 现代科技感配色方案 v3.0 - SEO优化版
 
+// CSS Custom Properties for Dynamic Theme Switching
+:root {
+  // 主色调 - 现代蓝紫色系 (提高对比度以符合WCAG AA标准)
+  --brand-primary: #4f46e5;       // 深靛蓝 - 更高对比度的主色调
+  --brand-secondary: #7c3aed;      // 中紫色 - 悬停和强调
+  --brand-accent: #a78bfa;        // 浅紫色 - 装饰元素
+  --brand-highlight: #f59e0b;      // 琥珀色 - 高亮和强调
+  --brand-success: #10b981;       // 成功绿
+  --brand-warning: #f59e0b;       // 警告橙
+  --brand-danger: #ef4444;        // 危险红
+  --brand-info: #06b6d4;          // 信息青
+
+  // 文字颜色系统 - WCAG AA 兼容
+  --text-primary: #0f172a;         // 主要文字 - 高对比度 (21:1)
+  --text-secondary: #334155;       // 次要文字 - 中等对比度 (12.6:1)
+  --text-muted: #64748b;          // 辅助文字 - 最小对比度 (7.2:1)
+  --text-light: #94a3b8;          // 浅色文字
+  --text-inverse: #ffffff;         // 反白文字
+  --text-link: var(--brand-primary);     // 链接颜色
+
+  // 背景色系统 - 分层设计
+  --bg-primary: #ffffff;          // 主背景
+  --bg-secondary: #f8fafc;        // 次要背景  
+  --bg-tertiary: #f1f5f9;         // 三级背景
+  --bg-quaternary: #e2e8f0;       // 四级背景
+  --bg-dark: #0f172a;             // 深色背景
+  --bg-card: rgba(255, 255, 255, 0.9);  // 卡片背景
+  --bg-overlay: rgba(15, 23, 42, 0.8);  // 遮罩背景
+
+  // 渐变色组合 - 优化性能的CSS渐变
+  --gradient-primary: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--brand-secondary) 0%, var(--brand-accent) 100%);
+  --gradient-warm: linear-gradient(135deg, #f59e0b 0%, var(--brand-highlight) 100%);
+  --gradient-cool: linear-gradient(135deg, #06b6d4 0%, var(--brand-primary) 100%);
+  --gradient-subtle: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+
+  // 功能色 - 语义化颜色
+  --success: #10b981;             // 成功绿
+  --success-light: #d1fae5;       // 浅成功色
+  --warning: #f59e0b;             // 警告黄
+  --warning-light: #fef3c7;       // 浅警告色
+  --danger: #ef4444;              // 危险红
+  --danger-light: #fecaca;        // 浅危险色
+  --info: #06b6d4;                // 信息蓝
+  --info-light: #cffafe;          // 浅信息色
+
+  // 边框颜色
+  --border-light: #e2e8f0;
+  --border-medium: #cbd5e1;
+  --border-dark: #64748b;
+
+  // 阴影系统 - 优化性能的阴影
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+// Dark mode CSS custom properties
+[data-theme="dark"] {
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-light: #64748b;
+  --text-inverse: #0f172a;
+  
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --bg-quaternary: #475569;
+  --bg-card: rgba(30, 41, 59, 0.9);
+  --bg-overlay: rgba(248, 250, 252, 0.1);
+  
+  --border-light: #334155;
+  --border-medium: #475569;
+  --border-dark: #64748b;
+  
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+// Legacy Less Variables for backward compatibility
 // 主色调 - 现代蓝紫色系 (提高对比度以符合WCAG AA标准)
 @brand-primary: #4f46e5;       // 深靛蓝 - 更高对比度的主色调
 @brand-secondary: #7c3aed;      // 中紫色 - 悬停和强调

@@ -17,29 +17,42 @@
 
 // Container of Sidebar, also Friends
 .sidebar-container {
-  color: @text-secondary;
+  color: var(--text-secondary);
   font-size: 14px;
+  background: var(--bg-card);
+  border-radius: @border-radius-lg;
+  padding: @spacing-lg;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+  
   h5 {
-    color: @text-primary;
+    color: var(--text-primary);
     padding-bottom: 1em;
+    font-weight: @font-weight-bold;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    
     a {
-      color: @text-primary !important;
+      color: var(--text-primary) !important;
       text-decoration: none;
+      
+      &:hover {
+        color: var(--brand-primary) !important;
+      }
     }
   }
   a {
-    color: @text-secondary !important;
+    color: var(--text-secondary) !important;
     &:hover,
     &:active {
-      color: @brand-primary !important;
+      color: var(--brand-primary) !important;
     }
   }
   .tags {
     a {
-      border-color: @text-muted;
+      border-color: var(--text-muted);
       &:hover,
       &:active {
-        border-color: @brand-primary;
+        border-color: var(--brand-primary);
       }
     }
   }
@@ -47,15 +60,56 @@
     img {
       width: 80%;
       display: block;
-      border-radius: 5px;
-      margin-bottom: 20px;
+      border-radius: @border-radius-lg;
+      margin-bottom: @spacing-lg;
+      box-shadow: var(--shadow-md);
+      transition: all @duration-base @ease-in-out;
+      
+      &:hover {
+        transform: scale(1.02);
+        box-shadow: var(--shadow-lg);
+      }
     }
-    p {
+    
+    .profile-description {
       margin-top: 0px;
-      margin-bottom: 20px;
+      margin-bottom: @spacing-lg;
+      color: var(--text-primary);
+      font-weight: @font-weight-medium;
+      line-height: @line-height-relaxed;
+      background: var(--bg-secondary);
+      padding: @spacing-md;
+      border-radius: @border-radius-md;
+      border-left: 4px solid var(--brand-primary);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      
+      // Ensure readability in both light and dark modes
+      [data-theme="dark"] & {
+        color: var(--text-primary);
+        background: var(--bg-tertiary);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      }
     }
+    
+    p:not(.profile-description) {
+      margin-top: 0px;
+      margin-bottom: @spacing-lg;
+      color: var(--text-secondary);
+    }
+    
     .list-inline > li {
       padding-left: 0px;
+    }
+  }
+  
+  // Dark mode specific styles
+  [data-theme="dark"] & {
+    background: var(--bg-card);
+    border-color: var(--border-light);
+    color: var(--text-secondary);
+    
+    h5 {
+      color: var(--text-primary);
     }
   }
 }
