@@ -341,6 +341,25 @@
     <!-- Image Optimization and Lazy Loading -->
     <script src="{{ "/js/image-optimization.js" | prepend: site.baseurl }}"></script>
     
+    <!-- WriteSonic AI SEO Fixer -->
+    {% if jekyll.environment == 'production' %}
+    <script src="https://seo-fixer.writesonic.com/site-audit/fixer-script/index.js" 
+            id="wsAiSeoMb" 
+            type="application/javascript" 
+            async 
+            defer></script>
+    <script id="wsAiSeoInitScript">
+      window.addEventListener('load', function() {
+        if (typeof wsSEOfixer !== 'undefined') {
+          wsSEOfixer.configure({
+            hostURL: 'https://seo-fixer.writesonic.com',
+            siteID: '68c65938da5ef3d0569cec4a'
+          });
+        }
+      });
+    </script>
+    {% endif %}
+    
     <!-- Service Worker Registration -->
     {% if jekyll.environment == 'production' %}
     <script>
