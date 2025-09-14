@@ -117,4 +117,4 @@ The project uses Less for CSS preprocessing:
 - **Images**: Place in `/img` directory
 - **JavaScript**: Minimal custom JS, primarily for PWA and search
 - **Design**: Tech-themed with gradients and modern animations
-- **No package.json**: Project doesn't use Node.js build tools
+- **No package.json**: Project uses Less directly without Node.js build tools

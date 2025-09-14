@@ -20,7 +20,11 @@
       "Bash(npm install:*)",
       "Bash(lessc:*)",
       "Bash(git rm:*)",
-      "Bash(git remote set-url origin https://github.com/JasonRobertDestiny/JasonRobertDestiny.github.io.git)"
+      "Bash(git remote set-url origin https://github.com/JasonRobertDestiny/JasonRobertDestiny.github.io.git)",
+      "WebFetch(domain:jasonrobert.me)",
+      "Bash(curl -s -I \"https://jasonrobert.me/\")",
+      "Bash(curl -s \"https://jasonrobert.me/\")",
+      "Bash(curl -s \"https://jasonrobert.me/css/jason-blog.css\")"
     ],
     "deny": [],
     "ask": []
