@@ -19,7 +19,8 @@
       "Bash(./build.sh:*)",
       "Bash(npm install:*)",
       "Bash(lessc:*)",
-      "Bash(git rm:*)"
+      "Bash(git rm:*)",
+      "Bash(git remote set-url origin https://github.com/JasonRobertDestiny/JasonRobertDestiny.github.io.git)"
     ],
     "deny": [],
     "ask": []

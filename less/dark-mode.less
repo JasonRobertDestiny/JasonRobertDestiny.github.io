@@ -330,55 +330,96 @@
   }
 }
 
-// Dark mode toggle button
+// Dark mode toggle button - 改进可见性和位置
 .dark-mode-toggle {
   position: fixed;
-  top: 50%;
+  top: 20px;           // 移到页面顶部，更易发现
   right: 20px;
-  transform: translateY(-50%);
-  z-index: @z-fixed;
+  z-index: 1020;       // 确保在最上层
   
   width: 50px;
   height: 50px;
   border-radius: @border-radius-full;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid @border-light;
+  background: rgba(255, 255, 255, 0.95);  // 提高不透明度
+  border: 2px solid rgba(79, 70, 229, 0.3); // 添加彩色边框提高可见性
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all @duration-base @ease-in-out;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
-  box-shadow: @shadow-lg;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  
+  // 添加脉冲动画提醒用户
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 2px solid @brand-primary;
+    border-radius: @border-radius-full;
+    opacity: 0;
+    animation: pulse 2s infinite;
+  }
   
   &:hover {
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: @shadow-xl;
+    transform: scale(1.1);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-color: @brand-primary;
+    
+    &::before {
+      animation: none; // 停止脉冲动画
+    }
   }
   
   .icon {
     font-size: 20px;
     color: @brand-primary;
-    transition: all @duration-base @ease-in-out;
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   
+  // 深色模式下的样式
   .dark-mode & {
-    background: rgba(30, 41, 59, 0.9);
-    border-color: @dark-bg-tertiary;
+    background: rgba(30, 41, 59, 0.95);
+    border-color: rgba(167, 139, 250, 0.5); // 亮紫色边框
+    
+    &::before {
+      border-color: @brand-accent;
+    }
+    
+    &:hover {
+      border-color: @brand-accent;
+    }
     
     .icon {
       color: @brand-accent;
     }
   }
   
+  // 移动端优化
   @media (max-width: @screen-sm) {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     right: 15px;
+    top: 15px;
     
     .icon {
-      font-size: 16px;
+      font-size: 18px;
     }
+  }
+}
+
+// 脉冲动画提醒用户注意切换按钮
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.05);
   }
 }
 

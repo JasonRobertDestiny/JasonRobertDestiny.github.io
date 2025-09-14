@@ -18,12 +18,11 @@ This is Jason's personal technical blog built with Jekyll, a static site generat
 # Install Ruby dependencies
 bundle install
 
-# Install Node.js dependencies (if package.json exists)
-npm install --legacy-peer-deps
-
-# Build assets (uses Less preprocessing)
-# Note: The project uses Less files in the /less directory that compile to /css
-# Main Less file: less/jason-blog.less
+# Compile Less files to CSS (required before serving)
+./build.sh
+# or manually:
+lessc less/jason-blog.less css/jason-blog.css
+lessc --clean-css less/jason-blog.less css/jason-blog.min.css
 
 # Start local development server
 bundle exec jekyll serve
@@ -36,7 +35,7 @@ bundle exec jekyll clean
 ```
 
 ### Deployment
-The site uses GitHub Actions for automatic deployment to GitHub Pages. The workflow is in `.github/workflows/jekyll.yml`.
+The site uses GitHub Actions for automatic deployment to GitHub Pages. The workflow is in `.github/workflows/jekyll.yml` and triggers on pushes to the `master` branch. The workflow uses Ruby 3.1 and automatically installs gems via Bundler cache.
 
 ## Architecture
 
@@ -96,10 +95,26 @@ catalog: true
 - Service Worker: `sw.js`
 - Registration: `js/sw-registration.js`
 
+## Build System
+
+### Less Compilation
+The project uses Less for CSS preprocessing:
+- **Build script**: `./build.sh` compiles Less files
+- **Source**: `/less` directory contains modular Less files
+- **Output**: `/css` directory (do not edit directly)
+- **Main entry**: `less/jason-blog.less` imports all other Less modules
+
+### Jekyll Build Process
+1. Less files must be compiled first (using `./build.sh`)
+2. Jekyll processes Markdown posts and Liquid templates
+3. Static files are copied to `_site/` directory
+4. GitHub Actions automatically deploys on push to master
+
 ## Important Notes
 
-- All Less files in `/less` directory need to be compiled to `/css` (currently using manual compilation)
-- The blog supports both English and Chinese content
-- Images should be placed in `/img` directory
-- Custom JavaScript is minimal and focused on essential interactions
-- The design emphasizes a tech/modern aesthetic with gradient backgrounds and smooth animations
+- **CSS Workflow**: Always compile Less files before Jekyll build
+- **Content**: Supports both English and Chinese posts
+- **Images**: Place in `/img` directory
+- **JavaScript**: Minimal custom JS, primarily for PWA and search
+- **Design**: Tech-themed with gradients and modern animations
+- **No package.json**: Project doesn't use Node.js build tools

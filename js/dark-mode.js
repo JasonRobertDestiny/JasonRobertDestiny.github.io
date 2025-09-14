@@ -95,13 +95,13 @@
         // Add to page
         document.body.appendChild(toggleButton);
         
-        // Add hover effects
+        // Add hover effects (updated for new button position)
         toggleButton.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-50%) scale(1.1)';
+            this.style.transform = 'scale(1.1)';
         });
         
         toggleButton.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(-50%) scale(1)';
+            this.style.transform = 'scale(1)';
         });
     }
     
@@ -364,6 +364,9 @@
         },
         getSystemPreference: () => systemPrefersDark
     };
+    
+    // 为了向后兼容，也提供DarkModeManager别名
+    window.DarkModeManager = window.DarkModeToggle;
     
     // Initialize when DOM is ready
     if (document.readyState === 'loading') {
