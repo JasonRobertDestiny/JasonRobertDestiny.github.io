@@ -2538,7 +2538,6 @@ select:focus,
   display: flex;
 }
 .modal .modal-dialog {
-  role: document;
 }
 .modal .modal-header .modal-title {
   font-size: 20px;
