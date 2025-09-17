@@ -2537,8 +2537,7 @@ select:focus,
 .modal[aria-hidden="false"] {
   display: flex;
 }
-.modal .modal-dialog {
-}
+
 .modal .modal-header .modal-title {
   font-size: 20px;
   font-weight: 600;
