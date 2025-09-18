@@ -100,7 +100,7 @@
     <meta name="theme-color" content="{{ site.chrome-tab-theme-color }}">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="{% if page.canonical %}{{ page.canonical }}{% else %}{{ site.url }}{{ page.url | replace:'index.html','' }}{% endif %}">
+    <link rel="canonical" href="{% if page.canonical %}{{ page.canonical }}{% elsif page.url == '/' %}{{ site.url }}/{% else %}{{ site.url }}{{ page.url | replace:'index.html','' }}{% endif %}">
     
     <!-- RSS Feed -->
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
