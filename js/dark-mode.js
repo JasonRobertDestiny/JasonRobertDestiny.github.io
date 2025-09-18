@@ -61,8 +61,8 @@
             // User has explicitly set a preference
             isDarkMode = saved === 'true';
         } else {
-            // No saved preference, use system preference
-            isDarkMode = systemPrefersDark;
+            // No saved preference, DEFAULT TO LIGHT MODE for better UX
+            isDarkMode = false; // Always start with light mode
         }
     }
     

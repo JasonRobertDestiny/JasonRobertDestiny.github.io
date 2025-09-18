@@ -18,16 +18,17 @@ body {
   overflow-x: hidden;
   line-height: @line-height-relaxed;
   
-  // Enhanced text rendering
+  // Enhanced text rendering for modern browsers
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   
-  // Improved readability
+  // Modern scrolling behavior
   scroll-behavior: smooth;
+  scroll-padding-top: 80px; // Account for fixed header
   
-  // Responsive font scaling
+  // Responsive font scaling with improved ratios
   @media screen and (min-width: @screen-sm) {
     font-size: @font-size-lg;
     line-height: @line-height-relaxed;
@@ -35,6 +36,16 @@ body {
   
   @media screen and (min-width: @screen-lg) {
     font-size: @font-size-xl;
+  }
+  
+  // Reduced motion for accessibility
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
@@ -755,87 +766,99 @@ samp {
     text-align: center;
     h1 {
       margin-top: 0;
-      font-size: 24px; // 进一步减小字体，提升美观度
+      font-size: 20px; // Further reduced for ultra-elegant look
       color: white;
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
-      line-height: 1.4; // 更舒适的行高
+      line-height: 1.45; // More relaxed line height
       word-wrap: break-word;
       hyphens: auto;
       max-width: 100%;
-      margin-bottom: 12px;
-      font-weight: 600; // 稍微加粗以保持视觉重量
-      letter-spacing: -0.5px; // 字母间距优化
+      margin-bottom: 10px; // Tighter spacing
+      font-weight: 700; // Bolder for better impact at smaller size
+      letter-spacing: 0.5px; // Slight expansion for readability
+      text-transform: none; // Remove any text transformation
       
-      // 平滑的响应式字体缩放 - 更保守的尺寸
+      // Smooth progressive sizing - much more conservative
       @media only screen and (min-width: 480px) {
-        font-size: 28px;
-        line-height: 1.35;
-      }
-      
-      @media only screen and (min-width: 768px) {
-        font-size: 32px;
-        line-height: 1.3;
-        letter-spacing: -0.75px;
-      }
-      
-      @media only screen and (min-width: 1024px) {
-        font-size: 36px;
-        line-height: 1.25;
-        letter-spacing: -1px;
-      }
-      
-      @media only screen and (min-width: 1200px) {
-        font-size: 40px; // 最大尺寸大幅减小，从64px到40px
-        line-height: 1.2;
-        letter-spacing: -1px;
-      }
-      
-      // 防止动画和移动问题
-      transform: translateZ(0); // 硬件加速
-      will-change: auto; // 避免不必要的层创建
-      backface-visibility: hidden; // 提升渲染性能
-    }
-    .subheading {
-      .sans-serif;
-      font-size: 13px; // 进一步减小副标题字体
-      line-height: 1.5; // 更好的行高
-      display: block;
-      font-weight: 400; // 稍微加重字重
-      margin: 12px auto 0; // 优化间距
-      color: rgba(255, 255, 255, 0.92); // 稍微提高透明度
-      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
-      max-width: 92%; // 稍微增加宽度
-      word-wrap: break-word;
-      
-      // 响应式副标题尺寸 - 更保守的设置
-      @media only screen and (min-width: 480px) {
-        font-size: 14px;
-        max-width: 88%;
-        line-height: 1.45;
-      }
-      
-      @media only screen and (min-width: 768px) {
-        font-size: 15px;
+        font-size: 22px;
         line-height: 1.4;
-        max-width: 85%;
+      }
+      
+      @media only screen and (min-width: 768px) {
+        font-size: 26px;
+        line-height: 1.35;
+        letter-spacing: 0.25px;
       }
       
       @media only screen and (min-width: 1024px) {
-        font-size: 16px;
-        line-height: 1.35;
-        max-width: 80%;
+        font-size: 30px;
+        line-height: 1.3;
+        letter-spacing: 0px;
       }
       
       @media only screen and (min-width: 1200px) {
-        font-size: 17px; // 最大尺寸减小
-        line-height: 1.3;
-        max-width: 75%;
+        font-size: 32px; // Maximum size dramatically reduced from 40px
+        line-height: 1.25;
+        letter-spacing: -0.25px;
       }
       
-      // 防止移动和闪烁
+      // Enhanced stability and performance
       transform: translateZ(0);
       will-change: auto;
       backface-visibility: hidden;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .subheading {
+      .sans-serif;
+      font-size: 12px; // Ultra-compact elegant subtitle
+      line-height: 1.6; // More breathing room
+      display: block;
+      font-weight: 400; 
+      margin: 10px auto 0; // Tighter top margin
+      color: rgba(255, 255, 255, 0.95); // Higher contrast
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+      max-width: 85%; // More generous width
+      word-wrap: break-word;
+      letter-spacing: 0.8px; // Slight letter expansion for elegance
+      
+      // Progressive responsive sizing - very conservative
+      @media only screen and (min-width: 480px) {
+        font-size: 13px;
+        max-width: 82%;
+        line-height: 1.55;
+        letter-spacing: 0.6px;
+      }
+      
+      @media only screen and (min-width: 768px) {
+        font-size: 14px;
+        line-height: 1.5;
+        max-width: 78%;
+        letter-spacing: 0.4px;
+      }
+      
+      @media only screen and (min-width: 1024px) {
+        font-size: 15px;
+        line-height: 1.45;
+        max-width: 75%;
+        letter-spacing: 0.2px;
+      }
+      
+      @media only screen and (min-width: 1200px) {
+        font-size: 16px; // Maximum size reduced from 17px
+        line-height: 1.4;
+        max-width: 70%;
+        letter-spacing: 0px;
+      }
+      
+      // Enhanced rendering stability
+      transform: translateZ(0);
+      will-change: auto;
+      backface-visibility: hidden;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
   }
   .post-heading {

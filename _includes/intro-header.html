@@ -137,8 +137,13 @@
         {% else %}
         <div class="site-heading enhanced-contrast">
         {% endif %}
-          <h1 class="enhanced-text-shadow">{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
-          <span class="subheading enhanced-text-shadow">{{ page.description }}</span>
+          {% if page.url == '/' %}
+            <h1 class="enhanced-text-shadow">AI & Tech Expert</h1>
+            <span class="subheading enhanced-text-shadow">Agent Development • Full-Stack Programming • Innovation</span>
+          {% else %}
+            <h1 class="enhanced-text-shadow">{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+            <span class="subheading enhanced-text-shadow">{{ page.description }}</span>
+          {% endif %}
         </div>
       </div>
     </div>
