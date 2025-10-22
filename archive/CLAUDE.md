@@ -37,6 +37,8 @@ bundle exec jekyll clean
 ### Deployment
 The site uses GitHub Actions for automatic deployment to GitHub Pages. The workflow is in `.github/workflows/jekyll.yml` and triggers on pushes to the `master` branch. The workflow uses Ruby 3.1 and automatically installs gems via Bundler cache.
 
+**IMPORTANT**: The GitHub Actions workflow does NOT compile Less files. You must compile Less files locally using `./build.sh` before committing and pushing to ensure the latest CSS changes are deployed.
+
 ## Architecture
 
 ### Core Structure
