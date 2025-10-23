@@ -15,6 +15,10 @@
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    {% if page.url == '/' %}
+    <!-- Preload hero header image to improve LCP -->
+    <link rel="preload" as="image" href="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}">
+    {% endif %}
 
     <!-- Open Graph -->
     <meta property="og:title"

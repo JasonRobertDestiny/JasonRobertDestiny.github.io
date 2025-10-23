@@ -1,9 +1,9 @@
 # Site settings
 title: Jason's Blog
-SEOTitle: Jason's AI & Tech Blog - Expert Agent Development, Full-Stack Programming & Hackathon Winner Projects
+SEOTitle: Jason's AI & Tech Insights
 header-img: img/home-bg.jpg
 email: johnrobertdestiny@gmail.com
-description: "Discover Jason's comprehensive tech blog featuring cutting-edge AI development, intelligent Agent applications, and full-stack programming insights. Explore award-winning hackathon projects including MeetSpot, L'Oréal Data Intelligence Assistant, and innovative solutions. Learn from practical experiences in machine learning, deep learning, software engineering, and modern web development frameworks. Join a growing community of developers passionate about artificial intelligence and emerging technologies."
+description: "Explore Jason's tech blog for AI tutorials, full-stack development, and award-winning projects. Join our community and innovate today!"
 keyword: "Jason, JasonRobertDestiny, 博客, 个人网站, 技术, 编程, AI, Agent, 全栈开发, MeetSpot, 黑客松, 获奖项目"
 url: "https://jasonrobert.me" # your host, for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
