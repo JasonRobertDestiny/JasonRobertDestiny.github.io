@@ -1,0 +1,245 @@
+// ============================================
+// Multilingual Toggle Switcher Styles
+// Modern EN | 中文 Toggle Button Design
+// ============================================
+
+// Language Switcher Container
+.language-switcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: @spacing-sm;
+  margin: @spacing-lg 0;
+  padding: @spacing-sm;
+
+  @media screen and (max-width: @screen-sm) {
+    margin: @spacing-md 0;
+  }
+}
+
+// Toggle Button Base Styles
+.lang-btn {
+  background: transparent;
+  border: none;
+  padding: @spacing-xs @spacing-md;
+  font-size: @font-size-sm;
+  font-weight: @font-weight-medium;
+  color: @text-secondary;
+  cursor: pointer;
+  transition: all @duration-fast @ease-in-out;
+  border-radius: @border-radius-sm;
+  position: relative;
+  outline: none;
+
+  // Hover state
+  &:hover {
+    color: @brand-primary;
+    background: @bg-secondary;
+    transform: translateY(-1px);
+  }
+
+  // Active state (selected language)
+  &.active {
+    color: @brand-primary;
+    font-weight: @font-weight-bold;
+
+    // Underline effect for active language
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 2px;
+      background: @gradient-primary;
+      border-radius: @border-radius-full;
+      animation: slideIn @duration-base @ease-in-out;
+    }
+  }
+
+  // Focus state for accessibility
+  &:focus {
+    outline: 2px solid @brand-primary;
+    outline-offset: 2px;
+  }
+
+  // Responsive sizing
+  @media screen and (min-width: @screen-sm) {
+    font-size: @font-size-base;
+    padding: @spacing-sm @spacing-lg;
+  }
+}
+
+// Language label
+.lang-label {
+  display: inline-block;
+  transition: transform @duration-fast @ease-in-out;
+
+  .lang-btn:hover & {
+    transform: scale(1.05);
+  }
+}
+
+// Separator between language options
+.lang-separator {
+  color: @text-muted;
+  font-size: @font-size-sm;
+  font-weight: @font-weight-light;
+  user-select: none;
+
+  @media screen and (min-width: @screen-sm) {
+    font-size: @font-size-base;
+  }
+}
+
+// ============================================
+// Bilingual Content Display Styles
+// ============================================
+
+// Base styles for language-specific content
+.lang-en,
+.lang-zh {
+  transition: opacity @duration-base @ease-in-out,
+              transform @duration-base @ease-in-out;
+
+  // Hidden state
+  &[style*="display: none"],
+  &[style*="display:none"] {
+    display: none !important;
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  // Visible state
+  &:not([style*="display: none"]) {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeInContent @duration-base @ease-in-out;
+  }
+}
+
+// Ensure smooth content transitions
+.post-container {
+  .lang-en,
+  .lang-zh {
+    // Prevent layout shift during transitions
+    min-height: 0;
+
+    // Typography consistency across languages
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 50px;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    p {
+      margin: @spacing-lg 0;
+      line-height: @line-height-loose;
+    }
+
+    // List spacing
+    ul, ol {
+      margin-bottom: 40px;
+    }
+
+    // Code blocks
+    pre {
+      margin: @spacing-lg 0;
+    }
+  }
+}
+
+// ============================================
+// Animations
+// ============================================
+
+@keyframes slideIn {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 80%;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInContent {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ============================================
+// Dark Mode Support
+// ============================================
+
+@media (prefers-color-scheme: dark) {
+  .language-switcher {
+    .lang-btn {
+      &:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      &.active::after {
+        background: @gradient-secondary;
+      }
+    }
+  }
+}
+
+// ============================================
+// Accessibility Enhancements
+// ============================================
+
+// Reduced motion preference
+@media (prefers-reduced-motion: reduce) {
+  .lang-btn,
+  .lang-en,
+  .lang-zh {
+    transition: none;
+    animation: none;
+  }
+
+  .lang-btn.active::after {
+    animation: none;
+  }
+}
+
+// High contrast mode
+@media (prefers-contrast: high) {
+  .lang-btn {
+    border: 1px solid currentColor;
+
+    &.active {
+      background: @brand-primary;
+      color: @text-inverse;
+    }
+  }
+}
+
+// ============================================
+// Print Styles
+// ============================================
+
+@media print {
+  .language-switcher {
+    display: none;
+  }
+
+  // Show only English content by default when printing
+  .lang-zh {
+    display: none !important;
+  }
+
+  .lang-en {
+    display: block !important;
+  }
+}

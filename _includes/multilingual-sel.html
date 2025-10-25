@@ -1,6 +1,11 @@
-                <!-- Language Selector -->
-                <select class="sel-lang" onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
-                    <option value="0" selected> 中文 | Chinese </option>
-                    <option value="1"> 英文 | English </option>
-                </select>
+                <!-- Language Switcher - Modern Toggle Buttons -->
+                <div class="language-switcher">
+                    <button class="lang-btn lang-btn-en active" onclick="switchLanguage('en')" aria-label="Switch to English">
+                        <span class="lang-label">EN</span>
+                    </button>
+                    <span class="lang-separator">|</span>
+                    <button class="lang-btn lang-btn-zh" onclick="switchLanguage('zh')" aria-label="切换到中文">
+                        <span class="lang-label">中文</span>
+                    </button>
+                </div>
 

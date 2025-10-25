@@ -7,7 +7,12 @@
     <meta name="keywords" content="{% if page.tags %}{% for tag in page.tags %}{{ tag }}{% unless forloop.last %}, {% endunless %}{% endfor %}{% else %}{{ site.keyword }}{% endif %}">
     <meta name="author" content="{% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %}">
     <meta name="robots" content="index, follow">
+    {% if page.multilingual %}
+    <meta name="language" content="en, zh-CN">
+    <meta http-equiv="content-language" content="en, zh-CN">
+    {% else %}
     <meta name="language" content="zh-CN">
+    {% endif %}
     <meta name="theme-color" content="{{ site.chrome-tab-theme-color }}">
     
     <!-- Performance Optimization -->
@@ -105,7 +110,15 @@
 
     <!-- Canonical URL -->
     <link rel="canonical" href="{% if page.canonical %}{{ page.canonical }}{% elsif page.url == '/' %}{{ site.url }}/{% else %}{{ site.url }}{{ page.url | replace:'index.html','' }}{% endif %}">
-    
+
+    <!-- Hreflang Tags for Bilingual SEO -->
+    {% if page.multilingual %}
+    <link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.url | replace:'index.html','' }}" />
+    <link rel="alternate" hreflang="zh" href="{{ site.url }}{{ page.url | replace:'index.html','' }}" />
+    <link rel="alternate" hreflang="zh-CN" href="{{ site.url }}{{ page.url | replace:'index.html','' }}" />
+    <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.url | replace:'index.html','' }}" />
+    {% endif %}
+
     <!-- RSS Feed -->
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
 

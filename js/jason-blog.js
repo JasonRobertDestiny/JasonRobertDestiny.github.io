@@ -329,4 +329,86 @@ jQuery(document).ready(function($) {
     setTimeout(function() {
         $('.fade-in').addClass('visible');
     }, 100);
+
+    // ============================================
+    // Multilingual Language Switching
+    // ============================================
+
+    /**
+     * Initialize language on page load
+     * Checks localStorage for user preference, defaults to English
+     */
+    function initLanguage() {
+        // Get saved language preference from localStorage, default to 'en'
+        var savedLang = localStorage.getItem('preferredLanguage') || 'en';
+        switchLanguage(savedLang);
+    }
+
+    /**
+     * Switch between languages (EN/ZH)
+     * @param {string} lang - Language code ('en' or 'zh')
+     */
+    window.switchLanguage = function(lang) {
+        // Validate language code
+        if (lang !== 'en' && lang !== 'zh') {
+            console.warn('Invalid language code:', lang);
+            lang = 'en'; // Default to English
+        }
+
+        // Save preference to localStorage
+        localStorage.setItem('preferredLanguage', lang);
+
+        // Update content visibility with smooth transition
+        if (lang === 'en') {
+            // Show English content
+            $('.lang-en').fadeIn(300);
+            $('.lang-zh').fadeOut(300);
+
+            // Update button states
+            $('.lang-btn-en').addClass('active');
+            $('.lang-btn-zh').removeClass('active');
+        } else {
+            // Show Chinese content
+            $('.lang-zh').fadeIn(300);
+            $('.lang-en').fadeOut(300);
+
+            // Update button states
+            $('.lang-btn-zh').addClass('active');
+            $('.lang-btn-en').removeClass('active');
+        }
+
+        // Update page lang attribute for screen readers
+        $('html').attr('lang', lang === 'en' ? 'en' : 'zh-CN');
+
+        // Trigger custom event for other scripts that might need to know about language change
+        $(document).trigger('languageChanged', [lang]);
+    };
+
+    /**
+     * Legacy support for old onLanChange function
+     * @param {string} index - Language index ('0' for Chinese, '1' for English)
+     */
+    window.onLanChange = function(index) {
+        var lang = index === '1' ? 'en' : 'zh';
+        switchLanguage(lang);
+    };
+
+    // Initialize language on DOM ready
+    initLanguage();
+
+    // Add keyboard shortcut (Alt+L) to toggle language
+    $(document).on('keydown', function(e) {
+        // Alt + L to toggle language
+        if (e.altKey && e.keyCode === 76) {
+            e.preventDefault();
+            var currentLang = localStorage.getItem('preferredLanguage') || 'en';
+            var newLang = currentLang === 'en' ? 'zh' : 'en';
+            switchLanguage(newLang);
+        }
+    });
+
+    // Debug: Log language changes in development
+    $(document).on('languageChanged', function(e, lang) {
+        console.log('Language changed to:', lang);
+    });
 });
