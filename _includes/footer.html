@@ -320,9 +320,10 @@
 <script type="text/javascript">
     function generateCatalog(selector) {
 
-        // interop with multilangual 
+        // interop with multilangual
         if ('{{ page.multilingual }}' == 'true') {
-            _containerSelector = 'div.post-container.active'
+            // Find headers in currently visible language container
+            _containerSelector = 'div.post-container .lang-en:visible, div.post-container .lang-zh:visible'
         } else {
             _containerSelector = 'div.post-container'
         }

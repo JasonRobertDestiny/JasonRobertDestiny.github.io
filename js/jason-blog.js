@@ -380,6 +380,13 @@ jQuery(document).ready(function($) {
         // Update page lang attribute for screen readers
         $('html').attr('lang', lang === 'en' ? 'en' : 'zh-CN');
 
+        // Regenerate catalog after language switch (for multilingual posts)
+        setTimeout(function() {
+            if (typeof generateCatalog === 'function') {
+                generateCatalog('.catalog-body');
+            }
+        }, 350); // Wait for fade transition to complete
+
         // Trigger custom event for other scripts that might need to know about language change
         $(document).trigger('languageChanged', [lang]);
     };
