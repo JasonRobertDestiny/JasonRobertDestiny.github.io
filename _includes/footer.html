@@ -20,6 +20,38 @@
 <!-- Critical JavaScript - Load Immediately -->
 <script src="{{ "/js/jquery.min.js" | prepend: site.baseurl }}"></script>
 
+<!-- Critical: Language Toggle Event Delegation (Must load before user interaction) -->
+<script>
+    // Bind language toggle immediately after jQuery loads
+    // This prevents race conditions with async script loading
+    $(document).ready(function() {
+        $(document).on('click', '.lang-btn[data-lang]', function(e) {
+            e.preventDefault();
+            var lang = $(this).data('lang');
+
+            // If switchLanguage is already defined, use it
+            if (typeof window.switchLanguage === 'function') {
+                window.switchLanguage(lang);
+            } else {
+                // Otherwise, store the click and wait for the script to load
+                console.log('Language switch requested:', lang, '- waiting for script to load...');
+                var checkInterval = setInterval(function() {
+                    if (typeof window.switchLanguage === 'function') {
+                        clearInterval(checkInterval);
+                        window.switchLanguage(lang);
+                        console.log('Script loaded, switching language to:', lang);
+                    }
+                }, 100); // Check every 100ms
+
+                // Timeout after 5 seconds
+                setTimeout(function() {
+                    clearInterval(checkInterval);
+                }, 5000);
+            }
+        });
+    });
+</script>
+
 <!-- Non-Critical JavaScript - Load Asynchronously -->
 <script>
     // Async load non-critical scripts
