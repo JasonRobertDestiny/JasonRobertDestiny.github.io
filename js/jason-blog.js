@@ -335,6 +335,19 @@ jQuery(document).ready(function($) {
     // ============================================
 
     /**
+     * Event delegation for language buttons
+     * Binds immediately on DOM ready, before switchLanguage is defined
+     * This prevents race conditions with async script loading
+     */
+    $(document).on('click', '.lang-btn[data-lang]', function(e) {
+        e.preventDefault();
+        var lang = $(this).data('lang');
+        if (typeof window.switchLanguage === 'function') {
+            window.switchLanguage(lang);
+        }
+    });
+
+    /**
      * Initialize language on page load
      * Checks localStorage for user preference, defaults to English
      */
