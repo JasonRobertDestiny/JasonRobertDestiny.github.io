@@ -13,7 +13,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ site.baseurl }}/">
+                <a class="navbar-brand" href="{{ site.baseurl }}/" title="Back to homepage - {{ site.title }}">
                     <span class="brand-icon">🚀</span>
                     <span class="brand-text">{{ site.title }}</span>
                 </a>
@@ -24,7 +24,7 @@
                 <div class="navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="{{ site.baseurl }}/" class="nav-link">
+                            <a href="{{ site.baseurl }}/" class="nav-link" title="Homepage - Latest tech insights and AI tutorials">
                                 <i class="fa fa-home"></i>
                                 <span class="nav-text">Home</span>
                             </a>
@@ -32,7 +32,7 @@
                         {% for page in site.pages %}
                         {% if page.title and page.hide-in-nav != true %}
                         <li>
-                            <a href="{{ page.url | prepend: site.baseurl }}" class="nav-link">
+                            <a href="{{ page.url | prepend: site.baseurl }}" class="nav-link" title="{{ page.title }} - {% if page.description %}{{ page.description | strip_html | truncate: 80 }}{% else %}View {{ page.title | downcase }} page{% endif %}">
                                 {% if page.title == 'About' %}
                                     <i class="fa fa-user"></i>
                                 {% elsif page.title == 'Archive' %}
@@ -46,7 +46,7 @@
                         {% endif %}
                         {% endfor %}
                         <li class="search-icon">
-                            <a href="javascript:void(0)" class="search-toggle" aria-label="Search">
+                            <a href="javascript:void(0)" class="search-toggle" aria-label="Search" title="Search articles and content">
                                 <i class="fa fa-search"></i>
                             </a>
                         </li>
