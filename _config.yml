@@ -77,7 +77,7 @@ ga_domain: jasonrobertdestiny.github.io
 
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
-sidebar-about-description: "AI技术研发 · Agent应用开发 · 多项黑客松获奖者 <br> 北京信息科技大学 | 通信工程 <br> 🏆 MeetSpot · L'Oréal数据洞察助手 · 邻里帮"
+sidebar-about-description: "AI Technology R&D · Agent Application Development · Multiple Hackathon Award Winner <br> BISTU | Communication Engineering <br> 🏆 MeetSpot · L'Oréal Data Insight Assistant · Neighborly Help"
 sidebar-avatar: https://github.com/JasonRobertDestiny.png # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags
@@ -95,11 +95,11 @@ page-mathjax: false
 friends:
   [
     { title: "GitHub", href: "https://github.com/JasonRobertDestiny" },
-    { title: "CSDN博客", href: "https://blog.csdn.net/Soulrobert520" },
-    { title: "掘金", href: "https://juejin.cn/user/2637056597039172" },
-    { title: "B站", href: "https://space.bilibili.com/648236073" },
-    { title: "魔塔空间", href: "https://www.modelscope.cn/profile/JasonRobert" },
-    { title: "MeetSpot项目", href: "https://github.com/JasonRobertDestiny/MeetSpot" },
-    { title: "L'Oréal数据洞察助手", href: "https://www.modelscope.cn/studios/JasonRobert/loreal-insight-agent" },
-    { title: "邻里帮", href: "https://tbox.alipay.com/pro/share/202412APTgpY00193418?platform=WebService" },
+    { title: "CSDN Blog", href: "https://blog.csdn.net/Soulrobert520" },
+    { title: "Juejin", href: "https://juejin.cn/user/2637056597039172" },
+    { title: "Bilibili", href: "https://space.bilibili.com/648236073" },
+    { title: "ModelScope", href: "https://www.modelscope.cn/profile/JasonRobert" },
+    { title: "MeetSpot Project", href: "https://github.com/JasonRobertDestiny/MeetSpot" },
+    { title: "L'Oréal Data Insight Assistant", href: "https://www.modelscope.cn/studios/JasonRobert/loreal-insight-agent" },
+    { title: "Neighborly Help", href: "https://tbox.alipay.com/pro/share/202412APTgpY00193418?platform=WebService" },
   ]
