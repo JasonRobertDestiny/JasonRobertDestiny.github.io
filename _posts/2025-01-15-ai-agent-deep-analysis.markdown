@@ -22,6 +22,23 @@ seo:
   keywords: "AI Agent architecture real implementation, production agent system design, multi-agent coordination patterns, AI performance optimization lessons, LangChain production experience, agent framework comparison, autonomous system architecture, real AI infrastructure costs"
   author: "Jason Robert"
   publisher: "Jason's Tech Blog"
+tldr:
+  - "架构核心：明确边界（Agent做20%）+快速失败（3秒超时）+状态外部化+降级策略+可观测"
+  - "性能优化：响应时间减73%（6.8s→4.2s），关键：架构优先（混合架构-38%）再细节"
+  - "多Agent协调：QPS<10用中心化，10-100消息队列，>100去中心化（3种模式实战对比）"
+  - "状态管理：血泪教训3次丢失 → 无状态+Redis+事件溯源，故障恢复20分钟→30秒"
+  - "监控体系：3层（业务+技术+成本）+决策链追踪+A/B测试，故障发现2.3小时→8分钟"
+faq:
+  - question: "AI Agent架构设计的核心原则是什么？"
+    answer: "基于340天生产经验的5大原则：**1) 明确边界**（Agent只做擅长的20%，剩下80%交给确定性代码）。**2) 快速失败**（3秒超时强制返回，避免用户等待）。**3) 状态管理**（无状态设计，所有上下文持久化，重启不丢失）。**4) 降级策略**（LLM故障时自动切换到规则引擎）。**5) 可观测性**（每个决策都可追踪溯源）。MeetSpot重构时应用这些原则，响应时间从6.8秒降到4.2秒，故障率从15%降到8.7%。"
+  - question: "如何优化AI Agent的响应速度？"
+    answer: "我的性能优化实战（响应时间减少73%）：**第一层：架构优化**（LangChain全链路6.8s → 混合架构2.1s + LLM 2.1s = 4.2s）。**第二层：Prompt优化**（精简上下文，Token从2400降到800，LLM调用时间-40%）。**第三层：缓存策略**（相似请求缓存，命中率35%，平均响应-1.2s）。**第四层：并行处理**（多步骤任务并行执行，总时间-30%）。**第五层：模型选择**（简单任务用GPT-3.5，响应快2倍成本降50%）。关键：**先优化架构，再优化细节**。"
+  - question: "多Agent系统如何协调和通信？"
+    answer: "我的3种协调模式实战对比：**1) 中心化协调**（Master-Worker）：1个主Agent调度多个子Agent，适合层级明确的任务（Enterprise AI采用，3127用户）。优点：逻辑清晰、易调试。缺点：主Agent成为瓶颈。**2) 去中心化协调**（Peer-to-Peer）：Agent间直接通信，适合平等协作（NeighborHelp的匹配系统）。优点：无单点故障、可扩展。缺点：一致性难保证。**3) 消息队列**（Event-Driven）：通过消息总线异步通信，适合高并发（MeetSpot的通知系统）。选择标准：**QPS<10用中心化，10-100用消息队列，>100考虑去中心化**。"
+  - question: "AI Agent的状态管理最佳实践是什么？"
+    answer: "我的血泪教训（数据丢失3次后的经验）：**反模式：内存状态**（MeetSpot早期，服务重启丢失所有会话，用户暴怒）。**最佳实践**：**1) 无状态Agent**（每次请求带完整上下文，Agent不保存状态）。**2) 外部状态存储**（Redis缓存热数据，PostgreSQL持久化关键状态）。**3) 事件溯源**（记录每个决策的完整链路，可回放调试）。**4) 幂等性设计**（重试不会产生副作用）。**5) 版本管理**（状态Schema版本化，兼容升级）。实施后：**服务重启零影响，故障恢复时间从20分钟降到30秒**。"
+  - question: "生产环境AI Agent的监控和调试策略？"
+    answer: "我的监控体系（23次故障后的总结）：**第一层：业务指标**（成功率、响应时间、用户满意度，实时大屏）。**第二层：技术指标**（LLM调用次数、Token消耗、API错误率、缓存命中率）。**第三层：成本指标**（每决策成本、每用户成本、ROI实时计算）。**调试工具**：**1) 决策链追踪**（每个决策的完整Prompt+Response，可复现）。**2) A/B测试**（新Prompt先灰度5%流量）。**3) 回放系统**（线上问题本地重现）。**告警策略**：成功率<85%立即短信，成本异常>20%邮件，严重故障电话+钉钉。部署监控后：**平均故障发现时间从2.3小时降到8分钟**。"
 ---
 
 <div class="lang-en" markdown="1">

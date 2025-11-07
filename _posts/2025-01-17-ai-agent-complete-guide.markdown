@@ -22,6 +22,23 @@ seo:
   keywords: "AI Agent complete guide production, real AI Agent implementation, LangChain vs custom comparison, AI Agent architecture from scratch, production AI system design, autonomous agent development guide, AI Agent performance optimization, real deployment experiences"
   author: "Jason Robert"
   publisher: "Jason's Tech Blog"
+tldr:
+  - "选框架：新手LangChain快速验证（1-2周），生产QPS>50必须自研，10-50看复杂度"
+  - "成功率：我的3个系统平均89.4%（MeetSpot 87.3% → NeighborHelp 91.8%），行业标准60-95%"
+  - "成本控制：Prompt优化+缓存+模型分级，每决策从$0.08降到$0.027（降66%）"
+  - "最大挑战：不是技术，是定义'成功'标准 — 2AM开会推荐技术正确但常识错误"
+  - "$847教训：永不让Agent无限调用API，5道防线后23个月零严重事故"
+faq:
+  - question: "AI Agent开发应该选择LangChain还是自研框架？"
+    answer: "基于我28个月的生产经验：**新手用LangChain快速验证想法（1-2周上线），生产环境建议混合方案**。MeetSpot最初用LangChain 6个月后发现性能瓶颈，改为混合架构（LangChain处理自然语言理解 + 自研决策引擎），响应时间从6.8秒降到4.2秒。NeighborHelp全自研，3个月达到91.8%成功率。选择标准：**QPS < 10用LangChain，> 50必须自研，10-50看复杂度**。"
+  - question: "生产环境AI Agent的成功率能达到多少？"
+    answer: "我的3个系统数据：**MeetSpot 87.3%，NeighborHelp 91.8%，Enterprise AI 89.4%**。行业标准：**简单任务（日程安排）85-95%，中等复杂度（客服）75-85%，高复杂度（企业决策）60-75%**。提升关键：明确任务边界（去掉Agent不擅长的20%任务，成功率提升15%），人机协作（高风险决策人工确认），快速失败重试机制（3秒超时自动降级）。"
+  - question: "AI Agent的成本如何控制？"
+    answer: "我的成本优化路径：**MeetSpot从月均$580降到$340**。三大策略：1) **Prompt优化**（精简无关上下文，Token消耗降40%），2) **智能缓存**（相似请求缓存，API调用减少35%），3) **模型分级**（GPT-4处理复杂决策，GPT-3.5-turbo处理简单任务，成本降50%）。实测：**每个决策成本从$0.08降到$0.027**，月活500用户控制在$300以内。"
+  - question: "如何避免AI Agent的灾难性故障？"
+    answer: "我的$847教训：**永远不要让Agent无限制调用付费API**。必须设置的5道防线：1) **单次调用超时**（3秒强制返回），2) **每日额度上限**（用户级 + 系统级），3) **异常检测**（连续3次失败自动熔断），4) **人工确认机制**（金额>$50/敏感操作必须确认），5) **监控告警**（异常调用量实时短信）。部署这些后，**23个月零严重事故**。"
+  - question: "AI Agent开发的最大挑战是什么？"
+    answer: "不是技术，是**定义'成功'的标准**。技术上LLM + API调用2周就能跑起来，但什么叫'有用'？MeetSpot早期技术完美但推荐2AM开会，因为缺少**常识约束**。真正的挑战：1) **边界划分**（Agent能做什么、不能做什么），2) **评估体系**（85%准确率用户是否满意？），3) **降级策略**（失败时如何优雅兜底）。建议：**先定义失败案例，再优化成功路径**。"
 ---
 
 <div class="lang-en" markdown="1">
