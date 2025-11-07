@@ -11,30 +11,6 @@ layout: null
     <priority>1.0</priority>
   </url>
 
-  <!-- About page -->
-  <url>
-    <loc>{{ site.url }}/about/</loc>
-    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Archive page -->
-  <url>
-    <loc>{{ site.url }}/archive/</loc>
-    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Portfolio page -->
-  <url>
-    <loc>{{ site.url }}/portfolio/</loc>
-    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
   <!-- Blog posts -->
   {% for post in site.posts %}
   <url>
@@ -45,15 +21,17 @@ layout: null
   </url>
   {% endfor %}
 
-  <!-- Pages -->
+  <!-- Pages (excluding 404, feed, sitemap, and archive directory) -->
   {% for page in site.pages %}
-    {% unless page.url contains '/404' or page.url contains '/feed' or page.url contains '/sitemap' %}
+    {% unless page.url contains '/404' or page.url contains '/feed' or page.url contains '/sitemap' or page.url contains '/archive/' or page.url contains '/.git' or page.url contains '/doc/' or page.url contains '/pwa/' or page.url contains '/less/' or page.url contains '/fonts/' %}
+    {% if page.title %}
     <url>
       <loc>{{ site.url }}{{ page.url }}</loc>
       <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
       <changefreq>monthly</changefreq>
-      <priority>0.5</priority>
+      <priority>{% if page.url == '/about.html' or page.url == '/about/' %}0.8{% else %}0.7{% endif %}</priority>
     </url>
+    {% endif %}
     {% endunless %}
   {% endfor %}
 </urlset>
