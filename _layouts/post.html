@@ -53,6 +53,9 @@ layout: default
                     {% include multilingual-sel.html %}
                 {% endif %}
 
+                <!-- TL;DR Quick Summary (before article content) -->
+                {% include tldr.html %}
+
                 <!-- Article Content with structured markup -->
                 <div class="article-content" itemprop="articleBody">
                     {{ content }}
@@ -71,6 +74,12 @@ layout: default
                     </div>
                 </div>
                 {% endif %}
+
+                <!-- FAQ Section with Schema -->
+                {% include faq-schema.html %}
+
+                <!-- Related Posts -->
+                {% include related-posts.html %}
 
                 <!-- Social Share Section -->
                 <div class="social-share scroll-reveal">

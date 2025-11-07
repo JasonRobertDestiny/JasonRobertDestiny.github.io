@@ -1,10 +1,10 @@
 # Site settings
 title: Jason's Blog
-SEOTitle: Jason's Blog - AI Development, Full-Stack Engineering & Tech Insights
+SEOTitle: AI Agent开发实战指南 | Jason的技术博客
 header-img: img/home-bg.jpg
 email: johnrobertdestiny@gmail.com
-description: "Dive into Jason's tech blog for in-depth AI tutorials, full-stack development insights, and award-winning projects. Join our community and innovate now!"
-keyword: "Jason, JasonRobertDestiny, 博客, 个人网站, 技术, 编程, AI, Agent, 全栈开发, MeetSpot, 黑客松, 获奖项目"
+description: "AI Agent开发实战专家 | 28个月生产环境经验 | MeetSpot、L'Oréal Data Assistant等获奖项目作者 | 分享真实的AI Agent开发经验、多Agent系统架构、黑客松获奖攻略 | 每周更新深度技术文章"
+keyword: "AI Agent开发实战, 生产环境AI, 多Agent系统架构, LangChain深度实践, 黑客松获奖经验"
 url: "https://jasonrobert.me" # your host, for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
 
@@ -77,7 +77,7 @@ ga_domain: jasonrobertdestiny.github.io
 
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
-sidebar-about-description: "AI Technology R&D · Agent Application Development · Multiple Hackathon Award Winner <br> BISTU | Communication Engineering <br> 🏆 MeetSpot · L'Oréal Data Insight Assistant · Neighborly Help"
+sidebar-about-description: "AI Agent开发实战专家 · 28个月生产环境经验<br>多Agent系统架构师 · 黑客松多次获奖<br>🏆 MeetSpot · L'Oréal数据洞察助手 · 邻里互助<br>北京信息科技大学 · 通信工程<br>专注：生产级AI Agent · 智能体系统设计 · 技术分享"
 sidebar-avatar: https://github.com/JasonRobertDestiny.png # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags

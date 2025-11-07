@@ -17,8 +17,11 @@
     </div>
 </footer>
 
-<!-- Critical JavaScript - Load Immediately -->
-<script src="{{ "/js/jquery.min.js" | prepend: site.baseurl }}"></script>
+<!-- Critical JavaScript - Load Immediately via CDN with local fallback -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="{{ "/js/jquery.min.js" | prepend: site.baseurl }}"><\/script>')</script>
 
 <!-- Critical: Language Toggle Event Delegation (Must load before user interaction) -->
 <script>

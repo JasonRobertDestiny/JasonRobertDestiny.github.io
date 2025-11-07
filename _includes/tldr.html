@@ -1,0 +1,60 @@
+<!-- TL;DR (Too Long; Didn't Read) Quick Summary Component -->
+<!-- Usage in post front matter:
+tldr:
+  - "选框架：新手LangChain，生产QPS>50必须自研"
+  - "成功率：我的3个系统平均89.4%，行业标准60-95%"
+  - "成本控制：Prompt优化+缓存+模型分级，从$0.08降到$0.027/决策"
+  - "最大挑战：不是技术，是定义'成功'的标准"
+-->
+
+{% if page.tldr %}
+<div class="tldr-section" style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); border-radius: 12px; padding: 30px; margin: 30px 0 40px 0; box-shadow: 0 6px 25px rgba(251, 191, 36, 0.25); border-left: 5px solid #d97706;">
+    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+        <div style="background: white; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; margin-right: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+            <i class="fa fa-bolt" style="color: #f59e0b; font-size: 24px;"></i>
+        </div>
+        <h2 style="color: white; margin: 0; font-size: 26px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            ⚡️ 核心要点（30秒速读）
+        </h2>
+    </div>
+
+    <ul style="margin: 0; padding-left: 25px; color: white; font-size: 17px; line-height: 2; list-style-type: none;">
+        {% for item in page.tldr %}
+        <li style="margin-bottom: 12px; padding-left: 30px; position: relative;">
+            <i class="fa fa-check-circle" style="position: absolute; left: 0; top: 8px; color: #34d399; font-size: 20px; text-shadow: 0 2px 4px rgba(0,0,0,0.2);"></i>
+            <strong style="font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">{{ item }}</strong>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.3); text-align: center;">
+        <span style="color: white; font-size: 14px; opacity: 0.9;">
+            <i class="fa fa-clock-o"></i> 节省您的时间 · 快速了解关键信息
+        </span>
+    </div>
+</div>
+
+<style>
+.tldr-section ul li::before {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@media (max-width: 768px) {
+    .tldr-section {
+        padding: 20px;
+        margin: 20px 0 30px 0;
+    }
+    .tldr-section h2 {
+        font-size: 22px;
+    }
+    .tldr-section ul {
+        font-size: 15px;
+    }
+}
+</style>
+{% endif %}
