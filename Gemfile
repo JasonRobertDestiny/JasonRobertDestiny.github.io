@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
+
+# Use GitHub Pages gem for compatibility
+gem 'github-pages', group: :jekyll_plugins
+
+# Additional plugins
 gem 'jekyll-paginate'
-
-gem "jekyll", "~> 4.0"
-gem "rake"
-
-gem "webrick", "~> 1.7"
+gem 'webrick', '~> 1.7'

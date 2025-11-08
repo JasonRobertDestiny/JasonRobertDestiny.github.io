@@ -1,0 +1,47 @@
+<!-- FAQ Schema Component with JSON-LD -->
+{% if page.faq %}
+<div class="faq-section" style="background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); border-radius: 12px; padding: 30px; margin: 40px 0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+    <h2 style="color: #1f2937; margin-bottom: 30px; font-size: 28px; font-weight: 700; border-bottom: 3px solid #667eea; padding-bottom: 15px;">
+        <i class="fa fa-question-circle" style="margin-right: 10px; color: #667eea;"></i>常见问题 (FAQ)
+    </h2>
+
+    {% for item in page.faq %}
+    <div class="faq-item" style="background: white; border-radius: 8px; padding: 25px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); transition: all 0.3s ease;">
+        <h3 style="color: #667eea; font-size: 20px; font-weight: 600; margin-bottom: 15px;">
+            <i class="fa fa-q" style="background: #667eea; color: white; padding: 5px 10px; border-radius: 5px; margin-right: 10px; font-size: 16px;"></i>
+            {{ item.question }}
+        </h3>
+        <div style="color: #4b5563; font-size: 16px; line-height: 1.8; padding-left: 45px;">
+            {{ item.answer | markdownify }}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- JSON-LD Schema for FAQs -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for item in page.faq %}
+    {
+      "@type": "Question",
+      "name": "{{ item.question | escape }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ item.answer | strip_html | escape }}"
+      }
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
+</script>
+
+<style>
+.faq-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+</style>
+{% endif %}
