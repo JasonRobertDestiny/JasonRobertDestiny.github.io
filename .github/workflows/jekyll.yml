@@ -33,6 +33,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            gcc g++ make \
+            pkg-config \
+            libffi-dev \
+            zlib1g-dev \
+            libssl-dev \
+            libgdbm-dev \
+            libreadline-dev \
+            libyaml-dev \
+            ruby-dev \
+            unzip \
+            ca-certificates
+
       - name: Setup Ruby
         # https://github.com/ruby/setup-ruby/releases/tag/v1.207.0
         uses: ruby/setup-ruby@4a9ddd6f338a97768b8006bf671dfbad383215f4
