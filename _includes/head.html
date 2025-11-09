@@ -7,7 +7,12 @@
     <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
     <meta name="keywords" content="{% if page.tags %}{% for tag in page.tags %}{{ tag }}{% unless forloop.last %}, {% endunless %}{% endfor %}{% else %}{{ site.keyword }}{% endif %}">
     <meta name="author" content="{% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %}">
+    <!-- Robots directive: noindex for pagination and tag pages -->
+    {% if page.url contains '/page' or page.url contains '/tags' %}
+    <meta name="robots" content="noindex, follow">
+    {% else %}
     <meta name="robots" content="index, follow">
+    {% endif %}
     {% if page.multilingual %}
     <meta name="language" content="en, zh-CN">
     <meta http-equiv="content-language" content="en, zh-CN">
