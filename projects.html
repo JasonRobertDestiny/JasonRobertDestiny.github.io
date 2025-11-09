@@ -243,6 +243,23 @@ multilingual: true
     </blockquote>
 </div>
 
+<!-- Language Switcher Script -->
+<script>
+    // onLanChange function for language switcher
+    function onLanChange(index) {
+        if (index == 0) {
+            document.querySelector('.zh').style.display = 'block';
+            document.querySelector('.en').style.display = 'none';
+        } else {
+            document.querySelector('.zh').style.display = 'none';
+            document.querySelector('.en').style.display = 'block';
+        }
+    }
+
+    // Set default to Chinese (index 0)
+    onLanChange(0);
+</script>
+
 <style>
 .project-card:hover {
     transform: translateY(-5px);

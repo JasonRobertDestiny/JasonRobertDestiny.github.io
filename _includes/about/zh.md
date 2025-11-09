@@ -1,6 +1,10 @@
-你好，我是Jason！
+Hi, I'm Jason!
 
-我是一名来自北京信息科技大学通信工程专业的本科生，专注于AI技术研发和全栈开发。在Agent应用开发领域有着丰富的实战经验，多次在各类编程竞赛和黑客松中获奖，致力于用技术创造智能未来。
+AI Agent Development Expert · 28 Months Production Experience
+Multi-Agent System Architect · Multiple Hackathon Winner
+🏆 MeetSpot · L'Oréal Data Assistant · Neighborly Help
+Beijing Information Science & Technology University · Communication Engineering
+Focus: Production-Grade AI Agents · Intelligent System Design · Tech Sharing
 
 # 过往作品集
 
