@@ -2,7 +2,7 @@ Hey, I am Jason!
 
 I'm an undergraduate student from Beijing Information Science and Technology University, majoring in Communication Engineering. I specialize in AI technology R&D and full-stack development, with extensive hands-on experience in Agent application development. I've won multiple awards in programming competitions and hackathons, committed to creating an intelligent future through technology.
 
-# Past Projects Portfolio
+## Past Projects Portfolio
 
 ## **Featured Projects**
 

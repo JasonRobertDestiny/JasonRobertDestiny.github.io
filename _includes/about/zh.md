@@ -6,7 +6,7 @@ Multi-Agent System Architect · Multiple Hackathon Winner
 Beijing Information Science & Technology University · Communication Engineering
 Focus: Production-Grade AI Agents · Intelligent System Design · Tech Sharing
 
-# 过往作品集
+## 过往作品集
 
 ## **特色项目**
 
