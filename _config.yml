@@ -1,10 +1,10 @@
 # Site settings
 title: Jason's Blog
-SEOTitle: AI Agent开发实战指南 | Jason的AI技术博客 | Production Experience
+SEOTitle: AI Agent Development Guide | Jason's AI Tech Blog | Production Experience
 header-img: img/home-bg.jpg
 email: johnrobertdestiny@gmail.com
-description: "AI Agent开发实战专家 | 28个月生产环境经验 | MeetSpot、L'Oréal Data Assistant等获奖项目作者 | 分享真实的AI Agent开发经验、多Agent系统架构、黑客松获奖攻略 | 每周更新深度技术文章"
-keyword: "AI Agent开发实战, 生产环境AI, 多Agent系统架构, LangChain深度实践, 黑客松获奖经验"
+description: "AI Agent Development Expert | 28 Months Production Experience | Creator of MeetSpot, L'Oréal Data Assistant & award-winning projects | Sharing real AI Agent development insights, multi-agent systems architecture, hackathon winning strategies | Weekly in-depth technical articles"
+keyword: "AI Agent Development, Production AI, Multi-Agent Systems, LangChain Practice, Hackathon Experience, Intelligent Systems"
 url: "https://jasonrobert.me" # your host, for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
 
@@ -87,7 +87,7 @@ ga_domain: jasonrobertdestiny.github.io
 
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
-sidebar-about-description: "AI Agent开发实战专家 · 28个月生产环境经验<br>多Agent系统架构师 · 黑客松多次获奖<br>🏆 MeetSpot · L'Oréal数据洞察助手 · 邻里互助<br>北京信息科技大学 · 通信工程<br>专注：生产级AI Agent · 智能体系统设计 · 技术分享"
+sidebar-about-description: "AI Agent Development Expert · 28 Months Production Experience<br>Multi-Agent Systems Architect · Multiple Hackathon Winner<br>🏆 MeetSpot · L'Oréal Data Insight Assistant · Neighborly Help<br>Beijing Information Science & Technology University · Telecommunication Engineering<br>Focus: Production-Grade AI Agents · Intelligent Systems Design · Tech Sharing"
 sidebar-avatar: https://github.com/JasonRobertDestiny.png # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags
