@@ -87,7 +87,7 @@ ga_domain: jasonrobertdestiny.github.io
 
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
-sidebar-about-description: "AI Agent Development Expert · 28 Months Production Experience<br>Multi-Agent Systems Architect · Multiple Hackathon Winner<br>🏆 MeetSpot · L'Oréal Data Insight Assistant · Neighborly Help<br>Beijing Information Science & Technology University · Telecommunication Engineering<br>Focus: Production-Grade AI Agents · Intelligent Systems Design · Tech Sharing"
+sidebar-about-description: "AI Agent Development Expert<br>28 Months Production Experience<br><br>Multi-Agent Systems Architect<br>Multiple Hackathon Winner<br><br>🏆 Award-Winning Projects:<br>MeetSpot · L'Oréal Data Insight · Neighborly Help<br><br>🎓 BISTU · Telecommunication Engineering<br><br>💡 Focus: Production-Grade AI Agents<br>Intelligent Systems · Tech Sharing"
 sidebar-avatar: https://github.com/JasonRobertDestiny.png # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags
