@@ -46,8 +46,9 @@
                         {% endif %}
                         {% endfor %}
                         <li class="search-icon">
-                            <a href="javascript:void(0)" class="search-toggle" aria-label="Search" title="Search articles and content">
-                                <i class="fa fa-search"></i>
+                            <a href="{{ site.baseurl }}/archive/" class="search-toggle focus-indicator" aria-label="Search articles and content" title="Search articles and content" role="button">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                                <span class="sr-only">Search</span>
                             </a>
                         </li>
                     </ul>

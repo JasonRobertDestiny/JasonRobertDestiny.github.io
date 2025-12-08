@@ -68,14 +68,14 @@
     
     // Load scripts after page load
      window.addEventListener('load', function() {
+         // Note: dark-mode.js, accessibility.js, image-optimization.js are loaded in head with defer
          loadScript('{{ "/js/bootstrap.min.js" | prepend: site.baseurl }}');
          loadScript('{{ "/js/jason-blog.min.js" | prepend: site.baseurl }}');
-         loadScript('{{ "/js/dark-mode.js" | prepend: site.baseurl }}');
          loadScript('{{ "/js/simple-jason-search.min.js" | prepend: site.baseurl }}', function() {
              // Initialize SimpleJasonSearch after script loads
              initSimpleJasonSearch();
          });
-         
+
          // Initialize all features when page loads
          initLazyLoading();
          initReadingProgress();

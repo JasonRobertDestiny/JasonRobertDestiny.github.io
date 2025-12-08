@@ -21,14 +21,17 @@
     {% endif %}
     <meta name="theme-color" content="{{ site.chrome-tab-theme-color }}">
     
-    <!-- Performance Optimization -->
+    <!-- Performance Optimization - Preconnect to critical third-party origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://www.googletagmanager.com">
-    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
-    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://avatars.githubusercontent.com" crossorigin>
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+    <link rel="dns-prefetch" href="//seo-fixer.writesonic.com">
     {% if page.url == '/' %}
-    <!-- Preload hero header image to improve LCP -->
-    <link rel="preload" as="image" href="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}">
+    <!-- Preload hero header image to improve LCP with high priority -->
+    <link rel="preload" as="image" href="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" fetchpriority="high">
     {% endif %}
 
     <!-- Open Graph -->
@@ -206,8 +209,16 @@
     <link rel="preload" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}"></noscript>
     
-    <!-- Custom Fonts with font-display swap -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom Fonts with font-display swap - load asynchronously -->
+    <link rel="preload" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"></noscript>
+    <!-- Font-display swap for Font Awesome icons -->
+    <style>
+        @font-face {
+            font-family: 'FontAwesome';
+            font-display: swap;
+        }
+    </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support -->
     <!--[if lt IE 9]>
@@ -347,22 +358,18 @@
     {% endif %}
 
     <!-- Security Headers via Meta -->
+    <!-- Note: X-Frame-Options must be set via HTTP header, not meta tag -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     
     <!-- Google AdSense -->
     <script data-ad-client="ca-pub-6487568398225121" async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     
-    <!-- Dark Mode Toggle -->
-    <script src="{{ "/js/dark-mode.js" | prepend: site.baseurl }}"></script>
-    
-    <!-- Accessibility Enhancements -->
-    <script src="{{ "/js/accessibility.js" | prepend: site.baseurl }}"></script>
-    
-    <!-- Image Optimization and Lazy Loading -->
-    <script src="{{ "/js/image-optimization.js" | prepend: site.baseurl }}"></script>
+    <!-- Non-blocking JavaScript - defer loading to not block rendering -->
+    <script src="{{ "/js/dark-mode.js" | prepend: site.baseurl }}" defer></script>
+    <script src="{{ "/js/accessibility.js" | prepend: site.baseurl }}" defer></script>
+    <script src="{{ "/js/image-optimization.js" | prepend: site.baseurl }}" defer></script>
     
     <!-- WriteSonic AI SEO Fixer -->
     {% if jekyll.environment == 'production' %}

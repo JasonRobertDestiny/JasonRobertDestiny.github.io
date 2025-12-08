@@ -433,24 +433,38 @@
     }
     
     // Re-process images when new content is added
-    const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-            if (mutation.addedNodes.length > 0) {
-                mutation.addedNodes.forEach((node) => {
-                    if (node.nodeType === Node.ELEMENT_NODE) {
-                        const images = node.querySelectorAll('img');
-                        images.forEach(img => ImageOptimizer.processImage(img));
-                    }
-                });
-            }
+    function setupMutationObserver() {
+        if (!document.body) {
+            // Body not ready, wait for DOMContentLoaded
+            return;
+        }
+
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.addedNodes.length > 0) {
+                    mutation.addedNodes.forEach((node) => {
+                        if (node.nodeType === Node.ELEMENT_NODE) {
+                            const images = node.querySelectorAll('img');
+                            images.forEach(img => ImageOptimizer.processImage(img));
+                        }
+                    });
+                }
+            });
         });
-    });
-    
-    observer.observe(document.body, {
-        childList: true,
-        subtree: true
-    });
-    
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    }
+
+    // Setup observer when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupMutationObserver);
+    } else {
+        setupMutationObserver();
+    }
+
     // Export for global use
     window.ImageOptimizer = ImageOptimizer;
     
