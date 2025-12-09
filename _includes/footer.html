@@ -315,22 +315,6 @@
 </script>
 
 
-<!-- Google Analytics (GA4) -->
-{% if site.ga_track_id %}
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_track_id }}"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', '{{ site.ga_track_id }}', {
-    'page_title': '{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}',
-    'page_location': '{{ site.url }}{{ page.url }}'
-  });
-</script>
-{% endif %}
-
 
 <!-- Baidu Tongji -->
 {% if site.ba_track_id %}
