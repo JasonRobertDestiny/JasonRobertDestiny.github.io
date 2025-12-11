@@ -339,6 +339,9 @@
     <!-- Performance Optimization - Resource Hints -->
     <link rel="preload" href="{{ "/css/jason-blog.min.css" | prepend: site.baseurl }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="{{ "/css/jason-blog.min.css" | prepend: site.baseurl }}"></noscript>
+    <!-- Async tail styles (purgeable) -->
+    <link rel="preload" href="{{ "/css/async.css" | prepend: site.baseurl }}" as="style">
+    <link rel="stylesheet" href="{{ "/css/async.css" | prepend: site.baseurl }}" media="print" onload="this.media='all'">
     
     <!-- Critical Font Preload -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts/fontawesome-webfont.woff2" as="font" type="font/woff2" crossorigin>

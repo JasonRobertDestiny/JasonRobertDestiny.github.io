@@ -69,9 +69,6 @@
         // Defer non-critical bundles
         loadScript('{{ "/js/bootstrap.min.js" | prepend: site.baseurl }}');
         loadScript('{{ "/js/jason-blog.min.js" | prepend: site.baseurl }}');
-        loadScript('{{ "/js/simple-jason-search.min.js" | prepend: site.baseurl }}', function() {
-            if (typeof initSimpleJasonSearch === 'function') initSimpleJasonSearch();
-        });
 
         // Optional AdSense (disabled by default via site.ads_enabled)
         {% if site.ads_enabled and jekyll.environment == 'production' %}
@@ -233,6 +230,7 @@
         s.parentNode.insertBefore(o, s);
     }
 </script>
+<script src="{{ "/js/async-init.js" | prepend: site.baseurl }}" defer></script>
 
 <!--
      Because of the native support for backtick-style fenced code blocks

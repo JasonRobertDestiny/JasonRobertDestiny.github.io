@@ -127,7 +127,7 @@
 {% endif %}
 
 {% if include.type == 'page' %}
-<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}'); aspect-ratio: 16/9; min-height: 420px;">
   <div class="header-mask enhanced-header-mask"></div>
   <div class="container">
     <div class="row">

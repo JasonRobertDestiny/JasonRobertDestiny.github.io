@@ -1,0 +1,7 @@
+@media (max-width: 768px) {
+  /* disable expensive animations/transitions on mobile */
+  [class*="animate"], .navbar-custom, .post-preview {
+    animation: none !important;
+    transition-duration: 120ms !important;
+  }
+}
