@@ -57,7 +57,6 @@
 
 <!-- Non-Critical JavaScript - Load Asynchronously -->
 <script>
-    // Async load non-critical scripts
     function loadScript(src, callback) {
         var script = document.createElement('script');
         script.src = src;
@@ -65,183 +64,156 @@
         if (callback) script.onload = callback;
         document.head.appendChild(script);
     }
-    
-    // Load scripts after page load
-     window.addEventListener('load', function() {
-         // Note: dark-mode.js, accessibility.js, image-optimization.js are loaded in head with defer
-         loadScript('{{ "/js/bootstrap.min.js" | prepend: site.baseurl }}');
-         loadScript('{{ "/js/jason-blog.min.js" | prepend: site.baseurl }}');
-         loadScript('{{ "/js/simple-jason-search.min.js" | prepend: site.baseurl }}', function() {
-             // Initialize SimpleJasonSearch after script loads
-             initSimpleJasonSearch();
-         });
 
-         // Delay AdSense loading by 3 seconds to improve initial load performance
-         {% if jekyll.environment == 'production' %}
-         setTimeout(function() {
-             var adScript = document.createElement('script');
-             adScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
-             adScript.setAttribute('data-ad-client', 'ca-pub-6487568398225121');
-             adScript.async = true;
-             document.head.appendChild(adScript);
-         }, 3000);
-         {% endif %}
+    window.addEventListener('load', function() {
+        // Defer non-critical bundles
+        loadScript('{{ "/js/bootstrap.min.js" | prepend: site.baseurl }}');
+        loadScript('{{ "/js/jason-blog.min.js" | prepend: site.baseurl }}');
+        loadScript('{{ "/js/simple-jason-search.min.js" | prepend: site.baseurl }}', function() {
+            if (typeof initSimpleJasonSearch === 'function') initSimpleJasonSearch();
+        });
 
-         // Initialize all features when page loads
-         initLazyLoading();
-         initReadingProgress();
-         initBackToTop();
-         initSocialShare();
-     });
-     
-     // Reading Progress Bar
-     function initReadingProgress() {
-         const progressBar = document.getElementById('reading-progress');
-         if (!progressBar) return;
-         
-         function updateProgress() {
-             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-             const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-             const progress = (scrollTop / scrollHeight) * 100;
-             progressBar.style.width = Math.min(progress, 100) + '%';
-         }
-         
-         window.addEventListener('scroll', updateProgress);
-         window.addEventListener('resize', updateProgress);
-         updateProgress(); // Initial call
-     }
-     
-     // Back to Top functionality
-     function initBackToTop() {
-         const backToTopBtn = document.getElementById('back-to-top');
-         if (!backToTopBtn) return;
-         
-         window.addEventListener('scroll', function() {
-             if (window.pageYOffset > 300) {
-                 backToTopBtn.classList.add('show');
-             } else {
-                 backToTopBtn.classList.remove('show');
-             }
-         });
-     }
-     
-     function scrollToTop() {
-         window.scrollTo({
-             top: 0,
-             behavior: 'smooth'
-         });
-     }
-     
-     // Floating Menu functionality
-     function toggleFloatingMenu() {
-         const menu = document.getElementById('floating-menu');
-         menu.classList.toggle('active');
-     }
-     
-     function openSearch() {
-         const searchPage = document.querySelector('.search-page');
-         if (searchPage) {
-             searchPage.classList.add('show');
-             const searchInput = document.getElementById('search-input');
-             if (searchInput) {
-                 setTimeout(() => searchInput.focus(), 300);
-             }
-         }
-         toggleFloatingMenu();
-     }
-     
-     function toggleDarkMode() {
-         // Use comprehensive dark mode system from dark-mode.js
-         if (window.DarkModeManager) {
-             window.DarkModeManager.toggle();
-         } else {
-             // Fallback for basic dark mode
-             document.body.classList.toggle('dark-mode');
-             localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-         }
-         toggleFloatingMenu();
-     }
-     
-     function printPage() {
-         window.print();
-         toggleFloatingMenu();
-     }
-     
-     // Social Share functionality
-     function initSocialShare() {
-         // Close search when clicking outside
-         document.addEventListener('click', function(e) {
-             const searchPage = document.querySelector('.search-page');
-             const floatingMenu = document.getElementById('floating-menu');
-             
-             if (searchPage && searchPage.classList.contains('show') && 
-                 !e.target.closest('.search-main') && !e.target.closest('.search-icon-close')) {
-                 searchPage.classList.remove('show');
-             }
-             
-             if (floatingMenu && floatingMenu.classList.contains('active') && 
-                 !e.target.closest('.floating-menu')) {
-                 floatingMenu.classList.remove('active');
-             }
-         });
-         
-         // Close search with close button
-         const closeBtn = document.querySelector('.search-icon-close');
-         if (closeBtn) {
-             closeBtn.addEventListener('click', function() {
-                 document.querySelector('.search-page').classList.remove('show');
-             });
-         }
-     }
-     
-     function shareToTwitter() {
-         const url = encodeURIComponent(window.location.href);
-         const text = encodeURIComponent(document.title);
-         window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank', 'width=600,height=400');
-     }
-     
-     function shareToFacebook() {
-         const url = encodeURIComponent(window.location.href);
-         window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'width=600,height=400');
-     }
-     
-     function shareToLinkedIn() {
-         const url = encodeURIComponent(window.location.href);
-         const title = encodeURIComponent(document.title);
-         window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${title}`, '_blank', 'width=600,height=400');
-     }
-     
-     function shareToWechat() {
-         // Copy URL to clipboard for WeChat sharing
-         navigator.clipboard.writeText(window.location.href).then(function() {
-             alert('链接已复制到剪贴板，请在微信中粘贴分享！');
-         }).catch(function() {
-             prompt('请复制以下链接在微信中分享：', window.location.href);
-         });
-     }
-     
-     function shareToWeibo() {
-         const url = encodeURIComponent(window.location.href);
-         const title = encodeURIComponent(document.title);
-         window.open(`https://service.weibo.com/share/share.php?url=${url}&title=${title}`, '_blank', 'width=600,height=400');
-     }
-     
-     // Lazy loading implementation
-     function initLazyLoading() {
-         const images = document.querySelectorAll('img[data-src]');
-         const imageObserver = new IntersectionObserver((entries, observer) => {
-             entries.forEach(entry => {
-                 if (entry.isIntersecting) {
-                     const img = entry.target;
-                     img.src = img.dataset.src;
-                     img.classList.remove('lazy');
-                     imageObserver.unobserve(img);
-                 }
-             });
-         });
-         
-         images.forEach(img => imageObserver.observe(img));
-     }
+        // Optional AdSense (disabled by default via site.ads_enabled)
+        {% if site.ads_enabled and jekyll.environment == 'production' %}
+        setTimeout(function() {
+            var adScript = document.createElement('script');
+            adScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+            adScript.async = true;
+            document.head.appendChild(adScript);
+        }, 3000);
+        {% endif %}
+
+        initLazyLoading();
+        initReadingProgress();
+        initBackToTop();
+        initSocialShare();
+    });
+
+    function initReadingProgress() {
+        const progressBar = document.getElementById('reading-progress');
+        if (!progressBar) return;
+        function updateProgress() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / scrollHeight) * 100;
+            progressBar.style.width = Math.min(progress, 100) + '%';
+        }
+        window.addEventListener('scroll', updateProgress);
+        window.addEventListener('resize', updateProgress);
+        updateProgress();
+    }
+
+    function initBackToTop() {
+        const backToTopBtn = document.getElementById('back-to-top');
+        if (!backToTopBtn) return;
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+    }
+
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleFloatingMenu() {
+        const menu = document.getElementById('floating-menu');
+        if (menu) menu.classList.toggle('active');
+    }
+
+    function openSearch() {
+        const searchPage = document.querySelector('.search-page');
+        if (searchPage) {
+            searchPage.classList.add('show');
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) setTimeout(() => searchInput.focus(), 300);
+        }
+        toggleFloatingMenu();
+    }
+
+    function toggleDarkMode() {
+        if (window.DarkModeManager) {
+            window.DarkModeManager.toggle();
+        } else {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        }
+        toggleFloatingMenu();
+    }
+
+    function printPage() {
+        window.print();
+        toggleFloatingMenu();
+    }
+
+    function initSocialShare() {
+        document.addEventListener('click', function(e) {
+            const searchPage = document.querySelector('.search-page');
+            const floatingMenu = document.getElementById('floating-menu');
+            if (searchPage && searchPage.classList.contains('show') && !e.target.closest('.search-main') && !e.target.closest('.search-icon-close')) {
+                searchPage.classList.remove('show');
+            }
+            if (floatingMenu && floatingMenu.classList.contains('active') && !e.target.closest('.floating-menu')) {
+                floatingMenu.classList.remove('active');
+            }
+        });
+        const closeBtn = document.querySelector('.search-icon-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                const searchPage = document.querySelector('.search-page');
+                if (searchPage) searchPage.classList.remove('show');
+            });
+        }
+    }
+
+    function shareToTwitter() {
+        const url = encodeURIComponent(window.location.href);
+        const text = encodeURIComponent(document.title);
+        window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank', 'width=600,height=400');
+    }
+    function shareToFacebook() {
+        const url = encodeURIComponent(window.location.href);
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'width=600,height=400');
+    }
+    function shareToLinkedIn() {
+        const url = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent(document.title);
+        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${title}`, '_blank', 'width=600,height=400');
+    }
+    function shareToWechat() {
+        navigator.clipboard.writeText(window.location.href).then(function() {
+            alert('链接已复制到剪贴板，请在微信中粘贴分享！');
+        }).catch(function() {
+            prompt('请复制以下链接在微信中分享：', window.location.href);
+        });
+    }
+    function shareToWeibo() {
+        const url = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent(document.title);
+        window.open(`https://service.weibo.com/share/share.php?url=${url}&title=${title}`, '_blank', 'width=600,height=400');
+    }
+
+    function initLazyLoading() {
+        const images = document.querySelectorAll('img[data-src]');
+        if (!('IntersectionObserver' in window)) {
+            images.forEach(img => { img.src = img.dataset.src; img.classList.remove('lazy'); });
+            return;
+        }
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
+                    observer.unobserve(img);
+                }
+            });
+        });
+        images.forEach(img => imageObserver.observe(img));
+    }
 </script>
 
 <!-- Service Worker -->

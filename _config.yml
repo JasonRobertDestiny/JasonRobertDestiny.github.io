@@ -7,6 +7,8 @@ description: "AI Agent 开发、全栈实践、获奖项目经验分享。用真
 keyword: "AI Agent, Core Web Vitals, PageSpeed, Devtools MCP, 多智能体, 性能优化"
 url: "https://jasonrobert.me" # your host, for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
+ads_enabled: false
+seo_fixer_enabled: false
 
 # Publish posts or collection documents with a future date.
 future: true

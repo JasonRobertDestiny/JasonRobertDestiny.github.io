@@ -45,7 +45,9 @@ layout: default
       {% include friends.html %}
 
       <!-- Ads -->
+      {% if site.ads_enabled %}
       {% include ads.html %}
+      {% endif %}
     </div>
     {% endif %}
   </div>

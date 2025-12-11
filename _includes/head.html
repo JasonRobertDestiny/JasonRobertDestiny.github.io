@@ -370,8 +370,8 @@
     <script src="{{ "/js/accessibility.js" | prepend: site.baseurl }}" defer></script>
     <script src="{{ "/js/image-optimization.js" | prepend: site.baseurl }}" defer></script>
     
-    <!-- WriteSonic AI SEO Fixer -->
-    {% if jekyll.environment == 'production' %}
+    {% if site.seo_fixer_enabled and jekyll.environment == 'production' %}
+    <!-- WriteSonic AI SEO Fixer (optional, off by default) -->
     <script src="https://seo-fixer.writesonic.com/site-audit/fixer-script/index.js" 
             id="wsAiSeoMb" 
             type="application/javascript" 
