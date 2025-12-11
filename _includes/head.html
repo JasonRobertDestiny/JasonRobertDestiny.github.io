@@ -361,11 +361,10 @@
     <!-- Note: X-Frame-Options must be set via HTTP header, not meta tag -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    
-    <!-- Google AdSense -->
-    <script data-ad-client="ca-pub-6487568398225121" async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    
+
+    <!-- Google AdSense - Deferred loading for better performance -->
+    <!-- Loaded after page becomes interactive to avoid blocking render -->
+
     <!-- Non-blocking JavaScript - defer loading to not block rendering -->
     <script src="{{ "/js/dark-mode.js" | prepend: site.baseurl }}" defer></script>
     <script src="{{ "/js/accessibility.js" | prepend: site.baseurl }}" defer></script>

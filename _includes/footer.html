@@ -76,6 +76,17 @@
              initSimpleJasonSearch();
          });
 
+         // Delay AdSense loading by 3 seconds to improve initial load performance
+         {% if jekyll.environment == 'production' %}
+         setTimeout(function() {
+             var adScript = document.createElement('script');
+             adScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+             adScript.setAttribute('data-ad-client', 'ca-pub-6487568398225121');
+             adScript.async = true;
+             document.head.appendChild(adScript);
+         }, 3000);
+         {% endif %}
+
          // Initialize all features when page loads
          initLazyLoading();
          initReadingProgress();

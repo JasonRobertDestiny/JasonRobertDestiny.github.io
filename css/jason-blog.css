@@ -3082,6 +3082,153 @@ select:focus,
     display: block !important;
   }
 }
+@media (max-width: 992px) {
+  .sidebar-container.tech-enhanced::before {
+    animation: none !important;
+    background: none !important;
+  }
+  .cursor-glow {
+    display: none !important;
+  }
+  .scroll-indicator-bar::before {
+    animation: none !important;
+  }
+  .card-3d,
+  .card-3d:hover {
+    transform: none !important;
+    transform-style: flat !important;
+  }
+  .post-preview,
+  .tag,
+  .share-btn,
+  .back-to-top,
+  .floating-menu-item,
+  .nav-item a,
+  .sidebar-container .tags a,
+  .friends a {
+    transition: transform 0.2s ease, opacity 0.2s ease !important;
+  }
+  .typewriter {
+    animation: none !important;
+    border-right: none !important;
+    white-space: normal !important;
+    overflow: visible !important;
+  }
+  .ripple::before {
+    display: none !important;
+  }
+  .post-preview:hover,
+  .post-preview:active {
+    transform: none !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  }
+  .animate-fade-in-up,
+  .fade-in,
+  .scroll-reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .navbar-custom,
+  .sidebar-container.tech-enhanced,
+  .search-form {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .sidebar-container.tech-enhanced .tags a::before,
+  .sidebar-container.tech-enhanced .tags a::after {
+    display: none !important;
+  }
+  .sidebar-container.tech-enhanced .tags a:hover {
+    transform: translateY(-2px) !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .sidebar-container.tech-enhanced::before {
+    animation: none !important;
+  }
+  .scroll-indicator-bar::before {
+    animation: none !important;
+  }
+}
+.back-to-top,
+.floating-menu,
+.floating-menu-toggle,
+.floating-menu-item {
+  will-change: transform, opacity;
+}
+img {
+  aspect-ratio: attr(width) / attr(height);
+}
+.intro-header {
+  min-height: 400px;
+}
+@media (max-width: 768px) {
+  .intro-header {
+    min-height: 300px;
+  }
+}
+.sidebar-avatar {
+  width: 128px;
+  height: 128px;
+}
+@media (max-width: 768px) {
+  .sidebar-avatar {
+    width: 100px;
+    height: 100px;
+  }
+}
+.post-preview {
+  min-height: 120px;
+}
+.navbar-custom {
+  min-height: 50px;
+}
+@font-face {
+  font-display: swap;
+}
+@media (max-width: 992px) {
+  .floating-menu-item,
+  .back-to-top,
+  .share-btn,
+  .nav li a,
+  .search-icon,
+  .lang-btn {
+    min-width: 48px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .floating-menu-items {
+    gap: 12px;
+  }
+  .share-buttons {
+    gap: 16px;
+  }
+}
+.post-preview,
+.sidebar-container,
+.navbar-custom,
+footer {
+  contain: layout paint;
+}
+@media (max-width: 768px) {
+  body {
+    background: #f8fafc !important;
+  }
+  .tech-gradient-bg::before {
+    display: none !important;
+  }
+}
 body {
   /* Optimized font stack for better cross-platform compatibility */
   font-family: -apple-system, BlinkMacSystemFont, /* Cross-platform fallbacks */ "Segoe UI", Roboto, "Helvetica Neue", Arial, /* Chinese fonts */ "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", /* Generic fallback */ sans-serif;

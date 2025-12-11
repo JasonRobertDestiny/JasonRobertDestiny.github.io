@@ -1,0 +1,237 @@
+// Mobile Performance Optimizations
+// Fixes: 80 non-composited animations, CLS issues, main-thread work
+
+// ==============================================
+// MOBILE ANIMATION OPTIMIZATION
+// Only use transform and opacity for animations
+// ==============================================
+
+@media (max-width: @screen-md) {
+  // Disable expensive background animations on mobile
+  .sidebar-container.tech-enhanced::before {
+    animation: none !important;
+    background: none !important;
+  }
+
+  // Disable cursor glow effect
+  .cursor-glow {
+    display: none !important;
+  }
+
+  // Disable scroll indicator animation
+  .scroll-indicator-bar::before {
+    animation: none !important;
+  }
+
+  // Disable 3D card effects
+  .card-3d,
+  .card-3d:hover {
+    transform: none !important;
+    transform-style: flat !important;
+  }
+
+  // Simplify transitions - only transform and opacity
+  .post-preview,
+  .tag,
+  .share-btn,
+  .back-to-top,
+  .floating-menu-item,
+  .nav-item a,
+  .sidebar-container .tags a,
+  .friends a {
+    transition: transform 0.2s ease, opacity 0.2s ease !important;
+  }
+
+  // Disable typewriter animation
+  .typewriter {
+    animation: none !important;
+    border-right: none !important;
+    white-space: normal !important;
+    overflow: visible !important;
+  }
+
+  // Disable ripple effects
+  .ripple::before {
+    display: none !important;
+  }
+
+  // Reduce hover effects on mobile
+  .post-preview:hover,
+  .post-preview:active {
+    transform: none !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important;
+  }
+
+  // Simplify fade-in animations
+  .animate-fade-in-up,
+  .fade-in,
+  .scroll-reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  // Disable background blur on mobile (expensive)
+  .navbar-custom,
+  .sidebar-container.tech-enhanced,
+  .search-form {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  // Optimize tag cloud animations
+  .sidebar-container.tech-enhanced .tags a {
+    &::before,
+    &::after {
+      display: none !important;
+    }
+
+    &:hover {
+      transform: translateY(-2px) !important;
+    }
+  }
+}
+
+// ==============================================
+// PREFERS REDUCED MOTION (Accessibility)
+// ==============================================
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .sidebar-container.tech-enhanced::before {
+    animation: none !important;
+  }
+
+  .scroll-indicator-bar::before {
+    animation: none !important;
+  }
+}
+
+// ==============================================
+// COMPOSITED LAYER OPTIMIZATION
+// Use will-change for frequently animated elements
+// ==============================================
+
+.back-to-top,
+.floating-menu,
+.floating-menu-toggle,
+.floating-menu-item {
+  will-change: transform, opacity;
+}
+
+// ==============================================
+// CLS (Cumulative Layout Shift) FIXES
+// Reserve space for dynamic content
+// ==============================================
+
+// Reserve space for images
+img {
+  aspect-ratio: attr(width) / attr(height);
+}
+
+// Reserve space for intro header
+.intro-header {
+  min-height: 400px;
+
+  @media (max-width: @screen-sm) {
+    min-height: 300px;
+  }
+}
+
+// Reserve space for sidebar avatar
+.sidebar-avatar {
+  width: 128px;
+  height: 128px;
+
+  @media (max-width: @screen-sm) {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+// Reserve space for post preview cards
+.post-preview {
+  min-height: 120px;
+}
+
+// Reserve space for navbar
+.navbar-custom {
+  min-height: 50px;
+}
+
+// ==============================================
+// FONT DISPLAY OPTIMIZATION
+// ==============================================
+
+// Ensure fonts don't cause layout shifts
+@font-face {
+  font-display: swap;
+}
+
+// ==============================================
+// TOUCH TARGET OPTIMIZATION (Accessibility)
+// Minimum 48x48px touch targets
+// ==============================================
+
+@media (max-width: @screen-md) {
+  .floating-menu-item,
+  .back-to-top,
+  .share-btn,
+  .nav li a,
+  .search-icon,
+  .lang-btn {
+    min-width: 48px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // Increase spacing between touch targets
+  .floating-menu-items {
+    gap: 12px;
+  }
+
+  .share-buttons {
+    gap: 16px;
+  }
+}
+
+// ==============================================
+// PAINT CONTAINMENT
+// Improve paint performance
+// ==============================================
+
+.post-preview,
+.sidebar-container,
+.navbar-custom,
+footer {
+  contain: layout paint;
+}
+
+// ==============================================
+// REDUCE MAIN THREAD WORK
+// Simplify expensive selectors
+// ==============================================
+
+// Avoid expensive universal selectors with transitions
+// Use specific selectors instead
+
+// Simplify gradient backgrounds on mobile
+@media (max-width: @screen-sm) {
+  body {
+    background: #f8fafc !important;
+  }
+
+  .tech-gradient-bg::before {
+    display: none !important;
+  }
+}
