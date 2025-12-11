@@ -31,7 +31,7 @@
     <link rel="dns-prefetch" href="//seo-fixer.writesonic.com">
     {% if page.url == '/' %}
     <!-- Preload hero header image to improve LCP with high priority -->
-    <link rel="preload" as="image" href="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" fetchpriority="high">
+    <link rel="preload" as="image" href="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" fetchpriority="high" imagesrcset="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %} 1x" imagesizes="100vw">
     {% endif %}
 
     <!-- Open Graph -->

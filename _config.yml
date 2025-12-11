@@ -1,7 +1,7 @@
 # Site settings
 title: Jason's Blog
 SEOTitle: Jason's AI & Tech Insights
-header-img: img/home-bg.jpg
+header-img: img/home-bg-o.jpg
 email: johnrobertdestiny@gmail.com
 description: "AI Agent 开发、全栈实践、获奖项目经验分享。用真实生产案例和多智能体架构，帮助你快速上线可赚钱的 AI 产品。"
 keyword: "AI Agent, Core Web Vitals, PageSpeed, Devtools MCP, 多智能体, 性能优化"
