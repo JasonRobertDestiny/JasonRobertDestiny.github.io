@@ -1,10 +1,10 @@
 # Site settings
 title: Jason's Blog
-SEOTitle: AI Agent Development Guide | Jason's AI Tech Blog | Production Experience
+SEOTitle: Jason's AI & Tech Insights
 header-img: img/home-bg.jpg
 email: johnrobertdestiny@gmail.com
-description: "AI Agent Development Expert | 28 Months Production Experience | Creator of MeetSpot, L'Oréal Data Assistant & award-winning projects | Sharing real AI Agent development insights, multi-agent systems architecture, hackathon winning strategies | Weekly in-depth technical articles"
-keyword: "AI Agent Development, Production AI, Multi-Agent Systems, LangChain Practice, Hackathon Experience, Intelligent Systems"
+description: "AI Agent 开发、全栈实践、获奖项目经验分享。用真实生产案例和多智能体架构，帮助你快速上线可赚钱的 AI 产品。"
+keyword: "AI Agent, Core Web Vitals, PageSpeed, Devtools MCP, 多智能体, 性能优化"
 url: "https://jasonrobert.me" # your host, for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
 
