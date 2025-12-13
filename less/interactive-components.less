@@ -1,0 +1,503 @@
+// Interactive Components - 交互组件增强
+// 遵循 frontend-design 原则：每个操作都有视觉反馈
+
+// ============================================
+// 按钮波纹效果 (Ripple Effect)
+// ============================================
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0); // GPU 加速
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: @radius-full;
+    background: fade(@text-inverse, 30%);
+    transform: translate(-50%, -50%);
+    transition: width @duration-moderate @ease-out-cubic,
+                height @duration-moderate @ease-out-cubic;
+  }
+
+  &:active::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &::before {
+      display: none;
+    }
+  }
+}
+
+// ============================================
+// 点击反馈动画 (Click Feedback)
+// ============================================
+.click-feedback {
+  .transition-transform();
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &:active {
+      transform: none;
+    }
+  }
+}
+
+// ============================================
+// 加载按钮状态 (Loading Button)
+// ============================================
+.btn-loading {
+  position: relative;
+  pointer-events: none;
+  color: transparent !important;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    border: 2px solid @text-inverse;
+    border-right-color: transparent;
+    border-radius: @radius-full;
+    animation: spin @duration-slower linear infinite;
+  }
+
+  &.btn-lg::after {
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+// ============================================
+// 骨架屏 (Skeleton Loading)
+// ============================================
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    @bg-tertiary 0%,
+    @bg-quaternary 50%,
+    @bg-tertiary 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+  border-radius: @radius-md;
+
+  &--text {
+    height: 16px;
+    margin-bottom: @space-2;
+    border-radius: @radius-sm;
+
+    &:last-child {
+      width: 80%;
+    }
+  }
+
+  &--heading {
+    height: 28px;
+    width: 60%;
+    margin-bottom: @space-4;
+  }
+
+  &--avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: @radius-full;
+  }
+
+  &--card {
+    height: 200px;
+    width: 100%;
+  }
+
+  &--circle {
+    border-radius: @radius-full;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    background: @bg-tertiary;
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+// ============================================
+// 脉冲加载器 (Pulse Loader)
+// ============================================
+.pulse-loader {
+  display: inline-flex;
+  gap: @space-2;
+
+  span {
+    width: 8px;
+    height: 8px;
+    background: @brand-primary;
+    border-radius: @radius-full;
+    animation: pulse-dot 1.4s ease-in-out infinite;
+
+    &:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+  }
+
+  &--large span {
+    width: 12px;
+    height: 12px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    span {
+      animation: none;
+      opacity: @opacity-50;
+    }
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 80%, 100% {
+    opacity: @opacity-25;
+    transform: scale(1);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+// ============================================
+// 旋转加载器 (Spinner)
+// ============================================
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid @border-light;
+  border-top-color: @brand-primary;
+  border-radius: @radius-full;
+  animation: spin @duration-slower linear infinite;
+
+  &--sm {
+    width: 20px;
+    height: 20px;
+    border-width: 2px;
+  }
+
+  &--lg {
+    width: 60px;
+    height: 60px;
+    border-width: 4px;
+  }
+
+  &--gradient {
+    border: none;
+    background: @gradient-primary;
+    -webkit-mask: radial-gradient(
+      circle,
+      transparent 30%,
+      black 30%,
+      black 33%,
+      transparent 33%
+    );
+    mask: radial-gradient(
+      circle,
+      transparent 30%,
+      black 30%,
+      black 33%,
+      transparent 33%
+    );
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    border-top-color: @brand-primary;
+    border-right-color: @brand-primary;
+  }
+}
+
+// ============================================
+// Toast 通知 (Toast Notifications)
+// ============================================
+.toast {
+  position: fixed;
+  bottom: @space-6;
+  right: @space-6;
+  min-width: 300px;
+  max-width: 500px;
+  padding: @space-4 @space-5;
+  background: @bg-card;
+  border: 1px solid @border-light;
+  border-radius: @radius-lg;
+  box-shadow: @elevation-5;
+  backdrop-filter: blur(10px);
+  transform: translateY(100px);
+  opacity: 0;
+  .transition-all();
+  z-index: @z-tooltip;
+
+  &.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  &__content {
+    display: flex;
+    align-items: flex-start;
+    gap: @space-3;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: @radius-full;
+  }
+
+  &__message {
+    flex: 1;
+    font-size: @text-sm;
+    line-height: @leading-relaxed;
+    color: @text-primary;
+  }
+
+  &__close {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border: none;
+    background: transparent;
+    color: @text-muted;
+    cursor: pointer;
+    .transition-colors();
+
+    &:hover {
+      color: @text-primary;
+    }
+  }
+
+  // 类型变体
+  &--success {
+    border-left: 4px solid @success;
+
+    .toast__icon {
+      background: @success-light;
+      color: @success;
+    }
+  }
+
+  &--error {
+    border-left: 4px solid @danger;
+
+    .toast__icon {
+      background: @danger-light;
+      color: @danger;
+    }
+  }
+
+  &--warning {
+    border-left: 4px solid @warning;
+
+    .toast__icon {
+      background: @warning-light;
+      color: @warning;
+    }
+  }
+
+  &--info {
+    border-left: 4px solid @info;
+
+    .toast__icon {
+      background: @info-light;
+      color: @info;
+    }
+  }
+
+  @media (max-width: @breakpoint-md) {
+    bottom: @space-4;
+    right: @space-4;
+    left: @space-4;
+    min-width: auto;
+  }
+}
+
+// ============================================
+// 工具提示 (Tooltip)
+// ============================================
+.tooltip {
+  position: absolute;
+  padding: @space-2 @space-3;
+  background: @bg-dark;
+  color: @text-inverse;
+  font-size: @text-xs;
+  border-radius: @radius-md;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-@space-2);
+  .transition-all();
+  transition-duration: @duration-fast;
+  z-index: @z-tooltip;
+  pointer-events: none;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid transparent;
+    border-top-color: @bg-dark;
+  }
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  // 位置变体
+  &--top {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(@space-2);
+    margin-bottom: @space-2;
+
+    &::before {
+      bottom: -4px;
+      border-top-color: @bg-dark;
+      border-bottom-color: transparent;
+    }
+
+    &.show {
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+
+  &--bottom {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-@space-2);
+    margin-top: @space-2;
+
+    &::before {
+      top: -4px;
+      bottom: auto;
+      border-bottom-color: @bg-dark;
+      border-top-color: transparent;
+    }
+
+    &.show {
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: opacity @duration-fast;
+    transform: none !important;
+  }
+}
+
+// ============================================
+// 模态框遮罩 (Modal Overlay)
+// ============================================
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: fade(@bg-dark, 80%);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  .transition-all();
+  z-index: @z-modal;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    backdrop-filter: none;
+  }
+}
+
+// ============================================
+// 暗色模式适配
+// ============================================
+.dark-mode {
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      @dark-bg-tertiary 0%,
+      @dark-bg-quaternary 50%,
+      @dark-bg-tertiary 100%
+    );
+    background-size: 200% 100%;
+  }
+
+  .toast {
+    background: fade(@dark-bg-secondary, 95%);
+    border-color: @dark-bg-tertiary;
+
+    &__message {
+      color: @dark-text-primary;
+    }
+
+    &__close {
+      color: @dark-text-muted;
+
+      &:hover {
+        color: @dark-text-primary;
+      }
+    }
+
+    &--success {
+      border-left-color: @success;
+    }
+
+    &--error {
+      border-left-color: @danger;
+    }
+
+    &--warning {
+      border-left-color: @warning;
+    }
+
+    &--info {
+      border-left-color: @info;
+    }
+  }
+
+  .spinner {
+    border-color: @dark-bg-quaternary;
+    border-top-color: @brand-accent;
+  }
+}
