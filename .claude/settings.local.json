@@ -27,7 +27,12 @@
       "Bash(curl -s \"https://jasonrobert.me/css/jason-blog.css\")",
       "Bash(git remote set-url origin git@github.com:JasonRobertDestiny/JasonRobertDestiny.github.io.git)",
       "Bash(cat \"/mnt/d/VibeCoding_pgm/JasonRobertDestiny.github.io/_posts/1.markdown\")",
-      "Bash(cat \"/mnt/d/VibeCoding_pgm/JasonRobertDestiny.github.io/_posts/2.markdown\")"
+      "Bash(cat \"/mnt/d/VibeCoding_pgm/JasonRobertDestiny.github.io/_posts/2.markdown\")",
+      "Bash(cat:*)",
+      "Bash(ls:*)",
+      "Bash(wc:*)",
+      "Bash(file:*)",
+      "Skill(frontend-design)"
     ],
     "deny": [],
     "ask": []

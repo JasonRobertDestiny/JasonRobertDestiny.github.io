@@ -448,6 +448,36 @@
     // 暗色模式下保持渐变色
     color: @text-inverse;
   }
+
+  .post-list__item {
+    &:hover {
+      border-color: @brand-accent;
+
+      .post-title {
+        color: @brand-accent;
+      }
+    }
+  }
+
+  .pager {
+    &__link {
+      background: @dark-bg-secondary;
+      border-color: @dark-bg-tertiary;
+
+      &:hover {
+        background: @dark-bg-tertiary;
+        border-color: @brand-accent;
+      }
+    }
+
+    &__direction {
+      color: @dark-text-muted;
+    }
+
+    &__title {
+      color: @dark-text-primary;
+    }
+  }
 }
 
 // ============================================
