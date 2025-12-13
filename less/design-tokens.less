@@ -1,0 +1,271 @@
+// Design Tokens - 统一设计系统令牌
+// 所有设计决策都应使用这些令牌，避免硬编码
+
+// ============================================
+// 间距系统 (Spacing Scale)
+// ============================================
+// 使用 8px 基准的间距系统
+@space-0: 0;
+@space-1: 4px;    // 0.25rem
+@space-2: 8px;    // 0.5rem
+@space-3: 12px;   // 0.75rem
+@space-4: 16px;   // 1rem - 基准
+@space-5: 24px;   // 1.5rem
+@space-6: 32px;   // 2rem
+@space-7: 40px;   // 2.5rem
+@space-8: 48px;   // 3rem
+@space-9: 56px;   // 3.5rem
+@space-10: 64px;  // 4rem
+@space-12: 96px;  // 6rem
+@space-16: 128px; // 8rem
+
+// ============================================
+// 动画持续时间 (Animation Durations)
+// ============================================
+@duration-instant: 50ms;
+@duration-fast: 150ms;      // 快速交互（按钮、链接）
+@duration-normal: 250ms;    // 标准过渡
+@duration-moderate: 350ms;  // 中等动画
+@duration-slow: 500ms;      // 慢速过渡
+@duration-slower: 700ms;    // 更慢的动画
+@duration-slowest: 1000ms;  // 最慢动画
+
+// ============================================
+// 缓动函数 (Easing Functions)
+// ============================================
+@ease-linear: linear;
+@ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+@ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+@ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+@ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+@ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+@ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+@ease-spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+// ============================================
+// 圆角系统 (Border Radius)
+// ============================================
+@radius-none: 0;
+@radius-sm: 4px;
+@radius-base: 8px;
+@radius-md: 12px;
+@radius-lg: 16px;
+@radius-xl: 20px;
+@radius-2xl: 24px;
+@radius-full: 9999px;
+
+// ============================================
+// 阴影系统 (Elevation/Shadows)
+// ============================================
+@elevation-0: none;
+@elevation-1: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+@elevation-2: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+@elevation-3: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+@elevation-4: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+@elevation-5: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+@elevation-6: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+// ============================================
+// 字体大小系统 (Typography Scale)
+// ============================================
+@text-xs: 12px;
+@text-sm: 14px;
+@text-base: 16px;
+@text-lg: 18px;
+@text-xl: 20px;
+@text-2xl: 24px;
+@text-3xl: 30px;
+@text-4xl: 36px;
+@text-5xl: 48px;
+@text-6xl: 60px;
+
+// ============================================
+// 行高系统 (Line Heights)
+// ============================================
+@leading-none: 1;
+@leading-tight: 1.25;
+@leading-snug: 1.375;
+@leading-normal: 1.5;
+@leading-relaxed: 1.625;
+@leading-loose: 2;
+
+// ============================================
+// 字重系统 (Font Weights)
+// ============================================
+@weight-thin: 100;
+@weight-light: 300;
+@weight-normal: 400;
+@weight-medium: 500;
+@weight-semibold: 600;
+@weight-bold: 700;
+@weight-extrabold: 800;
+@weight-black: 900;
+
+// ============================================
+// Z-Index 系统 (Layering)
+// ============================================
+@z-base: 0;
+@z-dropdown: 1000;
+@z-sticky: 1010;
+@z-fixed: 1020;
+@z-overlay: 1030;
+@z-modal: 1040;
+@z-popover: 1050;
+@z-tooltip: 1060;
+
+// ============================================
+// 断点系统 (Responsive Breakpoints)
+// ============================================
+@breakpoint-xs: 480px;
+@breakpoint-sm: 640px;
+@breakpoint-md: 768px;
+@breakpoint-lg: 1024px;
+@breakpoint-xl: 1280px;
+@breakpoint-2xl: 1536px;
+
+// ============================================
+// 容器宽度 (Container Widths)
+// ============================================
+@container-sm: 640px;
+@container-md: 768px;
+@container-lg: 1024px;
+@container-xl: 1280px;
+@container-2xl: 1536px;
+
+// ============================================
+// 不透明度系统 (Opacity)
+// ============================================
+@opacity-0: 0;
+@opacity-5: 0.05;
+@opacity-10: 0.1;
+@opacity-20: 0.2;
+@opacity-25: 0.25;
+@opacity-30: 0.3;
+@opacity-40: 0.4;
+@opacity-50: 0.5;
+@opacity-60: 0.6;
+@opacity-70: 0.7;
+@opacity-75: 0.75;
+@opacity-80: 0.8;
+@opacity-90: 0.9;
+@opacity-95: 0.95;
+@opacity-100: 1;
+
+// ============================================
+// 过渡混合 (Transition Mixins)
+// ============================================
+.transition-base {
+  transition-duration: @duration-normal;
+  transition-timing-function: @ease-out-cubic;
+}
+
+.transition-fast {
+  transition-duration: @duration-fast;
+  transition-timing-function: @ease-out-quad;
+}
+
+.transition-slow {
+  transition-duration: @duration-slow;
+  transition-timing-function: @ease-in-out-cubic;
+}
+
+.transition-all {
+  transition-property: all;
+  .transition-base();
+}
+
+.transition-colors {
+  transition-property: background-color, border-color, color, fill, stroke;
+  .transition-base();
+}
+
+.transition-transform {
+  transition-property: transform;
+  .transition-base();
+}
+
+.transition-opacity {
+  transition-property: opacity;
+  .transition-base();
+}
+
+// ============================================
+// 交互状态混合 (Interactive States)
+// ============================================
+.hover-lift {
+  .transition-all();
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: @elevation-4;
+  }
+}
+
+.hover-lift-lg {
+  .transition-all();
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: @elevation-5;
+  }
+}
+
+.hover-scale {
+  .transition-transform();
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.hover-scale-sm {
+  .transition-transform();
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+// ============================================
+// 焦点状态 (Focus States)
+// ============================================
+.focus-ring {
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+  }
+}
+
+.focus-ring-offset {
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px rgba(79, 70, 229, 0.15);
+  }
+}
+
+// ============================================
+// 响应式混合 (Responsive Mixins)
+// ============================================
+.responsive-text {
+  font-size: @text-sm;
+
+  @media (min-width: @breakpoint-sm) {
+    font-size: @text-base;
+  }
+
+  @media (min-width: @breakpoint-lg) {
+    font-size: @text-lg;
+  }
+}
+
+.responsive-spacing {
+  padding: @space-4;
+
+  @media (min-width: @breakpoint-md) {
+    padding: @space-6;
+  }
+
+  @media (min-width: @breakpoint-lg) {
+    padding: @space-8;
+  }
+}

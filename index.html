@@ -6,86 +6,84 @@ hide-in-nav: true
 ---
 
 <!-- Featured Articles Section -->
-<div class="featured-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; padding: 30px; margin-bottom: 40px; box-shadow: 0 8px 30px rgba(0,0,0,0.12);">
-    <h2 style="color: white; margin-bottom: 25px; font-size: 28px; font-weight: 700;">
-        <i class="fa fa-star" style="margin-right: 10px;"></i>精选文章
+<div class="featured-section animate-fade-in-up">
+    <h2 class="featured-section__title">
+        <i class="fa fa-star" aria-hidden="true"></i>精选文章
     </h2>
-    <div class="row">
-        <div class="col-md-4 col-sm-6">
-            <div class="featured-card" style="background: rgba(255,255,255,0.95); border-radius: 8px; padding: 20px; margin-bottom: 15px; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-                <h3 style="color: #667eea; margin-bottom: 12px; font-size: 18px; font-weight: 600;">
-                    <a href="{{ site.baseurl }}/2025/01/17/ai-agent-complete-guide/" style="color: #667eea; text-decoration: none;" title="Read: AI Agent Complete Guide - 28 months production experience">
-                        AI Agent完全指南
-                    </a>
-                </h3>
-                <p style="color: #6b7280; font-size: 14px; line-height: 1.6;">28个月生产环境经验，847,293个自主决策，从$847 API灾难到91.8%成功率的完整旅程</p>
-                <span style="color: #9ca3af; font-size: 12px;"><i class="fa fa-clock-o" aria-hidden="true"></i> 35分钟阅读</span>
-            </div>
+    <div class="featured-section__grid">
+        <div class="featured-card animate-fade-in-up--delay-1">
+            <h3 class="featured-card__title">
+                <a href="{{ site.baseurl }}/2025/01/17/ai-agent-complete-guide/" title="Read: AI Agent Complete Guide - 28 months production experience">
+                    AI Agent完全指南
+                </a>
+            </h3>
+            <p class="featured-card__description">28个月生产环境经验，847,293个自主决策，从$847 API灾难到91.8%成功率的完整旅程</p>
+            <span class="featured-card__meta">
+                <i class="fa fa-clock-o" aria-hidden="true"></i> 35分钟阅读
+            </span>
         </div>
-        <div class="col-md-4 col-sm-6">
-            <div class="featured-card" style="background: rgba(255,255,255,0.95); border-radius: 8px; padding: 20px; margin-bottom: 15px;">
-                <h3 style="color: #667eea; margin-bottom: 12px; font-size: 18px; font-weight: 600;">
-                    <a href="{{ site.baseurl }}/2025/01/14/ai-agent-reality-check/" style="color: #667eea; text-decoration: none;" title="Read: AI Agent Reality Check - Real capabilities from production systems">
-                        AI Agent现实检验
-                    </a>
-                </h3>
-                <p style="color: #6b7280; font-size: 14px; line-height: 1.6;">揭示AI Agent的真实能力边界，基于3个生产系统的实战数据</p>
-                <span style="color: #9ca3af; font-size: 12px;"><i class="fa fa-clock-o" aria-hidden="true"></i> 25分钟阅读</span>
-            </div>
+        <div class="featured-card animate-fade-in-up--delay-2">
+            <h3 class="featured-card__title">
+                <a href="{{ site.baseurl }}/2025/01/14/ai-agent-reality-check/" title="Read: AI Agent Reality Check - Real capabilities from production systems">
+                    AI Agent现实检验
+                </a>
+            </h3>
+            <p class="featured-card__description">揭示AI Agent的真实能力边界，基于3个生产系统的实战数据</p>
+            <span class="featured-card__meta">
+                <i class="fa fa-clock-o" aria-hidden="true"></i> 25分钟阅读
+            </span>
         </div>
-        <div class="col-md-4 col-sm-6">
-            <div class="featured-card" style="background: rgba(255,255,255,0.95); border-radius: 8px; padding: 20px; margin-bottom: 15px;">
-                <h3 style="color: #667eea; margin-bottom: 12px; font-size: 18px; font-weight: 600;">
-                    <a href="{{ site.baseurl }}/2025/06/26/agent-development-journey/" style="color: #667eea; text-decoration: none;" title="Read: Agent Development Journey - MeetSpot hackathon winning project">
-                        Agent开发之旅
-                    </a>
-                </h3>
-                <p style="color: #6b7280; font-size: 14px; line-height: 1.6;">从零到黑客松获奖的完整历程，MeetSpot项目技术复盘</p>
-                <span style="color: #9ca3af; font-size: 12px;"><i class="fa fa-clock-o" aria-hidden="true"></i> 20分钟阅读</span>
-            </div>
+        <div class="featured-card animate-fade-in-up--delay-3">
+            <h3 class="featured-card__title">
+                <a href="{{ site.baseurl }}/2025/06/26/agent-development-journey/" title="Read: Agent Development Journey - MeetSpot hackathon winning project">
+                    Agent开发之旅
+                </a>
+            </h3>
+            <p class="featured-card__description">从零到黑客松获奖的完整历程，MeetSpot项目技术复盘</p>
+            <span class="featured-card__meta">
+                <i class="fa fa-clock-o" aria-hidden="true"></i> 20分钟阅读
+            </span>
         </div>
     </div>
 </div>
 
 <!-- Core Topics Navigation -->
-<div class="core-topics" style="background: white; border-radius: 12px; padding: 25px; margin-bottom: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
-    <h3 style="color: #1f2937; margin-bottom: 20px; font-size: 22px; font-weight: 600;">
-        <i class="fa fa-book" style="margin-right: 10px; color: #667eea;"></i>核心话题
+<div class="core-topics animate-fade-in-up">
+    <h3 class="core-topics__title">
+        <i class="fa fa-book" aria-hidden="true"></i>核心话题
     </h3>
-    <div class="topic-tags">
-        <a href="{{ site.baseurl }}/archive/?tag=AI+Agent" class="topic-tag" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 10px 20px; margin: 5px; border-radius: 25px; text-decoration: none; font-size: 14px; transition: transform 0.3s ease;" title="Browse all AI Agent development articles">
-            <i class="fa fa-robot"></i> AI Agent开发
+    <div class="core-topics__tags">
+        <a href="{{ site.baseurl }}/archive/?tag=AI+Agent"
+           class="topic-tag topic-tag--primary"
+           title="Browse all AI Agent development articles">
+            <i class="fa fa-robot" aria-hidden="true"></i> AI Agent开发
         </a>
-        <a href="{{ site.baseurl }}/archive/?tag=Production+Guide" class="topic-tag" style="display: inline-block; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 10px 20px; margin: 5px; border-radius: 25px; text-decoration: none; font-size: 14px; transition: transform 0.3s ease;" title="Production environment guides and best practices">
-            <i class="fa fa-cogs"></i> 生产环境实战
+        <a href="{{ site.baseurl }}/archive/?tag=Production+Guide"
+           class="topic-tag topic-tag--secondary"
+           title="Production environment guides and best practices">
+            <i class="fa fa-cogs" aria-hidden="true"></i> 生产环境实战
         </a>
-        <a href="{{ site.baseurl }}/archive/?tag=Technical+Architecture" class="topic-tag" style="display: inline-block; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; padding: 10px 20px; margin: 5px; border-radius: 25px; text-decoration: none; font-size: 14px; transition: transform 0.3s ease;" title="System architecture and design patterns">
-            <i class="fa fa-sitemap"></i> 系统架构
+        <a href="{{ site.baseurl }}/archive/?tag=Technical+Architecture"
+           class="topic-tag topic-tag--tertiary"
+           title="System architecture and design patterns">
+            <i class="fa fa-sitemap" aria-hidden="true"></i> 系统架构
         </a>
-        <a href="{{ site.baseurl }}/archive/?tag=LangChain" class="topic-tag" style="display: inline-block; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: white; padding: 10px 20px; margin: 5px; border-radius: 25px; text-decoration: none; font-size: 14px; transition: transform 0.3s ease;" title="LangChain framework practical tutorials">
-            <i class="fa fa-link"></i> LangChain实战
+        <a href="{{ site.baseurl }}/archive/?tag=LangChain"
+           class="topic-tag topic-tag--quaternary"
+           title="LangChain framework practical tutorials">
+            <i class="fa fa-link" aria-hidden="true"></i> LangChain实战
         </a>
-        <a href="{{ site.baseurl }}/portfolio/" class="topic-tag" style="display: inline-block; background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); color: white; padding: 10px 20px; margin: 5px; border-radius: 25px; text-decoration: none; font-size: 14px; transition: transform 0.3s ease;" title="View award-winning projects portfolio">
-            <i class="fa fa-trophy"></i> 获奖项目
+        <a href="{{ site.baseurl }}/portfolio/"
+           class="topic-tag topic-tag--quinary"
+           title="View award-winning projects portfolio">
+            <i class="fa fa-trophy" aria-hidden="true"></i> 获奖项目
         </a>
     </div>
 </div>
 
-<style>
-.featured-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-}
-.topic-tag:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-</style>
-
 <!-- Blog Posts List -->
-
 {% for post in paginator.posts %}
-<div class="post-preview">
+<div class="post-preview post-list__item">
     <a href="{{ post.url | prepend: site.baseurl }}" title="Read: {{ post.title }}">
         <h2 class="post-title">
             {{ post.title }}
@@ -114,13 +112,23 @@ hide-in-nav: true
 {% if paginator.total_pages > 1 %}
 <ul class="pager">
     {% if paginator.previous_page %}
-    <li class="previous">
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" title="View newer posts">&larr; NEWER POSTS</a>
+    <li class="previous pager__item">
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"
+           class="pager__link pager__link--prev"
+           title="View newer posts">
+            <span class="pager__direction">&larr; Newer</span>
+            <span class="pager__title">最新文章</span>
+        </a>
     </li>
     {% endif %}
     {% if paginator.next_page %}
-    <li class="next">
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" title="View older posts">OLDER POSTS &rarr;</a>
+    <li class="next pager__item">
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"
+           class="pager__link pager__link--next"
+           title="View older posts">
+            <span class="pager__direction">Older &rarr;</span>
+            <span class="pager__title">历史文章</span>
+        </a>
     </li>
     {% endif %}
 </ul>
