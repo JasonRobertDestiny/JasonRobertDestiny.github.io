@@ -31,13 +31,20 @@
             }
         });
 
-        // Replace all img src with WebP
+        // Replace LOCAL img src with WebP (skip external URLs like GitHub avatars)
         var images = document.querySelectorAll('img[src$=".jpg"], img[src$=".jpeg"], img[src$=".png"]');
         images.forEach(function(img) {
             var src = img.getAttribute('src');
             if (src) {
+                // SKIP external URLs - only process local images
+                if (src.indexOf('github.com') !== -1 ||
+                    src.indexOf('githubusercontent.com') !== -1 ||
+                    src.indexOf('//') === 0 && src.indexOf(window.location.host) === -1 ||
+                    src.indexOf('http') === 0 && src.indexOf(window.location.host) === -1) {
+                    return; // Skip external images
+                }
+
                 var webpSrc = src.replace(/\.jpe?g$/i, '.webp').replace(/\.png$/i, '.webp');
-                // Pre-check if WebP exists (optional, may cause extra requests)
                 img.setAttribute('src', webpSrc);
                 img.onerror = function() {
                     // Fallback to original if WebP doesn't exist
