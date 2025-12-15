@@ -70,7 +70,16 @@
         processImage: function(img) {
             // Skip if already processed
             if (img.hasAttribute('data-lazy-processed')) return;
-            
+
+            // Skip external images like GitHub avatars - they should load directly
+            const src = img.getAttribute('src') || '';
+            if (src.indexOf('github.com') !== -1 ||
+                src.indexOf('githubusercontent.com') !== -1 ||
+                img.closest('.short-about')) {
+                img.setAttribute('data-lazy-processed', 'true');
+                return; // Don't process external avatar images
+            }
+
             img.setAttribute('data-lazy-processed', 'true');
             
             // Set up lazy loading attributes if not present
