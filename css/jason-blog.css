@@ -6523,6 +6523,7 @@ samp {
     color: white;
     padding: 20px;
     line-height: 20px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 2px 8px rgba(0, 0, 0, 0.5);
   }
   .navbar-custom .navbar-brand:hover,
   .navbar-custom .navbar-brand:focus {
@@ -6531,10 +6532,12 @@ samp {
   .navbar-custom .nav li a {
     color: white;
     padding: 20px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 2px 8px rgba(0, 0, 0, 0.5);
   }
   .navbar-custom .nav li a:hover,
   .navbar-custom .nav li a:focus {
     color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9), 0 2px 10px rgba(0, 0, 0, 0.6);
   }
   .navbar-custom .nav li a:active {
     background: none;
