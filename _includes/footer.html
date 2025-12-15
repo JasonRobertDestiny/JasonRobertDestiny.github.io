@@ -287,13 +287,7 @@
 <script src='{{ "/js/archive.js" | prepend: site.baseurl }}'></script>
 {% endif %}
 
-<!--fastClick.js -->
-<script>
-    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function () {
-        var $nav = document.querySelector("nav");
-        if ($nav) FastClick.attach($nav);
-    })
-</script>
+<!-- FastClick.js removed - no longer needed for modern browsers (touch-action: manipulation handles it) -->
 
 
 
