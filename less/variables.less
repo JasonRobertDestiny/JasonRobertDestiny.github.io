@@ -12,11 +12,11 @@
   --brand-danger: #ef4444;        // 危险红
   --brand-info: #06b6d4;          // 信息青
 
-  // 文字颜色系统 - WCAG AA 兼容
+  // 文字颜色系统 - WCAG AA 兼容 (最小对比度 4.5:1)
   --text-primary: #0f172a;         // 主要文字 - 高对比度 (21:1)
   --text-secondary: #334155;       // 次要文字 - 中等对比度 (12.6:1)
-  --text-muted: #64748b;          // 辅助文字 - 最小对比度 (7.2:1)
-  --text-light: #94a3b8;          // 浅色文字
+  --text-muted: #525f7f;          // 辅助文字 - 优化对比度 (5.6:1) - WCAG AA
+  --text-light: #64748b;          // 浅色文字 - 装饰用途 (4.5:1 minimum)
   --text-inverse: #ffffff;         // 反白文字
   --text-link: var(--brand-primary);     // 链接颜色
 
@@ -105,11 +105,11 @@
 @gradient-cool: linear-gradient(135deg, #06b6d4 0%, @brand-primary 100%);
 @gradient-subtle: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
 
-// 文字颜色系统 - WCAG AA 兼容
-@text-primary: #0f172a;         // 主要文字 - 高对比度 (21:1)
-@text-secondary: #334155;       // 次要文字 - 中等对比度 (12.6:1)
-@text-muted: #64748b;          // 辅助文字 - 最小对比度 (7.2:1)
-@text-light: #94a3b8;          // 浅色文字
+// 文字颜色系统 - WCAG AA 兼容 (最小对比度 4.5:1)
+@text-primary: #0f172a;         // 主要文字 - 高对比度 (21:1 on white)
+@text-secondary: #334155;       // 次要文字 - 中等对比度 (12.6:1 on white)
+@text-muted: #525f7f;          // 辅助文字 - 优化对比度 (5.6:1 on white) - WCAG AA compliant
+@text-light: #64748b;          // 浅色文字 - 装饰用途 (4.5:1 minimum)
 @text-inverse: #ffffff;         // 反白文字
 @text-link: @brand-primary;     // 链接颜色
 

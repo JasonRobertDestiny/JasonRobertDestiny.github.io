@@ -73,13 +73,20 @@
 
 // ============================================
 // 文章内容排版增强 (Article Content Typography)
+// 遵循 frontend-design 原则：可读性、视觉层次、舒适阅读
 // ============================================
 .article-content {
+  // 最大阅读宽度优化 - 65-75字符为理想阅读宽度
+  max-width: 72ch;
+  margin: 0 auto;
+
   // 段落间距优化
   p {
-    margin-bottom: @space-5;
-    line-height: @leading-relaxed;
+    margin-bottom: @space-6;
+    line-height: 1.8; // 增加行高提升阅读舒适度
     color: @text-primary;
+    font-size: 17px; // 略大的正文字体
+    letter-spacing: 0.01em; // 微调字间距
 
     &:first-child::first-letter {
       // 首字母下沉效果
@@ -184,13 +191,14 @@
     font-weight: @weight-medium;
   }
 
-  // 标题锚点增强
+  // 标题锚点增强 - 清晰的视觉层次
   h2, h3, h4, h5, h6 {
     position: relative;
-    margin-top: @space-8;
-    margin-bottom: @space-4;
+    margin-top: @space-10; // 增加段落前间距
+    margin-bottom: @space-5;
     font-weight: @weight-bold;
-    line-height: @leading-tight;
+    line-height: 1.3; // 紧凑的标题行高
+    letter-spacing: -0.01em; // 标题字间距收紧
 
     // 标题前装饰
     &::before {
@@ -229,31 +237,35 @@
   }
 
   h2 {
-    font-size: @text-3xl;
+    font-size: 28px;
     color: @text-primary;
-    padding-bottom: @space-3;
+    padding-bottom: @space-4;
     border-bottom: 2px solid @border-light;
+    margin-top: @space-12; // 更大的章节间距
   }
 
   h3 {
-    font-size: @text-2xl;
+    font-size: 22px;
     color: @text-primary;
+    margin-top: @space-8;
   }
 
   h4 {
-    font-size: @text-xl;
+    font-size: 18px;
     color: @text-secondary;
+    font-weight: @weight-semibold;
   }
 
-  // 列表增强
+  // 列表增强 - 清晰的视觉层次
   ul, ol {
-    margin: @space-5 0;
-    padding-left: @space-7;
+    margin: @space-6 0;
+    padding-left: @space-6;
 
     li {
-      margin-bottom: @space-3;
-      line-height: @leading-relaxed;
+      margin-bottom: @space-4;
+      line-height: 1.7;
       color: @text-primary;
+      padding-left: @space-2; // 列表项内边距
 
       &::marker {
         color: @brand-primary;
@@ -261,10 +273,14 @@
       }
     }
 
-    // 嵌套列表
+    // 嵌套列表 - 保持层次感
     ul, ol {
-      margin-top: @space-2;
-      margin-bottom: @space-2;
+      margin-top: @space-3;
+      margin-bottom: @space-3;
+
+      li {
+        margin-bottom: @space-2;
+      }
     }
   }
 

@@ -98,6 +98,8 @@
   background-size: 200% 100%;
   animation: skeleton-loading 1.5s ease-in-out infinite;
   border-radius: @radius-md;
+  will-change: background-position;
+  transform: translateZ(0); // GPU 加速
 
   &--text {
     height: 16px;
@@ -158,6 +160,8 @@
     background: @brand-primary;
     border-radius: @radius-full;
     animation: pulse-dot 1.4s ease-in-out infinite;
+    will-change: transform, opacity;
+    transform: translateZ(0); // GPU 加速
 
     &:nth-child(2) {
       animation-delay: 0.2s;
@@ -202,6 +206,8 @@
   border-top-color: @brand-primary;
   border-radius: @radius-full;
   animation: spin @duration-slower linear infinite;
+  will-change: transform;
+  transform: translateZ(0); // GPU 加速
 
   &--sm {
     width: 20px;

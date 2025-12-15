@@ -8,7 +8,7 @@
 
 // Cache configuration
 const CACHE_NAMESPACE = 'jason-blog-v2-';
-const CACHE_VERSION = '2025.01.14';
+const CACHE_VERSION = '2025.12.15';
 const CACHE_NAME = CACHE_NAMESPACE + CACHE_VERSION;
 
 // Cache strategies

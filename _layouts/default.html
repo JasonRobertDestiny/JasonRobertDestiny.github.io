@@ -14,27 +14,32 @@
     {% include footer.html %}
 
 <!-- Back to Top Button -->
-<div class="back-to-top" id="back-to-top" onclick="scrollToTop()">
-    <i class="fa fa-chevron-up"></i>
-</div>
+<button class="back-to-top" id="back-to-top" onclick="scrollToTop()" aria-label="Back to top" title="返回顶部">
+    <i class="fa fa-chevron-up" aria-hidden="true"></i>
+    <span class="sr-only">返回顶部</span>
+</button>
 
 <!-- Floating Action Menu -->
-<div class="floating-menu" id="floating-menu">
-    <div class="floating-menu-toggle" onclick="toggleFloatingMenu()">
-        <i class="fa fa-plus"></i>
+<nav class="floating-menu" id="floating-menu" aria-label="Quick actions menu">
+    <button class="floating-menu-toggle" onclick="toggleFloatingMenu()" aria-label="Toggle quick actions menu" aria-expanded="false" title="快捷菜单">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        <span class="sr-only">打开菜单</span>
+    </button>
+    <div class="floating-menu-items" role="menu">
+        <button class="floating-menu-item" onclick="openSearch()" aria-label="Search articles" title="搜索文章" role="menuitem">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <span class="sr-only">搜索</span>
+        </button>
+        <button class="floating-menu-item" onclick="toggleDarkMode()" aria-label="Toggle dark mode" title="切换深色模式" role="menuitem">
+            <i class="fa fa-moon-o" aria-hidden="true"></i>
+            <span class="sr-only">切换主题</span>
+        </button>
+        <button class="floating-menu-item" onclick="printPage()" aria-label="Print page" title="打印页面" role="menuitem">
+            <i class="fa fa-print" aria-hidden="true"></i>
+            <span class="sr-only">打印</span>
+        </button>
     </div>
-    <div class="floating-menu-items">
-        <div class="floating-menu-item" onclick="openSearch()" title="搜索">
-            <i class="fa fa-search"></i>
-        </div>
-        <div class="floating-menu-item" onclick="toggleDarkMode()" title="切换主题">
-            <i class="fa fa-moon-o"></i>
-        </div>
-        <div class="floating-menu-item" onclick="printPage()" title="打印页面">
-            <i class="fa fa-print"></i>
-        </div>
-    </div>
-</div>
+</nav>
 
 <!-- Background Switcher will be created dynamically by JavaScript -->
 

@@ -27,6 +27,8 @@
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3));
     animation: shimmer 2s infinite;
+    will-change: transform;
+    transform: translateZ(0); // GPU 加速
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -107,8 +109,15 @@
 
 // ============================================
 // 返回顶部按钮增强 (Back to Top)
+// 语义化 button 元素，无障碍友好
 // ============================================
 .back-to-top {
+  // Reset button styles
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0;
+  font: inherit;
+
   position: fixed;
   bottom: @space-8;
   right: @space-8;
@@ -129,7 +138,17 @@
   z-index: @z-fixed;
   box-shadow: @elevation-4;
 
-  // 呼吸动画
+  // Focus state for accessibility
+  &:focus {
+    outline: 2px solid @brand-accent;
+    outline-offset: 2px;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  // 呼吸动画 - GPU 合成优化
   &::before {
     content: '';
     position: absolute;
@@ -138,6 +157,8 @@
     border-radius: @radius-full;
     opacity: 0.3;
     animation: pulse-ring 2s infinite;
+    will-change: transform, opacity;
+    transform: translateZ(0); // 强制 GPU 加速
   }
 
   &.show {
@@ -162,6 +183,8 @@
   i {
     font-size: @text-xl;
     animation: bounce-arrow 1.5s infinite;
+    will-change: transform;
+    transform: translateZ(0); // GPU 加速
   }
 
   @media (max-width: @breakpoint-md) {
@@ -334,6 +357,8 @@
       width: 30px;
       background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4));
       animation: shimmer 1.5s infinite;
+      will-change: transform;
+      transform: translateZ(0); // GPU 加速
     }
   }
 

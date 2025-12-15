@@ -1,80 +1,87 @@
 {% comment %}
-    @param {Boolean} center 
+    @param {Boolean} center
 {% endcomment %}
 
 {% if include.center %}
-<ul class="list-inline text-center">
+<ul class="list-inline text-center" role="list" aria-label="Social media links">
 {% else %}
-<ul class="list-inline">
+<ul class="list-inline" role="list" aria-label="Social media links">
 {% endif %}
 
   {% if site.RSS %}
   <li>
-    <a href="{{ "/feed.xml" | prepend: site.baseurl }}">
-      <span class="fa-stack fa-lg">
+    <a href="{{ "/feed.xml" | prepend: site.baseurl }}" aria-label="RSS Feed" title="Subscribe via RSS">
+      <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fa fa-circle fa-stack-2x"></i>
         <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
       </span>
+      <span class="sr-only">RSS Feed</span>
     </a>
   </li>
   {% endif %}
   {% if site.twitter_username %}
   <li>
-    <a href="https://twitter.com/{{ site.twitter_username }}">
-      <span class="fa-stack fa-lg">
+    <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener noreferrer" aria-label="Follow on Twitter" title="Follow on Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fa fa-circle fa-stack-2x"></i>
         <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
       </span>
+      <span class="sr-only">Twitter</span>
     </a>
   </li>
   {% endif %}
   {% if site.zhihu_username %}
   <li>
-    <a target="_blank" href="https://www.zhihu.com/people/{{ site.zhihu_username }}">
-      <span class="fa-stack fa-lg">
+    <a target="_blank" rel="noopener noreferrer" href="https://www.zhihu.com/people/{{ site.zhihu_username }}" aria-label="Follow on Zhihu" title="Follow on Zhihu">
+      <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa  fa-stack-1x fa-inverse">知</i>
+        <i class="fa fa-stack-1x fa-inverse">知</i>
       </span>
+      <span class="sr-only">知乎 (Zhihu)</span>
     </a>
   </li>
   {% endif %}
   {% if site.weibo_username %}
   <li>
-    <a target="_blank" href="http://weibo.com/{{ site.weibo_username }}">
-      <span class="fa-stack fa-lg">
+    <a target="_blank" rel="noopener noreferrer" href="http://weibo.com/{{ site.weibo_username }}" aria-label="Follow on Weibo" title="Follow on Weibo">
+      <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fa fa-circle fa-stack-2x"></i>
         <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
       </span>
+      <span class="sr-only">微博 (Weibo)</span>
     </a>
   </li>
   {% endif %}
   {% if site.facebook_username %}
   <li>
-    <a target="_blank" href="https://www.facebook.com/{{ site.facebook_username }}">
-      <span class="fa-stack fa-lg">
+    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/{{ site.facebook_username }}" aria-label="Follow on Facebook" title="Follow on Facebook">
+      <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fa fa-circle fa-stack-2x"></i>
         <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
       </span>
+      <span class="sr-only">Facebook</span>
     </a>
   </li>
   {% endif %}
   {% if site.github_username %}
   <li>
-    <a target="_blank" href="https://github.com/{{ site.github_username }}">
-      <span class="fa-stack fa-lg">
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/{{ site.github_username }}" aria-label="View GitHub profile" title="View GitHub profile">
+      <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fa fa-circle fa-stack-2x"></i>
         <i class="fa fa-github fa-stack-1x fa-inverse"></i>
       </span>
+      <span class="sr-only">GitHub</span>
     </a>
   </li>
   {% endif %}
   {% if site.linkedin_username %}
   <li>
-    <a target="_blank" href="https://www.linkedin.com/in/{{ site.linkedin_username }}">
-      <span class="fa-stack fa-lg">
+    <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/{{ site.linkedin_username }}" aria-label="Connect on LinkedIn" title="Connect on LinkedIn">
+      <span class="fa-stack fa-lg" aria-hidden="true">
         <i class="fa fa-circle fa-stack-2x"></i>
         <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
       </span>
+      <span class="sr-only">LinkedIn</span>
     </a>
   </li>
   {% endif %}
