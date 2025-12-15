@@ -489,12 +489,20 @@
 }
 
 // Dark mode image adjustments
-.dark-mode img {
-  filter: brightness(0.9) contrast(1.1);
-  
+// NOTE: Avatar images should NOT be filtered - keep them colorful!
+.dark-mode img:not(.short-about img):not([alt*="Avatar"]) {
+  filter: brightness(0.92) contrast(1.05);
+
   &:hover {
-    filter: brightness(1) contrast(1.2);
+    filter: brightness(1) contrast(1.1);
   }
+}
+
+// Ensure avatar is ALWAYS colorful and vibrant
+.dark-mode .short-about img,
+.short-about img {
+  filter: none !important;
+  -webkit-filter: none !important;
 }
 
 // Print styles - ensure dark mode doesn't affect printing

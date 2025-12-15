@@ -688,7 +688,7 @@ samp {
   overflow: hidden; // 防止内容溢出导致的移动
   contain: layout style; // CSS Containment提升性能
   
-  // Enhanced background overlay for better text readability
+  // Enhanced background overlay for MAXIMUM text readability
   &::before {
     content: '';
     position: absolute;
@@ -696,14 +696,14 @@ samp {
     left: 0;
     right: 0;
     bottom: 0;
+    // Stronger gradient for better text contrast
     background: linear-gradient(
-      135deg, 
-      rgba(0,0,0,0.75) 0%, 
-      rgba(0,0,0,0.45) 50%, 
-      rgba(0,0,0,0.65) 100%
+      180deg,
+      rgba(15, 23, 42, 0.85) 0%,
+      rgba(15, 23, 42, 0.6) 40%,
+      rgba(15, 23, 42, 0.75) 100%
     );
     z-index: 1;
-    // 防止overlay移动
     transform: translateZ(0);
     will-change: auto;
   }
@@ -774,17 +774,21 @@ samp {
     text-align: center;
     h1 {
       margin-top: 0;
-      font-size: 20px; // Further reduced for ultra-elegant look
-      color: white;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
-      line-height: 1.45; // More relaxed line height
+      font-size: 24px; // Slightly larger for better presence
+      color: #ffffff;
+      // ENHANCED text shadow for maximum readability
+      text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.9),
+        0 4px 12px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(0, 0, 0, 0.4);
+      line-height: 1.4;
       word-wrap: break-word;
       hyphens: auto;
       max-width: 100%;
-      margin-bottom: 10px; // Tighter spacing
-      font-weight: 700; // Bolder for better impact at smaller size
-      letter-spacing: 0.5px; // Slight expansion for readability
-      text-transform: none; // Remove any text transformation
+      margin-bottom: 12px;
+      font-weight: 800; // Extra bold for impact
+      letter-spacing: 1px; // More letter spacing for clarity
+      text-transform: none;
       
       // Smooth progressive sizing - much more conservative
       @media only screen and (min-width: 480px) {
@@ -820,10 +824,15 @@ samp {
     }
     .subheading {
       .sans-serif;
-      font-size: 12px; // Ultra-compact elegant subtitle
-      line-height: 1.6; // More breathing room
+      font-size: 14px; // Slightly larger for readability
+      line-height: 1.6;
       display: block;
-      font-weight: 400; 
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.95);
+      // Enhanced text shadow for subtitle
+      text-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.8),
+        0 2px 8px rgba(0, 0, 0, 0.5); 
       margin: 10px auto 0; // Tighter top margin
       color: rgba(255, 255, 255, 0.95); // Higher contrast
       text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
