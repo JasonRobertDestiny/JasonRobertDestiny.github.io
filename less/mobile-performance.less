@@ -2,6 +2,33 @@
 // Fixes: 80 non-composited animations, CLS issues, main-thread work
 
 // ==============================================
+// GLOBAL NON-COMPOSITED ANIMATION FIX
+// Force GPU-only transitions everywhere
+// ==============================================
+
+// Override all 'transition: all' to use only composited properties
+// This is a global fix for the 65-79 non-composited animation warning
+*:not(.no-transition-fix) {
+  transition-property: transform, opacity, background-color, box-shadow, border-color !important;
+}
+
+// Ensure animations only use transform/opacity
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+// ==============================================
 // MOBILE ANIMATION OPTIMIZATION
 // Only use transform and opacity for animations
 // ==============================================

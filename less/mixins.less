@@ -1,9 +1,16 @@
 // Mixins
 
+// DEPRECATED: Avoid using this mixin - causes non-composited animations
+// Use .transition-gpu() instead for better performance
 .transition-all() {
-    -webkit-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    transition: all 0.5s;
+    -webkit-transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+// GPU-accelerated transition (recommended)
+.transition-gpu() {
+    -webkit-transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .background-cover() {
