@@ -1,7 +1,3 @@
----
-published: false
----
-
 # CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
@@ -16,6 +12,7 @@ Jason's personal technical blog built with Jekyll, focusing on AI development, A
 - Ruby 2.7+ (production uses Ruby 3.1)
 - Less compiler (standalone, no Node.js required)
 - Git
+- On Windows: Use PowerShell or WSL for running bash scripts
 
 ### Build & Development Workflow
 
@@ -25,6 +22,7 @@ bundle install
 
 # 2. Compile Less to CSS (REQUIRED before serving/deploying)
 ./build.sh
+# On Windows PowerShell: bash build.sh
 
 # 3. Start local development server
 bundle exec jekyll serve
@@ -42,6 +40,7 @@ bundle exec jekyll clean
 - The GitHub Actions workflow does NOT compile Less files
 - You MUST run `./build.sh` locally before committing CSS changes
 - Never edit files in `/css` directory directly - edit `/less` files instead
+- On Windows, run the build script via: `bash build.sh` or use WSL
 
 ### Deployment
 
@@ -86,21 +85,37 @@ Automatic deployment via GitHub Actions on push to `master` branch:
 4. Commit compiled CSS files to git
 
 **Less File Organization:**
-- `jason-blog.less`: Main entry, imports all modules
-- `variables.less`: Colors, fonts, spacing tokens
-- `tech-enhancements.less`: Gradients, animations, modern UI
+- `jason-blog.less`: Main entry point, imports all modules in order
+- `variables.less`: Base colors, fonts, spacing tokens
+- `design-tokens.less`: Extended design system tokens
+- `mixins.less`: Reusable Less mixins and utilities
+- `tech-enhancements.less`: Gradients, animations, modern UI components
 - `dark-mode.less`: Dark mode theme (CSS custom properties)
-- `accessibility.less`: A11y enhancements
-- `sidebar.less`, `search.less`, etc.: Feature-specific styles
+- `accessibility.less`: A11y enhancements and ARIA support
+- `sidebar.less`, `side-catalog.less`: Sidebar and table of contents
+- `search.less`: Search UI components
+- `highlight.less`: Code syntax highlighting (Rouge)
+- `home-enhancements.less`: Homepage-specific styles
+- `article-enhancements.less`: Blog post page enhancements
+- `archive-enhancements.less`: Archive/tags page styles
+- `scroll-enhancements.less`: Scroll animations and effects
+- `interactive-components.less`: Buttons, modals, interactive elements
+- `snackbar.less`: Toast notification system
+- `multilingual.less`: Bilingual content support
+- `mobile-performance.less`: Mobile optimizations
 
 ### Frontend Features
-- Responsive navigation with scroll effects
-- Simple Jekyll Search integration
-- Rouge syntax highlighting with custom theme
-- MathJax support (configurable per post)
-- Progressive Web App (manifest + service worker)
-- Dark mode toggle (CSS custom properties)
-- Tech-themed gradients and animations
+- **Responsive navigation** with scroll effects and Material Design animations
+- **Simple Jekyll Search** integration (`simple-jason-search.min.js`)
+- **Rouge syntax highlighting** with custom theme (`highlight.less`)
+- **MathJax support** (configurable per post via front matter)
+- **Progressive Web App**: manifest (`pwa/manifest.json`) + service worker (`sw.js`)
+- **Dark mode toggle** using CSS custom properties (`dark-mode.js`, `dark-mode.less`)
+- **Tech-themed gradients** and animations
+- **Accessibility features**: ARIA labels, keyboard navigation, reduced motion support
+- **Social sharing** integration (`social-share.js`)
+- **Image optimization** with lazy loading (`image-optimization.js`)
+- **Article interactions**: reading progress, smooth scroll (`article-interactions.js`)
 
 ### Blog Post Format
 
@@ -179,13 +194,21 @@ Uses CSS custom properties for theming:
 - System files: `.DS_Store`, `Thumbs.db`
 - Logs: `*.log`, `*.lock`
 - Temporary files: `*.tmp`, `*.temp`, `*.bak`, `*.swp`
-- Scripts: `*.sh`, `start.sh`
+- Scripts: `*.sh`, `start.sh` (but committed CSS files are tracked)
 - Documentation workspace: `document/`
 
 ### Branch Strategy
 - Main branch: `master`
-- Direct push to `master` triggers deployment
+- Direct push to `master` triggers deployment via GitHub Actions
 - Use feature branches for major changes
+
+### Key File Locations
+- **Layouts**: `_layouts/` (default.html, post.html, page.html, keynote.html)
+- **Reusable components**: `_includes/` (nav.html, footer.html, head.html, etc.)
+- **Blog posts**: `_posts/` (must follow `YYYY-MM-DD-title.md` naming)
+- **Custom JavaScript**: `js/jason-blog.js` (main custom scripts)
+- **Service Worker**: `sw.js` (root level, caches static assets)
+- **Search data**: `search.json` (auto-generated from posts for client-side search)
 
 ## Important Notes
 
