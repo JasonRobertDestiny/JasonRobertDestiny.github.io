@@ -489,3 +489,26 @@
     });
 </script>
 <!-- Original work by Jason's Blog -->
+
+<!-- Google Analytics 4 - Deferred Loading -->
+{% if jekyll.environment == 'production' %}
+<script>
+  // Load Google Analytics after page is interactive
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      var gaScript = document.createElement('script');
+      gaScript.src = 'https://www.googletagmanager.com/gtag/js?id={{ site.ga_track_id }}';
+      gaScript.async = true;
+      document.head.appendChild(gaScript);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ site.ga_track_id }}', {
+        cookie_flags: 'SameSite=Strict;Secure',
+        anonymize_ip: true
+      });
+    }, 1000); // Delay 1s to prioritize rendering
+  });
+</script>
+{% endif %}

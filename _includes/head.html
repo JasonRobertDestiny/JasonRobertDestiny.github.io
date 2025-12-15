@@ -22,11 +22,13 @@
     <meta name="theme-color" content="{{ site.chrome-tab-theme-color }}">
     
     <!-- Performance Optimization - Preconnect to critical third-party origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    {% if jekyll.environment == 'production' %}
-    <link rel="preconnect" href="https://www.googletagmanager.com">
-    {% endif %}
+    <link rel="preconnect" href="https://avatars.githubusercontent.com" crossorigin>
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+    <link rel="dns-prefetch" href="//seo-fixer.writesonic.com">
     {% if page.url == '/' %}
     <!-- Preload hero header image to improve LCP with high priority -->
     <link rel="preload" as="image" href="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" fetchpriority="high" imagesrcset="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %} 1x" imagesizes="100vw">
@@ -179,20 +181,15 @@
         }
     </style>
     
-    <!-- Preload Critical Resources -->
-    <link rel="preload" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <!-- Async CSS Loading - Non-blocking for better performance -->
+    <link rel="preload" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}" as="style">
+    <link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}" media="print" onload="this.media='all';this.onload=null;">
     <noscript><link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}"></noscript>
-    
-    <!-- Custom Fonts with font-display swap - load asynchronously -->
-    <link rel="preload" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+    <!-- Font Awesome - Async load with subset -->
+    <link rel="preload" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" as="style">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" media="print" onload="this.media='all';this.onload=null;">
     <noscript><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"></noscript>
-    <!-- Font-display swap for Font Awesome icons -->
-    <style>
-        @font-face {
-            font-family: 'FontAwesome';
-            font-display: swap;
-        }
-    </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support -->
     <!--[if lt IE 9]>
@@ -310,29 +307,19 @@
     }
     </script>
 
-    <!-- Performance Optimization - Resource Hints -->
-    <link rel="preload" href="{{ "/css/jason-blog.min.css" | prepend: site.baseurl }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <!-- Custom Blog Styles - Async loading -->
+    <link rel="preload" href="{{ "/css/jason-blog.min.css" | prepend: site.baseurl }}" as="style">
+    <link rel="stylesheet" href="{{ "/css/jason-blog.min.css" | prepend: site.baseurl }}" media="print" onload="this.media='all';this.onload=null;">
     <noscript><link rel="stylesheet" href="{{ "/css/jason-blog.min.css" | prepend: site.baseurl }}"></noscript>
-    <!-- Async tail styles (purgeable) -->
-    <link rel="preload" href="{{ "/css/async.css" | prepend: site.baseurl }}" as="style">
-    <link rel="stylesheet" href="{{ "/css/async.css" | prepend: site.baseurl }}" media="print" onload="this.media='all'">
+
+    <!-- Async tail styles (low priority) -->
+    <link rel="stylesheet" href="{{ "/css/async.css" | prepend: site.baseurl }}" media="print" onload="this.media='all';this.onload=null;">
     
     <!-- Critical Font Preload -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts/fontawesome-webfont.woff2" as="font" type="font/woff2" crossorigin>
 
-    <!-- Google Analytics 4 -->
-    {% if jekyll.environment == 'production' %}
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_track_id }}"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '{{ site.ga_track_id }}', {
-        cookie_flags: 'SameSite=Strict;Secure',
-        anonymize_ip: true
-      });
-    </script>
-    {% endif %}
+    <!-- Google Analytics 4 - Deferred for better performance -->
+    <!-- Moved to footer.html for non-blocking load -->
 
     <!-- Security Headers via Meta -->
     <!-- Note: X-Frame-Options must be set via HTTP header, not meta tag -->
@@ -343,6 +330,7 @@
     <!-- Loaded after page becomes interactive to avoid blocking render -->
 
     <!-- Non-blocking JavaScript - defer loading to not block rendering -->
+    <script src="{{ "/js/webp-support.js" | prepend: site.baseurl }}" defer></script>
     <script src="{{ "/js/dark-mode.js" | prepend: site.baseurl }}" defer></script>
     <script src="{{ "/js/accessibility.js" | prepend: site.baseurl }}" defer></script>
     <script src="{{ "/js/image-optimization.js" | prepend: site.baseurl }}" defer></script>
