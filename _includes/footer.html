@@ -20,49 +20,38 @@
 <!-- Critical JavaScript - Load via CDN with proper fallback -->
 <script>
 (function() {
+    // Queue for callbacks waiting for jQuery
+    window._jqReady = [];
+    window.jqReady = function(fn) {
+        if (window.jQuery) fn();
+        else window._jqReady.push(fn);
+    };
+
     var jq = document.createElement('script');
     jq.src = 'https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js';
     jq.integrity = 'sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=';
     jq.crossOrigin = 'anonymous';
+    jq.onload = function() {
+        // Execute queued callbacks
+        window._jqReady.forEach(function(fn) { fn(); });
+        window._jqReady = [];
+        // Language toggle
+        $(document).on('click', '.lang-btn[data-lang]', function(e) {
+            e.preventDefault();
+            var lang = $(this).data('lang');
+            if (typeof window.switchLanguage === 'function') {
+                window.switchLanguage(lang);
+            }
+        });
+    };
     jq.onerror = function() {
         var fallback = document.createElement('script');
         fallback.src = '{{ "/js/jquery.min.js" | prepend: site.baseurl }}';
+        fallback.onload = jq.onload;
         document.head.appendChild(fallback);
     };
     document.head.appendChild(jq);
 })();
-</script>
-
-<!-- Critical: Language Toggle Event Delegation (Must load before user interaction) -->
-<script>
-    // Bind language toggle immediately after jQuery loads
-    // This prevents race conditions with async script loading
-    $(document).ready(function() {
-        $(document).on('click', '.lang-btn[data-lang]', function(e) {
-            e.preventDefault();
-            var lang = $(this).data('lang');
-
-            // If switchLanguage is already defined, use it
-            if (typeof window.switchLanguage === 'function') {
-                window.switchLanguage(lang);
-            } else {
-                // Otherwise, store the click and wait for the script to load
-                console.log('Language switch requested:', lang, '- waiting for script to load...');
-                var checkInterval = setInterval(function() {
-                    if (typeof window.switchLanguage === 'function') {
-                        clearInterval(checkInterval);
-                        window.switchLanguage(lang);
-                        console.log('Script loaded, switching language to:', lang);
-                    }
-                }, 100); // Check every 100ms
-
-                // Timeout after 5 seconds
-                setTimeout(function() {
-                    clearInterval(checkInterval);
-                }, 5000);
-            }
-        });
-    });
 </script>
 
 <!-- Non-Critical JavaScript - Load Asynchronously -->
@@ -265,20 +254,17 @@
 {% if page.plchart %}
 <!-- jquery.tagcloud.js -->
 <script>
-    // https://stackoverflow.com/questions/9975810/make-iframe-automatically-adjust-height-according-to-the-contents-without-using
     function resizeIframe(obj) {
         obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
     }
 
-    $(document).ready(function () {
+    jqReady(function () {
         var $chart = document.querySelector("#chart");
-        $chart.onload = function () {
-            resizeIframe($chart)
+        if ($chart) {
+            $chart.onload = function () { resizeIframe($chart); };
+            window.addEventListener("resize", function() { resizeIframe($chart); });
         }
-        window.addEventListener("resize", () => {
-            resizeIframe($chart)
-        });
-    })
+    });
 </script>
 {% endif %}
 
@@ -472,7 +458,7 @@
         }
     }
 
-    $(document).ready(function () {
+    jqReady(function () {
         var $searchPage = $('.search-page');
         var $searchOpen = $('.search-icon');
         var $searchClose = $('.search-icon-close');
@@ -491,7 +477,7 @@
                 $searchClose.on('click', function (e) {
                     e.preventDefault();
                     $searchPage.removeClass('search-active');
-                    $body.attr('class', prevClasses);  // from closure 
+                    $body.attr('class', prevClasses);
                 });
                 $searchInput.focus();
             }
