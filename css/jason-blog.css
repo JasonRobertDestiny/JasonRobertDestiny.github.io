@@ -5613,6 +5613,77 @@ select:focus,
   height: 1px;
   overflow: hidden;
 }
+footer .copyright.text-muted {
+  color: #334155 !important;
+}
+footer .copyright.text-muted a {
+  color: #4f46e5;
+  text-decoration: underline;
+}
+footer .copyright.text-muted a:hover,
+footer .copyright.text-muted a:focus {
+  color: #7c3aed;
+}
+.touch-target-fix {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.list-inline > li > a,
+.sns-links a,
+.social-share a,
+footer .list-inline a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px;
+}
+.list-inline > li {
+  margin: 0 4px;
+}
+@media (max-width: 768px) {
+  .list-inline > li {
+    margin: 4px 8px;
+  }
+}
+.post-container a,
+.post-preview a,
+article a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+.post-container a:hover,
+.post-preview a:hover,
+article a:hover,
+.post-container a:focus,
+.post-preview a:focus,
+article a:focus {
+  text-decoration-thickness: 2px;
+}
+.navbar-nav a,
+.nav a,
+.pager a,
+.tags a,
+.breadcrumb a {
+  text-decoration: none;
+}
+.navbar-nav a:hover,
+.nav a:hover,
+.pager a:hover,
+.tags a:hover,
+.breadcrumb a:hover,
+.navbar-nav a:focus,
+.nav a:focus,
+.pager a:focus,
+.tags a:focus,
+.breadcrumb a:focus {
+  text-decoration: underline;
+}
 @media print {
   .skip-links,
   .navbar,
