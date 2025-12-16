@@ -339,7 +339,7 @@ jQuery(document).ready(function($) {
      * Binds immediately on DOM ready, before switchLanguage is defined
      * This prevents race conditions with async script loading
      */
-    $(document).on('click', '.lang-btn[data-lang]', function(e) {
+    $(document).on('click', '.lang-btn[data-lang], .lang-toggle__btn[data-lang]', function(e) {
         e.preventDefault();
         var lang = $(this).data('lang');
         if (typeof window.switchLanguage === 'function') {
@@ -372,22 +372,37 @@ jQuery(document).ready(function($) {
         localStorage.setItem('preferredLanguage', lang);
 
         // Update content visibility with smooth transition
+        // Handle both .lang-en/.lang-zh and legacy .en/.zh class names
         if (lang === 'en') {
             // Show English content
-            $('.lang-en').fadeIn(300);
-            $('.lang-zh').fadeOut(300);
+            $('.lang-en, .en.post-container').fadeIn(300);
+            $('.lang-zh, .zh.post-container').fadeOut(300);
 
-            // Update button states
+            // Update legacy button states
             $('.lang-btn-en').addClass('active');
             $('.lang-btn-zh').removeClass('active');
+
+            // Update new toggle button states
+            $('.lang-toggle__btn--en').addClass('active').attr('aria-checked', 'true');
+            $('.lang-toggle__btn--zh').removeClass('active').attr('aria-checked', 'false');
+
+            // Update slider position (fallback for browsers without :has())
+            $('.lang-toggle').attr('data-active-lang', 'en');
         } else {
             // Show Chinese content
-            $('.lang-zh').fadeIn(300);
-            $('.lang-en').fadeOut(300);
+            $('.lang-zh, .zh.post-container').fadeIn(300);
+            $('.lang-en, .en.post-container').fadeOut(300);
 
-            // Update button states
+            // Update legacy button states
             $('.lang-btn-zh').addClass('active');
             $('.lang-btn-en').removeClass('active');
+
+            // Update new toggle button states
+            $('.lang-toggle__btn--zh').addClass('active').attr('aria-checked', 'true');
+            $('.lang-toggle__btn--en').removeClass('active').attr('aria-checked', 'false');
+
+            // Update slider position (fallback for browsers without :has())
+            $('.lang-toggle').attr('data-active-lang', 'zh');
         }
 
         // Update page lang attribute for screen readers

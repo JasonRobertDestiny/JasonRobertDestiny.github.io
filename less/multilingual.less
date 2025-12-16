@@ -1,96 +1,211 @@
 // ============================================
-// Multilingual Toggle Switcher Styles
-// Modern EN | 中文 Toggle Button Design
+// Language Toggle - Capsule Slider Design
+// A refined, tech-forward language switcher
 // ============================================
 
-// Language Switcher Container
-.language-switcher {
+// Design Tokens
+@lang-toggle-height: 32px;
+@lang-toggle-btn-width: 36px;
+@lang-toggle-radius: 16px;
+@lang-toggle-gap: 2px;
+
+// Colors - Refined Tech Palette
+@lang-toggle-bg: rgba(0, 0, 0, 0.06);
+@lang-toggle-bg-dark: rgba(255, 255, 255, 0.08);
+@lang-toggle-slider-bg: #ffffff;
+@lang-toggle-slider-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1);
+@lang-toggle-text-active: @brand-primary;
+@lang-toggle-text-inactive: @text-secondary;
+
+// ============================================
+// Navbar Integration
+// ============================================
+
+.language-switcher-nav {
+  display: flex;
+  align-items: center;
+  margin-left: @spacing-md;
+
+  @media screen and (max-width: @screen-sm) {
+    margin: @spacing-sm 0;
+    justify-content: center;
+  }
+}
+
+// ============================================
+// Toggle Container - Capsule Shape
+// ============================================
+
+.lang-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: @lang-toggle-height;
+  padding: @lang-toggle-gap;
+  background: @lang-toggle-bg;
+  border-radius: @lang-toggle-radius;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  // Subtle inner shadow for depth
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
+
+  // Smooth transition for dark mode
+  transition: background @duration-base @ease-in-out,
+              box-shadow @duration-base @ease-in-out;
+}
+
+// ============================================
+// Toggle Buttons
+// ============================================
+
+.lang-toggle__btn {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: @spacing-sm;
-  margin: @spacing-lg 0;
-  padding: @spacing-sm;
-
-  @media screen and (max-width: @screen-sm) {
-    margin: @spacing-md 0;
-  }
-}
-
-// Toggle Button Base Styles
-.lang-btn {
-  background: transparent;
+  width: @lang-toggle-btn-width;
+  height: calc(@lang-toggle-height - @lang-toggle-gap * 2);
+  padding: 0;
   border: none;
-  padding: @spacing-xs @spacing-md;
-  font-size: @font-size-sm;
-  font-weight: @font-weight-medium;
-  color: @text-secondary;
+  background: transparent;
   cursor: pointer;
-  transition: all @duration-fast @ease-in-out;
-  border-radius: @border-radius-sm;
-  position: relative;
   outline: none;
 
+  // Typography
+  font-family: 'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  // Default state
+  color: @lang-toggle-text-inactive;
+
+  transition: color @duration-fast @ease-in-out,
+              transform @duration-fast @ease-in-out;
+
   // Hover state
-  &:hover {
-    color: @brand-primary;
-    background: @bg-secondary;
-    transform: translateY(-1px);
+  &:hover:not(.active) {
+    color: mix(@lang-toggle-text-active, @lang-toggle-text-inactive, 50%);
   }
 
-  // Active state (selected language)
+  // Active state
   &.active {
-    color: @brand-primary;
-    font-weight: @font-weight-bold;
-
-    // Underline effect for active language
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%;
-      height: 2px;
-      background: @gradient-primary;
-      border-radius: @border-radius-full;
-      animation: slideIn @duration-base @ease-in-out;
-    }
+    color: @lang-toggle-text-active;
   }
 
   // Focus state for accessibility
-  &:focus {
+  &:focus-visible {
     outline: 2px solid @brand-primary;
     outline-offset: 2px;
+    border-radius: @border-radius-sm;
   }
 
-  // Responsive sizing
-  @media screen and (min-width: @screen-sm) {
-    font-size: @font-size-base;
-    padding: @spacing-sm @spacing-lg;
-  }
-}
-
-// Language label
-.lang-label {
-  display: inline-block;
-  transition: transform @duration-fast @ease-in-out;
-
-  .lang-btn:hover & {
-    transform: scale(1.05);
+  // Click feedback
+  &:active {
+    transform: scale(0.95);
   }
 }
 
-// Separator between language options
-.lang-separator {
-  color: @text-muted;
-  font-size: @font-size-sm;
-  font-weight: @font-weight-light;
+// Text label
+.lang-toggle__text {
+  display: block;
+  line-height: 1;
+
+  // Prevent text selection
   user-select: none;
+  -webkit-user-select: none;
+}
 
-  @media screen and (min-width: @screen-sm) {
-    font-size: @font-size-base;
+// ============================================
+// Sliding Indicator
+// ============================================
+
+.lang-toggle__slider {
+  position: absolute;
+  z-index: 1;
+  top: @lang-toggle-gap;
+  left: @lang-toggle-gap;
+  width: @lang-toggle-btn-width;
+  height: calc(@lang-toggle-height - @lang-toggle-gap * 2);
+  background: @lang-toggle-slider-bg;
+  border-radius: calc(@lang-toggle-radius - @lang-toggle-gap);
+  box-shadow: @lang-toggle-slider-shadow;
+
+  // Smooth sliding animation
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  // Default position (English selected)
+  transform: translateX(0);
+}
+
+// Move slider when Chinese is selected
+.lang-toggle:has(.lang-toggle__btn--zh.active) .lang-toggle__slider {
+  transform: translateX(@lang-toggle-btn-width);
+}
+
+// Fallback for browsers without :has() support
+.lang-toggle[data-active-lang="zh"] .lang-toggle__slider {
+  transform: translateX(@lang-toggle-btn-width);
+}
+
+// ============================================
+// Dark Mode Support
+// ============================================
+
+.dark-mode,
+body[data-theme="dark"] {
+  .lang-toggle {
+    background: @lang-toggle-bg-dark;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
   }
+
+  .lang-toggle__slider {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .lang-toggle__btn {
+    color: rgba(255, 255, 255, 0.6);
+
+    &.active {
+      color: #fff;
+    }
+
+    &:hover:not(.active) {
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .lang-toggle {
+    background: @lang-toggle-bg-dark;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .lang-toggle__slider {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .lang-toggle__btn {
+    color: rgba(255, 255, 255, 0.6);
+
+    &.active {
+      color: #fff;
+    }
+  }
+}
+
+// ============================================
+// Navigation Bar Scroll State
+// ============================================
+
+.navbar.navbar-fixed-top.scrolled .lang-toggle {
+  background: rgba(0, 0, 0, 0.08);
 }
 
 // ============================================
@@ -108,26 +223,24 @@
   &[style*="display:none"] {
     display: none !important;
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
 
-  // Visible state
+  // Visible state with entrance animation
   &:not([style*="display: none"]) {
     display: block;
     opacity: 1;
     transform: translateY(0);
-    animation: fadeInContent @duration-base @ease-in-out;
+    animation: langFadeIn @duration-base @ease-out;
   }
 }
 
-// Ensure smooth content transitions
+// Post container typography consistency
 .post-container {
   .lang-en,
   .lang-zh {
-    // Prevent layout shift during transitions
     min-height: 0;
 
-    // Typography consistency across languages
     h1, h2, h3, h4, h5, h6 {
       margin-top: 50px;
       margin-bottom: 20px;
@@ -139,12 +252,10 @@
       line-height: @line-height-loose;
     }
 
-    // List spacing
     ul, ol {
       margin-bottom: 40px;
     }
 
-    // Code blocks
     pre {
       margin: @spacing-lg 0;
     }
@@ -152,24 +263,13 @@
 }
 
 // ============================================
-// Animations
+// Animation
 // ============================================
 
-@keyframes slideIn {
-  from {
-    width: 0;
-    opacity: 0;
-  }
-  to {
-    width: 80%;
-    opacity: 1;
-  }
-}
-
-@keyframes fadeInContent {
+@keyframes langFadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -178,50 +278,31 @@
 }
 
 // ============================================
-// Dark Mode Support
+// Accessibility
 // ============================================
 
-@media (prefers-color-scheme: dark) {
-  .language-switcher {
-    .lang-btn {
-      &:hover {
-        background: rgba(255, 255, 255, 0.05);
-      }
-
-      &.active::after {
-        background: @gradient-secondary;
-      }
-    }
-  }
-}
-
-// ============================================
-// Accessibility Enhancements
-// ============================================
-
-// Reduced motion preference
 @media (prefers-reduced-motion: reduce) {
-  .lang-btn,
+  .lang-toggle__slider,
+  .lang-toggle__btn,
   .lang-en,
   .lang-zh {
     transition: none;
     animation: none;
   }
-
-  .lang-btn.active::after {
-    animation: none;
-  }
 }
 
-// High contrast mode
 @media (prefers-contrast: high) {
-  .lang-btn {
-    border: 1px solid currentColor;
+  .lang-toggle {
+    border: 2px solid currentColor;
+    background: transparent;
+  }
 
-    &.active {
-      background: @brand-primary;
-      color: @text-inverse;
-    }
+  .lang-toggle__slider {
+    background: @brand-primary;
+  }
+
+  .lang-toggle__btn.active {
+    color: @text-inverse;
   }
 }
 
@@ -230,16 +311,34 @@
 // ============================================
 
 @media print {
-  .language-switcher {
-    display: none;
+  .lang-toggle,
+  .language-switcher,
+  .language-switcher-nav {
+    display: none !important;
   }
 
-  // Show only English content by default when printing
   .lang-zh {
     display: none !important;
   }
 
   .lang-en {
     display: block !important;
+  }
+}
+
+// ============================================
+// Legacy Support (.language-switcher class)
+// ============================================
+
+.language-switcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: @spacing-sm;
+  margin: @spacing-lg 0;
+  padding: @spacing-sm;
+
+  @media screen and (max-width: @screen-sm) {
+    margin: @spacing-md 0;
   }
 }

@@ -180,10 +180,13 @@
         window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${title}`, '_blank', 'width=600,height=400');
     }
     function shareToWechat() {
+        var lang = localStorage.getItem('preferredLanguage') || 'en';
+        var msgCopied = lang === 'zh' ? '链接已复制到剪贴板，请在微信中粘贴分享！' : 'Link copied! Paste in WeChat to share.';
+        var msgPrompt = lang === 'zh' ? '请复制以下链接在微信中分享：' : 'Copy this link to share on WeChat:';
         navigator.clipboard.writeText(window.location.href).then(function() {
-            alert('链接已复制到剪贴板，请在微信中粘贴分享！');
+            alert(msgCopied);
         }).catch(function() {
-            prompt('请复制以下链接在微信中分享：', window.location.href);
+            prompt(msgPrompt, window.location.href);
         });
     }
     function shareToWeibo() {
@@ -356,55 +359,38 @@
 
 <!-- Multi-Lingual -->
 {% if page.multilingual %}
-<!-- Handle Language Change -->
+<!-- Handle Language Change - Unified with localStorage -->
 <script type="text/javascript">
     // get nodes
     var $zh = document.querySelector(".zh");
     var $en = document.querySelector(".en");
-    var $select = document.querySelector("select");
 
-    // Changes at v1.8.1: include lang flag as a url query. This interop well with catalog hash anchors.
-    function getLang() { return new URLSearchParams(document.location.search).get("lang") }
-
-    function setLang(newLang) {
-        var params = new URLSearchParams(document.location.search)
-        params.set("lang", newLang)
-        document.location.search = params.toString()  // refresh.
+    // Get language from localStorage, default to English
+    function getLang() {
+        return localStorage.getItem('preferredLanguage') || 'en';
     }
 
-    // handle render
+    // handle render - Default to English
     function _render() {
-        var lang = getLang()
-        // en
-        if (lang == "en") {
-            $select.selectedIndex = 1;
-            $en.style.display = "block";
-            $en.classList.add("active");
-            $zh.style.display = "none";
-            $zh.classList.remove("active");
-            // default to zh-cn
+        var lang = getLang();
+
+        if (lang == "zh") {
+            // Show Chinese content
+            if ($zh) { $zh.style.display = "block"; $zh.classList.add("active"); }
+            if ($en) { $en.style.display = "none"; $en.classList.remove("active"); }
         } else {
-            $select.selectedIndex = 0;
-            $zh.style.display = "block";
-            $zh.classList.add("active");
-            $en.style.display = "none";
-            $en.classList.remove("active");
+            // Default: Show English content
+            if ($en) { $en.style.display = "block"; $en.classList.add("active"); }
+            if ($zh) { $zh.style.display = "none"; $zh.classList.remove("active"); }
         }
-        // interop with catalog 
-        generateCatalog(".catalog-body");
+
+        // Regenerate catalog for current language
+        if (typeof generateCatalog === 'function') {
+            generateCatalog(".catalog-body");
+        }
     }
 
-    // handle select change
-    function onLanChange(index) {
-        if (index == 0) {
-            lang = "zh"
-        } else {
-            lang = "en"
-        }
-        setLang(lang)
-    }
-
-    // init
+    // init - render based on saved preference (default: English)
     _render();
 </script>
 {% endif %}

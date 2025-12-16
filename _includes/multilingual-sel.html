@@ -1,11 +1,18 @@
-                <!-- Language Switcher - Modern Toggle Buttons -->
-                <div class="language-switcher">
-                    <button class="lang-btn lang-btn-en active" data-lang="en" aria-label="Switch to English">
-                        <span class="lang-label">EN</span>
-                    </button>
-                    <span class="lang-separator">|</span>
-                    <button class="lang-btn lang-btn-zh" data-lang="zh" aria-label="切换到中文">
-                        <span class="lang-label">中文</span>
-                    </button>
-                </div>
-
+<!-- Language Switcher - Capsule Toggle Design -->
+<div class="lang-toggle" role="radiogroup" aria-label="Language selection">
+    <button class="lang-toggle__btn lang-toggle__btn--en active"
+            data-lang="en"
+            role="radio"
+            aria-checked="true"
+            aria-label="English">
+        <span class="lang-toggle__text">EN</span>
+    </button>
+    <button class="lang-toggle__btn lang-toggle__btn--zh"
+            data-lang="zh"
+            role="radio"
+            aria-checked="false"
+            aria-label="中文">
+        <span class="lang-toggle__text">中</span>
+    </button>
+    <span class="lang-toggle__slider" aria-hidden="true"></span>
+</div>
