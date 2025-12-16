@@ -1,3 +1,9 @@
+# ===========================================================
+# robots.txt for Jason's Blog
+# Updated: 2025-12-16
+# ===========================================================
+
+# Default: Allow all crawlers
 User-agent: *
 Allow: /
 
@@ -10,17 +16,71 @@ Disallow: /.sass-cache/
 Disallow: /.jekyll-cache/
 Disallow: /.bundle/
 Disallow: /vendor/
+Disallow: /less/
+Disallow: /doc/
+Disallow: /document/
 
-# Allow crawling of important files
-Allow: /css/
-Allow: /js/
+# Disallow pagination pages (duplicate content)
+Disallow: /page*/
+
+# Allow important static resources
+Allow: /css/*.css
+Allow: /js/*.js
 Allow: /img/
 Allow: /fonts/
+Allow: /pwa/manifest.json
+
+# Allow important feeds and sitemaps
 Allow: /feed.xml
 Allow: /sitemap.xml
+Allow: /search.json
 
-# Sitemap location
+# ===========================================================
+# AI Crawler Specific Rules (2025 Best Practices)
+# ===========================================================
+
+# Google AI (Bard/Gemini) - Allow for AI Overview
+User-agent: Google-Extended
+Allow: /
+
+# OpenAI GPTBot - Allow for ChatGPT citations
+User-agent: GPTBot
+Allow: /
+
+# Anthropic Claude - Allow for Claude citations
+User-agent: Claude-Web
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+
+# Bing AI (Copilot)
+User-agent: Bingbot
+Allow: /
+
+# Common AI Crawlers - Allow for better AI visibility
+User-agent: ChatGPT-User
+Allow: /
+User-agent: CCBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+User-agent: meta-externalagent
+Allow: /
+
+# ===========================================================
+# Sitemaps
+# ===========================================================
 Sitemap: https://jasonrobert.me/sitemap.xml
 
-# Crawl delay (optional)
-Crawl-delay: 1
+# ===========================================================
+# Host (for Yandex)
+# ===========================================================
+Host: https://jasonrobert.me

@@ -1,14 +1,18 @@
+---
+layout: null
+---
 /* ===========================================================
  * Enhanced Service Worker for Jason's Blog v2.0
  * ===========================================================
  * Copyright 2025 @JasonRobertDestiny
  * Licensed under Apache 2.0
  * Advanced PWA features with offline-first strategy
+ * Auto-generated version on each Jekyll build
  * ========================================================== */
 
-// Cache configuration
+// Cache configuration - Auto-updated on each build
 const CACHE_NAMESPACE = 'jason-blog-v2-';
-const CACHE_VERSION = '2025.12.15';
+const CACHE_VERSION = '{{ site.time | date: "%Y%m%d%H%M%S" }}'; // Auto-generated timestamp
 const CACHE_NAME = CACHE_NAMESPACE + CACHE_VERSION;
 
 // Cache strategies
@@ -43,14 +47,14 @@ const CACHE_STRATEGIES = {
   pages: {
     cacheName: RUNTIME_NAME,
     strategy: 'NetworkFirst',
-    maxAgeSeconds: 24 * 60 * 60, // 24 hours
+    maxAgeSeconds: 1 * 60 * 60, // 1 hour (reduced from 24h for dynamic content)
     maxEntries: 50
   },
   images: {
     cacheName: IMAGE_CACHE,
-    strategy: 'CacheFirst', 
-    maxAgeSeconds: 7 * 24 * 60 * 60, // 7 days
-    maxEntries: 100
+    strategy: 'CacheFirst',
+    maxAgeSeconds: 30 * 24 * 60 * 60, // 30 days (increased from 7 days)
+    maxEntries: 150 // Increased for better performance
   },
   fonts: {
     cacheName: FONT_CACHE,
@@ -178,26 +182,46 @@ function isStaticAsset(request) {
 
 // Caching strategy implementations
 async function handlePageRequest(request) {
+  const url = new URL(request.url);
+
+  // Force network-only for dynamic content (language switching relies on fresh HTML)
+  const isHomepage = url.pathname === '/' || url.pathname === '/index.html';
+  const hasQueryParams = url.search.length > 0;
+
   try {
     // Network First strategy for pages
     const networkResponse = await fetch(request);
-    
-    // Cache successful responses
+
+    // Cache successful responses (but with shorter TTL for homepage)
     if (networkResponse.ok) {
       const cache = await caches.open(CACHE_STRATEGIES.pages.cacheName);
-      cache.put(request, networkResponse.clone());
+
+      // Clone response for caching
+      const responseToCache = networkResponse.clone();
+
+      // Add cache timestamp header for expiration checking
+      cache.put(request, responseToCache);
     }
-    
+
     return networkResponse;
   } catch (error) {
     console.log('Network failed for page, trying cache...');
-    
+
     // Try cache
     const cachedResponse = await caches.match(request);
     if (cachedResponse) {
+      // Check if cache is still valid (within maxAgeSeconds)
+      const cachedDate = cachedResponse.headers.get('date');
+      if (cachedDate) {
+        const age = (Date.now() - new Date(cachedDate).getTime()) / 1000;
+        if (age > CACHE_STRATEGIES.pages.maxAgeSeconds) {
+          console.log('Cache expired, returning offline page');
+          return caches.match('./offline.html');
+        }
+      }
       return cachedResponse;
     }
-    
+
     // Return offline page
     return caches.match('./offline.html');
   }
@@ -292,27 +316,47 @@ async function cleanupCache(strategy) {
 // Message handling for client communication
 self.addEventListener('message', event => {
   const { data } = event;
-  
+
   switch (data.type) {
     case 'SKIP_WAITING':
       self.skipWaiting();
       break;
-      
+
     case 'CACHE_STATUS':
       getCacheStatus().then(status => {
         event.ports[0].postMessage(status);
       });
       break;
-      
+
     case 'CLEAR_CACHE':
       clearCaches().then(() => {
         event.ports[0].postMessage({ success: true });
       });
       break;
-      
+
+    case 'CLEAR_PAGE_CACHE':
+      // Clear only page/HTML caches (useful for language switching issues)
+      clearPageCaches().then(() => {
+        event.ports[0].postMessage({ success: true, type: 'pages' });
+      });
+      break;
+
     case 'PRECACHE_UPDATE':
       updatePrecache().then(() => {
         event.ports[0].postMessage({ updated: true });
+      });
+      break;
+
+    case 'GET_VERSION':
+      event.ports[0].postMessage({ version: CACHE_VERSION });
+      break;
+
+    case 'FORCE_UPDATE':
+      // Force update all caches
+      clearCaches().then(() => {
+        return updatePrecache();
+      }).then(() => {
+        event.ports[0].postMessage({ updated: true, version: CACHE_VERSION });
       });
       break;
   }
@@ -337,6 +381,16 @@ async function clearCaches() {
   return Promise.all(
     cacheNames
       .filter(name => name.startsWith(CACHE_NAMESPACE))
+      .map(name => caches.delete(name))
+  );
+}
+
+async function clearPageCaches() {
+  // Clear only runtime cache (contains HTML pages)
+  const cacheNames = await caches.keys();
+  return Promise.all(
+    cacheNames
+      .filter(name => name.includes('-runtime'))
       .map(name => caches.delete(name))
   );
 }
