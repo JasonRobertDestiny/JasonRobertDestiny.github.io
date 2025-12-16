@@ -30,8 +30,10 @@
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
     <link rel="dns-prefetch" href="//seo-fixer.writesonic.com">
     {% if page.url == '/' %}
-    <!-- Preload hero header image to improve LCP with high priority -->
-    <link rel="preload" as="image" href="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" fetchpriority="high" imagesrcset="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %} 1x" imagesizes="100vw">
+    <!-- Preload hero header image (WebP) to improve LCP with highest priority -->
+    {% assign header_img = page.header-img | default: site.header-img %}
+    {% assign webp_img = header_img | replace: '.jpg', '.webp' | replace: '.jpeg', '.webp' | replace: '.png', '.webp' %}
+    <link rel="preload" as="image" href="{{ site.baseurl }}/{{ webp_img }}" fetchpriority="high" type="image/webp">
     {% endif %}
 
     <!-- Twitter Card -->

@@ -4,10 +4,12 @@
 {% endcomment %}
 
 {% if include.type == 'post' or include.type == 'page' %}
+{% assign post_header_img = page.header-img | default: site.header-img %}
+{% assign post_webp_img = post_header_img | replace: '.jpg', '.webp' | replace: '.jpeg', '.webp' | replace: '.png', '.webp' %}
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}');
+        background-image: url('{{ site.baseurl }}/{{ post_webp_img }}');
         background: {{ page.header-bg-css }};
     }
 
@@ -127,7 +129,9 @@
 {% endif %}
 
 {% if include.type == 'page' %}
-<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}'); aspect-ratio: 16/9; min-height: 420px;">
+{% assign page_header_img = page.header-img | default: site.header-img %}
+{% assign page_webp_img = page_header_img | replace: '.jpg', '.webp' | replace: '.jpeg', '.webp' | replace: '.png', '.webp' %}
+<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{{ page_webp_img }}'); aspect-ratio: 16/9; min-height: 420px;">
   <div class="header-mask enhanced-header-mask"></div>
   <div class="container">
     <div class="row">

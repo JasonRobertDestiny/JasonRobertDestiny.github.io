@@ -17,11 +17,21 @@
     </div>
 </footer>
 
-<!-- Critical JavaScript - Load Immediately via CDN with local fallback -->
-<script defer src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"
-        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
-        crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="{{ "/js/jquery.min.js" | prepend: site.baseurl }}"><\/script>')</script>
+<!-- Critical JavaScript - Load via CDN with proper fallback -->
+<script>
+(function() {
+    var jq = document.createElement('script');
+    jq.src = 'https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js';
+    jq.integrity = 'sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=';
+    jq.crossOrigin = 'anonymous';
+    jq.onerror = function() {
+        var fallback = document.createElement('script');
+        fallback.src = '{{ "/js/jquery.min.js" | prepend: site.baseurl }}';
+        document.head.appendChild(fallback);
+    };
+    document.head.appendChild(jq);
+})();
+</script>
 
 <!-- Critical: Language Toggle Event Delegation (Must load before user interaction) -->
 <script>
@@ -490,17 +500,19 @@
 </script>
 <!-- Original work by Jason's Blog -->
 
-<!-- Google Analytics 4 - Deferred Loading -->
+<!-- Google Analytics 4 - Load after user interaction or idle time -->
 {% if jekyll.environment == 'production' %}
 <script>
-  // Load Google Analytics after page is interactive
-  window.addEventListener('load', function() {
-    setTimeout(function() {
-      var gaScript = document.createElement('script');
-      gaScript.src = 'https://www.googletagmanager.com/gtag/js?id={{ site.ga_track_id }}';
-      gaScript.async = true;
-      document.head.appendChild(gaScript);
-
+  // Load GA only when browser is idle or user interacts
+  (function() {
+    var gaLoaded = false;
+    function loadGA() {
+      if (gaLoaded) return;
+      gaLoaded = true;
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id={{ site.ga_track_id }}';
+      s.async = true;
+      document.head.appendChild(s);
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -508,7 +520,16 @@
         cookie_flags: 'SameSite=Strict;Secure',
         anonymize_ip: true
       });
-    }, 1000); // Delay 1s to prioritize rendering
-  });
+    }
+    // Load on user interaction or after 3s idle
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadGA, { timeout: 3000 });
+    } else {
+      setTimeout(loadGA, 3000);
+    }
+    ['scroll', 'click', 'touchstart'].forEach(function(e) {
+      window.addEventListener(e, loadGA, { once: true, passive: true });
+    });
+  })();
 </script>
 {% endif %}
