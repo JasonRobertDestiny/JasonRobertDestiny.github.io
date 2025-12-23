@@ -4,6 +4,7 @@ title: "Beyond Chatbots: The Real AI Agent Revolution Nobody's Talking About"
 subtitle: "From answering questions to executing tasks—what I learned building autonomous agents"
 description: "Deep dive into AI Agents' evolution from knowledge providers to task executors. Honest analysis of capabilities, limitations, and real-world applications based on hands-on experience with MeetSpot and NeighborHelp platforms."
 date: 2025-01-13 16:45:00
+updated: 2025-12-23 16:00:00
 author: "Jason Robert"
 header-img: "img/post-bg-digital-partner.jpg"
 catalog: true
@@ -93,10 +94,10 @@ Despite the "AI will replace all jobs" hysteria, most "AI Agents" are just chatb
 
 | **Domain** | **Specific Use Case** | **Real Results** | **What Nobody Tells You** |
 |:-----------|:---------------------|:-----------------|:--------------------------|
-| **Customer Service** | Klarna's AI handles full customer journey from queries to refunds | Replaced work of 700 humans, saving $40M annually | Required 8 months of training on 10M+ historical tickets. Still escalates 35% of edge cases. |
-| **Software Development** | GitHub Copilot Workspace assists with coding, testing, debugging | 55% faster task completion in enterprise tests | Code quality decreased 12% initially. Required human review overhead. |
-| **Internal Operations** | Home Depot's Sidekick manages inventory and restocking | Improved store efficiency, reduced labor costs | Failed deployment in 15% of stores due to legacy system incompatibilities. |
-| **Data Analysis** | JD Logistics' UData enables natural language queries | Dramatically improved analysis efficiency | Limited to pre-defined schemas. Custom queries fail 40% of the time. |
+| **Customer Service** | [Klarna's AI assistant](https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/) handles full customer journey from queries to refunds | Replaced work of 700 humans, [saving $40M annually](https://www.reuters.com/technology/klarnas-ai-approach-sees-it-keep-head-count-shrink-workforce-2024-08-27/) | Required 8 months of training on 10M+ historical tickets. Still escalates 35% of edge cases. |
+| **Software Development** | [GitHub Copilot Workspace](https://github.blog/news-insights/product-news/github-copilot-workspace/) assists with coding, testing, debugging | [55% faster task completion](https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/) in enterprise tests | Code quality decreased 12% initially. Required human review overhead. |
+| **Internal Operations** | [Home Depot's Sidekick](https://corporate.homedepot.com/news/operations/home-depot-tests-new-technology-sidekick-pilot-stores) manages inventory and restocking | Improved store efficiency, reduced labor costs | Failed deployment in 15% of stores due to legacy system incompatibilities. |
+| **Data Analysis** | [JD Logistics' UData](https://jdcorporateblog.com/jd-logistics-ai-driven-supply-chain/) enables natural language queries | Dramatically improved analysis efficiency | Limited to pre-defined schemas. Custom queries fail 40% of the time. |
 
 ### 2.2 Lessons from Our Deployments
 
@@ -340,10 +341,10 @@ The journey is just beginning. The hype cycle is exhausting. But the underlying 
 
 | **领域** | **具体用例** | **实际结果** | **没人告诉你的** |
 |:---------|:-------------|:-------------|:-----------------|
-| **客户服务** | Klarna的AI处理从查询到退款的完整客户旅程 | 替代700名人工,每年节省4000万美元 | 需要在1000万+历史工单上训练8个月。仍有35%的边缘案例需要升级。 |
-| **软件开发** | GitHub Copilot Workspace辅助编码、测试、调试 | 企业测试中任务完成速度提高55% | 代码质量最初下降12%。需要人工审查开销。 |
-| **内部运营** | Home Depot的Sidekick管理库存和补货 | 提高门店效率,降低人工成本 | 由于遗留系统不兼容,在15%的门店部署失败。 |
-| **数据分析** | 京东物流的UData启用自然语言查询 | 显著提高分析效率 | 仅限于预定义模式。自定义查询40%的时间失败。 |
+| **客户服务** | [Klarna的AI助手](https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/)处理从查询到退款的完整客户旅程 | 替代700名人工,[每年节省4000万美元](https://www.reuters.com/technology/klarnas-ai-approach-sees-it-keep-head-count-shrink-workforce-2024-08-27/) | 需要在1000万+历史工单上训练8个月。仍有35%的边缘案例需要升级。 |
+| **软件开发** | [GitHub Copilot Workspace](https://github.blog/news-insights/product-news/github-copilot-workspace/)辅助编码、测试、调试 | 企业测试中[任务完成速度提高55%](https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/) | 代码质量最初下降12%。需要人工审查开销。 |
+| **内部运营** | [Home Depot的Sidekick](https://corporate.homedepot.com/news/operations/home-depot-tests-new-technology-sidekick-pilot-stores)管理库存和补货 | 提高门店效率,降低人工成本 | 由于遗留系统不兼容,在15%的门店部署失败。 |
+| **数据分析** | [京东物流的UData](https://jdcorporateblog.com/jd-logistics-ai-driven-supply-chain/)启用自然语言查询 | 显著提高分析效率 | 仅限于预定义模式。自定义查询40%的时间失败。 |
 
 ### 2.2 我们部署的经验教训
 
