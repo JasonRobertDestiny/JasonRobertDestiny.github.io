@@ -211,7 +211,24 @@
             "query-input": "required name=search_term_string"
           },
           "inLanguage": "zh-CN"
-        }{% if page.layout == 'post' %},
+        }{% if page.url == '/' or page.url == '/index.html' %},
+        {
+          "@type": "Blog",
+          "@id": "{{ site.url }}/#blog",
+          "url": "{{ site.url }}/",
+          "name": "{{ site.title }}",
+          "description": "{{ site.description }}",
+          "publisher": {
+            "@id": "{{ site.url }}/#organization"
+          },
+          "blogPost": [{% for post in site.posts limit:5 %}{
+            "@type": "BlogPosting",
+            "headline": "{{ post.title | escape }}",
+            "url": "{{ site.url }}{{ post.url }}",
+            "datePublished": "{{ post.date | date_to_xmlschema }}"
+          }{% unless forloop.last %},{% endunless %}{% endfor %}],
+          "inLanguage": ["en", "zh-CN"]
+        }{% endif %}{% if page.layout == 'post' %},
         {
           "@type": "Article",
           "@id": "{{ site.url }}{{ page.url }}#article",
