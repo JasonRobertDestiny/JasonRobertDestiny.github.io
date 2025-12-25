@@ -4,122 +4,40 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Jason's personal technical blog built with Jekyll, focusing on AI development, Agent applications, full-stack development, and hackathon projects. The site features modern responsive design with PWA support and tech-enhanced styling.
+Jekyll-based technical blog with PWA support, dark mode, and bilingual content (English/Chinese). Live at https://jasonrobert.me.
 
 ## Development Commands
 
-### Prerequisites
-- Ruby 2.7+ (production uses Ruby 3.1)
-- Less compiler (standalone, no Node.js required)
-- Git
-- On Windows: Use PowerShell or WSL for running bash scripts
-
-### Build & Development Workflow
-
 ```bash
-# 1. Install Ruby dependencies
+# Install dependencies
 bundle install
 
-# 2. Compile Less to CSS (REQUIRED before serving/deploying)
+# Compile Less to CSS (REQUIRED before any commit with CSS changes)
 ./build.sh
-# On Windows PowerShell: bash build.sh
+# Windows: bash build.sh
 
-# 3. Start local development server
+# Local development
 bundle exec jekyll serve
 
-# 4. Build for production
+# Production build
 bundle exec jekyll build
-
-# 5. Clean generated files
-bundle exec jekyll clean
 ```
 
-### Critical Build Rule
+## Critical Rules
 
-**⚠️ ALWAYS compile Less files before deployment:**
-- The GitHub Actions workflow does NOT compile Less files
-- You MUST run `./build.sh` locally before committing CSS changes
-- Never edit files in `/css` directory directly - edit `/less` files instead
-- On Windows, run the build script via: `bash build.sh` or use WSL
+### CSS/Less Workflow
+1. **NEVER edit `/css` files directly** - edit `/less` files instead
+2. **ALWAYS run `./build.sh` before committing CSS changes** - GitHub Actions does NOT compile Less
+3. Entry point: `less/jason-blog.less` imports all modules
+4. Output: `css/jason-blog.css` (dev) + `css/jason-blog.min.css` (prod)
 
-### Deployment
+### Frontend Development
+**Invoke `Skill(frontend-design)` before any UI/CSS work** - this ensures design quality and avoids generic AI aesthetics.
 
-Automatic deployment via GitHub Actions on push to `master` branch:
-- Workflow: `.github/workflows/jekyll.yml`
-- Ruby 3.1, Bundler cache enabled
-- Deploys to GitHub Pages automatically
-- Does NOT compile Less files (must be done locally)
+### Blog Posts
+Posts must follow naming: `_posts/YYYY-MM-DD-title.md`
 
-## Architecture
-
-### Technology Stack
-- **Jekyll**: Static site generator with Liquid templating
-- **Bootstrap 3**: Customized responsive framework
-- **Less**: CSS preprocessor (no Node.js build system)
-- **jQuery**: Client-side interactions and PWA support
-
-### Directory Structure
-
-```
-├── _posts/           # Blog posts (YYYY-MM-DD-title.md format)
-├── _layouts/         # Page templates (default, post, page, keynote)
-├── _includes/        # Reusable components (nav, footer, head, etc.)
-├── less/             # Less source files (EDIT HERE)
-│   ├── jason-blog.less        # Main entry point
-│   ├── variables.less          # Design tokens, colors
-│   ├── tech-enhancements.less  # Modern UI components
-│   └── dark-mode.less          # Dark mode styles
-├── css/              # Compiled CSS (DO NOT EDIT)
-├── js/               # JavaScript files
-│   ├── jason-blog.js           # Custom scripts
-│   └── sw-registration.js      # PWA service worker
-└── _config.yml       # Jekyll configuration
-```
-
-### Less Build System
-
-**Build Flow:**
-1. Edit files in `/less` directory
-2. Run `./build.sh` to compile
-3. Generates both `css/jason-blog.css` (dev) and `css/jason-blog.min.css` (production)
-4. Commit compiled CSS files to git
-
-**Less File Organization:**
-- `jason-blog.less`: Main entry point, imports all modules in order
-- `variables.less`: Base colors, fonts, spacing tokens
-- `design-tokens.less`: Extended design system tokens
-- `mixins.less`: Reusable Less mixins and utilities
-- `tech-enhancements.less`: Gradients, animations, modern UI components
-- `dark-mode.less`: Dark mode theme (CSS custom properties)
-- `accessibility.less`: A11y enhancements and ARIA support
-- `sidebar.less`, `side-catalog.less`: Sidebar and table of contents
-- `search.less`: Search UI components
-- `highlight.less`: Code syntax highlighting (Rouge)
-- `home-enhancements.less`: Homepage-specific styles
-- `article-enhancements.less`: Blog post page enhancements
-- `archive-enhancements.less`: Archive/tags page styles
-- `scroll-enhancements.less`: Scroll animations and effects
-- `interactive-components.less`: Buttons, modals, interactive elements
-- `snackbar.less`: Toast notification system
-- `multilingual.less`: Bilingual content support
-- `mobile-performance.less`: Mobile optimizations
-
-### Frontend Features
-- **Responsive navigation** with scroll effects and Material Design animations
-- **Simple Jekyll Search** integration (`simple-jason-search.min.js`)
-- **Rouge syntax highlighting** with custom theme (`highlight.less`)
-- **MathJax support** (configurable per post via front matter)
-- **Progressive Web App**: manifest (`pwa/manifest.json`) + service worker (`sw.js`)
-- **Dark mode toggle** using CSS custom properties (`dark-mode.js`, `dark-mode.less`)
-- **Tech-themed gradients** and animations
-- **Accessibility features**: ARIA labels, keyboard navigation, reduced motion support
-- **Social sharing** integration (`social-share.js`)
-- **Image optimization** with lazy loading (`image-optimization.js`)
-- **Article interactions**: reading progress, smooth scroll (`article-interactions.js`)
-
-### Blog Post Format
-
-Front Matter structure:
+Front matter template:
 ```yaml
 ---
 layout: post
@@ -129,92 +47,53 @@ description: "SEO description"
 date: YYYY-MM-DD HH:MM:SS
 author: "Jason Robert"
 header-img: "img/path/to/header.jpg"
-catalog: true  # Enable table of contents
+catalog: true  # Table of contents
 tags:
     - Tag1
-    - Tag2
 ---
 ```
 
+## Architecture
+
+### Key Directories
+- `less/` - Less source files (edit here for styles)
+  - `variables.less` - Design tokens, colors, breakpoints
+  - `dark-mode.less` - Dark theme (CSS custom properties)
+- `_layouts/` - Page templates (default, post, page, keynote)
+- `_includes/` - Reusable components (nav, footer, head)
+- `js/` - Client scripts (dark-mode.js, search, PWA registration)
+
+### Less Module Structure
+`jason-blog.less` imports in order: variables -> design-tokens -> mixins -> component modules.
+
+Key modules for common tasks:
+- Typography/colors: `variables.less`, `design-tokens.less`
+- Dark mode: `dark-mode.less` (uses CSS custom properties)
+- Syntax highlighting: `highlight.less`
+- Responsive: breakpoints in `variables.less` (768/992/1200px)
+
+### Deployment
+- Push to `master` triggers GitHub Actions deployment
+- Workflow: `.github/workflows/jekyll.yml`
+- Ruby 3.1, auto-deploys to GitHub Pages
+
+## Common Issues
+
+### Styles not updating after deploy
+You forgot to run `./build.sh` before commit. The compiled CSS files must be committed.
+
+### Jekyll serve fails
+Run `bundle install` first. Check Ruby version (needs 2.7+, prod uses 3.1).
+
+### Dark mode not working
+Check `js/dark-mode.js` and `less/dark-mode.less`. Uses CSS custom properties toggled via JavaScript.
+
+### Build script fails on Windows
+Use WSL or Git Bash: `bash build.sh`
+
 ## Configuration
 
-### Jekyll (_config.yml)
-- Site metadata and SEO settings
-- Social media links (GitHub, CSDN, Juejin, Bilibili, ModelScope)
-- Pagination: 10 posts per page
-- Markdown: Kramdown with GFM (GitHub Flavored Markdown)
-- Syntax highlighting: Rouge
-- Future posts: enabled (`future: true`)
-
-### PWA Configuration
-- Manifest: `pwa/manifest.json`
-- Service Worker: `sw.js` (caches pages, CSS, JS)
-- Registration: `js/sw-registration.js`
-- Theme color: `#000000` (black)
-
-### SEO & Analytics
+- Site config: `_config.yml` (SEO, social links, pagination)
+- PWA manifest: `pwa/manifest.json`
+- Service worker: `sw.js`
 - Google Analytics: `ga_track_id` in `_config.yml`
-- Disqus comments: `disqus_username` in `_config.yml`
-- Sitemap: `sitemap.xml` (manual, not auto-generated)
-- Robots: `robots.txt` (allows all)
-
-## Key Implementation Details
-
-### Less Compilation Script (`build.sh`)
-- Compiles `less/jason-blog.less` to two outputs:
-  - `css/jason-blog.css`: Uncompressed (development)
-  - `css/jason-blog.min.css`: Minified with aggressive optimization (`--clean-css="--s1 --advanced --compatibility=ie8"`)
-- Displays minified file size after build
-
-### Responsive Design Breakpoints
-Defined in `variables.less`:
-- Mobile: < 768px
-- Tablet: 768px - 992px
-- Desktop: 992px - 1200px
-- Large: > 1200px
-
-### Color System
-Uses CSS custom properties for theming:
-- Light mode: default (black text on white)
-- Dark mode: toggled via JavaScript, uses inverted palette
-- Accent colors: tech-themed gradients (blue/purple spectrum)
-
-### Performance Optimizations
-- Minified CSS and JavaScript
-- Service worker caching strategy
-- Lazy-loaded images (native loading="lazy")
-- Preconnect to external fonts/resources
-- Bundled critical CSS inline in `<head>`
-
-## Git Workflow
-
-### Ignored Files (`.gitignore`)
-- Build artifacts: `_site/`, `.jekyll-cache/`
-- Drafts: `_posts/_draft/`, `_posts/_archive/`
-- System files: `.DS_Store`, `Thumbs.db`
-- Logs: `*.log`, `*.lock`
-- Temporary files: `*.tmp`, `*.temp`, `*.bak`, `*.swp`
-- Scripts: `*.sh`, `start.sh` (but committed CSS files are tracked)
-- Documentation workspace: `document/`
-
-### Branch Strategy
-- Main branch: `master`
-- Direct push to `master` triggers deployment via GitHub Actions
-- Use feature branches for major changes
-
-### Key File Locations
-- **Layouts**: `_layouts/` (default.html, post.html, page.html, keynote.html)
-- **Reusable components**: `_includes/` (nav.html, footer.html, head.html, etc.)
-- **Blog posts**: `_posts/` (must follow `YYYY-MM-DD-title.md` naming)
-- **Custom JavaScript**: `js/jason-blog.js` (main custom scripts)
-- **Service Worker**: `sw.js` (root level, caches static assets)
-- **Search data**: `search.json` (auto-generated from posts for client-side search)
-
-## Important Notes
-
-- **CSS Workflow**: Never skip Less compilation - GitHub Actions won't compile it
-- **Content**: Supports bilingual posts (English/Chinese)
-- **Images**: Place in `/img` directory, use absolute paths in posts
-- **JavaScript**: Minimal custom JS, primarily for PWA, search, and theme toggle
-- **Design Philosophy**: Tech-themed modern aesthetic with accessibility focus
-- **No package.json**: Uses standalone Less compiler, not npm build tools

@@ -97,7 +97,7 @@
     <link rel="canonical" href="{% if page.canonical %}{{ page.canonical }}{% elsif page.url == '/' %}{{ site.url }}/{% else %}{{ site.url }}{{ page.url | replace:'index.html','' }}{% endif %}">
 
     <!-- Hreflang Tags for Bilingual SEO -->
-    {% if page.multilingual %}
+    {% if page.multilingual or page.url == '/' or page.url == '/index.html' or page.url == '/about/' %}
     <link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.url | replace:'index.html','' }}" />
     <link rel="alternate" hreflang="zh" href="{{ site.url }}{{ page.url | replace:'index.html','' }}" />
     <link rel="alternate" hreflang="zh-CN" href="{{ site.url }}{{ page.url | replace:'index.html','' }}" />
