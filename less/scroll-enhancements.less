@@ -298,14 +298,6 @@
     background: linear-gradient(to top, @bg-primary, transparent);
   }
 
-  &.dark-mode {
-    &::before {
-      background: linear-gradient(to bottom, @dark-bg-primary, transparent);
-    }
-    &::after {
-      background: linear-gradient(to top, @dark-bg-primary, transparent);
-    }
-  }
 }
 
 // ============================================
@@ -431,33 +423,4 @@
   }
 }
 
-// ============================================
-// 暗色模式适配
-// ============================================
-.dark-mode {
-  .reading-progress {
-    box-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
-  }
-
-  .sticky-header {
-    background: fade(@dark-bg-primary, 95%);
-    border-bottom-color: @dark-bg-tertiary;
-  }
-
-  .progress-bar {
-    background: @dark-bg-tertiary;
-  }
-
-  .section-nav__dot {
-    background: @dark-bg-quaternary;
-
-    &:hover,
-    &.active {
-      background: @brand-accent;
-    }
-
-    &.active::before {
-      border-color: fade(@brand-accent, 30%);
-    }
-  }
-}
+// Dark mode removed - blog uses unified light theme

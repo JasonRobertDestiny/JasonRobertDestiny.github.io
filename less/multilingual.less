@@ -11,7 +11,6 @@
 
 // Colors - Refined Tech Palette
 @lang-toggle-bg: rgba(0, 0, 0, 0.06);
-@lang-toggle-bg-dark: rgba(255, 255, 255, 0.08);
 @lang-toggle-slider-bg: #ffffff;
 @lang-toggle-slider-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1);
 @lang-toggle-text-active: @brand-primary;
@@ -152,53 +151,7 @@
 }
 
 // ============================================
-// Dark Mode Support
-// ============================================
-
-.dark-mode,
-body[data-theme="dark"] {
-  .lang-toggle {
-    background: @lang-toggle-bg-dark;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
-  }
-
-  .lang-toggle__slider {
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  }
-
-  .lang-toggle__btn {
-    color: rgba(255, 255, 255, 0.6);
-
-    &.active {
-      color: #fff;
-    }
-
-    &:hover:not(.active) {
-      color: rgba(255, 255, 255, 0.8);
-    }
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .lang-toggle {
-    background: @lang-toggle-bg-dark;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
-  }
-
-  .lang-toggle__slider {
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  }
-
-  .lang-toggle__btn {
-    color: rgba(255, 255, 255, 0.6);
-
-    &.active {
-      color: #fff;
-    }
-  }
-}
+// Dark mode removed - blog uses unified light theme
 
 // ============================================
 // Navigation Bar Scroll State

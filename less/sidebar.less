@@ -99,34 +99,17 @@
       border-left: 4px solid var(--brand-primary);
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
       
-      // Ensure readability in both light and dark modes
-      [data-theme="dark"] & {
-        color: var(--text-primary);
-        background: var(--bg-tertiary);
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-      }
+      // Light theme is consistent - no dark mode variation needed
     }
-    
+
     p:not(.profile-description) {
       margin-top: 0px;
       margin-bottom: @spacing-lg;
       color: var(--text-secondary);
     }
-    
+
     .list-inline > li {
       padding-left: 0px;
-    }
-  }
-  
-  // Dark mode specific styles
-  [data-theme="dark"] & {
-    background: var(--bg-card);
-    border-color: var(--border-light);
-    color: var(--text-secondary);
-
-    h4.sidebar-heading,
-    h5 {
-      color: var(--text-primary);
     }
   }
 }
