@@ -6,6 +6,8 @@
 <!-- hack iOS CSS :active style -->
 <body ontouchstart="">
 
+    {% include svg-icons.html %}
+
     {% include nav.html %}
     {% include search.html %}
 
@@ -15,23 +17,23 @@
 
 <!-- Back to Top Button -->
 <button class="back-to-top" id="back-to-top" onclick="scrollToTop()" aria-label="Back to top" title="返回顶部">
-    <i class="fa fa-chevron-up" aria-hidden="true"></i>
+    <svg class="icon" aria-hidden="true"><use href="#icon-chevron-up"/></svg>
     <span class="sr-only">返回顶部</span>
 </button>
 
 <!-- Floating Action Menu -->
 <nav class="floating-menu" id="floating-menu" aria-label="Quick actions menu">
     <button class="floating-menu-toggle" onclick="toggleFloatingMenu()" aria-label="Toggle quick actions menu" aria-expanded="false" title="快捷菜单">
-        <i class="fa fa-plus" aria-hidden="true"></i>
+        <svg class="icon" aria-hidden="true"><use href="#icon-plus"/></svg>
         <span class="sr-only">打开菜单</span>
     </button>
     <div class="floating-menu-items" role="menu">
         <button class="floating-menu-item" onclick="openSearch()" aria-label="Search articles" title="搜索文章" role="menuitem">
-            <i class="fa fa-search" aria-hidden="true"></i>
+            <svg class="icon" aria-hidden="true"><use href="#icon-search"/></svg>
             <span class="sr-only">搜索</span>
         </button>
         <button class="floating-menu-item" onclick="printPage()" aria-label="Print page" title="打印页面" role="menuitem">
-            <i class="fa fa-print" aria-hidden="true"></i>
+            <svg class="icon" aria-hidden="true"><use href="#icon-print"/></svg>
             <span class="sr-only">打印</span>
         </button>
     </div>

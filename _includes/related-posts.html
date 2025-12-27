@@ -24,7 +24,7 @@
 {% if related_posts.size > 0 %}
 <div class="related-posts" style="background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); border-radius: 12px; padding: 35px; margin: 50px 0; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
     <h3 style="color: #1f2937; font-size: 26px; font-weight: 700; margin-bottom: 25px; border-bottom: 3px solid #667eea; padding-bottom: 12px;">
-        <i class="fa fa-link" style="margin-right: 10px; color: #667eea;"></i>相关文章推荐
+        <svg class="icon" aria-hidden="true" style="margin-right: 10px; color: #667eea;"><use href="#icon-link"/></svg>相关文章推荐
     </h3>
 
     <div class="row">
@@ -42,10 +42,10 @@
                     {% endif %}
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
                         <span style="color: #9ca3af; font-size: 12px;">
-                            <i class="fa fa-clock-o"></i> {{ post.date | date: "%Y-%m-%d" }}
+                            <svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg> {{ post.date | date: "%Y-%m-%d" }}
                         </span>
                         <span style="color: #667eea; font-size: 13px; font-weight: 600;">
-                            阅读更多 <i class="fa fa-arrow-right"></i>
+                            阅读更多 <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
                         </span>
                     </div>
 

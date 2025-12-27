@@ -25,7 +25,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="{{ site.baseurl }}/" class="nav-link" title="Homepage - Latest tech insights and AI tutorials">
-                                <i class="fa fa-home"></i>
+                                <svg class="icon"><use href="#icon-home"/></svg>
                                 <span class="nav-text">Home</span>
                             </a>
                         </li>
@@ -34,11 +34,11 @@
                         <li>
                             <a href="{{ page.url | prepend: site.baseurl }}" class="nav-link" title="{{ page.title }} - {% if page.description %}{{ page.description | strip_html | truncate: 80 }}{% else %}View {{ page.title | downcase }} page{% endif %}">
                                 {% if page.title == 'About' %}
-                                    <i class="fa fa-user"></i>
+                                    <svg class="icon"><use href="#icon-user"/></svg>
                                 {% elsif page.title == 'Archive' %}
-                                    <i class="fa fa-archive"></i>
+                                    <svg class="icon"><use href="#icon-archive"/></svg>
                                 {% elsif page.title == 'Portfolio' %}
-                                    <i class="fa fa-briefcase"></i>
+                                    <svg class="icon"><use href="#icon-briefcase"/></svg>
                                 {% endif %}
                                 <span class="nav-text">{{ page.title }}</span>
                             </a>
@@ -47,7 +47,7 @@
                         {% endfor %}
                         <li class="search-icon">
                             <a href="{{ site.baseurl }}/archive/" class="search-toggle focus-indicator" aria-label="Search articles and content" title="Search articles and content" role="button">
-                                <i class="fa fa-search" aria-hidden="true"></i>
+                                <svg class="icon" aria-hidden="true"><use href="#icon-search"/></svg>
                                 <span class="sr-only">Search</span>
                             </a>
                         </li>

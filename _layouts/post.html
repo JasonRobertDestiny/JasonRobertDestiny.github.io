@@ -27,20 +27,20 @@ layout: default
                 <div class="article-meta scroll-reveal">
                     <!-- Reading Time Estimation -->
                     <div class="reading-time">
-                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                        <svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg>
                         <span id="reading-time">{{ content | strip_html | number_of_words | divided_by: 200 | plus: 1 }} 分钟阅读</span>
                     </div>
-                    
+
                     <!-- Word Count -->
                     <div class="word-count">
-                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                        <svg class="icon" aria-hidden="true"><use href="#icon-file-text"/></svg>
                         <span>{{ content | strip_html | number_of_words }} 字</span>
                     </div>
-                    
+
                     <!-- Last Updated -->
                     {% if page.updated %}
                     <div class="last-updated">
-                        <i class="fa fa-refresh" aria-hidden="true"></i>
+                        <svg class="icon" aria-hidden="true"><use href="#icon-refresh"/></svg>
                         <time datetime="{{ page.updated | date_to_xmlschema }}">
                             更新于 {{ page.updated | date: "%Y年%m月%d日" }}
                         </time>
@@ -64,11 +64,11 @@ layout: default
                 <!-- Article Tags -->
                 {% if page.tags.size > 0 %}
                 <div class="article-tags scroll-reveal">
-                    <h4><i class="fa fa-tags"></i> 标签</h4>
+                    <h4><svg class="icon" aria-hidden="true"><use href="#icon-tags"/></svg> 标签</h4>
                     <div class="tags">
                         {% for tag in page.tags %}
                         <a href="{{ site.baseurl }}/tags/#{{ tag }}" class="tag" itemprop="keywords">
-                            <i class="fa fa-tag"></i>{{ tag }}
+                            <svg class="icon" aria-hidden="true"><use href="#icon-tag"/></svg>{{ tag }}
                         </a>
                         {% endfor %}
                     </div>
@@ -83,30 +83,30 @@ layout: default
 
                 <!-- Social Share Section -->
                 <div class="social-share scroll-reveal">
-                    <h4><i class="fa fa-share-alt"></i> 分享这篇文章</h4>
+                    <h4><svg class="icon" aria-hidden="true"><use href="#icon-share-alt"/></svg> 分享这篇文章</h4>
                     <div class="share-buttons">
                         <a href="#" class="share-btn twitter ripple" onclick="shareToTwitter()" title="分享到Twitter" aria-label="分享到Twitter">
-                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                            <svg class="icon" aria-hidden="true"><use href="#icon-twitter"/></svg>
                             <span class="sr-only">Twitter</span>
                         </a>
                         <a href="#" class="share-btn facebook ripple" onclick="shareToFacebook()" title="分享到Facebook" aria-label="分享到Facebook">
-                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                            <svg class="icon" aria-hidden="true"><use href="#icon-facebook"/></svg>
                             <span class="sr-only">Facebook</span>
                         </a>
                         <a href="#" class="share-btn linkedin ripple" onclick="shareToLinkedIn()" title="分享到LinkedIn" aria-label="分享到LinkedIn">
-                            <i class="fa fa-linkedin" aria-hidden="true"></i>
+                            <svg class="icon" aria-hidden="true"><use href="#icon-linkedin"/></svg>
                             <span class="sr-only">LinkedIn</span>
                         </a>
                         <a href="#" class="share-btn wechat ripple" onclick="shareToWechat()" title="分享到微信" aria-label="分享到微信">
-                            <i class="fa fa-wechat" aria-hidden="true"></i>
+                            <svg class="icon" aria-hidden="true"><use href="#icon-wechat"/></svg>
                             <span class="sr-only">微信</span>
                         </a>
                         <a href="#" class="share-btn weibo ripple" onclick="shareToWeibo()" title="分享到微博" aria-label="分享到微博">
-                            <i class="fa fa-weibo" aria-hidden="true"></i>
+                            <svg class="icon" aria-hidden="true"><use href="#icon-weibo"/></svg>
                             <span class="sr-only">微博</span>
                         </a>
                         <a href="#" class="share-btn copy-link ripple" onclick="copyToClipboard()" title="复制链接" aria-label="复制链接">
-                            <i class="fa fa-link" aria-hidden="true"></i>
+                            <svg class="icon" aria-hidden="true"><use href="#icon-link"/></svg>
                             <span class="sr-only">复制链接</span>
                         </a>
                     </div>
@@ -164,7 +164,7 @@ layout: default
                 <div class="side-catalog">
                     <hr class="hidden-sm hidden-xs">
                     <h5>
-                        <i class="fa fa-list"></i>
+                        <svg class="icon" aria-hidden="true"><use href="#icon-list"/></svg>
                         <a class="catalog-toggle" href="#">CATALOG</a>
                     </h5>
                     <ul class="catalog-body"></ul>

@@ -52,7 +52,7 @@
                     <div class="tags">
                         {% for tag in page.tags %}
                         <a class="tag" href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}" title="{{ tag }}">
-                            <i class="fa fa-tag"></i> {{ tag }}
+                            <svg class="icon" aria-hidden="true"><use href="#icon-tag"/></svg> {{ tag }}
                         </a>
                         {% endfor %}
                     </div>
@@ -63,16 +63,16 @@
                     {% endif %}
                     <div class="post-meta animate-fade-in-up delay-2">
                         <span class="author enhanced-text-shadow">
-                            <i class="fa fa-user"></i>
+                            <svg class="icon" aria-hidden="true"><use href="#icon-user"/></svg>
                             {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %}
                         </span>
                         <span class="date enhanced-text-shadow">
-                            <i class="fa fa-calendar"></i>
+                            <svg class="icon" aria-hidden="true"><use href="#icon-calendar"/></svg>
                             {{ page.date | date: "%B %-d, %Y" }}
                         </span>
                         {% if page.reading_time %}
                         <span class="reading-time enhanced-text-shadow">
-                            <i class="fa fa-clock-o"></i>
+                            <svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg>
                             {{ page.reading_time }} min read
                         </span>
                         {% endif %}

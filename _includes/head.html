@@ -174,8 +174,6 @@
         .post-preview .post-meta{color:#9ca3af;font-size:14px;margin-top:0}
         /* Prevent image CLS */
         img{max-width:100%;height:auto;display:block}
-        /* Font display */
-        @font-face{font-family:'FontAwesome';font-display:swap}
         /* Homepage featured section - prevent FOUC */
         .featured-section{
             background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
@@ -250,17 +248,23 @@
         /* Animation visibility (no keyframes - just initial state) */
         .animate-on-scroll{opacity:1;transform:translateY(0)}
         .fade-in-up{opacity:1;transform:translateY(0)}
+        /* SVG Icons - Replaces Font Awesome */
+        .icon{width:1em;height:1em;display:inline-block;vertical-align:-0.125em;fill:currentColor}
+        .icon-lg{width:1.33em;height:1.33em}
+        .icon-2x{width:2em;height:2em}
+        .icon-3x{width:3em;height:3em}
+        .icon-fw{width:1.25em;text-align:center}
+        /* Icon stack for social buttons */
+        .icon-stack{position:relative;display:inline-block;width:2em;height:2em;line-height:2em;vertical-align:middle}
+        .icon-stack .icon{position:absolute;left:0;width:100%;text-align:center}
+        .icon-stack-bg{font-size:2em}
+        .icon-stack-fg{font-size:1em}
     </style>
 
-    <!-- Bootstrap CSS - Load async (critical grid styles already inlined above) -->
-    <link rel="preload" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}" as="style">
-    <link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}" media="print" onload="this.media='all';this.onload=null;">
-    <noscript><link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}"></noscript>
-
-    <!-- Font Awesome - Async load (icons don't affect layout) -->
-    <link rel="preload" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" as="style">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" media="print" onload="this.media='all';this.onload=null;">
-    <noscript><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"></noscript>
+    <!-- Bootstrap CSS - Minimal build (Grid + Navbar + Utilities only, 20KB vs 117KB) -->
+    <link rel="preload" href="{{ "/css/bootstrap-minimal.min.css" | prepend: site.baseurl }}" as="style">
+    <link rel="stylesheet" href="{{ "/css/bootstrap-minimal.min.css" | prepend: site.baseurl }}" media="print" onload="this.media='all';this.onload=null;">
+    <noscript><link rel="stylesheet" href="{{ "/css/bootstrap-minimal.min.css" | prepend: site.baseurl }}"></noscript>
 
     <!-- HTML5 Shim and Respond.js IE8 support -->
     <!--[if lt IE 9]>
@@ -403,9 +407,6 @@
     <!-- Async tail styles (low priority, non-layout) -->
     <link rel="stylesheet" href="{{ "/css/async.css" | prepend: site.baseurl }}" media="print" onload="this.media='all';this.onload=null;">
     
-    <!-- Critical Font Preload -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts/fontawesome-webfont.woff2" as="font" type="font/woff2" crossorigin>
-
     <!-- Google Analytics 4 - Deferred for better performance -->
     <!-- Moved to footer.html for non-blocking load -->
 

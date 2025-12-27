@@ -11,7 +11,7 @@ tldr:
 <div class="tldr-section" style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); border-radius: 12px; padding: 30px; margin: 30px 0 40px 0; box-shadow: 0 6px 25px rgba(251, 191, 36, 0.25); border-left: 5px solid #d97706;">
     <div style="display: flex; align-items: center; margin-bottom: 20px;">
         <div style="background: white; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; margin-right: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-            <i class="fa fa-bolt" style="color: #f59e0b; font-size: 24px;"></i>
+            <svg class="icon" aria-hidden="true" style="color: #f59e0b; width: 24px; height: 24px;"><use href="#icon-bolt"/></svg>
         </div>
         <h2 style="color: white; margin: 0; font-size: 26px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">
             ⚡️ 核心要点（30秒速读）
@@ -21,7 +21,7 @@ tldr:
     <ul style="margin: 0; padding-left: 25px; color: white; font-size: 17px; line-height: 2; list-style-type: none;">
         {% for item in page.tldr %}
         <li style="margin-bottom: 12px; padding-left: 30px; position: relative;">
-            <i class="fa fa-check-circle" style="position: absolute; left: 0; top: 8px; color: #34d399; font-size: 20px; text-shadow: 0 2px 4px rgba(0,0,0,0.2);"></i>
+            <svg class="icon" aria-hidden="true" style="position: absolute; left: 0; top: 8px; color: #34d399; width: 20px; height: 20px;"><use href="#icon-check-circle"/></svg>
             <strong style="font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">{{ item }}</strong>
         </li>
         {% endfor %}
@@ -29,7 +29,7 @@ tldr:
 
     <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.3); text-align: center;">
         <span style="color: white; font-size: 14px; opacity: 0.9;">
-            <i class="fa fa-clock-o"></i> 节省您的时间 · 快速了解关键信息
+            <svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg> 节省您的时间 · 快速了解关键信息
         </span>
     </div>
 </div>

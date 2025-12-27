@@ -1,13 +1,13 @@
 {% if site.friends %}
 <hr>
 <h5>
-    <i class="fa fa-link"></i>
+    <svg class="icon" aria-hidden="true"><use href="#icon-link"/></svg>
     FRIENDS
 </h5>
 <div class="friends">
   {% for friend in site.friends %}
   <a href="{{friend.href}}" target="_blank" rel="noopener">
-    <i class="fa fa-external-link"></i>
+    <svg class="icon" aria-hidden="true"><use href="#icon-external-link"/></svg>
     {{friend.title}}
   </a>
   {% endfor %}
