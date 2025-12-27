@@ -69,6 +69,12 @@
         loadScript('{{ "/js/bootstrap.min.js" | prepend: site.baseurl }}');
         loadScript('{{ "/js/jason-blog.min.js" | prepend: site.baseurl }}');
 
+        // Optional: Load Playfair Display for editorial headings (async, non-blocking)
+        var fontLink = document.createElement('link');
+        fontLink.rel = 'stylesheet';
+        fontLink.href = 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap';
+        document.head.appendChild(fontLink);
+
         // Optional AdSense (disabled by default via site.ads_enabled)
         {% if site.ads_enabled and jekyll.environment == 'production' %}
         setTimeout(function() {
