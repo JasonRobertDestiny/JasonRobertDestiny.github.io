@@ -175,10 +175,86 @@
         img{max-width:100%;height:auto;display:block}
         /* Font display */
         @font-face{font-family:'FontAwesome';font-display:swap}
+        /* Homepage featured section - prevent FOUC */
+        .featured-section{
+            background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+            border-radius:16px;
+            padding:32px;
+            margin-bottom:40px;
+            position:relative;
+            overflow:hidden;
+        }
+        @media(min-width:768px){.featured-section{padding:48px;border-radius:20px}}
+        .featured-section__title{
+            display:flex;
+            align-items:center;
+            gap:12px;
+            color:#fff;
+            font-size:24px;
+            font-weight:700;
+            margin-bottom:24px;
+        }
+        .featured-section__grid{
+            display:grid;
+            grid-template-columns:1fr;
+            gap:20px;
+        }
+        @media(min-width:768px){.featured-section__grid{grid-template-columns:repeat(2,1fr);gap:24px}}
+        .featured-card{
+            background:rgba(255,255,255,0.95);
+            backdrop-filter:blur(10px);
+            border-radius:12px;
+            padding:20px;
+            border:1px solid rgba(255,255,255,0.2);
+        }
+        @media(min-width:768px){.featured-card{padding:24px;border-radius:16px}}
+        .featured-card__title{font-size:18px;font-weight:600;color:#1f2937;margin:0 0 8px}
+        .featured-card__excerpt{font-size:14px;color:#6b7280;margin:0 0 12px;line-height:1.5}
+        .featured-card__meta{font-size:12px;color:#9ca3af}
+        /* Core topics section */
+        .core-topics{
+            background:#fff;
+            border-radius:16px;
+            padding:24px;
+            margin-bottom:32px;
+            border:1px solid rgba(0,0,0,0.05);
+            box-shadow:0 4px 20px rgba(0,0,0,0.06);
+        }
+        @media(min-width:768px){.core-topics{padding:32px}}
+        .core-topics__header{
+            display:flex;
+            align-items:center;
+            gap:10px;
+            margin-bottom:20px;
+        }
+        .core-topics__title{font-size:20px;font-weight:700;color:#1f2937;margin:0}
+        .core-topics__tags{display:flex;flex-wrap:wrap;gap:12px}
+        /* Topic tags */
+        .topic-tag{
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+            padding:10px 20px;
+            border-radius:100px;
+            font-size:14px;
+            font-weight:500;
+            text-decoration:none;
+            transition:transform 0.2s,box-shadow 0.2s;
+        }
+        .topic-tag--ai{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff}
+        .topic-tag--dev{background:linear-gradient(135deg,#11998e 0%,#38ef7d 100%);color:#fff}
+        .topic-tag--product{background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%);color:#fff}
+        .topic-tag--career{background:linear-gradient(135deg,#4facfe 0%,#00f2fe 100%);color:#fff}
+        .topic-tag--life{background:linear-gradient(135deg,#fa709a 0%,#fee140 100%);color:#fff}
+        /* Animation visibility (no keyframes - just initial state) */
+        .animate-on-scroll{opacity:1;transform:translateY(0)}
+        .fade-in-up{opacity:1;transform:translateY(0)}
     </style>
 
-    <!-- Bootstrap CSS - MUST load synchronously for layout -->
-    <link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}">
+    <!-- Bootstrap CSS - Load async (critical grid styles already inlined above) -->
+    <link rel="preload" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}" as="style">
+    <link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}" media="print" onload="this.media='all';this.onload=null;">
+    <noscript><link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}"></noscript>
 
     <!-- Font Awesome - Async load (icons don't affect layout) -->
     <link rel="preload" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" as="style">
@@ -318,8 +394,10 @@
     }
     </script>
 
-    <!-- Custom Blog Styles - Synchronous to prevent CLS -->
-    <link rel="stylesheet" href="{{ "/css/jason-blog.min.css" | prepend: site.baseurl }}">
+    <!-- Custom Blog Styles - Load async (critical styles already inlined above) -->
+    <link rel="preload" href="{{ "/css/jason-blog.min.css" | prepend: site.baseurl }}" as="style">
+    <link rel="stylesheet" href="{{ "/css/jason-blog.min.css" | prepend: site.baseurl }}" media="print" onload="this.media='all';this.onload=null;">
+    <noscript><link rel="stylesheet" href="{{ "/css/jason-blog.min.css" | prepend: site.baseurl }}"></noscript>
 
     <!-- Async tail styles (low priority, non-layout) -->
     <link rel="stylesheet" href="{{ "/css/async.css" | prepend: site.baseurl }}" media="print" onload="this.media='all';this.onload=null;">
