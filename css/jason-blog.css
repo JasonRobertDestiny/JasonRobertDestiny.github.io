@@ -1162,8 +1162,7 @@ pre.highlight {
 }
 .animate-fade-in-up {
   opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 0.8s ease forwards;
+  animation: fadeInOnly 0.8s ease forwards;
 }
 .animate-fade-in-up.delay-1 {
   animation-delay: 0.2s;
@@ -1171,10 +1170,9 @@ pre.highlight {
 .animate-fade-in-up.delay-2 {
   animation-delay: 0.4s;
 }
-@keyframes fadeInUp {
+@keyframes fadeInOnly {
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 .scroll-indicator {
@@ -1729,21 +1727,17 @@ pre.highlight {
 }
 .fade-in {
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s ease;
+  transition: opacity 0.6s ease;
 }
 .fade-in.visible {
   opacity: 1;
-  transform: translateY(0);
 }
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .scroll-reveal.revealed {
   opacity: 1;
-  transform: translateY(0);
 }
 .cursor-glow {
   position: fixed;
@@ -2083,22 +2077,16 @@ pre.highlight {
 }
 .featured-section:hover {
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  transform: translateY(-2px);
 }
 .featured-card {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 12px;
   padding: 24px;
-  transition-property: all;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-  -webkit-transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  transition: box-shadow 150ms cubic-bezier(0.215, 0.61, 0.355, 1), background 150ms cubic-bezier(0.215, 0.61, 0.355, 1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 .featured-card:hover {
-  transform: translateY(-5px);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   background: #ffffff;
 }
@@ -2469,7 +2457,6 @@ pre.highlight {
 .pager__link:hover {
   border-color: #4f46e5;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  transform: translateY(-2px);
 }
 .pager__link--prev {
   text-align: left;
@@ -2498,14 +2485,12 @@ pre.highlight {
     gap: 12px;
   }
 }
-@keyframes fadeInUp {
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(32px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 @keyframes shimmer {
@@ -2517,7 +2502,7 @@ pre.highlight {
   }
 }
 .animate-fade-in-up {
-  animation: fadeInUp 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  animation: fadeIn 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
   animation-fill-mode: both;
 }
 .animate-fade-in-up--delay-1 {
@@ -2563,9 +2548,7 @@ pre.highlight {
 .featured-card,
 .topic-tag,
 .pager__link {
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
+  contain: layout style;
 }
 .reading-progress {
   position: fixed;
@@ -2601,12 +2584,10 @@ pre.highlight {
 }
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(48px);
-  transition: opacity 500ms cubic-bezier(0.215, 0.61, 0.355, 1), transform 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: opacity 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .scroll-reveal.revealed {
   opacity: 1;
-  transform: translateY(0);
 }
 .scroll-reveal--delay-100 {
   transition-delay: 100ms;
@@ -2620,28 +2601,14 @@ pre.highlight {
 .scroll-reveal--delay-400 {
   transition-delay: 400ms;
 }
-.scroll-reveal--from-left {
-  transform: translateX(-48px);
-}
-.scroll-reveal--from-left.revealed {
-  transform: translateX(0);
-}
-.scroll-reveal--from-right {
-  transform: translateX(48px);
-}
-.scroll-reveal--from-right.revealed {
-  transform: translateX(0);
-}
-.scroll-reveal--scale {
-  transform: scale(0.95);
-}
+.scroll-reveal--from-left.revealed,
+.scroll-reveal--from-right.revealed,
 .scroll-reveal--scale.revealed {
-  transform: scale(1);
+  opacity: 1;
 }
 @media (prefers-reduced-motion: reduce) {
   .scroll-reveal {
     opacity: 1;
-    transform: none;
     transition: none;
   }
 }
@@ -2837,7 +2804,6 @@ pre.highlight {
 }
 .counter[data-target] {
   opacity: 0;
-  transform: scale(0.9);
   transition-property: all;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -2846,7 +2812,6 @@ pre.highlight {
 }
 .counter[data-target].counting {
   opacity: 1;
-  transform: scale(1);
 }
 .progress-bar {
   width: 100%;
@@ -4367,11 +4332,9 @@ pre.highlight {
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(16px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 .empty-state {
@@ -5107,11 +5070,9 @@ article a:focus {
 @keyframes langFadeIn {
   from {
     opacity: 0;
-    transform: translateY(8px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -5182,11 +5143,9 @@ article a:focus {
 }
 @keyframes slideIn {
   from {
-    transform: translateY(20px);
     opacity: 0;
   }
   to {
-    transform: translateY(0);
     opacity: 1;
   }
 }
@@ -5884,12 +5843,10 @@ h6,
 }
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .scroll-reveal.revealed {
   opacity: 1;
-  transform: translateY(0);
 }
 .scroll-reveal[data-delay="1"] {
   transition-delay: 0.1s;
@@ -5909,11 +5866,9 @@ h6,
 @keyframes editorial-fade-in {
   from {
     opacity: 0;
-    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 .editorial-animate {

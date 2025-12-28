@@ -23,9 +23,10 @@
   to { opacity: 0; }
 }
 
+// CLS-Safe animation - opacity only
 @keyframes slideIn {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 // ==============================================

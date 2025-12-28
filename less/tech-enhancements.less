@@ -373,25 +373,24 @@
   }
 }
 
-// 淡入向上动画
+// 淡入动画 - CLS-Safe (opacity only)
+// CRITICAL: Removed translateY to prevent layout shifts
 .animate-fade-in-up {
   opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 0.8s ease forwards;
-  
+  animation: fadeInOnly 0.8s ease forwards;
+
   &.delay-1 {
     animation-delay: 0.2s;
   }
-  
+
   &.delay-2 {
     animation-delay: 0.4s;
   }
 }
 
-@keyframes fadeInUp {
+@keyframes fadeInOnly {
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -1038,27 +1037,25 @@
   }
 }
 
-// 加载动画
+// 加载动画 - CLS-Safe (opacity only, no translateY)
 .fade-in {
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s ease;
-  
+  // No transform offset - maintains layout position, prevents CLS
+  transition: opacity 0.6s ease;
+
   &.visible {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
-// 滚动显示动画
+// 滚动显示动画 - CLS-Safe (opacity only, no translateY)
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  
+  // No transform offset - maintains layout position, prevents CLS
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+
   &.revealed {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 

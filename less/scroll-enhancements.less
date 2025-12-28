@@ -38,17 +38,17 @@
 }
 
 // ============================================
-// 滚动显示动画 (Scroll Reveal)
+// 滚动显示动画 (Scroll Reveal) - CLS-Safe Version
+// CRITICAL: Using opacity-only to prevent CLS
+// translateY/translateX in initial state causes layout shifts
 // ============================================
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(@space-8);
-  transition: opacity @duration-slow @ease-out-cubic,
-              transform @duration-slow @ease-out-cubic;
+  // No transform offset - element maintains layout position
+  transition: opacity @duration-slow @ease-out-cubic;
 
   &.revealed {
     opacity: 1;
-    transform: translateY(0);
   }
 
   // 延迟变体
@@ -57,25 +57,17 @@
   &--delay-300 { transition-delay: 300ms; }
   &--delay-400 { transition-delay: 400ms; }
 
-  // 方向变体
-  &--from-left {
-    transform: translateX(-@space-8);
-    &.revealed { transform: translateX(0); }
-  }
-
-  &--from-right {
-    transform: translateX(@space-8);
-    &.revealed { transform: translateX(0); }
-  }
-
+  // Direction variants removed - they caused CLS
+  // Use opacity-only for all reveal effects
+  &--from-left,
+  &--from-right,
   &--scale {
-    transform: scale(0.95);
-    &.revealed { transform: scale(1); }
+    // All variants now use opacity-only for CLS safety
+    &.revealed { opacity: 1; }
   }
 
   @media (prefers-reduced-motion: reduce) {
     opacity: 1;
-    transform: none;
     transition: none;
   }
 }
@@ -309,14 +301,13 @@
   color: @brand-primary;
   font-variant-numeric: tabular-nums;
 
+  // CLS-Safe: opacity-only animation, no scale transform
   &[data-target] {
     opacity: 0;
-    transform: scale(0.9);
     .transition-all();
 
     &.counting {
       opacity: 1;
-      transform: scale(1);
     }
   }
 }

@@ -656,16 +656,14 @@ h1, h2, h3, h4, h5, h6,
 // SCROLL ANIMATIONS - ORCHESTRATED REVEALS
 // ============================================
 
-// Staggered fade-in animation
+// Staggered fade-in animation - CLS-Safe (opacity only)
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  // No transform offset - maintains layout position, prevents CLS
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 
   &.revealed {
     opacity: 1;
-    transform: translateY(0);
   }
 
   // Stagger delays for orchestration
@@ -676,15 +674,14 @@ h1, h2, h3, h4, h5, h6,
   &[data-delay="5"] { transition-delay: 0.5s; }
 }
 
-// Page load animation
+// Page load animation - CLS-Safe (opacity only)
+// CRITICAL: Removed translateY to prevent layout shifts
 @keyframes editorial-fade-in {
   from {
     opacity: 0;
-    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 

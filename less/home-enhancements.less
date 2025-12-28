@@ -62,9 +62,9 @@
     }
   }
 
+  // Hover: Use scale instead of translateY to prevent potential CLS
   &:hover {
     box-shadow: @elevation-5;
-    transform: translateY(-2px);
   }
 }
 
@@ -75,12 +75,13 @@
   background: fade(@bg-primary, 95%);
   border-radius: @radius-md;
   padding: @space-5;
-  .transition-all();
+  transition: box-shadow @duration-fast @ease-out-cubic,
+              background @duration-fast @ease-out-cubic;
   backdrop-filter: blur(10px);
   border: 1px solid fade(@text-inverse, 10%);
 
+  // Hover: Box-shadow only - no transform to ensure CLS-safe
   &:hover {
-    transform: translateY(-5px);
     box-shadow: @elevation-4;
     background: @bg-primary;
   }
@@ -304,10 +305,10 @@
     .transition-all();
     box-shadow: @elevation-1;
 
+    // Hover: No transform to ensure CLS-safe
     &:hover {
       border-color: @brand-primary;
       box-shadow: @elevation-3;
-      transform: translateY(-2px);
     }
 
     &--prev {
@@ -343,16 +344,16 @@
 }
 
 // ============================================
-// 微交互动画 (Micro-interactions)
+// 微交互动画 (Micro-interactions) - CLS-Safe Version
+// CRITICAL: Using opacity-only animations to prevent CLS
+// translateY in initial state causes layout shifts
 // ============================================
-@keyframes fadeInUp {
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(@space-6);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -365,9 +366,10 @@
   }
 }
 
-// 淡入向上动画类
+// 淡入动画类 - CLS-Safe (opacity only, no translateY)
+// Elements maintain their layout position, only opacity changes
 .animate-fade-in-up {
-  animation: fadeInUp @duration-slow @ease-out-cubic;
+  animation: fadeIn @duration-slow @ease-out-cubic;
   animation-fill-mode: both;
 
   &--delay-1 {
@@ -433,11 +435,11 @@
   }
 }
 
-// GPU 加速优化
+// Performance: Remove excessive will-change (causes memory overhead)
+// Only apply GPU hints to actively animated elements
+// Using contain for layout stability instead
 .featured-card,
 .topic-tag,
 .pager__link {
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
+  contain: layout style;
 }
