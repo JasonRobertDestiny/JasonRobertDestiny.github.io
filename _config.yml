@@ -1,10 +1,10 @@
 # Site settings
-title: Jason's Blog
-SEOTitle: AI Agent Dev Expert | Jason Robert
+title: Calder's Lab
+SEOTitle: AI Agent Architect | Calder
 header-img: img/home-bg-o.jpg
 email: johnrobertdestiny@gmail.com
-description: "AI Agent developer with 28 months production experience. Award-winning projects: MeetSpot, L'Oreal Data Assistant. Weekly AI insights."
-keyword: "AI Agent, Core Web Vitals, PageSpeed, Devtools MCP, 多智能体, 性能优化"
+description: "AI Agent architect building production-grade multi-agent systems. 28+ months experience. Award-winning: MeetSpot, L'Oreal Data Insight."
+keyword: "AI Agent, Multi-Agent Systems, Web3, Intelligent Systems, AI Architect, LLM Applications"
 url: "https://jasonrobert.me" # your host, for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
 ads_enabled: false
@@ -26,7 +26,7 @@ bilibili_username: 648236073
 #linkedin_username:  firstname-lastname-idxxxx
 
 # Build settings
-# from 2016, 'pygments' is unsupported on Jason's Blog. Use 'rouge' for highlighting instead.
+# from 2016, 'pygments' is unsupported on Calder's Lab. Use 'rouge' for highlighting instead.
 highlighter: rouge
 permalink: pretty
 paginate: 10
@@ -61,7 +61,7 @@ anchorjs: true # if you want to customize anchor. check out line:181 of `post.ht
 #timezone: CN
 
 # Gems
-# from PR#40, to support local preview for Jason's Blog 3.0
+# from PR#40, to support local preview for Calder's Lab
 # make sure you have this gem installed
 # `$ gem install jekyll-paginate`
 plugins: [jekyll-paginate]
@@ -96,7 +96,7 @@ ga_domain: jasonrobertdestiny.github.io
 
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
-sidebar-about-description: "AI Agent Development Expert<br>28 Months Production Experience<br><br>Multi-Agent Systems Architect<br>Multiple Hackathon Winner<br><br>🏆 Award-Winning Projects:<br>MeetSpot · L'Oréal Data Insight · Neighborly Help<br><br>🎓 BISTU · Telecommunication Engineering<br><br>💡 Focus: Production-Grade AI Agents<br>Intelligent Systems · Tech Sharing"
+sidebar-about-description: "AI Agent Architect<br>Building the Future of Intelligent Systems<br><br>Multi-Agent | Web3 | Production AI<br><br>Award-Winning Projects:<br>MeetSpot / L'Oreal Insight / Neighborly<br><br>BISTU / Telecom Engineering<br><br>Exploring the Edge of AI + Decentralization"
 sidebar-avatar: https://github.com/JasonRobertDestiny.png # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags

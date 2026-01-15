@@ -1,141 +1,135 @@
-// Variables - 现代科技感配色方案 v3.0 - SEO优化版
+// Variables - Cyberpunk Brutalism + Web3 Design System v4.0
+// Design: Exaggerated Minimalism meets Cyberpunk
+// NO gradients, NO rounded corners, HIGH contrast, NEON accents
 
-// CSS Custom Properties for Dynamic Theme Switching
+// CSS Custom Properties for Theme
 :root {
-  // 主色调 - 现代蓝紫色系 (提高对比度以符合WCAG AA标准)
-  --brand-primary: #4f46e5;       // 深靛蓝 - 更高对比度的主色调
-  --brand-secondary: #7c3aed;      // 中紫色 - 悬停和强调
-  --brand-accent: #a78bfa;        // 浅紫色 - 装饰元素
-  --brand-highlight: #f59e0b;      // 琥珀色 - 高亮和强调
-  --brand-success: #10b981;       // 成功绿
-  --brand-warning: #f59e0b;       // 警告橙
-  --brand-danger: #ef4444;        // 危险红
-  --brand-info: #06b6d4;          // 信息青
+  // Core Brand - Web3 Neon Palette
+  --brand-primary: #00FFFF;        // Electric Cyan - Web3 signature
+  --brand-secondary: #FF00FF;       // Magenta - accent
+  --brand-accent: #FAFF00;         // Electric Yellow - highlight
+  --brand-highlight: #00FF88;       // Matrix Green - success
+  --brand-success: #00FF88;
+  --brand-warning: #FAFF00;
+  --brand-danger: #FF3366;
+  --brand-info: #00FFFF;
 
-  // 文字颜色系统 - WCAG AA 兼容 (最小对比度 4.5:1)
-  --text-primary: #0f172a;         // 主要文字 - 高对比度 (21:1)
-  --text-secondary: #334155;       // 次要文字 - 中等对比度 (12.6:1)
-  --text-muted: #525f7f;          // 辅助文字 - 优化对比度 (5.6:1) - WCAG AA
-  --text-light: #64748b;          // 浅色文字 - 装饰用途 (4.5:1 minimum)
-  --text-inverse: #ffffff;         // 反白文字
-  --text-link: var(--brand-primary);     // 链接颜色
+  // Text Colors - WCAG AAA on dark
+  --text-primary: #F8FAFC;          // Primary text (15.6:1 on #0A0E15)
+  --text-secondary: #CBD5E1;        // Secondary (11.3:1)
+  --text-muted: #94A3B8;           // Muted (7.2:1)
+  --text-light: #64748B;           // Light (4.5:1 minimum)
+  --text-inverse: #0A0E15;          // For light backgrounds
+  --text-link: var(--brand-primary);
+  --text-glow: var(--brand-primary);
 
-  // 背景色系统 - 分层设计
-  --bg-primary: #ffffff;          // 主背景
-  --bg-secondary: #f8fafc;        // 次要背景  
-  --bg-tertiary: #f1f5f9;         // 三级背景
-  --bg-quaternary: #e2e8f0;       // 四级背景
-  --bg-dark: #0f172a;             // 深色背景
-  --bg-card: rgba(255, 255, 255, 0.9);  // 卡片背景
-  --bg-overlay: rgba(15, 23, 42, 0.8);  // 遮罩背景
+  // Background System - Deep Dark
+  --bg-primary: #0A0E15;           // Main background - near black
+  --bg-secondary: #0F1419;         // Elevated surfaces
+  --bg-tertiary: #141A22;          // Cards
+  --bg-quaternary: #1A222D;        // Hover states
+  --bg-dark: #050810;              // Deepest
+  --bg-card: rgba(20, 26, 34, 0.95);
+  --bg-overlay: rgba(10, 14, 21, 0.9);
+  --bg-light: #F8FAFC;             // Light mode fallback
 
-  // 渐变色组合 - 优化性能的CSS渐变
-  --gradient-primary: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
-  --gradient-accent: linear-gradient(135deg, var(--brand-secondary) 0%, var(--brand-accent) 100%);
-  --gradient-warm: linear-gradient(135deg, #f59e0b 0%, var(--brand-highlight) 100%);
-  --gradient-cool: linear-gradient(135deg, #06b6d4 0%, var(--brand-primary) 100%);
-  --gradient-subtle: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  // NO GRADIENTS - Brutalist solid colors only
+  // Use solid backgrounds, not gradients
 
-  // 功能色 - 语义化颜色
-  --success: #10b981;             // 成功绿
-  --success-light: #d1fae5;       // 浅成功色
-  --warning: #f59e0b;             // 警告黄
-  --warning-light: #fef3c7;       // 浅警告色
-  --danger: #ef4444;              // 危险红
-  --danger-light: #fecaca;        // 浅危险色
-  --info: #06b6d4;                // 信息蓝
-  --info-light: #cffafe;          // 浅信息色
+  // Functional Colors
+  --success: #00FF88;
+  --success-light: rgba(0, 255, 136, 0.15);
+  --warning: #FAFF00;
+  --warning-light: rgba(250, 255, 0, 0.15);
+  --danger: #FF3366;
+  --danger-light: rgba(255, 51, 102, 0.15);
+  --info: #00FFFF;
+  --info-light: rgba(0, 255, 255, 0.15);
 
-  // 边框颜色
-  --border-light: #e2e8f0;
-  --border-medium: #cbd5e1;
-  --border-dark: #64748b;
+  // Borders - Sharp, visible
+  --border-light: #1E293B;
+  --border-medium: #334155;
+  --border-dark: #475569;
+  --border-glow: var(--brand-primary);
 
-  // 阴影系统 - 优化性能的阴影
-  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  // Shadow System - Neon glow effect
+  --shadow-none: none;
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px rgba(0, 255, 255, 0.3);
+  --shadow-glow-strong: 0 0 40px rgba(0, 255, 255, 0.5);
 }
 
-// Dark mode removed - blog uses unified light theme for visual consistency
+// Legacy Less Variables
+// Core Brand - Web3 Neon Palette
+@brand-primary: #00FFFF;        // Electric Cyan
+@brand-secondary: #FF00FF;       // Magenta
+@brand-accent: #FAFF00;         // Electric Yellow
+@brand-highlight: #00FF88;       // Matrix Green
+@brand-success: #00FF88;
+@brand-warning: #FAFF00;
+@brand-danger: #FF3366;
+@brand-info: #00FFFF;
 
-// Legacy Less Variables for backward compatibility
-// 主色调 - 现代蓝紫色系 (提高对比度以符合WCAG AA标准)
-@brand-primary: #4f46e5;       // 深靛蓝 - 更高对比度的主色调
-@brand-secondary: #7c3aed;      // 中紫色 - 悬停和强调
-@brand-accent: #a78bfa;        // 浅紫色 - 装饰元素
-@brand-highlight: #f59e0b;      // 琥珀色 - 高亮和强调
-@brand-success: #10b981;       // 成功绿
-@brand-warning: #f59e0b;       // 警告橙
-@brand-danger: #ef4444;        // 危险红
-@brand-info: #06b6d4;          // 信息青
+// Text Colors
+@text-primary: #F8FAFC;
+@text-secondary: #CBD5E1;
+@text-muted: #94A3B8;
+@text-light: #64748B;
+@text-inverse: #0A0E15;
+@text-link: @brand-primary;
 
-// 渐变色组合 - 优化性能的CSS渐变
-@gradient-primary: linear-gradient(135deg, @brand-primary 0%, @brand-secondary 100%);
-@gradient-secondary: linear-gradient(135deg, @brand-secondary 0%, @brand-primary 100%);
-@gradient-accent: linear-gradient(135deg, @brand-secondary 0%, @brand-accent 100%);
-@gradient-warm: linear-gradient(135deg, #f59e0b 0%, @brand-highlight 100%);
-@gradient-cool: linear-gradient(135deg, #06b6d4 0%, @brand-primary 100%);
-@gradient-subtle: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+// Background System
+@bg-primary: #0A0E15;
+@bg-secondary: #0F1419;
+@bg-tertiary: #141A22;
+@bg-quaternary: #1A222D;
+@bg-dark: #050810;
+@bg-card: rgba(20, 26, 34, 0.95);
+@bg-overlay: rgba(10, 14, 21, 0.9);
+@bg-light: #F8FAFC;
 
-// 文字颜色系统 - WCAG AA 兼容 (最小对比度 4.5:1)
-@text-primary: #0f172a;         // 主要文字 - 高对比度 (21:1 on white)
-@text-secondary: #334155;       // 次要文字 - 中等对比度 (12.6:1 on white)
-@text-muted: #525f7f;          // 辅助文字 - 优化对比度 (5.6:1 on white) - WCAG AA compliant
-@text-light: #64748b;          // 浅色文字 - 装饰用途 (4.5:1 minimum)
-@text-inverse: #ffffff;         // 反白文字
-@text-link: @brand-primary;     // 链接颜色
+// Functional Colors
+@success: #00FF88;
+@success-light: rgba(0, 255, 136, 0.15);
+@warning: #FAFF00;
+@warning-light: rgba(250, 255, 0, 0.15);
+@danger: #FF3366;
+@danger-light: rgba(255, 51, 102, 0.15);
+@info: #00FFFF;
+@info-light: rgba(0, 255, 255, 0.15);
 
-// 背景色系统 - 分层设计
-@bg-primary: #ffffff;          // 主背景
-@bg-secondary: #f8fafc;        // 次要背景  
-@bg-tertiary: #f1f5f9;         // 三级背景
-@bg-quaternary: #e2e8f0;       // 四级背景
-@bg-dark: #0f172a;             // 深色背景
-@bg-card: rgba(255, 255, 255, 0.9);  // 卡片背景
-@bg-overlay: rgba(15, 23, 42, 0.8);  // 遮罩背景
+// Shadows
+@shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.5);
+@shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.5);
+@shadow-md: 0 4px 8px rgba(0, 0, 0, 0.5);
+@shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+@shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.5);
+@shadow-2xl: 0 24px 48px rgba(0, 0, 0, 0.6);
+@shadow-glow: 0 0 20px rgba(0, 255, 255, 0.3);
+@shadow-glow-strong: 0 0 40px rgba(0, 255, 255, 0.5);
 
-// Dark mode removed - blog uses unified light theme
-
-// 功能色 - 语义化颜色
-@success: #10b981;             // 成功绿
-@success-light: #d1fae5;       // 浅成功色
-@warning: #f59e0b;             // 警告黄
-@warning-light: #fef3c7;       // 浅警告色
-@danger: #ef4444;              // 危险红
-@danger-light: #fecaca;        // 浅危险色
-@info: #06b6d4;                // 信息蓝
-@info-light: #cffafe;          // 浅信息色
-
-// 阴影系统 - 优化性能的阴影
-@shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-@shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-@shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-@shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-@shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-@shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-
-// 透明度变量
+// Opacity
 @opacity-light: 0.1;
 @opacity-medium: 0.5;
 @opacity-heavy: 0.9;
 
-// 边框颜色
-@border-light: #e2e8f0;
-@border-medium: #cbd5e1;
-@border-dark: #64748b;
+// Borders
+@border-light: #1E293B;
+@border-medium: #334155;
+@border-dark: #475569;
 
-// 尺寸变量
-@border-radius-sm: 4px;
-@border-radius-md: 8px;
-@border-radius-lg: 12px;
-@border-radius-xl: 16px;
-@border-radius-full: 9999px;
+// BRUTALIST: Sharp corners only
+@border-radius-sm: 0;
+@border-radius-md: 0;
+@border-radius-lg: 0;
+@border-radius-xl: 0;
+@border-radius-full: 0;
 
-// 间距系统
+// Spacing System - 8px grid
 @spacing-xs: 4px;
 @spacing-sm: 8px;
 @spacing-md: 16px;
@@ -143,15 +137,16 @@
 @spacing-xl: 32px;
 @spacing-2xl: 48px;
 @spacing-3xl: 64px;
+@spacing-4xl: 96px;
 
-// 断点系统
+// Breakpoints
 @screen-xs: 480px;
 @screen-sm: 768px;
 @screen-md: 992px;
 @screen-lg: 1200px;
 @screen-xl: 1400px;
 
-// z-index 系统
+// Z-index System
 @z-dropdown: 1000;
 @z-sticky: 1010;
 @z-fixed: 1020;
@@ -160,34 +155,39 @@
 @z-popover: 1050;
 @z-tooltip: 1060;
 
-// 动画持续时间
-@duration-fast: 150ms;
-@duration-base: 300ms;
-@duration-slow: 500ms;
+// Animation - Fast, snappy (brutalist)
+@duration-instant: 0ms;
+@duration-fast: 100ms;
+@duration-base: 200ms;
+@duration-slow: 300ms;
 
-// 动画缓动函数
+// Easing - Sharp, not bouncy
+@ease-sharp: cubic-bezier(0.4, 0, 0.2, 1);
 @ease-in: cubic-bezier(0.4, 0, 1, 1);
 @ease-out: cubic-bezier(0, 0, 0.2, 1);
 @ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 
-// Typography scale
+// Typography Scale - Bold, dramatic
 @font-size-xs: 12px;
 @font-size-sm: 14px;
 @font-size-base: 16px;
 @font-size-lg: 18px;
 @font-size-xl: 20px;
 @font-size-2xl: 24px;
-@font-size-3xl: 30px;
-@font-size-4xl: 36px;
+@font-size-3xl: 32px;
+@font-size-4xl: 40px;
+@font-size-5xl: 56px;
+@font-size-6xl: 72px;
+@font-size-hero: clamp(3rem, 10vw, 8rem);
 
-// Line heights
-@line-height-tight: 1.25;
-@line-height-snug: 1.375;
+// Line Heights
+@line-height-tight: 1.1;
+@line-height-snug: 1.25;
 @line-height-normal: 1.5;
 @line-height-relaxed: 1.625;
 @line-height-loose: 2;
 
-// Font weights
+// Font Weights - Bold emphasis
 @font-weight-thin: 100;
 @font-weight-light: 300;
 @font-weight-normal: 400;
@@ -197,14 +197,69 @@
 @font-weight-extrabold: 800;
 @font-weight-black: 900;
 
-// Legacy color compatibility (保持向后兼容)
-@white-pure: @bg-primary;
-@white-faded: fadeout(@bg-primary, 20%);
+// Letter Spacing - Tight for display
+@letter-spacing-tighter: -0.05em;
+@letter-spacing-tight: -0.025em;
+@letter-spacing-normal: 0;
+@letter-spacing-wide: 0.025em;
+@letter-spacing-wider: 0.05em;
+@letter-spacing-widest: 0.1em;
+
+// Legacy Compatibility
+@white-pure: @bg-light;
+@white-faded: fadeout(@bg-light, 20%);
 @gray-dark: @text-secondary;
 @gray: @text-muted;
 @gray-light: @text-light;
 @brand-gray: @text-muted;
-
-// Tech gradient colors for legacy compatibility
 @tech-gradient-start: @brand-primary;
 @tech-gradient-end: @brand-secondary;
+
+// Gradient Variables (for legacy components)
+@gradient-primary: linear-gradient(135deg, @brand-primary 0%, @brand-secondary 100%);
+@gradient-secondary: linear-gradient(135deg, @brand-secondary 0%, @brand-primary 100%);
+@gradient-accent: linear-gradient(135deg, @brand-accent 0%, @brand-highlight 100%);
+@gradient-warm: linear-gradient(135deg, @brand-warning 0%, @brand-danger 100%);
+@gradient-subtle: linear-gradient(135deg, rgba(0, 255, 255, 0.05) 0%, rgba(255, 0, 255, 0.05) 100%);
+
+// Neon Glow Mixins
+.neon-glow(@color: @brand-primary, @intensity: 20px) {
+  text-shadow: 0 0 @intensity @color;
+}
+
+.box-glow(@color: @brand-primary, @intensity: 20px) {
+  box-shadow: 0 0 @intensity @color;
+}
+
+.border-glow(@color: @brand-primary) {
+  border: 1px solid @color;
+  box-shadow: 0 0 10px fade(@color, 30%);
+}
+
+// Brutalist Text Style
+.text-brutal() {
+  font-weight: @font-weight-black;
+  letter-spacing: @letter-spacing-tighter;
+  text-transform: uppercase;
+}
+
+// Scanline Effect (Cyberpunk)
+.scanlines() {
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.1) 0px,
+      rgba(0, 0, 0, 0.1) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+    opacity: 0.3;
+  }
+}

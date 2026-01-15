@@ -30,6 +30,9 @@
     <link rel="preconnect" href="https://avatars.githubusercontent.com" crossorigin>
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
     <link rel="dns-prefetch" href="//seo-fixer.writesonic.com">
+
+    <!-- Google Fonts - Bebas Neue (display) + Source Sans 3 (body) -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     {% if page.url == '/' %}
     <!-- Preload hero header image (WebP) to improve LCP with highest priority -->
     {% assign header_img = page.header-img | default: site.header-img %}
@@ -39,8 +42,8 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@JasonRobertBlog">
-    <meta name="twitter:creator" content="@JasonRobertBlog">
+    <meta name="twitter:site" content="@CalderLab">
+    <meta name="twitter:creator" content="@CalderLab">
     <meta name="twitter:title" content="{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }}{% endif %}">
     <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | truncate:160 }}{% else %}{{ site.description }}{% endif %}">
     <meta name="twitter:image" content="{% if page.image %}{{ site.url }}{{ page.image }}{% elsif page.header-img %}{{ site.url }}/img/{{ page.header-img }}{% else %}{{ site.url }}{{ site.sidebar-avatar }}{% endif %}">
@@ -110,25 +113,25 @@
 
     <!-- Critical CSS Inline - Prevent CLS -->
     <style>
-        /* Reset and base - prevent layout shift */
+        /* Reset and base - Cyberpunk Brutalism */
         *,*::before,*::after{box-sizing:border-box}
         body{
-            background:linear-gradient(135deg,#f8fafc 0%,#e2e8f0 100%);
+            background:#0A0E15;
             min-height:100vh;
-            font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-            font-size:14px;
-            line-height:1.6;
-            color:#374151;
+            font-family:'Source Sans 3',-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+            font-size:16px;
+            line-height:1.5;
+            color:#F8FAFC;
             margin:0;
             padding:0;
         }
-        /* Navbar - fixed height to prevent CLS */
+        /* Navbar - fixed height, dark theme */
         .navbar{min-height:50px;margin-bottom:0;border:0}
         .navbar-fixed-top{position:fixed;top:0;right:0;left:0;z-index:1030}
         .navbar-custom{
-            background:rgba(255,255,255,0.95);
+            background:rgba(10,14,21,0.95);
             backdrop-filter:blur(10px);
-            box-shadow:0 2px 10px rgba(0,0,0,0.1);
+            border-bottom:1px solid #1E293B;
             height:50px;
         }
         /* Container - Bootstrap grid basics */
@@ -145,7 +148,7 @@
         .col-xs-12{width:100%;float:left}
         @media(min-width:992px){.col-md-10{width:83.33333%;float:left}.col-md-offset-1{margin-left:8.33333%}}
         @media(min-width:1200px){.col-lg-8{width:66.66667%;float:left}.col-lg-offset-2{margin-left:16.66667%}}
-        /* Intro header - fixed dimensions prevent CLS */
+        /* Intro header - Brutalist, no rounded corners */
         .intro-header{
             background-attachment:scroll;
             background-position:center center;
@@ -155,42 +158,70 @@
             padding-top:100px;
             padding-bottom:50px;
             min-height:400px;
+            position:relative;
+        }
+        .intro-header::after{
+            content:'';
+            position:absolute;
+            top:0;left:0;right:0;bottom:0;
+            background:linear-gradient(180deg,rgba(10,14,21,0.7) 0%,rgba(10,14,21,0.9) 100%);
         }
         @media(min-width:768px){.intro-header{min-height:500px;padding-top:150px;padding-bottom:75px}}
-        .intro-header .site-heading,.intro-header .post-heading,.intro-header .page-heading{color:#fff}
-        .intro-header .site-heading h1,.intro-header .post-heading h1{font-size:50px;margin-top:0}
-        @media(min-width:768px){.intro-header .site-heading h1,.intro-header .post-heading h1{font-size:80px}}
-        /* Post preview - fixed structure */
-        .post-preview{
-            margin-bottom:30px;
-            padding:25px;
-            background:rgba(255,255,255,0.9);
-            border-radius:12px;
-            box-shadow:0 4px 20px rgba(0,0,0,0.08);
-            border:1px solid rgba(0,0,0,0.05);
+        .intro-header .site-heading,.intro-header .post-heading,.intro-header .page-heading{color:#F8FAFC;position:relative;z-index:1}
+        .intro-header .site-heading h1,.intro-header .post-heading h1{
+            font-family:'Bebas Neue',sans-serif;
+            font-size:clamp(3rem,10vw,6rem);
+            font-weight:400;
+            letter-spacing:-0.025em;
+            text-transform:uppercase;
+            margin-top:0;
+            color:#00FFFF;
+            text-shadow:0 0 30px rgba(0,255,255,0.5);
         }
-        .post-preview>.post-title{font-size:21px;margin-top:0;margin-bottom:10px}
-        .post-preview>.post-subtitle{font-size:15px;margin:0;font-weight:300;margin-bottom:10px}
-        .post-preview .post-meta{color:#9ca3af;font-size:14px;margin-top:0}
+        @media(min-width:768px){.intro-header .site-heading h1,.intro-header .post-heading h1{font-size:clamp(4rem,12vw,8rem)}}
+        /* Post preview - Dark cards, sharp corners */
+        .post-preview{
+            margin-bottom:24px;
+            padding:24px;
+            background:#0F1419;
+            border:1px solid #1E293B;
+            transition:border-color 0.2s,box-shadow 0.2s;
+        }
+        .post-preview:hover{
+            border-color:#00FFFF;
+            box-shadow:0 0 20px rgba(0,255,255,0.2);
+        }
+        .post-preview>.post-title{
+            font-family:'Bebas Neue',sans-serif;
+            font-size:24px;
+            text-transform:uppercase;
+            letter-spacing:-0.025em;
+            margin-top:0;
+            margin-bottom:8px;
+            color:#F8FAFC;
+        }
+        .post-preview>.post-subtitle{font-size:15px;margin:0;font-weight:400;margin-bottom:12px;color:#94A3B8}
+        .post-preview .post-meta{color:#64748B;font-size:14px;margin-top:0;font-family:'JetBrains Mono',monospace}
         /* Prevent image CLS */
         img{max-width:100%;height:auto;display:block}
-        /* Homepage featured section - prevent FOUC */
+        /* Featured section - Dark, neon accent */
         .featured-section{
-            background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
-            border-radius:16px;
+            background:#0F1419;
+            border:1px solid #1E293B;
             padding:32px;
             margin-bottom:40px;
             position:relative;
-            overflow:hidden;
         }
-        @media(min-width:768px){.featured-section{padding:48px;border-radius:20px}}
+        @media(min-width:768px){.featured-section{padding:48px}}
         .featured-section__title{
             display:flex;
             align-items:center;
             gap:12px;
-            color:#fff;
-            font-size:24px;
-            font-weight:700;
+            color:#00FFFF;
+            font-family:'Bebas Neue',sans-serif;
+            font-size:32px;
+            text-transform:uppercase;
+            letter-spacing:-0.025em;
             margin-bottom:24px;
         }
         .featured-section__grid{
@@ -200,24 +231,22 @@
         }
         @media(min-width:768px){.featured-section__grid{grid-template-columns:repeat(2,1fr);gap:24px}}
         .featured-card{
-            background:rgba(255,255,255,0.95);
-            backdrop-filter:blur(10px);
-            border-radius:12px;
+            background:#141A22;
+            border:1px solid #1E293B;
             padding:20px;
-            border:1px solid rgba(255,255,255,0.2);
+            transition:border-color 0.2s;
         }
-        @media(min-width:768px){.featured-card{padding:24px;border-radius:16px}}
-        .featured-card__title{font-size:18px;font-weight:600;color:#1f2937;margin:0 0 8px}
-        .featured-card__excerpt{font-size:14px;color:#6b7280;margin:0 0 12px;line-height:1.5}
-        .featured-card__meta{font-size:12px;color:#9ca3af}
+        .featured-card:hover{border-color:#00FFFF}
+        @media(min-width:768px){.featured-card{padding:24px}}
+        .featured-card__title{font-size:18px;font-weight:600;color:#F8FAFC;margin:0 0 8px}
+        .featured-card__excerpt{font-size:14px;color:#94A3B8;margin:0 0 12px;line-height:1.5}
+        .featured-card__meta{font-size:12px;color:#64748B;font-family:'JetBrains Mono',monospace}
         /* Core topics section */
         .core-topics{
-            background:#fff;
-            border-radius:16px;
+            background:#0F1419;
+            border:1px solid #1E293B;
             padding:24px;
             margin-bottom:32px;
-            border:1px solid rgba(0,0,0,0.05);
-            box-shadow:0 4px 20px rgba(0,0,0,0.06);
         }
         @media(min-width:768px){.core-topics{padding:32px}}
         .core-topics__header{
@@ -226,39 +255,45 @@
             gap:10px;
             margin-bottom:20px;
         }
-        .core-topics__title{font-size:20px;font-weight:700;color:#1f2937;margin:0}
+        .core-topics__title{
+            font-family:'Bebas Neue',sans-serif;
+            font-size:24px;
+            text-transform:uppercase;
+            color:#F8FAFC;
+            margin:0;
+        }
         .core-topics__tags{display:flex;flex-wrap:wrap;gap:12px}
-        /* Topic tags */
+        /* Topic tags - Brutalist, no rounded */
         .topic-tag{
             display:inline-flex;
             align-items:center;
             gap:8px;
             padding:10px 20px;
-            border-radius:100px;
             font-size:14px;
             font-weight:500;
             text-decoration:none;
-            transition:transform 0.2s,box-shadow 0.2s;
+            border:1px solid #1E293B;
+            background:#141A22;
+            color:#F8FAFC;
+            transition:border-color 0.2s,box-shadow 0.2s;
         }
-        .topic-tag--ai{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff}
-        .topic-tag--dev{background:linear-gradient(135deg,#11998e 0%,#38ef7d 100%);color:#fff}
-        .topic-tag--product{background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%);color:#fff}
-        .topic-tag--career{background:linear-gradient(135deg,#4facfe 0%,#00f2fe 100%);color:#fff}
-        .topic-tag--life{background:linear-gradient(135deg,#fa709a 0%,#fee140 100%);color:#fff}
-        /* Animation visibility (no keyframes - just initial state) */
-        .animate-on-scroll{opacity:1;transform:translateY(0)}
-        .fade-in-up{opacity:1;transform:translateY(0)}
-        /* SVG Icons - Replaces Font Awesome */
+        .topic-tag:hover{border-color:#00FFFF;box-shadow:0 0 10px rgba(0,255,255,0.3);color:#00FFFF}
+        /* Animation visibility */
+        .animate-on-scroll{opacity:1}
+        .fade-in-up{opacity:1}
+        /* SVG Icons */
         .icon{width:1em;height:1em;display:inline-block;vertical-align:-0.125em;fill:currentColor}
         .icon-lg{width:1.33em;height:1.33em}
         .icon-2x{width:2em;height:2em}
         .icon-3x{width:3em;height:3em}
         .icon-fw{width:1.25em;text-align:center}
-        /* Icon stack for social buttons */
         .icon-stack{position:relative;display:inline-block;width:2em;height:2em;line-height:2em;vertical-align:middle}
         .icon-stack .icon{position:absolute;left:0;width:100%;text-align:center}
         .icon-stack-bg{font-size:2em}
         .icon-stack-fg{font-size:1em}
+        /* Links - Cyan accent */
+        a{color:#00FFFF;text-decoration:none;transition:color 0.2s}
+        a:hover{color:#FF00FF}
     </style>
 
     <!-- Bootstrap CSS - Minimal build (Grid + Navbar + Utilities only, 20KB vs 117KB) -->
@@ -373,7 +408,7 @@
         {
           "@type": "Person",
           "@id": "{{ site.url }}/about/#person",
-          "name": "Jason",
+          "name": "Calder",
           "url": "{{ site.url }}/about/",
           "image": {
             "@type": "ImageObject",
@@ -387,12 +422,12 @@
             "https://juejin.cn/user/{{ site.juejin_username }}",
             "https://space.bilibili.com/{{ site.bilibili_username }}"
           ],
-          "jobTitle": "AI技术研发者",
+          "jobTitle": "AI Agent Architect",
           "worksFor": {
             "@type": "Organization",
-            "name": "北京信息科技大学"
+            "name": "BISTU"
           },
-          "knowsAbout": ["人工智能", "Agent开发", "全栈开发", "机器学习"],
+          "knowsAbout": ["AI Agent", "Multi-Agent Systems", "Web3", "LLM Applications"],
           "description": "{{ site.sidebar-about-description | strip_html }}"
         }
       ]
@@ -400,9 +435,9 @@
     </script>
 
     <!-- Custom Blog Styles - Load async (critical styles already inlined above) -->
-    <link rel="preload" href="{{ "/css/jason-blog.min.css" | prepend: site.baseurl }}" as="style">
-    <link rel="stylesheet" href="{{ "/css/jason-blog.min.css" | prepend: site.baseurl }}" media="print" onload="this.media='all';this.onload=null;">
-    <noscript><link rel="stylesheet" href="{{ "/css/jason-blog.min.css" | prepend: site.baseurl }}"></noscript>
+    <link rel="preload" href="{{ "/css/calder-blog.min.css" | prepend: site.baseurl }}" as="style">
+    <link rel="stylesheet" href="{{ "/css/calder-blog.min.css" | prepend: site.baseurl }}" media="print" onload="this.media='all';this.onload=null;">
+    <noscript><link rel="stylesheet" href="{{ "/css/calder-blog.min.css" | prepend: site.baseurl }}"></noscript>
 
     <!-- Async tail styles (low priority, non-layout) -->
     <link rel="stylesheet" href="{{ "/css/async.css" | prepend: site.baseurl }}" media="print" onload="this.media='all';this.onload=null;">

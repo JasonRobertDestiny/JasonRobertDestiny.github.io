@@ -28,8 +28,8 @@ bundle exec jekyll build
 ### CSS/Less Workflow
 1. **NEVER edit `/css` files directly** - edit `/less` files instead
 2. **ALWAYS run `./build.sh` before committing CSS changes** - GitHub Actions does NOT compile Less
-3. Entry point: `less/jason-blog.less` imports all modules
-4. Output: `css/jason-blog.css` (dev) + `css/jason-blog.min.css` (prod)
+3. Entry point: `less/calder-blog.less` imports all modules
+4. Output: `css/calder-blog.css` (dev) + `css/calder-blog.min.css` (prod)
 
 ### Frontend Development
 **Invoke `Skill(frontend-design)` before any UI/CSS work** - this ensures design quality and avoids generic AI aesthetics.
@@ -43,39 +43,59 @@ Front matter template:
 layout: post
 title: "Post Title"
 subtitle: "Optional subtitle"
-description: "SEO description"
+description: "SEO meta description (150-160 chars)"
 date: YYYY-MM-DD HH:MM:SS
-author: "Jason Robert"
+author: "Calder"
 header-img: "img/path/to/header.jpg"
-catalog: true  # Table of contents
+catalog: true  # Enables table of contents sidebar
+multilingual: false  # Set true for posts with en.md/zh.md in _includes/posts/
 tags:
     - Tag1
 ---
 ```
 
+For FAQ structured data, use `{% include faq-schema.html %}` in posts.
+
 ## Architecture
 
 ### Key Directories
 - `less/` - Less source files (edit here for styles)
-  - `variables.less` - Design tokens, colors, breakpoints
-  - `dark-mode.less` - Dark theme (CSS custom properties)
 - `_layouts/` - Page templates (default, post, page, keynote)
-- `_includes/` - Reusable components (nav, footer, head)
+- `_includes/` - Reusable components (nav, footer, head, faq-schema)
 - `js/` - Client scripts (dark-mode.js, search, PWA registration)
 
 ### Less Module Structure
-`jason-blog.less` imports in order: variables -> design-tokens -> mixins -> component modules.
+`calder-blog.less` imports 19 modules in order:
+1. `variables.less` - CSS custom properties, colors, breakpoints (768/992/1200px)
+2. `design-tokens.less` - Spacing, typography scales
+3. `mixins.less` - Reusable Less mixins
+4. Component modules: sidebar, side-catalog, snackbar, highlight, search
+5. Enhancement modules: tech, home, scroll, interactive, article, archive
+6. `dark-mode.less` - Dark theme via `[data-theme="dark"]` selector
+7. `accessibility.less`, `multilingual.less`, `mobile-performance.less`, `editorial-design.less`
 
-Key modules for common tasks:
-- Typography/colors: `variables.less`, `design-tokens.less`
-- Dark mode: `dark-mode.less` (uses CSS custom properties)
-- Syntax highlighting: `highlight.less`
-- Responsive: breakpoints in `variables.less` (768/992/1200px)
+Dark mode uses CSS custom properties toggled by `js/dark-mode.js`. Edit `variables.less` for both light and dark theme colors.
+
+### Bilingual Content
+Language-specific content lives in `_includes/` subdirectories:
+- `_includes/about/en.md` / `zh.md` - About page content
+- `_includes/posts/[date]-[slug]/en.md` / `zh.md` - Post translations
+
+The multilingual selector component is in `_includes/multilingual-sel.html`.
 
 ### Deployment
 - Push to `master` triggers GitHub Actions deployment
 - Workflow: `.github/workflows/jekyll.yml`
 - Ruby 3.1, auto-deploys to GitHub Pages
+- Future-dated posts ARE published (`future: true` in _config.yml)
+
+### PWA / Service Worker
+`sw.js` implements offline-first caching with auto-versioning on each Jekyll build. Cache strategies:
+- Pages: NetworkFirst (1hr cache)
+- Static assets (JS/CSS): CacheFirst
+- Images/fonts: Separate cache buckets
+
+Edit `PRECACHE_LIST` in `sw.js` to add critical offline resources.
 
 ## Common Issues
 
@@ -86,14 +106,13 @@ You forgot to run `./build.sh` before commit. The compiled CSS files must be com
 Run `bundle install` first. Check Ruby version (needs 2.7+, prod uses 3.1).
 
 ### Dark mode not working
-Check `js/dark-mode.js` and `less/dark-mode.less`. Uses CSS custom properties toggled via JavaScript.
+Check `js/dark-mode.js` and `less/variables.less` (both `:root` and `[data-theme="dark"]` blocks). Toggle via browser DevTools: `document.documentElement.dataset.theme = 'dark'`.
 
 ### Build script fails on Windows
 Use WSL or Git Bash: `bash build.sh`
 
-## Configuration
+## Key Configuration Files
 
-- Site config: `_config.yml` (SEO, social links, pagination)
-- PWA manifest: `pwa/manifest.json`
-- Service worker: `sw.js`
-- Google Analytics: `ga_track_id` in `_config.yml`
+- `_config.yml` - Site metadata, SEO fields, social links, pagination, excluded paths
+- `pwa/manifest.json` - PWA app manifest
+- `sw.js` - Service worker (auto-versions via Jekyll)

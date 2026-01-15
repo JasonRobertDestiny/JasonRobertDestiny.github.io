@@ -13,8 +13,8 @@
   if (searchOpen) {
     searchOpen.addEventListener('click', function once() {
       searchOpen.removeEventListener('click', once);
-      load('/js/simple-jason-search.min.js', function(){
-        if (typeof initSimpleJasonSearch === 'function') initSimpleJasonSearch();
+      load('/js/simple-calder-search.min.js', function(){
+        if (typeof initSimpleCalderSearch === 'function') initSimpleCalderSearch();
       });
     });
   }

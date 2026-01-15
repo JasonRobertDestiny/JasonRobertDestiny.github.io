@@ -1,6 +1,6 @@
 # ===========================================================
-# robots.txt for Jason's Blog
-# Updated: 2025-12-16
+# robots.txt for Calder's Lab
+# Updated: 2026-01-15
 # ===========================================================
 
 # Default: Allow all crawlers

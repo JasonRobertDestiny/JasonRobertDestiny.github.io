@@ -28,13 +28,13 @@ layout: default
                     <!-- Reading Time Estimation -->
                     <div class="reading-time">
                         <svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg>
-                        <span id="reading-time">{{ content | strip_html | number_of_words | divided_by: 200 | plus: 1 }} 分钟阅读</span>
+                        <span id="reading-time">{{ content | strip_html | number_of_words | divided_by: 200 | plus: 1 }} min read</span>
                     </div>
 
                     <!-- Word Count -->
                     <div class="word-count">
                         <svg class="icon" aria-hidden="true"><use href="#icon-file-text"/></svg>
-                        <span>{{ content | strip_html | number_of_words }} 字</span>
+                        <span>{{ content | strip_html | number_of_words }} words</span>
                     </div>
 
                     <!-- Last Updated -->
@@ -42,16 +42,11 @@ layout: default
                     <div class="last-updated">
                         <svg class="icon" aria-hidden="true"><use href="#icon-refresh"/></svg>
                         <time datetime="{{ page.updated | date_to_xmlschema }}">
-                            更新于 {{ page.updated | date: "%Y年%m月%d日" }}
+                            Updated {{ page.updated | date: "%B %d, %Y" }}
                         </time>
                     </div>
                     {% endif %}
                 </div>
-
-                <!-- Multi-Lingual -->
-                {% if page.multilingual %}
-                    {% include multilingual-sel.html %}
-                {% endif %}
 
                 <!-- TL;DR Quick Summary (before article content) -->
                 {% include tldr.html %}
@@ -64,7 +59,7 @@ layout: default
                 <!-- Article Tags -->
                 {% if page.tags.size > 0 %}
                 <div class="article-tags scroll-reveal">
-                    <h4><svg class="icon" aria-hidden="true"><use href="#icon-tags"/></svg> 标签</h4>
+                    <h4><svg class="icon" aria-hidden="true"><use href="#icon-tags"/></svg> Tags</h4>
                     <div class="tags">
                         {% for tag in page.tags %}
                         <a href="{{ site.baseurl }}/tags/#{{ tag }}" class="tag" itemprop="keywords">
@@ -83,55 +78,55 @@ layout: default
 
                 <!-- Social Share Section -->
                 <div class="social-share scroll-reveal">
-                    <h4><svg class="icon" aria-hidden="true"><use href="#icon-share-alt"/></svg> 分享这篇文章</h4>
+                    <h4><svg class="icon" aria-hidden="true"><use href="#icon-share-alt"/></svg> Share this article</h4>
                     <div class="share-buttons">
-                        <a href="#" class="share-btn twitter ripple" onclick="shareToTwitter()" title="分享到Twitter" aria-label="分享到Twitter">
+                        <a href="#" class="share-btn twitter ripple" onclick="shareToTwitter()" title="Share on Twitter" aria-label="Share on Twitter">
                             <svg class="icon" aria-hidden="true"><use href="#icon-twitter"/></svg>
                             <span class="sr-only">Twitter</span>
                         </a>
-                        <a href="#" class="share-btn facebook ripple" onclick="shareToFacebook()" title="分享到Facebook" aria-label="分享到Facebook">
+                        <a href="#" class="share-btn facebook ripple" onclick="shareToFacebook()" title="Share on Facebook" aria-label="Share on Facebook">
                             <svg class="icon" aria-hidden="true"><use href="#icon-facebook"/></svg>
                             <span class="sr-only">Facebook</span>
                         </a>
-                        <a href="#" class="share-btn linkedin ripple" onclick="shareToLinkedIn()" title="分享到LinkedIn" aria-label="分享到LinkedIn">
+                        <a href="#" class="share-btn linkedin ripple" onclick="shareToLinkedIn()" title="Share on LinkedIn" aria-label="Share on LinkedIn">
                             <svg class="icon" aria-hidden="true"><use href="#icon-linkedin"/></svg>
                             <span class="sr-only">LinkedIn</span>
                         </a>
-                        <a href="#" class="share-btn wechat ripple" onclick="shareToWechat()" title="分享到微信" aria-label="分享到微信">
+                        <a href="#" class="share-btn wechat ripple" onclick="shareToWechat()" title="Share on WeChat" aria-label="Share on WeChat">
                             <svg class="icon" aria-hidden="true"><use href="#icon-wechat"/></svg>
-                            <span class="sr-only">微信</span>
+                            <span class="sr-only">WeChat</span>
                         </a>
-                        <a href="#" class="share-btn weibo ripple" onclick="shareToWeibo()" title="分享到微博" aria-label="分享到微博">
+                        <a href="#" class="share-btn weibo ripple" onclick="shareToWeibo()" title="Share on Weibo" aria-label="Share on Weibo">
                             <svg class="icon" aria-hidden="true"><use href="#icon-weibo"/></svg>
-                            <span class="sr-only">微博</span>
+                            <span class="sr-only">Weibo</span>
                         </a>
-                        <a href="#" class="share-btn copy-link ripple" onclick="copyToClipboard()" title="复制链接" aria-label="复制链接">
+                        <a href="#" class="share-btn copy-link ripple" onclick="copyToClipboard()" title="Copy link" aria-label="Copy link">
                             <svg class="icon" aria-hidden="true"><use href="#icon-link"/></svg>
-                            <span class="sr-only">复制链接</span>
+                            <span class="sr-only">Copy link</span>
                         </a>
                     </div>
                 </div>
 
                 <!-- Article Navigation -->
-                <nav class="article-navigation scroll-reveal" aria-label="文章导航">
+                <nav class="article-navigation scroll-reveal" aria-label="Article navigation">
                     <hr class="separator">
                     <ul class="pager">
                         {% if page.previous.url %}
                         <li class="previous">
-                            <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" 
-                               rel="prev" 
-                               aria-label="上一篇文章：{{page.previous.title}}">
-                                <span class="nav-direction">&larr; 上一篇</span><br>
+                            <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}"
+                               rel="prev"
+                               aria-label="Previous article: {{page.previous.title}}">
+                                <span class="nav-direction">&larr; Previous</span><br>
                                 <span class="nav-title">{{page.previous.title | truncate: 40}}</span>
                             </a>
                         </li>
                         {% endif %}
                         {% if page.next.url %}
                         <li class="next">
-                            <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" 
-                               rel="next" 
-                               aria-label="下一篇文章：{{page.next.title}}">
-                                <span class="nav-direction">下一篇 &rarr;</span><br>
+                            <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}"
+                               rel="next"
+                               aria-label="Next article: {{page.next.title}}">
+                                <span class="nav-direction">Next &rarr;</span><br>
                                 <span class="nav-title">{{page.next.title | truncate: 40}}</span>
                             </a>
                         </li>
@@ -140,17 +135,15 @@ layout: default
                 </nav>
 
                 {% if site.disqus_username %}
-                <!-- disqus 评论框 start -->
+                <!-- Disqus Comments -->
                 <div class="comment">
                     <div id="disqus_thread" class="disqus-thread"></div>
                 </div>
-                <!-- disqus 评论框 end -->
                 {% endif %}
 
                 {% if site.netease_comment %}
-                <!-- 网易云跟帖 评论框 start -->
+                <!-- NetEase Comments (Legacy) -->
                 <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-                <!-- 网易云跟帖 评论框 end -->
                 {% endif %}
             </div>  
 
@@ -194,11 +187,11 @@ layout: default
 {% endif %}
 
 {% if site.netease_comment %}
-<!-- 网易云跟帖JS代码 start -->
+<!-- NetEase Comments JS (Legacy) -->
 <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
 <script>
   var cloudTieConfig = {
-    url: document.location.href, 
+    url: document.location.href,
     sourceId: "",
     productKey: "de25fc98a6fe48b3bc8a7ae765da99a0",
     target: "cloud-tie-wrapper"
@@ -206,12 +199,11 @@ layout: default
   var yunManualLoad = true;
   Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
 </script>
-<!-- 网易云跟帖JS代码 end -->
 {% endif %}
 
 
 {% if site.disqus_username %}
-<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<!-- Disqus JS -->
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "{{site.disqus_username}}";
@@ -224,7 +216,6 @@ layout: default
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
 </script>
-<!-- disqus 公共JS代码 end -->
 {% endif %}
 
 

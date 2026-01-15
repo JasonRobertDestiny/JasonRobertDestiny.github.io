@@ -9,7 +9,7 @@
                 <p class="copyright text-muted">
                     Copyright &copy; {{ site.title }} {{ site.time | date: '%Y' }}
                     <br>
-                    Powered by Jason's Tech Stack |
+                    Powered by Calder's Lab |
                     <a href="{{ "/feed.xml" | prepend: site.baseurl }}" title="Subscribe via RSS feed">RSS</a>
                 </p>
             </div>
@@ -67,7 +67,7 @@
     window.addEventListener('load', function() {
         // Defer non-critical bundles
         loadScript('{{ "/js/bootstrap.min.js" | prepend: site.baseurl }}');
-        loadScript('{{ "/js/jason-blog.min.js" | prepend: site.baseurl }}');
+        loadScript('{{ "/js/calder-blog.min.js" | prepend: site.baseurl }}');
 
         // Optional: Load Playfair Display for editorial headings (async, non-blocking)
         var fontLink = document.createElement('link');
@@ -177,13 +177,10 @@
         window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${title}`, '_blank', 'width=600,height=400');
     }
     function shareToWechat() {
-        var lang = localStorage.getItem('preferredLanguage') || 'en';
-        var msgCopied = lang === 'zh' ? '链接已复制到剪贴板，请在微信中粘贴分享！' : 'Link copied! Paste in WeChat to share.';
-        var msgPrompt = lang === 'zh' ? '请复制以下链接在微信中分享：' : 'Copy this link to share on WeChat:';
         navigator.clipboard.writeText(window.location.href).then(function() {
-            alert(msgCopied);
+            alert('Link copied! Paste in WeChat to share.');
         }).catch(function() {
-            prompt(msgPrompt, window.location.href);
+            prompt('Copy this link to share on WeChat:', window.location.href);
         });
     }
     function shareToWeibo() {
@@ -235,7 +232,7 @@
      Because of the native support for backtick-style fenced code blocks
      right within the Markdown is landed in Github Pages,
      From V1.6, There is no need for Highlight.js,
-     so Jason's blog drops it officially.
+     so Calder's Lab drops it officially.
 
      - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
      - https://help.github.com/articles/creating-and-highlighting-code-blocks/
@@ -290,7 +287,7 @@
 <!-- Baidu Tongji -->
 {% if site.ba_track_id %}
 <script>
-    // dynamic User by Jason
+    // dynamic User by Calder
     var _baId = '{{ site.ba_track_id }}';
 
     // Originial
@@ -309,11 +306,7 @@
 {% unless page.no-catalog %}
 <script type="text/javascript">
     function generateCatalog(selector) {
-        if ('{{ page.multilingual }}' == 'true') {
-            _containerSelector = 'div.post-container .lang-en:visible, div.post-container .lang-zh:visible'
-        } else {
-            _containerSelector = 'div.post-container'
-        }
+        _containerSelector = 'div.post-container'
         var P = $(_containerSelector), a, n, t, l, i, c;
         a = P.find('h1,h2,h3,h4,h5,h6');
         $(selector).html('');
@@ -354,44 +347,6 @@
 {% endunless %}
 
 
-<!-- Multi-Lingual -->
-{% if page.multilingual %}
-<!-- Handle Language Change - Unified with localStorage -->
-<script type="text/javascript">
-    // get nodes
-    var $zh = document.querySelector(".zh");
-    var $en = document.querySelector(".en");
-
-    // Get language from localStorage, default to English
-    function getLang() {
-        return localStorage.getItem('preferredLanguage') || 'en';
-    }
-
-    // handle render - Default to English
-    function _render() {
-        var lang = getLang();
-
-        if (lang == "zh") {
-            // Show Chinese content
-            if ($zh) { $zh.style.display = "block"; $zh.classList.add("active"); }
-            if ($en) { $en.style.display = "none"; $en.classList.remove("active"); }
-        } else {
-            // Default: Show English content
-            if ($en) { $en.style.display = "block"; $en.classList.add("active"); }
-            if ($zh) { $zh.style.display = "none"; $zh.classList.remove("active"); }
-        }
-
-        // Regenerate catalog for current language
-        if (typeof generateCatalog === 'function') {
-            generateCatalog(".catalog-body");
-        }
-    }
-
-    // init - render based on saved preference (default: English)
-    _render();
-</script>
-{% endif %}
-
 <!-- Simple Jekyll Search -->
 <script>
     // https://stackoverflow.com/questions/1912501/unescape-html-entities-in-javascript
@@ -402,7 +357,7 @@
         return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
     }
 
-    function initSimpleJasonSearch() {
+    function initSimpleCalderSearch() {
         if (typeof SimpleJekyllSearch !== 'undefined') {
             SimpleJekyllSearch({
                 searchInput: document.getElementById('search-input'),
@@ -453,7 +408,7 @@
         });
     });
 </script>
-<!-- Original work by Jason's Blog -->
+<!-- Original work by Calder's Lab -->
 
 <!-- Google Analytics 4 - Load after user interaction or idle time -->
 {% if jekyll.environment == 'production' %}

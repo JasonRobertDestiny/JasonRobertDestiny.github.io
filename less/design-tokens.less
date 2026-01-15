@@ -1,15 +1,14 @@
-// Design Tokens - 统一设计系统令牌
-// 所有设计决策都应使用这些令牌，避免硬编码
+// Design Tokens - Cyberpunk Brutalism v4.0
+// All design decisions use these tokens - no hardcoded values
 
 // ============================================
-// 间距系统 (Spacing Scale)
+// Spacing System (8px grid)
 // ============================================
-// 使用 8px 基准的间距系统
 @space-0: 0;
 @space-1: 4px;    // 0.25rem
 @space-2: 8px;    // 0.5rem
 @space-3: 12px;   // 0.75rem
-@space-4: 16px;   // 1rem - 基准
+@space-4: 16px;   // 1rem - base
 @space-5: 24px;   // 1.5rem
 @space-6: 32px;   // 2rem
 @space-7: 40px;   // 2.5rem
@@ -18,55 +17,62 @@
 @space-10: 64px;  // 4rem
 @space-12: 96px;  // 6rem
 @space-16: 128px; // 8rem
+@space-20: 160px; // 10rem
+@space-24: 192px; // 12rem
 
 // ============================================
-// 动画持续时间 (Animation Durations)
+// Animation Durations (Brutalist - fast/instant)
 // ============================================
-@duration-instant: 50ms;
-@duration-fast: 150ms;      // 快速交互（按钮、链接）
-@duration-normal: 250ms;    // 标准过渡
-@duration-moderate: 350ms;  // 中等动画
-@duration-slow: 500ms;      // 慢速过渡
-@duration-slower: 700ms;    // 更慢的动画
-@duration-slowest: 1000ms;  // 最慢动画
+@duration-instant: 0ms;
+@duration-fast: 100ms;      // Quick interactions
+@duration-normal: 200ms;    // Standard transitions
+@duration-moderate: 300ms;  // Complex animations
+@duration-slow: 400ms;      // Slow reveals
+@duration-slower: 500ms;    // Page transitions
+@duration-slowest: 1000ms;  // Loading states
 
 // ============================================
-// 缓动函数 (Easing Functions)
+// Easing Functions (Sharp, not bouncy)
 // ============================================
 @ease-linear: linear;
-@ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
-@ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-@ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
-@ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
-@ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
-@ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
-@ease-spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+@ease-sharp: cubic-bezier(0.4, 0, 0.2, 1);
+@ease-in: cubic-bezier(0.4, 0, 1, 1);
+@ease-out: cubic-bezier(0, 0, 0.2, 1);
+@ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);  // Standard cubic-out
+@ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+// Removed spring/bounce - not brutalist
 
 // ============================================
-// 圆角系统 (Border Radius)
+// Border Radius (BRUTALIST = 0)
 // ============================================
 @radius-none: 0;
-@radius-sm: 4px;
-@radius-base: 8px;
-@radius-md: 12px;
-@radius-lg: 16px;
-@radius-xl: 20px;
-@radius-2xl: 24px;
-@radius-full: 9999px;
+@radius-sm: 0;
+@radius-base: 0;
+@radius-md: 0;
+@radius-lg: 0;
+@radius-xl: 0;
+@radius-2xl: 0;
+@radius-full: 0;
 
 // ============================================
-// 阴影系统 (Elevation/Shadows)
+// Elevation/Shadows (Dark mode focused)
 // ============================================
 @elevation-0: none;
-@elevation-1: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-@elevation-2: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-@elevation-3: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-@elevation-4: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-@elevation-5: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-@elevation-6: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+@elevation-1: 0 1px 2px rgba(0, 0, 0, 0.5);
+@elevation-2: 0 2px 4px rgba(0, 0, 0, 0.5);
+@elevation-3: 0 4px 8px rgba(0, 0, 0, 0.5);
+@elevation-4: 0 8px 16px rgba(0, 0, 0, 0.5);
+@elevation-5: 0 16px 32px rgba(0, 0, 0, 0.5);
+@elevation-6: 0 24px 48px rgba(0, 0, 0, 0.6);
+
+// Neon glow elevations
+@glow-sm: 0 0 10px rgba(0, 255, 255, 0.2);
+@glow-md: 0 0 20px rgba(0, 255, 255, 0.3);
+@glow-lg: 0 0 40px rgba(0, 255, 255, 0.4);
+@glow-xl: 0 0 60px rgba(0, 255, 255, 0.5);
 
 // ============================================
-// 字体大小系统 (Typography Scale)
+// Typography Scale (Dramatic sizes)
 // ============================================
 @text-xs: 12px;
 @text-sm: 14px;
@@ -74,23 +80,25 @@
 @text-lg: 18px;
 @text-xl: 20px;
 @text-2xl: 24px;
-@text-3xl: 30px;
-@text-4xl: 36px;
-@text-5xl: 48px;
-@text-6xl: 60px;
+@text-3xl: 32px;
+@text-4xl: 40px;
+@text-5xl: 56px;
+@text-6xl: 72px;
+@text-7xl: 96px;
+@text-hero: clamp(3rem, 12vw, 10rem);
 
 // ============================================
-// 行高系统 (Line Heights)
+// Line Heights
 // ============================================
 @leading-none: 1;
-@leading-tight: 1.25;
-@leading-snug: 1.375;
+@leading-tight: 1.1;
+@leading-snug: 1.25;
 @leading-normal: 1.5;
 @leading-relaxed: 1.625;
 @leading-loose: 2;
 
 // ============================================
-// 字重系统 (Font Weights)
+// Font Weights (Bold emphasis)
 // ============================================
 @weight-thin: 100;
 @weight-light: 300;
@@ -102,7 +110,17 @@
 @weight-black: 900;
 
 // ============================================
-// Z-Index 系统 (Layering)
+// Letter Spacing (Tight for display)
+// ============================================
+@tracking-tighter: -0.05em;
+@tracking-tight: -0.025em;
+@tracking-normal: 0;
+@tracking-wide: 0.025em;
+@tracking-wider: 0.05em;
+@tracking-widest: 0.1em;
+
+// ============================================
+// Z-Index System
 // ============================================
 @z-base: 0;
 @z-dropdown: 1000;
@@ -112,9 +130,10 @@
 @z-modal: 1040;
 @z-popover: 1050;
 @z-tooltip: 1060;
+@z-max: 9999;
 
 // ============================================
-// 断点系统 (Responsive Breakpoints)
+// Breakpoints
 // ============================================
 @breakpoint-xs: 480px;
 @breakpoint-sm: 640px;
@@ -124,16 +143,17 @@
 @breakpoint-2xl: 1536px;
 
 // ============================================
-// 容器宽度 (Container Widths)
+// Container Widths
 // ============================================
 @container-sm: 640px;
 @container-md: 768px;
 @container-lg: 1024px;
 @container-xl: 1280px;
 @container-2xl: 1536px;
+@container-max: 1440px;
 
 // ============================================
-// 不透明度系统 (Opacity)
+// Opacity
 // ============================================
 @opacity-0: 0;
 @opacity-5: 0.05;
@@ -152,101 +172,94 @@
 @opacity-100: 1;
 
 // ============================================
-// 过渡混合 (Transition Mixins)
+// Transition Mixins (Brutalist - fast/sharp)
 // ============================================
-.transition-base {
+.transition-base() {
   transition-duration: @duration-normal;
-  transition-timing-function: @ease-out-cubic;
+  transition-timing-function: @ease-sharp;
 }
 
-.transition-fast {
+.transition-fast() {
   transition-duration: @duration-fast;
-  transition-timing-function: @ease-out-quad;
+  transition-timing-function: @ease-sharp;
 }
 
-.transition-slow {
-  transition-duration: @duration-slow;
-  transition-timing-function: @ease-in-out-cubic;
+.transition-instant() {
+  transition-duration: @duration-instant;
 }
 
-.transition-all {
+.transition-all() {
   transition-property: all;
   .transition-base();
 }
 
-.transition-colors {
+.transition-colors() {
   transition-property: background-color, border-color, color, fill, stroke;
-  .transition-base();
+  .transition-fast();
 }
 
-.transition-transform {
+.transition-transform() {
   transition-property: transform;
-  .transition-base();
+  .transition-fast();
 }
 
-.transition-opacity {
+.transition-opacity() {
   transition-property: opacity;
-  .transition-base();
+  .transition-fast();
 }
 
 // ============================================
-// 交互状态混合 (Interactive States)
+// Interactive States (Brutalist - no lift)
 // ============================================
-.hover-lift {
+.hover-glow() {
   .transition-all();
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: @elevation-4;
+    box-shadow: @glow-md;
+    border-color: @brand-primary;
   }
 }
 
-.hover-lift-lg {
+.hover-glow-strong() {
   .transition-all();
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: @elevation-5;
+    box-shadow: @glow-lg;
+    border-color: @brand-primary;
   }
 }
 
-.hover-scale {
-  .transition-transform();
+// No translateY - causes CLS, not brutalist
+.hover-highlight() {
+  .transition-colors();
 
   &:hover {
-    transform: scale(1.05);
-  }
-}
-
-.hover-scale-sm {
-  .transition-transform();
-
-  &:hover {
-    transform: scale(1.02);
+    background-color: @bg-quaternary;
+    color: @brand-primary;
   }
 }
 
 // ============================================
-// 焦点状态 (Focus States)
+// Focus States (Accessibility - neon glow)
 // ============================================
-.focus-ring {
+.focus-ring() {
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+    box-shadow: 0 0 0 2px @brand-primary;
   }
 }
 
-.focus-ring-offset {
+.focus-ring-offset() {
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 2px white, 0 0 0 4px rgba(79, 70, 229, 0.15);
+    box-shadow: 0 0 0 2px @bg-primary, 0 0 0 4px @brand-primary;
   }
 }
 
 // ============================================
-// 响应式混合 (Responsive Mixins)
+// Responsive Mixins
 // ============================================
-.responsive-text {
+.responsive-text() {
   font-size: @text-sm;
 
   @media (min-width: @breakpoint-sm) {
@@ -258,7 +271,7 @@
   }
 }
 
-.responsive-spacing {
+.responsive-spacing() {
   padding: @space-4;
 
   @media (min-width: @breakpoint-md) {
@@ -267,5 +280,80 @@
 
   @media (min-width: @breakpoint-lg) {
     padding: @space-8;
+  }
+}
+
+// ============================================
+// Brutalist Typography Mixins
+// ============================================
+.text-display() {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: @weight-normal;
+  letter-spacing: @tracking-tight;
+  text-transform: uppercase;
+  line-height: @leading-none;
+}
+
+.text-body() {
+  font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: @weight-normal;
+  letter-spacing: @tracking-normal;
+  line-height: @leading-normal;
+}
+
+.text-mono() {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-weight: @weight-normal;
+  letter-spacing: @tracking-normal;
+}
+
+// ============================================
+// Neon Effects
+// ============================================
+.neon-text(@color: @brand-primary) {
+  color: @color;
+  text-shadow:
+    0 0 5px @color,
+    0 0 10px @color,
+    0 0 20px fade(@color, 50%);
+}
+
+.neon-border(@color: @brand-primary) {
+  border: 1px solid @color;
+  box-shadow:
+    0 0 5px fade(@color, 30%),
+    inset 0 0 5px fade(@color, 10%);
+}
+
+// ============================================
+// Grid Lines (Cyberpunk aesthetic)
+// ============================================
+.grid-lines() {
+  background-image:
+    linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+// ============================================
+// Scanline Overlay
+// ============================================
+.scanlines() {
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.1) 0px,
+      rgba(0, 0, 0, 0.1) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+    opacity: 0.2;
   }
 }

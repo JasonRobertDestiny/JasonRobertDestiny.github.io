@@ -2,16 +2,16 @@
 layout: null
 ---
 /* ===========================================================
- * Enhanced Service Worker for Jason's Blog v2.0
+ * Enhanced Service Worker for Calder's Lab v2.0
  * ===========================================================
- * Copyright 2025 @JasonRobertDestiny
+ * Copyright 2025 @Calder
  * Licensed under Apache 2.0
  * Advanced PWA features with offline-first strategy
  * Auto-generated version on each Jekyll build
  * ========================================================== */
 
 // Cache configuration - Auto-updated on each build
-const CACHE_NAMESPACE = 'jason-blog-v2-';
+const CACHE_NAMESPACE = 'calder-lab-v2-';
 const CACHE_VERSION = '{{ site.time | date: "%Y%m%d%H%M%S" }}'; // Auto-generated timestamp
 const CACHE_NAME = CACHE_NAMESPACE + CACHE_VERSION;
 
@@ -26,15 +26,15 @@ const PRECACHE_LIST = [
   "./",
   "./offline.html",
   "./js/jquery.min.js",
-  "./js/bootstrap.min.js", 
-  "./js/jason-blog.min.js",
+  "./js/bootstrap.min.js",
+  "./js/calder-blog.min.js",
   "./js/dark-mode.js",
   "./js/accessibility.js",
   "./js/image-optimization.js",
   "./js/social-share.js",
   "./js/snackbar.js",
-  "./js/simple-jason-search.min.js",
-  "./css/jason-blog.min.css",
+  "./js/simple-calder-search.min.js",
+  "./css/calder-blog.min.css",
   "./css/bootstrap.min.css",
   "./img/favicon.ico",
   "./img/home-bg.jpg",
@@ -417,9 +417,9 @@ async function doBackgroundSync() {
 // Push notification handling
 self.addEventListener('push', event => {
   console.log('Push notification received:', event);
-  
+
   const options = {
-    body: 'Jason的博客有新内容更新！',
+    body: 'New content available on Calder\'s Lab!',
     icon: './img/favicon.ico',
     badge: './img/favicon.ico',
     vibrate: [100, 50, 100],
@@ -430,18 +430,18 @@ self.addEventListener('push', event => {
     actions: [
       {
         action: 'explore',
-        title: '查看更新',
+        title: 'View Update',
         icon: './img/favicon.ico'
       },
       {
         action: 'close',
-        title: '关闭'
+        title: 'Close'
       }
     ]
   };
-  
+
   event.waitUntil(
-    self.registration.showNotification('Jason\'s Blog', options)
+    self.registration.showNotification('Calder\'s Lab', options)
   );
 });
 

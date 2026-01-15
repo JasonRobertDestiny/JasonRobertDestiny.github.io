@@ -1,7 +1,7 @@
 {
-  "name": "Jason's Blog",
-  "short_name": "Jason's Blog",
-  "description": "AI技术研发者的个人博客，记录技术成长与项目实战",
+  "name": "Calder's Lab",
+  "short_name": "Calder's Lab",
+  "description": "AI Agent Architect building intelligent systems. Multi-Agent, Web3, Production AI.",
   "icons": [{
     "src": "icons/128.png",
     "sizes": "128x128",
@@ -11,8 +11,8 @@
     "sizes": "512x512",
     "type": "image/png"
   }],
-  "background_color": "#fff",
-  "theme_color": "#000",
+  "background_color": "#0A0E15",
+  "theme_color": "#00FFFF",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait"

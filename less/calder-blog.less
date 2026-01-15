@@ -13,7 +13,6 @@
 @import "article-enhancements.less";
 @import "archive-enhancements.less";
 @import "accessibility.less";
-@import "multilingual.less";
 @import "mobile-performance.less";
 @import "editorial-design.less";
 
@@ -270,7 +269,7 @@ hr.small {
   border-width: 4px;
   border-color: white;
 }
-// add by Jason
+// add by Calder
 pre,
 .table-responsive {
   // sometimes you should use vendor-feature.
@@ -443,9 +442,9 @@ samp {
   }
   /**
    * Animation
-   * Jason's Blog Navbar using genuine Material Design Animation
+   * Calder's Lab Navbar using genuine Material Design Animation
  */
-#jasonblog_navbar {
+#calderblog_navbar {
     /**
      * Sharable code and 'out' function
      */
@@ -541,7 +540,7 @@ samp {
     body {
       font-size: 20px;
     }
-    // 半透明深色背景 - 确保导航文字可读
+    // Semi-transparent dark background - ensure nav text is readable
     background: linear-gradient(180deg,
       rgba(0, 0, 0, 0.7) 0%,
       rgba(0, 0, 0, 0.4) 60%,
@@ -551,7 +550,7 @@ samp {
       color: white;
       padding: 20px;
       line-height: 20px;
-      // 增强文字可见性 - 深色阴影提升对比度
+      // Enhanced text visibility - dark shadow for contrast
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9),
                    0 2px 6px rgba(0, 0, 0, 0.7);
       font-weight: 700;
@@ -565,7 +564,7 @@ samp {
         a {
           color: white;
           padding: 20px;
-          // 导航链接文字阴影 - 确保在任何背景上可读
+          // Nav link text shadow - ensure readable on any background
           text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9),
                        0 2px 6px rgba(0, 0, 0, 0.7);
           font-weight: 700;
@@ -698,9 +697,9 @@ samp {
   background-position: center center;
   position: relative;
   
-  // 防止标题栏移动的关键CSS
-  overflow: hidden; // 防止内容溢出导致的移动
-  contain: layout style; // CSS Containment提升性能
+  // Critical CSS to prevent header movement
+  overflow: hidden; // Prevent content overflow causing movement
+  contain: layout style; // CSS Containment for performance
   
   // Enhanced background overlay for MAXIMUM text readability
   &::before {
@@ -736,12 +735,12 @@ samp {
     position: relative;
     z-index: 2;
     
-    // 防止移动和布局偏移
+    // Prevent movement and layout shift
     transform: translateZ(0);
     will-change: auto;
     contain: layout;
     
-    // 更平滑的响应式padding
+    // Smoother responsive padding
     @media only screen and (min-width: 480px) {
       padding: 60px 20px 40px;
     }
@@ -755,14 +754,14 @@ samp {
     }
     
     @media only screen and (min-width: 1200px) {
-      padding: 120px 50px 75px; // 大幅减少最大padding
+      padding: 120px 50px 75px; // Significantly reduced max padding
     }
   }
   // materialize
   .site-heading {
-    padding: 55px 15px 40px; // 更紧凑的首页header
-    
-    // 防止移动
+    padding: 55px 15px 40px; // More compact homepage header
+
+    // Prevent movement
     transform: translateZ(0);
     will-change: auto;
     contain: layout;
