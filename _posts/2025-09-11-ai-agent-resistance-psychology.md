@@ -26,7 +26,7 @@ seo:
 
 <div class="lang-en" markdown="1">
 
-## 😱 The Day I Realized I Was The Problem
+##  The Day I Realized I Was The Problem
 
 **June 14th, 2024, 2:34 PM**. I'm sitting in a Starbucks near campus, watching a classmate I'd personally begged to try MeetSpot... completely ignore my AI-powered meeting location recommendations and just suggest "the usual place near his dorm."
 
@@ -44,7 +44,7 @@ This is the real psychology of AI resistance—not from academic papers, but fro
 
 > "The hardest part of building AI isn't the algorithms. It's convincing people to trust something smarter than them but less human than them." - Lesson learned after 8 stakeholder meetings that ended in shouting
 
-## 📊 The Resistance Data (From 840 Real Users)
+##  The Resistance Data (From 840 Real Users)
 
 Before diving into stories, let me show you the raw numbers from my three AI projects:
 
@@ -57,14 +57,14 @@ Before diving into stories, let me show you the raw numbers from my three AI pro
 | **Enterprise AI** | 3,127 | 23% (Month 1) | 78% (Month 6) | Explicit hostility | 8 months |
 
 **Combined Resistance Patterns** (across 840+ users):
-- 🚫 **Explicit Refusal**: 12% (refused to even try)
-- 😐 **Passive Resistance**: 34% (tried once, never again)
-- 🤷 **Skeptical Compliance**: 39% (used but complained)
-- ✅ **Eager Adoption**: 15% (advocates from day one)
+-  **Explicit Refusal**: 12% (refused to even try)
+-  **Passive Resistance**: 34% (tried once, never again)
+-  **Skeptical Compliance**: 39% (used but complained)
+-  **Eager Adoption**: 15% (advocates from day one)
 
 **Most Surprising Finding**: The 15% of eager adopters were almost all people who'd never used similar systems before. Those with existing habits were the most resistant.
 
-## 🎭 Resistance Pattern 1: The Control Paradox (MeetSpot Story)
+##  Resistance Pattern 1: The Control Paradox (MeetSpot Story)
 
 ### The Setup
 
@@ -138,7 +138,7 @@ class ControlParadox {
 
 **Lesson**: People don't resist AI. They resist loss of autonomy.
 
-## 🏘️ Resistance Pattern 2: The Trust Void (NeighborHelp Story)
+##  Resistance Pattern 2: The Trust Void (NeighborHelp Story)
 
 ### The Cold Start Problem
 
@@ -221,7 +221,7 @@ class TrustVoidAnalysis:
 
 **Lesson**: Trust isn't built by algorithms. It's built by repeated positive experiences with real humans.
 
-## 💼 Resistance Pattern 3: Organizational Warfare (Enterprise AI Story)
+##  Resistance Pattern 3: Organizational Warfare (Enterprise AI Story)
 
 ### The Stakeholder Meltdown
 
@@ -379,7 +379,7 @@ Instead of forcing adoption top-down, I found 12 early adopters across centers a
 
 **Final Adoption Rate** (December 2024): 78% (exceeded 75% target)
 
-## 🧠 The Four Psychological Laws I Discovered
+##  The Four Psychological Laws I Discovered
 
 After 840+ users, 1,247 resistance encounters, and 18 months of debugging human psychology, here are the immutable laws:
 
@@ -472,7 +472,7 @@ User_Comfort = AI_Capability × User_Control
 // If User_Control = 0, User_Comfort = 0, regardless of AI capability.
 ```
 
-## 📈 The Resistance Timeline (What to Expect)
+##  The Resistance Timeline (What to Expect)
 
 Based on 28 months across 3 projects, here's the actual psychological adaptation timeline:
 
@@ -558,7 +558,7 @@ Based on 28 months across 3 projects, here's the actual psychological adaptation
 - **NeighborHelp**: Users suggested skill-sharing marketplace, local business directory
 - **Enterprise AI**: Reps requesting multilingual support, sentiment-aware responses
 
-## 💡 What Actually Works: The Resistance Resolution Framework
+##  What Actually Works: The Resistance Resolution Framework
 
 After learning all this the hard way, here's the framework that actually works:
 
@@ -598,8 +598,8 @@ Week +2: "Here's what worked, what didn't, and what we're fixing."
 **Example** (NeighborHelp matching):
 
 ```
-❌ OLD: "We matched you with John (trust score: 0.87)"
-✅ NEW: "Based on your request, we suggest John, Alice, or Maria.
+ OLD: "We matched you with John (trust score: 0.87)"
+ NEW: "Based on your request, we suggest John, Alice, or Maria.
          John: 2 blocks away, helped 12 neighbors, available now
          Alice: Same building, helped 8 neighbors, available in 1 hour
          Maria: 3 blocks away, helped 15 neighbors, available tomorrow
@@ -617,10 +617,10 @@ Week +2: "Here's what worked, what didn't, and what we're fixing."
 
 ```
 AI Performance This Month:
-✅ Handled: 47,293 queries
-✅ Success rate: 91.8% (up from 89.2% last month)
-❌ Failed: 3,872 queries
-❌ User satisfaction: 4.6/5 (target: 4.8, we're working on it)
+ Handled: 47,293 queries
+ Success rate: 91.8% (up from 89.2% last month)
+ Failed: 3,872 queries
+ User satisfaction: 4.6/5 (target: 4.8, we're working on it)
 
 Top 3 Complaints:
 1. "Can't handle Cantonese accent" (47 cases) - Training in progress
@@ -637,41 +637,41 @@ Thank you to our 340 active users who submitted 127 pieces of feedback this mont
 
 **Result**: Users felt heard, resistance decreased, engagement increased.
 
-## 🎯 Tactical Playbook: Responses to Common Resistance
+##  Tactical Playbook: Responses to Common Resistance
 
 Here are real resistance scenarios and what actually worked:
 
 ### "I Don't Trust AI"
 
-**❌ Failed Response**: "Our AI has 94.3% accuracy!"
-**✅ Working Response**: "You shouldn't blindly trust it. That's why you can always check its work and override it. Think of it like a junior colleague—helpful, but you're still the expert."
+** Failed Response**: "Our AI has 94.3% accuracy!"
+** Working Response**: "You shouldn't blindly trust it. That's why you can always check its work and override it. Think of it like a junior colleague—helpful, but you're still the expert."
 
 ### "It Will Take My Job"
 
-**❌ Failed Response**: "No it won't!" (Impossible to guarantee)
-**✅ Working Response**: "Here's our commitment in writing: [specific job security guarantee]. And here's how this changes your role: [concrete new responsibilities that AI enables]."
+** Failed Response**: "No it won't!" (Impossible to guarantee)
+** Working Response**: "Here's our commitment in writing: [specific job security guarantee]. And here's how this changes your role: [concrete new responsibilities that AI enables]."
 
 ### "My Work Is Too Complex For AI"
 
-**❌ Failed Response**: "Our AI can handle complex tasks!"
-**✅ Working Response**: "You're absolutely right—AI can't do your job. But it can handle the 40% of your work that's repetitive, so you can focus on the 60% that requires your expertise. Want to try it on [specific simple task] first?"
+** Failed Response**: "Our AI can handle complex tasks!"
+** Working Response**: "You're absolutely right—AI can't do your job. But it can handle the 40% of your work that's repetitive, so you can focus on the 60% that requires your expertise. Want to try it on [specific simple task] first?"
 
 ### "The AI Makes Mistakes"
 
-**❌ Failed Response**: "We're working on improving it."
-**✅ Working Response**: "Yes, and here's how often: [specific error rate]. When it's uncertain, it flags the query for you. You catch mistakes we miss—want to help us train it to be better?"
+** Failed Response**: "We're working on improving it."
+** Working Response**: "Yes, and here's how often: [specific error rate]. When it's uncertain, it flags the query for you. You catch mistakes we miss—want to help us train it to be better?"
 
 ### "I Prefer Doing It Myself"
 
-**❌ Failed Response**: "But AI is faster!"
-**✅ Working Response**: "Totally understand. The AI is optional for cases where you want a second opinion or just don't want to deal with routine stuff. You're in control of when to use it."
+** Failed Response**: "But AI is faster!"
+** Working Response**: "Totally understand. The AI is optional for cases where you want a second opinion or just don't want to deal with routine stuff. You're in control of when to use it."
 
 ### "What If It Gives Wrong Information to Customers?"
 
-**❌ Failed Response**: "Our accuracy is 94.3%!"
-**✅ Working Response**: "Great question. You review every AI response before it goes to customers. You're still the quality gatekeeper. AI drafts, you approve. Sound reasonable?"
+** Failed Response**: "Our accuracy is 94.3%!"
+** Working Response**: "Great question. You review every AI response before it goes to customers. You're still the quality gatekeeper. AI drafts, you approve. Sound reasonable?"
 
-## 🔮 What This Means for the Future
+##  What This Means for the Future
 
 After 28 months and 840+ users, here's what I've learned about the future of human-AI collaboration:
 
@@ -711,7 +711,7 @@ After 28 months and 840+ users, here's what I've learned about the future of hum
 
 **New Challenge**: How do we prevent AI from making people less capable, not more?
 
-## 💭 Closing Thoughts: What I Wish I Knew on Day One
+##  Closing Thoughts: What I Wish I Knew on Day One
 
 If I could go back to January 2023 when I started building MeetSpot, here's what I'd tell myself:
 
@@ -743,7 +743,7 @@ Admitting "we don't know yet" builds more trust than claiming perfection.
 
 If users aren't adopting, the problem is psychological, organizational, or social—not algorithmic.
 
-## 📊 Final Data: What Changed After Learning All This
+##  Final Data: What Changed After Learning All This
 
 ### MeetSpot Results (Months 1-6 vs Months 12-18)
 
@@ -792,9 +792,9 @@ You'll encounter resistance 1,247 more times in your next project. Remember: it'
 
 *Want to discuss AI resistance psychology or share your own experiences? I respond to every message:*
 
-**📧 Email**: jason@jasonrobert.me
-**🐙 GitHub**: [@JasonRobertDestiny](https://github.com/JasonRobertDestiny)
-**📝 Other platforms**: [Juejin](https://juejin.cn/user/2637056597039172) | [CSDN](https://blog.csdn.net/Soulrobert520)
+** Email**: jason@jasonrobert.me
+** GitHub**: [@JasonRobertDestiny](https://github.com/JasonRobertDestiny)
+** Other platforms**: [Juejin](https://juejin.cn/user/2637056597039172) | [CSDN](https://blog.csdn.net/Soulrobert520)
 
 ---
 
@@ -806,90 +806,90 @@ You'll encounter resistance 1,247 more times in your next project. Remember: it'
 
 <div class="lang-zh" style="display:none;" markdown="1">
 
-## 😱 我意识到我自己就是问题的那一天
+##  
 
-**2024年6月14日,下午2点34分**。我坐在校园附近的星巴克,看着一个我亲自恳求使用MeetSpot的同学...完全无视我的AI驱动的会面地点推荐,直接提议"就在他宿舍附近的老地方"。
+**2024614,234**,MeetSpot...AI,""
 
-我花了720小时构建了一个智能���统,可以使用地理算法和AI偏好匹配为多人优化会面地点。他花了0.3秒就默认选择了他一直去的地方。
+720,AI0.3
 
-"你的应用很酷,Jason,但是...我不知道,我就是更喜欢自己决定。"
+",Jason,...,"
 
-这句话,以零恶意和完全诚实的方式说出,教会了我比任何研究论文更多关于AI抵抗心理学的知识。问题��在我的算法。不在我的用户体验。甚至不在智能本身。
+,,AI
 
-**问题在于控制权。**而我在要求人们放弃它。
+****
 
-在接下来的18个月里,通过3个服务840+用户的AI项目,我会以各种形式遇到这种抵抗1,247次。有些微妙。有些爆发性。有些让我质疑我是否应该构建AI应用。
+18,3840+AI,1,247AI
 
-这是AI抵抗的真实心理学——不是来自学术论文,而是来自在生产环境中调试人类行为。
+AI——,
 
-> "构建AI最难的部分不是算法。是说服人们信任比他们聪明但没他们人性的东西。" - 在8次以争吵结束的利益相关者会议后学到的教训
+> "AI" - 8
 
-## 📊 抵抗数据(来自840个真实用户)
+##  (840)
 
-在深入故事之前,让我展示来自我三个AI项目的原始数据:
+,AI:
 
-### 项目抵抗指标
+### 
 
-| 项目 | 用户数 | 初始采用率 | 30天留存率 | 抵抗类型 | 解决时间 |
+|  |  |  | 30 |  |  |
 |------|--------|------------|------------|----------|----------|
-| **MeetSpot** | 500+ | 38%(180天) | 67% | 微妙回避 | 6个月 |
-| **邻里帮** | 340+ | 1%(第1周) | 89%(第3月) | 冷启动恐惧 | 5��� |
-| **企业AI** | 3,127 | 23%(第1月) | 78%(第6月) | 明确敌意 | 8个月 |
+| **MeetSpot** | 500+ | 38%(180) | 67% |  | 6 |
+| **** | 340+ | 1%(1) | 89%(3) |  | 5 |
+| **AI** | 3,127 | 23%(1) | 78%(6) |  | 8 |
 
-**综合抵抗模式**(840+用户):
-- 🚫 **明确拒绝**: 12%(拒绝尝试)
-- 😐 **被动抵抗**: 34%(试过一次,再也不用)
-- 🤷 **怀疑服从**: 39%(使用但抱怨)
-- ✅ **积极采用**: 15%(从第一天就是倡导者)
+****(840+):
+-  ****: 12%()
+-  ****: 34%(,)
+-  ****: 39%()
+-  ****: 15%()
 
-**最令人惊讶的发现**: 15%的积极采用者几乎都是从未使用过类似系统的人。那些有现有习惯的人最抵抗。
+****: 15%
 
-## 🎭 抵抗模式1:控制悖论(MeetSpot故事)
+##  1:(MeetSpot)
 
-### 设置
+### 
 
-**2024年5月**: MeetSpot启动。3个月工作后我有47个用户。22个是我亲自恳求的同学。25个是自然发现的。
+**20245**: MeetSpot3472225
 
-**承诺**: AI分析每个人的位置、偏好和约束,建议完美的会面地点。节省30-60分钟的群聊辩论。
+****: AI,30-60
 
-**现实**: 62%的用户会得到推荐...然后无视它,照样进行辩论。
+****: 62%...,
 
-### 教会我一切的事件
+### 
 
-**2024年6月18日,下午4点47分**: 用户访谈#12。我在和一个定期使用MeetSpot的学习小组交谈(或者我以为他们在用)。
+**2024618,447**: #12MeetSpot()
 
-**我**: "应用用得怎么样?"
-**用户A**: "哦,很好!超级有用。"
-**我**: "你们上次的会面地点是哪里?"
-**用户A**: "呃...图书馆附近那家星巴克。"
-**我** *(查看日志)*: "但MeetSpot建议了第三街的咖啡馆——更好的中点,更安静,更便宜..."
-**用户B** *(不好意思地)*: "是的,我们看到了。但我们总是去星巴克。"
+****: "?"
+**A**: ",!"
+****: "?"
+**A**: "..."
+**** *()*: "MeetSpot——,,..."
+**B** *()*: ","
 
-**我**: "那么...为什么还要用这个应用?"
-**用户A**: "让我们感觉自己很高效?"
+****: "...?"
+**A**: "?"
 
-### 我发现的心理学
+### 
 
-这不是愚蠢。这不是用户错误。这是**心理控制保护**:
+****:
 
 ```javascript
-// 控制悖论(通过180个用户访谈发现)
+// (180)
 class ControlParadox {
     analyze(userBehavior) {
         const paradox = {
-            stated_desire: "我想要AI让决策更容易",
-            actual_behavior: "我用熟悉的选择覆盖AI推荐",
+            stated_desire: "AI",
+            actual_behavior: "AI",
 
             psychological_reality: {
-                comfort_from_ai: "验证我在做出好选择",
-                discomfort_from_ai: "失去决策自主权",
-                resolution: "使用AI作为顾问,而不是决策者"
+                comfort_from_ai: "",
+                discomfort_from_ai: "",
+                resolution: "AI,"
             },
 
             real_user_need: {
-                what_they_think: "最优解决方案",
-                what_they_want: "对我自己决定的信心",
-                ai_role: "咨询师,而非老板"
+                what_they_think: "",
+                what_they_want: "",
+                ai_role: ","
             }
         };
 
@@ -897,58 +897,58 @@ class ControlParadox {
     }
 }
 
-// 我学到的:人们不想要AI决定。他们想要AI确认他们决定得对。
+// :AIAI
 ```
 
-### 实际有效的方法
+### 
 
-**失败的方法**(2024年5-6月):
-- 强调算法有多"聪明"
-- 展示数学最优性证明
-- 突出效率提升
-- **结果**: 用户因不信任它而感到愚蠢,这让他们更抵抗
+****(20245-6):
+- ""
+- 
+- 
+- ****: ,
 
-**有效的方法**(2024年7月起):
-- 将UI从"推荐地点"改为"前3建议"
-- 添加"为什么这些?"按钮显示推理(透明度)
-- 让用户在前几个选项之间投票(恢复控制)
-- 将功能从"AI决策"重命名为"智能建议"
+****(20247):
+- UI"""3"
+- "?"()
+- ()
+- "AI"""
 
-**采用率**: 38% → 67%,6周内
+****: 38% → 67%,6
 
-**教训**: 人们不抵抗AI。他们抵抗失去自主权。
+****: AI
 
-## 🏘️ 抵抗模式2:信任真空(邻里帮故事)
+##  2:()
 
-### 冷启动问题
+### 
 
-**2024年8��1日,第1周**: 邻里帮在我200户的公寓楼启动。
+**202481,1**: 200
 
-**第1天**: 3个用户注册(我、我室友、他女朋友)
-**第3天**: 还是3个用户
-**第7天**: 5个用户(加了两个朋友)
+**1**: 3()
+**3**: 3
+**7**: 5()
 
-**问题**: 没人想成为第一个在没有建立信任的平台上寻求帮助的人。
+****: 
 
-### 心理障碍
+### 
 
-**2024年8月8日,上午9点23分**: 与老年邻居陈阿姨的对话。
+**202488,923**: 
 
-**陈阿姨**: "所以这个应用...它找陌生人帮我?"
-**我**: "是邻居,不是陌生人!住在我们楼里的人。"
-**陈阿姨**: "我不认识他们。他们就是陌生人。"
-**我**: "但应用有信任评分系统——"
-**陈阿姨**: "它知道他们会不会偷我东西吗?"
-**我** *(意识到我的信任算法对抗70年学到的谨慎毫无用处)*: "...不知道。"
+****: "...?"
+****: ",!"
+****: ""
+****: "——"
+****: "?"
+**** *(70)*: "..."
 
-### 信任真空公式
+### 
 
 ```python
-# 通过40+用户访谈发现的信任真空
+# 40+
 class TrustVoidAnalysis:
     def __init__(self):
         self.trust_formula = {
-            # 我认为信任需要什么
+            # 
             "my_assumptions": {
                 "verification_system": 0.30,
                 "rating_algorithm": 0.25,
@@ -957,102 +957,102 @@ class TrustVoidAnalysis:
                 "AI_intelligence": 0.10
             },
 
-            # 用户实际需要信任什么
+            # 
             "actual_requirements": {
-                "personal_familiarity": 0.40,  # 在现实生活中认识他们
-                "social_proof": 0.30,           # 看到其他人成功使用
-                "low_stakes_validation": 0.15,  # 先用低风险请求尝试
-                "human_fallback": 0.10,         # 有问题可以找真人
-                "AI_transparency": 0.05         # 算法是最不重要的!
+                "personal_familiarity": 0.40,  # 
+                "social_proof": 0.30,           # 
+                "low_stakes_validation": 0.15,  # 
+                "human_fallback": 0.10,         # 
+                "AI_transparency": 0.05         # !
             }
         }
 
     def why_ai_failed(self):
         return {
-            "problem": "AI信任评分解决了错误的问题",
-            "real_need": "社会验证,而非算法验证",
-            "painful_truth": "我精美的ML模型与实际信任无关"
+            "problem": "AI",
+            "real_need": ",",
+            "painful_truth": "ML"
         }
 ```
 
-### 实际有效的方法
+### 
 
-**失败的方法**(2024年8月):
-- 展示复杂的信任评分算法
-- 突出AI驱动的匹配智能
-- 强调安全功能
-- **结果**: 2周后5个用户,零交易
+****(20248):
+- 
+- AI
+- 
+- ****: 25,
 
-**有效的方法**(8月15日起):
-- **我成为第一个帮助者**: 报名第一个月帮助任何事
-- 手动建立47个成功互动
-- 请求被帮助的用户发布照片/评论
-- 创建"邻居聚焦"展示真实的人
-- 添加承诺前面对面见面选项
+****(815):
+- ****: 
+- 47
+- /
+- ""
+- 
 
-**突破**(2024年9月):
-- 陈阿姨需要帮忙拎杂货
-- 我帮了她(通过应用,但她认识我)
-- 她发布了带照片的好评
-- 那周12个新老年用户注册
-- 他们都想要"那个帮陈阿姨的好小伙"
+****(20249):
+- 
+- (,)
+- 
+- 12
+- ""
 
-**当前状态**: 340+用户,89% 30天留存,4.6/5满意度
+****: 340+,89% 30,4.6/5
 
-**教训**: 信任不是由算法建立的。是由与真人的重复积极体验建立的。
+****: 
 
-## 💼 抵抗模式3:组织战争(企业AI故事)
+##  3:(AI)
 
-### 利益相关者崩溃
+### 
 
-**背景**(来自我的企业AI实施经验): 将AI Agent部署到20个中心的3,127名客服代表。总投资:280万美元。我的工作:让做了15年的人信任电脑帮助他们。
+****(AI): AI Agent203,127:280:15
 
-**2024年3月**: 部署第1个月。采用率:23%。我需要85%+才能让项目被认为成功。
+**20243**: 1:23%85%+
 
-### 八次争吵会议
+### 
 
-我在另一篇文章中提到我有"8次以争吵结束的利益相关者会议"。这实际上是什么样的:
+"8":
 
-#### 争吵会议#1:工作安全恐慌
+#### #1:
 
-**2024年4月3日,上午10点17分**: 北京客服中心,与40名代表开会。
+**202443,1017**: ,40
 
-**代表领导** *(站起来)*: "所以这个AI...它要做我们的工作?"
-**我**: "不,它辅助你们——"
-**代表领导**: "我表哥在制造业工作。他们引入AI。裁员200人。你告诉我这里不会发生?"
-**我**: "这不一样。这是增强,不是——"
-**另一个代表** *(喊叫)*: "他们总是这么说!然后boom,我们就出局了!"
+**** *()*: "AI...?"
+****: ",——"
+****: "AI200?"
+****: ",——"
+**** *()*: "!boom,!"
 
-**房间状态**: 40人,38人现在站着,2人哭泣,音量增加
+****: 40,38,2,
 
-**我** *(匹配音量,错误#1)*: "没人会被解雇!"
-**代表领导**: "那我们为什么需要AI?!"
+**** *(,#1)*: "!"
+****: "AI?!"
 
-**会议结果**: 提前15分钟结束。北京中心接下来两个月的采用率:8%。
+****: 15:8%
 
-**出了什么问题**:
-- 我试图用逻辑战胜情绪恐惧
-- 我提高了声音(升级而非降级)
-- 我专注于技术优势而不是解决核心恐惧
-- 我对工作安全没有可信的保证(他们知道)
+****:
+- 
+- ()
+- 
+- ()
 
-*[内容继续,保持与英文版相同的深度、个人故事、技术细节和诚实的失败经历...]*
+*[,...]*
 
-*[由于篇幅限制,这里展示了中文版本的开始部分。完整版本将包含所有章节的完整翻译,包括所有个人故事、代码示例、失败经历和心理学洞察。]*
+*[,,]*
 
-## 💬 让我们保持联系
+##  
 
-这28个月教会了我AI抵抗不仅仅是技术——它是心理学、组织行为和社会动力学。如果你正在构建AI产品或面对抵抗:
+28AI——AI:
 
-- 📧 **邮箱**: jason@jasonrobert.me - 我真的会回复
-- 🐙 **GitHub**: [@JasonRobertDestiny](https://github.com/JasonRobertDestiny)
-- 📝 **掘金**: [我的中文技术博客](https://juejin.cn/user/2637056597039172)
-- 💻 **CSDN**: [深度文章](https://blog.csdn.net/Soulrobert520)
+-  ****: jason@jasonrobert.me - 
+-  **GitHub**: [@JasonRobertDestiny](https://github.com/JasonRobertDestiny)
+-  ****: [](https://juejin.cn/user/2637056597039172)
+-  **CSDN**: [](https://blog.csdn.net/Soulrobert520)
 
 ---
 
-*最后更新: 2024年9月*
-*基于28个月,3个项目,840+用户,1,247次抵抗遭遇*
-*最重要的教训: 人们不抵抗AI。他们抵抗改变。要有耐心。*
+*: 20249*
+*28,3,840+,1,247*
+*: AI*
 
 </div>
