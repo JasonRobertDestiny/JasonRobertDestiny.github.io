@@ -1,0 +1,80 @@
+---
+layout: default
+title: Blog
+description: All articles
+permalink: /blog/
+---
+
+<section class="blog-section">
+  <header class="blog-header container">
+    <h1 class="page-title">Blog</h1>
+    <p class="page-description">Thoughts on AI, multi-agent systems, and technology.</p>
+  </header>
+
+  <div class="container">
+    <div class="post-grid">
+      {% for post in paginator.posts %}
+      <article class="post-card">
+        <div class="post-meta">{{ post.date | date: "%b %d, %Y" }}</div>
+        <h3 class="post-title">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </h3>
+        {% if post.subtitle %}
+        <p class="post-excerpt">{{ post.subtitle | truncate: 120 }}</p>
+        {% elsif post.description %}
+        <p class="post-excerpt">{{ post.description | truncate: 120 }}</p>
+        {% endif %}
+        {% if post.tags.size > 0 %}
+        <div class="post-tags">
+          {% for tag in post.tags limit:3 %}
+          <span class="tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    {% if paginator.total_pages > 1 %}
+    <nav class="pagination">
+      {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path | relative_url }}" class="btn">&larr; Newer</a>
+      {% endif %}
+
+      <span class="pagination-info">
+        Page {{ paginator.page }} of {{ paginator.total_pages }}
+      </span>
+
+      {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | relative_url }}" class="btn">Older &rarr;</a>
+      {% endif %}
+    </nav>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .blog-header {
+    padding: calc(80px + var(--space-3xl)) 0 var(--space-2xl);
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-xl);
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-xl);
+    border-top: 1px solid rgba(0, 255, 255, 0.1);
+  }
+
+  .pagination-info {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+</style>

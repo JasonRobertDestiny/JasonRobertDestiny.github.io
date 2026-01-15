@@ -1,0 +1,40 @@
+---
+layout: default
+title: Archive
+description: All articles chronologically
+permalink: /archive/
+---
+
+<section class="archive-section">
+  <header class="archive-header container container-narrow">
+    <h1 class="page-title">Archive</h1>
+    <p class="page-description">All {{ site.posts.size }} articles, chronologically.</p>
+  </header>
+
+  <div class="container container-narrow">
+    {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+
+    {% for year in posts_by_year %}
+    <h2 class="archive-year">{{ year.name }}</h2>
+    <ul class="archive-list">
+      {% for post in year.items %}
+      <li class="archive-item">
+        <span class="archive-date">{{ post.date | date: "%m/%d" }}</span>
+        <span class="archive-title">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </span>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+  .archive-header {
+    padding: calc(80px + var(--space-3xl)) 0 var(--space-2xl);
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+    margin-bottom: var(--space-xl);
+  }
+</style>

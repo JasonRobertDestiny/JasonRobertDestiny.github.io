@@ -2,75 +2,38 @@
 layout: default
 ---
 
-<!-- Page Header -->
-{% include intro-header.html type='page' %}
-
-<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    {% if site.sidebar == false %}
-    <!-- NO SIDEBAR -->
-    <!-- PostList Container -->
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1
-      postlist-container">
-      {{ content }}
-    </div>
-    <!-- Sidebar Container -->
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1
-      sidebar-container">
-      <!-- Featured Tags -->
-      {% include featured-tags.html %}
-
-      <!-- Friends Blog -->
-      {% include friends.html %}
-    </div>
-    {% else %}
-
-    <!-- USE SIDEBAR -->
-    <!-- PostList Container -->
-    <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12
-      col-xs-12 postlist-container">
-      {{ content }}
-    </div>
-    <!-- Sidebar Container -->
-    <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12
-      col-xs-12 sidebar-container">
-      <!-- Featured Tags -->
-      {% include featured-tags.html %}
-
-      <!-- Short About -->
-      {% include short-about.html %}
-
-      <!-- Friends Blog -->
-      {% include friends.html %}
-
-      <!-- Ads -->
-      {% if site.ads_enabled %}
-      {% include ads.html %}
-      {% endif %}
-    </div>
+<div class="page">
+  <header class="page-header container container-narrow">
+    <h1 class="page-title">{{ page.title }}</h1>
+    {% if page.description %}
+    <p class="page-description">{{ page.description }}</p>
     {% endif %}
+  </header>
+
+  <div class="page-content container container-narrow">
+    {{ content }}
   </div>
 </div>
 
-{% if site.page-mathjax %}
-<!-- Add support for Mathjax by Voleking-->
-<!-- If you want to see formulars well in post preview, Maybe you should add this.-->
-<!-- However, most of the time formulars may not appear in the post preview, you can delete it.-->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    TeX: {
-      equationNumbers: {
-        autoNumber: "AMS"
-      }
-    },
-    tex2jax: {
-      inlineMath: [ ['$','$'] ],
-      displayMath: [ ['$$','$$'] ],
-      processEscapes: true,
-    }
-  });
-</script>
-<script type="text/javascript"
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-{% endif %}
+<style>
+  .page-header {
+    padding: calc(80px + var(--space-3xl)) 0 var(--space-2xl);
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+  }
+
+  .page-title {
+    margin-bottom: var(--space-md);
+  }
+
+  .page-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .page-content {
+    padding: var(--space-2xl) var(--space-lg) var(--space-3xl);
+  }
+</style>

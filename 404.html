@@ -1,15 +1,13 @@
 ---
 layout: default
 title: 404
-hide-in-nav: true
-description: "Page not found - The page you're looking for doesn't exist"
-header-img: "img/404-bg.jpg"
 permalink: /404.html
 ---
 
-<!-- Page Header -->
-{% include intro-header.html type="page" short='true' %}
-
-<script>
-	document.body.classList.add('page-fullscreen');
-</script>
+<section class="error-page">
+  <div class="container text-center">
+    <h1 class="error-code">404</h1>
+    <p class="error-message">Page not found. The page you're looking for doesn't exist.</p>
+    <a href="/" class="btn btn-primary">Back to Home</a>
+  </div>
+</section>

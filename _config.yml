@@ -1,124 +1,66 @@
-# Site settings
-title: Calder's Lab
-SEOTitle: AI Agent Architect | Calder
-header-img: img/home-bg-o.jpg
+# Calder's Lab - Cyberpunk Tech Blog
+# Minimal Jekyll Configuration
+
+title: "Calder's Lab"
+description: "AI Agent Architect building production-grade multi-agent systems. 28+ months experience."
+url: "https://jasonrobert.me"
+baseurl: ""
+author: "Calder"
 email: johnrobertdestiny@gmail.com
-description: "AI Agent architect building production-grade multi-agent systems. 28+ months experience. Award-winning: MeetSpot, L'Oreal Data Insight."
-keyword: "AI Agent, Multi-Agent Systems, Web3, Intelligent Systems, AI Architect, LLM Applications"
-url: "https://jasonrobert.me" # your host, for absolute URL
-baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
-ads_enabled: false
-seo_fixer_enabled: false
 
-# Publish posts or collection documents with a future date.
-future: true
+# SEO
+keywords: "AI Agent, Multi-Agent Systems, Web3, Intelligent Systems, AI Architect"
 
-# SNS settings
-RSS: false
-weibo_username: 
-zhihu_username: 
-github_username: JasonRobertDestiny
-twitter_username: 
-csdn_username: Soulrobert520
-juejin_username: 2637056597039172
-bilibili_username: 648236073
-#facebook_username:  
-#linkedin_username:  firstname-lastname-idxxxx
-
-# Build settings
-# from 2016, 'pygments' is unsupported on Calder's Lab. Use 'rouge' for highlighting instead.
-highlighter: rouge
-permalink: pretty
-paginate: 10
-exclude:
-  [
-    "less",
-    "node_modules",
-    "Gruntfile.js",
-    "package.json",
-    "README.md",
-    "README.zh.md",
-    "CLAUDE.md",
-    "archive/CLAUDE.md",
-    "archive/README.md",
-    "doc/",
-    "document/",
-    "*.sh",
-    "build.sh",
-    ".vscode/",
-    "vendor/",
-    "Gemfile",
-    "Gemfile.lock",
-    "PERFORMANCE-OPTIMIZATION.md",
-    "*-REPORT*.md",
-    "*报告*.md",
-    "seo_*.md",
-    "*optimization*.md",
-    "*SEO*.md",
-  ]
-anchorjs: true # if you want to customize anchor. check out line:181 of `post.html`
-# If you have timezone issue (e.g. #68) in China, uncomment to use this:
-#timezone: CN
-
-# Gems
-# from PR#40, to support local preview for Calder's Lab
-# make sure you have this gem installed
-# `$ gem install jekyll-paginate`
-plugins: [jekyll-paginate]
-
-# Markdown settings
-# replace redcarpet to kramdown,
-# although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
-# document: http://jasonrobertdestiny.github.io/docs/configuration/#kramdown
+# Build
 markdown: kramdown
+highlighter: rouge
+permalink: /blog/:year/:month/:day/:title/
+future: true
+paginate: 10
+paginate_path: "/page:num/"
+
+plugins:
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
 kramdown:
-  input: GFM # use Github Flavored Markdown !important
+  input: GFM
   syntax_highlighter_opts:
-    span:
-      line_numbers: false
     block:
       line_numbers: true
-      start_line: 1
 
-# Disqus settings
-disqus_username: johnrobertdestiny # 如果需要评论功能，请在这里填入你的Disqus用户名
+# Social
+github_username: JasonRobertDestiny
+twitter_username:
+linkedin_username:
 
-# Netease settings
-netease_comment: false
-
-# Analytics settings
-# Baidu Analytics
-# ba_track_id: [your track id]
-
-# Google Analytics
+# Analytics
 ga_track_id: G-DNFKJG8R74
-ga_domain: jasonrobertdestiny.github.io
 
-# Sidebar settings
-sidebar: true # whether or not using Sidebar.
-sidebar-about-description: "AI Agent Architect<br>Building the Future of Intelligent Systems<br><br>Multi-Agent | Web3 | Production AI<br><br>Award-Winning Projects:<br>MeetSpot / L'Oreal Insight / Neighborly<br><br>BISTU / Telecom Engineering<br><br>Exploring the Edge of AI + Decentralization"
-sidebar-avatar: https://github.com/JasonRobertDestiny.png # use absolute URL, seeing it's used in both `/` and `/about/`
+# Sidebar
+avatar: https://github.com/JasonRobertDestiny.png
+bio: "AI Agent Architect | Multi-Agent Systems | Web3"
 
-# Featured Tags
-featured-tags: true # whether or not using Feature-Tags
-featured-condition-size: 1 # A tag will be featured if the size of it is more than this condition value
+# Links
+links:
+  - title: "GitHub"
+    url: "https://github.com/JasonRobertDestiny"
+  - title: "CSDN"
+    url: "https://blog.csdn.net/Soulrobert520"
+  - title: "Juejin"
+    url: "https://juejin.cn/user/2637056597039172"
+  - title: "MeetSpot"
+    url: "https://github.com/JasonRobertDestiny/MeetSpot"
 
-# Progressive Web Apps
-chrome-tab-theme-color: "#000000"
-service-worker: true
-
-# MathJax rendering for layout:page (e.g. post preview)
-page-mathjax: false
-
-# Friends
-friends:
-  [
-    { title: "GitHub", href: "https://github.com/JasonRobertDestiny" },
-    { title: "CSDN Blog", href: "https://blog.csdn.net/Soulrobert520" },
-    { title: "Juejin", href: "https://juejin.cn/user/2637056597039172" },
-    { title: "Bilibili", href: "https://space.bilibili.com/648236073" },
-    { title: "ModelScope", href: "https://www.modelscope.cn/profile/JasonRobert" },
-    { title: "MeetSpot Project", href: "https://github.com/JasonRobertDestiny/MeetSpot" },
-    { title: "L'Oréal Data Insight Assistant", href: "https://www.modelscope.cn/studios/JasonRobert/loreal-insight-agent" },
-    { title: "Neighborly Help", href: "https://tbox.alipay.com/pro/share/202412APTgpY00193418?platform=WebService" },
-  ]
+# Exclude
+exclude:
+  - less
+  - node_modules
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - CLAUDE.md
+  - "*.sh"
+  - vendor
+  - .git

@@ -1,144 +1,118 @@
 ---
-layout: page
-description: "AI Agent developer with 28 months production experience. Award-winning projects: MeetSpot, L'Oreal Data Assistant. Weekly AI insights."
-hide-in-nav: true
+layout: default
+title: Home
 ---
 
-<!-- Featured Articles Section -->
-<div class="featured-section animate-fade-in-up">
-    <h2 class="featured-section__title">
-        <svg class="icon" aria-hidden="true"><use href="#icon-star"/></svg>
-        Featured Articles
-    </h2>
-    <div class="featured-section__grid">
-        <div class="featured-card animate-fade-in-up--delay-1">
-            <h3 class="featured-card__title">
-                <a href="{{ site.baseurl }}/2025/01/17/ai-agent-complete-guide/" title="Read: AI Agent Complete Guide - 28 months production experience">
-                    AI Agent Complete Guide
-                </a>
-            </h3>
-            <p class="featured-card__description">
-                28 months production experience, 847,293 autonomous decisions, from $847 API disaster to 91.8% success rate
-            </p>
-            <span class="featured-card__meta">
-                <svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg>
-                35 min read
-            </span>
-        </div>
-        <div class="featured-card animate-fade-in-up--delay-2">
-            <h3 class="featured-card__title">
-                <a href="{{ site.baseurl }}/2025/01/14/ai-agent-reality-check/" title="Read: AI Agent Reality Check - Real capabilities from production systems">
-                    AI Agent Reality Check
-                </a>
-            </h3>
-            <p class="featured-card__description">
-                Revealing the real capability boundaries of AI Agents, based on battle-tested data from 3 production systems
-            </p>
-            <span class="featured-card__meta">
-                <svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg>
-                25 min read
-            </span>
-        </div>
-        <div class="featured-card animate-fade-in-up--delay-3">
-            <h3 class="featured-card__title">
-                <a href="{{ site.baseurl }}/2025/06/26/agent-development-journey/" title="Read: Agent Development Journey - MeetSpot hackathon winning project">
-                    Agent Development Journey
-                </a>
-            </h3>
-            <p class="featured-card__description">
-                From zero to hackathon winner - complete technical retrospective of the MeetSpot project
-            </p>
-            <span class="featured-card__meta">
-                <svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg>
-                20 min read
-            </span>
-        </div>
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <span class="hero-tag">AI Agent Architect</span>
+      <h1 class="hero-title">
+        Building the<br>
+        <span class="accent">Future</span> of AI
+      </h1>
+      <p class="hero-subtitle">
+        Exploring multi-agent systems, production AI architectures, and the frontier of intelligent systems. 28+ months building real-world AI solutions.
+      </p>
+      <div class="hero-cta">
+        <a href="/archive/" class="btn btn-primary">Read Articles</a>
+        <a href="/about/" class="btn">About Me</a>
+      </div>
     </div>
-</div>
+  </div>
+</section>
 
-<!-- Core Topics Navigation -->
-<div class="core-topics animate-fade-in-up">
-    <h3 class="core-topics__title">
-        <svg class="icon" aria-hidden="true"><use href="#icon-book"/></svg>
-        Core Topics
-    </h3>
-    <div class="core-topics__tags">
-        <a href="{{ site.baseurl }}/archive/?tag=AI+Agent"
-           class="topic-tag topic-tag--primary"
-           title="Browse all AI Agent development articles">
-            <svg class="icon" aria-hidden="true"><use href="#icon-robot"/></svg>
-            AI Agent Dev
-        </a>
-        <a href="{{ site.baseurl }}/archive/?tag=Production+Guide"
-           class="topic-tag topic-tag--secondary"
-           title="Production environment guides and best practices">
-            <svg class="icon" aria-hidden="true"><use href="#icon-cogs"/></svg>
-            Production
-        </a>
-        <a href="{{ site.baseurl }}/archive/?tag=Technical+Architecture"
-           class="topic-tag topic-tag--tertiary"
-           title="System architecture and design patterns">
-            <svg class="icon" aria-hidden="true"><use href="#icon-sitemap"/></svg>
-            Architecture
-        </a>
-        <a href="{{ site.baseurl }}/archive/?tag=LangChain"
-           class="topic-tag topic-tag--quaternary"
-           title="LangChain framework practical tutorials">
-            <svg class="icon" aria-hidden="true"><use href="#icon-link"/></svg>
-            LangChain
-        </a>
-        <a href="{{ site.baseurl }}/portfolio/"
-           class="topic-tag topic-tag--quinary"
-           title="View award-winning projects portfolio">
-            <svg class="icon" aria-hidden="true"><use href="#icon-trophy"/></svg>
-            Projects
-        </a>
+<!-- Latest Posts -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Latest Posts</h2>
+      <a href="/archive/" class="btn">View All</a>
     </div>
-</div>
 
-<!-- Blog Posts List -->
-{% for post in paginator.posts %}
-<div class="post-preview post-list__item">
-    <a href="{{ post.url | prepend: site.baseurl }}" title="Read: {{ post.title }}">
-        <h2 class="post-title">
-            {{ post.title }}
-        </h2>
-        {% if post.subtitle %}
-        <h3 class="post-subtitle">
-            {{ post.subtitle }}
+    <div class="post-grid">
+      {% for post in site.posts limit:6 %}
+      <article class="post-card">
+        <div class="post-meta">{{ post.date | date: "%b %d, %Y" }}</div>
+        <h3 class="post-title">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
         </h3>
+        {% if post.subtitle %}
+        <p class="post-excerpt">{{ post.subtitle | truncate: 120 }}</p>
+        {% elsif post.description %}
+        <p class="post-excerpt">{{ post.description | truncate: 120 }}</p>
         {% endif %}
-        <div class="post-content-preview">
-            {{ post.content | strip_html | truncate:300 }}
+        {% if post.tags.size > 0 %}
+        <div class="post-tags">
+          {% for tag in post.tags limit:3 %}
+          <span class="tag">{{ tag }}</span>
+          {% endfor %}
         </div>
-    </a>
-    <p class="post-meta">
-        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}
-    </p>
-</div>
-<hr>
-{% endfor %}
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 
-<!-- Pager -->
-{% if paginator.total_pages > 1 %}
-<ul class="pager">
-    {% if paginator.previous_page %}
-    <li class="previous pager__item">
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"
-           class="pager__link pager__link--prev"
-           title="View newer posts">
-            <span class="pager__direction">&larr; Newer</span>
-        </a>
-    </li>
-    {% endif %}
-    {% if paginator.next_page %}
-    <li class="next pager__item">
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"
-           class="pager__link pager__link--next"
-           title="View older posts">
-            <span class="pager__direction">Older &rarr;</span>
-        </a>
-    </li>
-    {% endif %}
-</ul>
-{% endif %}
+<!-- Links Section -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Connect</h2>
+    </div>
+
+    <div class="links-grid">
+      {% for link in site.links %}
+      <a href="{{ link.url }}" target="_blank" rel="noopener" class="link-card">
+        <span class="link-title">{{ link.title }}</span>
+        <span class="link-arrow">&rarr;</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .link-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-lg);
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+  }
+
+  .link-card:hover {
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+  }
+
+  .link-title {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .link-arrow {
+    font-size: 1.25rem;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.2s ease;
+  }
+
+  .link-card:hover .link-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+</style>

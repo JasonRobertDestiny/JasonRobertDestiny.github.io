@@ -2,272 +2,114 @@
 layout: default
 ---
 
-<!-- Reading Progress Bar -->
-<div class="reading-progress" id="reading-progress"></div>
-
-<!-- Image to hack wechat -->
-<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
-
-<!-- Post Header -->
-{% include intro-header.html type='post' %}
-
-<!-- Post Content -->
-<article itemscope itemtype="http://schema.org/Article">
-    <div class="container">
-        <div class="row">
-
-    <!-- Post Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                post-container tech-enhanced">
-
-                <!-- Article Metadata -->
-                <div class="article-meta scroll-reveal">
-                    <!-- Reading Time Estimation -->
-                    <div class="reading-time">
-                        <svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg>
-                        <span id="reading-time">{{ content | strip_html | number_of_words | divided_by: 200 | plus: 1 }} min read</span>
-                    </div>
-
-                    <!-- Word Count -->
-                    <div class="word-count">
-                        <svg class="icon" aria-hidden="true"><use href="#icon-file-text"/></svg>
-                        <span>{{ content | strip_html | number_of_words }} words</span>
-                    </div>
-
-                    <!-- Last Updated -->
-                    {% if page.updated %}
-                    <div class="last-updated">
-                        <svg class="icon" aria-hidden="true"><use href="#icon-refresh"/></svg>
-                        <time datetime="{{ page.updated | date_to_xmlschema }}">
-                            Updated {{ page.updated | date: "%B %d, %Y" }}
-                        </time>
-                    </div>
-                    {% endif %}
-                </div>
-
-                <!-- TL;DR Quick Summary (before article content) -->
-                {% include tldr.html %}
-
-                <!-- Article Content with structured markup -->
-                <div class="article-content" itemprop="articleBody">
-                    {{ content }}
-                </div>
-
-                <!-- Article Tags -->
-                {% if page.tags.size > 0 %}
-                <div class="article-tags scroll-reveal">
-                    <h4><svg class="icon" aria-hidden="true"><use href="#icon-tags"/></svg> Tags</h4>
-                    <div class="tags">
-                        {% for tag in page.tags %}
-                        <a href="{{ site.baseurl }}/tags/#{{ tag }}" class="tag" itemprop="keywords">
-                            <svg class="icon" aria-hidden="true"><use href="#icon-tag"/></svg>{{ tag }}
-                        </a>
-                        {% endfor %}
-                    </div>
-                </div>
-                {% endif %}
-
-                <!-- FAQ Section with Schema -->
-                {% include faq-schema.html %}
-
-                <!-- Related Posts -->
-                {% include related-posts.html %}
-
-                <!-- Social Share Section -->
-                <div class="social-share scroll-reveal">
-                    <h4><svg class="icon" aria-hidden="true"><use href="#icon-share-alt"/></svg> Share this article</h4>
-                    <div class="share-buttons">
-                        <a href="#" class="share-btn twitter ripple" onclick="shareToTwitter()" title="Share on Twitter" aria-label="Share on Twitter">
-                            <svg class="icon" aria-hidden="true"><use href="#icon-twitter"/></svg>
-                            <span class="sr-only">Twitter</span>
-                        </a>
-                        <a href="#" class="share-btn facebook ripple" onclick="shareToFacebook()" title="Share on Facebook" aria-label="Share on Facebook">
-                            <svg class="icon" aria-hidden="true"><use href="#icon-facebook"/></svg>
-                            <span class="sr-only">Facebook</span>
-                        </a>
-                        <a href="#" class="share-btn linkedin ripple" onclick="shareToLinkedIn()" title="Share on LinkedIn" aria-label="Share on LinkedIn">
-                            <svg class="icon" aria-hidden="true"><use href="#icon-linkedin"/></svg>
-                            <span class="sr-only">LinkedIn</span>
-                        </a>
-                        <a href="#" class="share-btn wechat ripple" onclick="shareToWechat()" title="Share on WeChat" aria-label="Share on WeChat">
-                            <svg class="icon" aria-hidden="true"><use href="#icon-wechat"/></svg>
-                            <span class="sr-only">WeChat</span>
-                        </a>
-                        <a href="#" class="share-btn weibo ripple" onclick="shareToWeibo()" title="Share on Weibo" aria-label="Share on Weibo">
-                            <svg class="icon" aria-hidden="true"><use href="#icon-weibo"/></svg>
-                            <span class="sr-only">Weibo</span>
-                        </a>
-                        <a href="#" class="share-btn copy-link ripple" onclick="copyToClipboard()" title="Copy link" aria-label="Copy link">
-                            <svg class="icon" aria-hidden="true"><use href="#icon-link"/></svg>
-                            <span class="sr-only">Copy link</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Article Navigation -->
-                <nav class="article-navigation scroll-reveal" aria-label="Article navigation">
-                    <hr class="separator">
-                    <ul class="pager">
-                        {% if page.previous.url %}
-                        <li class="previous">
-                            <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}"
-                               rel="prev"
-                               aria-label="Previous article: {{page.previous.title}}">
-                                <span class="nav-direction">&larr; Previous</span><br>
-                                <span class="nav-title">{{page.previous.title | truncate: 40}}</span>
-                            </a>
-                        </li>
-                        {% endif %}
-                        {% if page.next.url %}
-                        <li class="next">
-                            <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}"
-                               rel="next"
-                               aria-label="Next article: {{page.next.title}}">
-                                <span class="nav-direction">Next &rarr;</span><br>
-                                <span class="nav-title">{{page.next.title | truncate: 40}}</span>
-                            </a>
-                        </li>
-                        {% endif %}
-                    </ul>
-                </nav>
-
-                {% if site.disqus_username %}
-                <!-- Disqus Comments -->
-                <div class="comment">
-                    <div id="disqus_thread" class="disqus-thread"></div>
-                </div>
-                {% endif %}
-
-                {% if site.netease_comment %}
-                <!-- NetEase Comments (Legacy) -->
-                <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-                {% endif %}
-            </div>  
-
-    <!-- Side Catalog Container -->
-        {% unless page.no-catalog %}
-            <div class="
-                col-lg-2 col-lg-offset-0
-                visible-lg-block
-                sidebar-container
-                catalog-container">
-                <div class="side-catalog">
-                    <hr class="hidden-sm hidden-xs">
-                    <h5>
-                        <svg class="icon" aria-hidden="true"><use href="#icon-list"/></svg>
-                        <a class="catalog-toggle" href="#">CATALOG</a>
-                    </h5>
-                    <ul class="catalog-body"></ul>
-                </div>
-            </div>
-        {% endunless %}
-
-    <!-- Sidebar Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container tech-enhanced">
-
-                <!-- Featured Tags -->
-                {% include featured-tags.html bottom=true %}
-
-                <!-- Friends Blog -->
-                {% include friends.html %}
-            </div>
-        </div>
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header container container-narrow">
+    <div class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {{ page.date | date: "%B %d, %Y" }}
+      </time>
+      {% if page.author %}
+      <span class="post-author"> &middot; {{ page.author }}</span>
+      {% endif %}
     </div>
+
+    <h1 class="post-title" itemprop="headline">{{ page.title }}</h1>
+
+    {% if page.subtitle %}
+    <p class="post-subtitle">{{ page.subtitle }}</p>
+    {% endif %}
+
+    {% if page.tags.size > 0 %}
+    <div class="post-tags">
+      {% for tag in page.tags %}
+      <span class="tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </header>
+
+  <div class="post-content container container-narrow" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  <footer class="post-footer container container-narrow">
+    <div class="post-nav">
+      {% if page.previous.url %}
+      <a href="{{ page.previous.url | relative_url }}" class="post-nav-prev">
+        <span class="nav-label">&larr; Previous</span>
+        <span class="nav-title">{{ page.previous.title | truncate: 50 }}</span>
+      </a>
+      {% endif %}
+
+      {% if page.next.url %}
+      <a href="{{ page.next.url | relative_url }}" class="post-nav-next">
+        <span class="nav-label">Next &rarr;</span>
+        <span class="nav-title">{{ page.next.title | truncate: 50 }}</span>
+      </a>
+      {% endif %}
+    </div>
+  </footer>
 </article>
 
-<!-- add support for mathjax by voleking-->
-{% if page.mathjax %}
-  {% include mathjax_support.html %}
-{% endif %}
-
-{% if site.netease_comment %}
-<!-- NetEase Comments JS (Legacy) -->
-<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
-<script>
-  var cloudTieConfig = {
-    url: document.location.href,
-    sourceId: "",
-    productKey: "de25fc98a6fe48b3bc8a7ae765da99a0",
-    target: "cloud-tie-wrapper"
-  };
-  var yunManualLoad = true;
-  Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
-</script>
-{% endif %}
-
-
-{% if site.disqus_username %}
-<!-- Disqus JS -->
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = "{{site.disqus_username}}";
-    var disqus_identifier = "{{page.id}}";
-    var disqus_url = "{{site.url}}{{page.url}}";
-
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-{% endif %}
-
-
-{% if site.anchorjs %}
-<!-- async load function -->
-<script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
-    }
-</script>
-<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
-<script>
-    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
-        anchors.options = {
-          visible: 'hover',
-          placement: 'right',
-          // icon: '#'
-        };
-        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
-    })
-</script>
 <style>
-    /* place left on bigger screen */
-    @media all and (min-width: 800px) {
-        .anchorjs-link{
-            position: absolute;
-            left: -0.75em;
-            font-size: 1.1em;
-            margin-top : -0.1em;
-        }
-    }
+  .post-header {
+    padding: calc(80px + var(--space-3xl)) 0 var(--space-2xl);
+    border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+  }
+
+  .post-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-lg);
+  }
+
+  .post-content {
+    padding: var(--space-2xl) var(--space-lg);
+  }
+
+  .post-footer {
+    padding: var(--space-2xl) var(--space-lg);
+    border-top: 1px solid rgba(0, 255, 255, 0.1);
+    margin-top: var(--space-2xl);
+  }
+
+  .post-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+  }
+
+  .post-nav-prev,
+  .post-nav-next {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-md);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 45%;
+    transition: all 0.2s ease;
+  }
+
+  .post-nav-prev:hover,
+  .post-nav-next:hover {
+    border-color: var(--accent-cyan);
+  }
+
+  .post-nav-next {
+    margin-left: auto;
+    text-align: right;
+  }
+
+  .nav-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent-cyan);
+    text-transform: uppercase;
+  }
+
+  .nav-title {
+    color: var(--text-primary);
+    font-size: 0.9rem;
+  }
 </style>
-{% endif %}
-
-<!-- Enhanced Social Sharing Script -->
-<script src="{{ "/js/social-share.js" | prepend: site.baseurl }}"></script>
-
-<!-- Article Interactions Script -->
-<script src="{{ "/js/article-interactions.js" | prepend: site.baseurl }}"></script>
-
-<!-- Mermaid Support -->
-<script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
-<script>
-    mermaid.initialize({
-        startOnLoad: true,
-        theme: 'default',
-        securityLevel: 'loose',
-        fontFamily: 'Arial, sans-serif'
-    });
-</script>
